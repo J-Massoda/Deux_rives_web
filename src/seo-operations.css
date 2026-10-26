@@ -1,0 +1,20 @@
+/* Industry-specific editorial depth; visible substance without generic KPI imagery. */
+.seo-operations{background:#193929;color:#f7f7f0;padding:clamp(76px,8vw,130px) clamp(22px,5vw,90px)}
+.seo-operations--sage{background:#e5ede3;color:#193626}
+.seo-operations-intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(35px,6vw,90px);align-items:start;max-width:1420px}
+.seo-operations .eyebrow{grid-column:1/-1;color:#cbb48f}
+.seo-operations--sage .eyebrow{color:#8e7049}
+.seo-operations h2{font:400 clamp(2.4rem,4.1vw,4.7rem)/1.12 Georgia,serif;letter-spacing:-.04em;margin:12px 0 0}
+.seo-operations-intro>p{font-size:1.04rem;line-height:1.9;color:#d4e2d6;margin-top:15px;max-width:720px}
+.seo-operations--sage .seo-operations-intro>p{color:#4f6956}
+.seo-operations-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:55px}
+.seo-operations-grid article{border:1px solid #52735a;background:#244a32;border-radius:14px;padding:30px;min-height:240px}
+.seo-operations-grid small{font-size:.65rem;letter-spacing:.12em;color:#d4ba94}
+.seo-operations-grid h3{font:400 1.55rem Georgia,serif;margin:21px 0 13px;letter-spacing:-.025em}
+.seo-operations-grid p{font-size:.89rem;line-height:1.75;color:#d2dfd2}
+.seo-operations-bottom{display:flex;justify-content:space-between;align-items:center;gap:35px;margin-top:55px;padding-top:30px;border-top:1px solid #55745d}
+.seo-operations-bottom strong{font:400 1.4rem Georgia,serif}.seo-operations-bottom p{font-size:.86rem;line-height:1.7;color:#d4e2d7;max-width:670px;margin:12px 0 0}
+.seo-operations-bottom a{font-size:.85rem;font-weight:700;background:white;color:#1b3e2a;border-radius:6px;padding:16px 20px;white-space:nowrap}
+.seo-operations--sage .seo-operations-bottom{border-color:#b8c9ba}.seo-operations--sage .seo-operations-bottom p{color:#536c58}
+.seo-operations--sage .seo-operations-bottom a{background:#20452e;color:white}
+@media(max-width:850px){.seo-operations-intro,.seo-operations-grid{grid-template-columns:1fr}.seo-operations-grid article{min-height:0}.seo-operations-bottom{display:block}.seo-operations-bottom a{display:inline-flex;margin-top:25px;white-space:normal}}
