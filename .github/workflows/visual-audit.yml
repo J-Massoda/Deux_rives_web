@@ -1,0 +1,34 @@
+name: Browser visual QA — Wave 1
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  visual-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build site and test all generated routes
+        run: npm test
+      - name: Install browser tooling
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Serve static build and audit 61 desktop/mobile pages
+        run: |
+          python3 -m http.server 4173 --directory dist >/tmp/deux-rives-server.log 2>&1 &
+          sleep 2
+          node scripts/browser-audit.mjs
+      - name: Upload screenshot review pack
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wave1-visual-audit
+          path: artifacts/browser/
+          if-no-files-found: warn
