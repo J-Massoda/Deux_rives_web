@@ -39,6 +39,7 @@ try{
   }
   for(const route of ['/', '/regards/','/methode/','/studio/devis-atelier/','/studio/commercepilot/']){
     await page.goto(base+route,{waitUntil:'domcontentloaded'});
+    await page.evaluate(async()=>{for(let y=0;y<document.documentElement.scrollHeight;y+=640){window.scrollTo(0,y);await new Promise(r=>setTimeout(r,20))}window.scrollTo(0,0)});await page.waitForTimeout(520);
     if(route==='/')await page.screenshot({path:path.join(imagesDir,'home-'+viewport.width+'.png'),fullPage:true});
     else await page.screenshot({path:path.join(imagesDir,route.replace(/\W+/g,'-')+'-'+viewport.width+'.png'),fullPage:true});
   }
