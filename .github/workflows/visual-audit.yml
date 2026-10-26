@@ -1,4 +1,4 @@
-name: Browser visual QA — Wave 1
+name: Browser visual QA — Waves 1 and 2
 on:
   pull_request:
     branches: [main]
