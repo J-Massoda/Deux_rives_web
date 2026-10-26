@@ -11,7 +11,7 @@ const pages=[];
 function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory())walk(p);else if(entry.name==='index.html')pages.push(p);}}
 walk(dist);
 test('all public page paths and local assets resolve',()=>{
-  assert.equal(pages.length,61);
+  assert.equal(pages.length,65);
   for(const file of pages){
     const html=fs.readFileSync(file,'utf8');
     assert.match(html,/<html lang="fr">/);
@@ -113,5 +113,24 @@ test('Wave 1 editorial audit: the three insights explain implementation consider
   assert.match(html,/Une méthode à appliquer/);
   assert.match(html,/Exemple fictif/);
   assert.match(html,/VÉRIFICATION 01/);
+ }
+});
+
+test('Wave 2 renders all four separate functional product demos with strong disclosures',()=>{
+ const apps=['clientflow-pro','chantierpilot','commercepilot','docupilot-ai'];
+ for(const id of apps){
+  const html=fs.readFileSync(path.join(dist,'applications',id,'index.html'),'utf8');
+  assert.match(html,new RegExp('data-flagship-app="'+id+'"'));
+  assert.match(html,/SCÉNARIO INTERACTIF/);
+  assert.match(html,/DONNÉES FICTIVES|Données fictives|données fictives/);
+  assert.match(html,/QUESTIONS FRÉQUENTES/);
+  assert.match(html,/assets\/flagship-apps\.js/);
+  assert.match(html,/name="description"/);
+  assert.match(html,/logiciel|outil|traitement/i);
+  assert.ok(html.split(/<p[\s>]/).length>=10,'SEO context needs substantial paragraphs for '+id);
+ }
+ const appCode=fs.readFileSync(path.join(dist,'assets','flagship-apps.js'),'utf8');
+ for(const command of ['advance','progress','spend','sell','receive','analyse','approve','export','reset']){
+  assert.ok(appCode.includes(command),'Missing scenario action '+command);
  }
 });
