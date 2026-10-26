@@ -88,3 +88,19 @@ if (brief) {
     setTimeout(()=>URL.revokeObjectURL(objectUrl),1000);
   });
 }
+
+const studioSearch=document.querySelector('#studio-search');
+if(studioSearch){
+ const cards=[...document.querySelectorAll('.concept-card')];
+ const counter=document.querySelector('#studio-count');
+ studioSearch.addEventListener('input',()=>{
+  const term=studioSearch.value.trim().toLocaleLowerCase('fr');
+  let visible=0;
+  cards.forEach(card=>{
+   const match=card.textContent.toLocaleLowerCase('fr').includes(term);
+   card.hidden=!match;
+   if(match)visible++;
+  });
+  if(counter)counter.textContent=visible+' concept'+(visible===1?'':'s');
+ });
+}
