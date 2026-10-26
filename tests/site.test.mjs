@@ -11,7 +11,7 @@ const pages=[];
 function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory())walk(p);else if(entry.name==='index.html')pages.push(p);}}
 walk(dist);
 test('all public page paths and local assets resolve',()=>{
-  assert.equal(pages.length,55);
+  assert.equal(pages.length,60);
   for(const file of pages){
     const html=fs.readFileSync(file,'utf8');
     assert.match(html,/<html lang="fr">/);
