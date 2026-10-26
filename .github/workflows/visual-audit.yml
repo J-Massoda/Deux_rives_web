@@ -20,11 +20,12 @@ jobs:
         run: |
           npm install --no-save playwright
           npx playwright install --with-deps chromium
-      - name: Serve static build and audit 61 desktop/mobile pages
+      - name: Serve static build and audit 68 desktop/mobile pages and flagship workflows
         run: |
           python3 -m http.server 4173 --directory dist >/tmp/deux-rives-server.log 2>&1 &
           sleep 2
           node scripts/browser-audit.mjs
+          node scripts/flagship-browser-audit.mjs
       - name: Upload screenshot review pack
         if: always()
         uses: actions/upload-artifact@v4
