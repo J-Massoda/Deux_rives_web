@@ -104,3 +104,17 @@ if(studioSearch){
   if(counter)counter.textContent=visible+' concept'+(visible===1?'':'s');
  });
 }
+
+const priorityCarousel=document.querySelector('#priority-products');
+if(priorityCarousel){
+ const scrollCards=direction=>{
+  const card=priorityCarousel.querySelector('.dr-feature');
+  const width=card ? card.getBoundingClientRect().width+20 : 320;
+  priorityCarousel.scrollBy({left:direction*width,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+ };
+ document.querySelector('.dr-carousel-prev')?.addEventListener('click',()=>scrollCards(-1));
+ document.querySelector('.dr-carousel-next')?.addEventListener('click',()=>scrollCards(1));
+}
+document.querySelectorAll('.mega a').forEach(link=>{
+ link.addEventListener('focus',()=>link.closest('.nav-item')?.classList.add('submenu-open'));
+});
