@@ -143,3 +143,39 @@ test('Wave 2 editorial: new guides are substantive, attributed and internally li
   assert.ok(html.split(/<p[\s>]/).length>=9,id+' should contain long-form practical guidance');
  }
 });
+test('Wave 2: sector and service pages include specific operations and links',()=>{
+ const sectorIds=['services-professionnels','batiment-interventions','commerce-operations','education','sante-administrative','transport-logistique','immobilier-patrimoine','tourisme-hotellerie','ressources-humaines','industrie-ia-pilotage'];
+ const serviceIds=['logiciels-sur-mesure','automatisation-des-processus','intelligence-artificielle','sites-et-commerce','integrations-api','maintenance-evolution'];
+ const sectorHeadings=new Set(),serviceHeadings=new Set();
+ for(const id of sectorIds){
+  const html=fs.readFileSync(path.join(dist,'secteurs',id,'index.html'),'utf8');
+  assert.match(html,/ANALYSE MÉTIER/);
+  const match=html.match(/<section class="seo-operations">[\s\S]*?<h2>([^<]+)<\/h2>/);
+  assert.ok(match,'Sector analysis heading missing '+id);
+  assert.ok(!sectorHeadings.has(match[1]),'Sector duplicate SEO title '+id);
+  sectorHeadings.add(match[1]);
+  assert.equal((html.match(/ENJEU 0[1-3]/g)||[]).length,3);
+ }
+ for(const id of serviceIds){
+  const html=fs.readFileSync(path.join(dist,'expertises',id,'index.html'),'utf8');
+  assert.match(html,/INGÉNIERIE APPLIQUÉE/);
+  const match=html.match(/<section class="seo-operations seo-operations--sage">[\s\S]*?<h2>([^<]+)<\/h2>/);
+  assert.ok(match,'Service analysis heading missing '+id);
+  assert.ok(!serviceHeadings.has(match[1]),'Service duplicate SEO title '+id);
+  serviceHeadings.add(match[1]);
+ }
+});
+test('Technical SEO metadata includes parseable breadcrumbs, site and article schema',()=>{
+ for(const file of pages){
+  const html=fs.readFileSync(file,'utf8');
+  assert.match(html,/meta property="og:locale" content="fr_FR"/);
+  const match=html.match(/<script type="application\/ld\+json">([^<]+)<\/script>/);
+  assert.ok(match,'No JSON-LD: '+file);
+  const schemas=JSON.parse(match[1]);
+  assert.ok(schemas.some(x=>x['@type']==='WebPage'));
+  assert.ok(schemas.some(x=>x['@type']==='BreadcrumbList'));
+  if(file.includes('/regards/')&&!file.endsWith('/regards/index.html')){
+   assert.ok(schemas.some(x=>x['@type']==='Article'));
+  }
+ }
+});
