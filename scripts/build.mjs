@@ -68,7 +68,15 @@ const cta = (base='../') => `<section class="cta-band"><div class="eyebrow light
 const sectionHead=(index,kicker,title,copy='')=>`<div class="section-head"><span class="section-index">${index}</span><div><span class="eyebrow">${kicker}</span><h2>${title}</h2>${copy?`<p>${copy}</p>`:''}</div></div>`;
 const serviceCard=(x,base='')=>`<a class="service-card reveal" href="${base}expertises/${x.id}/"><span class="eyebrow">${x.eyebrow}</span><h3>${x.title}</h3><p>${x.summary}</p><span class="card-link">Explorer cette expertise ${arrow}</span></a>`;
 const demoCard=(x,base='')=>`<a class="demo-card reveal" href="${base}demonstrations/${x.id}/"><div class="demo-card-art"><img src="${base}assets/${x.visual}" alt="Illustration du parcours ${x.industry.toLowerCase()}" loading="lazy"><span class="demo-card-pill">Données fictives · interactif</span></div><div class="demo-card-info"><span class="eyebrow">${x.industry}</span><h3>${x.title}</h3><p>${x.short}</p><span class="card-link">Essayer le scénario ${arrow}</span></div></a>`;
-const hero=(eyebrow,title,description,art='flow.svg')=>`<section class="subhero"><div class="subhero-copy"><span class="eyebrow">${eyebrow}</span><h1>${title}</h1><p>${description}</p></div><div class="subhero-art"><img src="${art}" alt="" aria-hidden="true"></div></section>`;
+const hero=(eyebrow,title,description,art='flow.svg')=>{
+  const base=art.startsWith('../../')?'../../assets/':'../assets/';
+  const photo= /bâtiment|chantier|intervention/i.test(title)?'ChatGPT Image Oct 26, 2026, 11_22_40 AM-3.png'
+    : /commerce|vente|stock|commande/i.test(title)?'ChatGPT Image Oct 26, 2026, 11_22_42 AM-4.png'
+    : /document|ia|automatis/i.test(title)?'ChatGPT Image Oct 26, 2026, 11_22_44 AM-5.png'
+    : /secteur|logiciel|métier|expertise|services|studio|démonstration/i.test(eyebrow+' '+title)?'ChatGPT Image Oct 26, 2026, 11_22_39 AM-2.png'
+    :'ChatGPT Image Oct 26, 2026, 11_22_38 AM-1.png';
+  return `<section class="subhero dr-subhero"><div class="subhero-copy"><span class="eyebrow">${eyebrow}</span><h1>${title}</h1><p>${description}</p></div><div class="subhero-art dr-subhero-art"><img src="${base+photo}" alt="Visuel illustratif du domaine ${eyebrow}" loading="lazy"></div></section>`;
+};
 
 fs.rmSync(out,{recursive:true,force:true}); fs.mkdirSync(out,{recursive:true});
 fs.cpSync(path.join(root,'assets'),path.join(out,'assets'),{recursive:true});
