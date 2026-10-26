@@ -11,7 +11,7 @@ const pages=[];
 function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory())walk(p);else if(entry.name==='index.html')pages.push(p);}}
 walk(dist);
 test('all public page paths and local assets resolve',()=>{
-  assert.equal(pages.length,30);
+  assert.equal(pages.length,55);
   for(const file of pages){
     const html=fs.readFileSync(file,'utf8');
     assert.match(html,/<html lang="fr">/);
@@ -38,4 +38,17 @@ test('unverified company details remain unpublished and preview is blocked from 
   assert.match(contact,/Préparer votre brief/);
   assert.doesNotMatch(contact,/action="https?:/);
   assert.match(fs.readFileSync(path.join(dist,'robots.txt'),'utf8'),/Disallow: \/$/m);
+});
+
+test('studio exposes 24 distinct concept pages and clear prototype disclosures',()=>{
+ const studio=fs.readFileSync(path.join(dist,'studio/index.html'),'utf8');
+ assert.equal((studio.match(/class="concept-card reveal"/g)||[]).length,24);
+ assert.match(studio,/Concepts exploratoires/);
+ const entries=fs.readdirSync(path.join(dist,'studio'),{withFileTypes:true}).filter(x=>x.isDirectory());
+ assert.equal(entries.length,24);
+ for(const entry of entries){
+  const html=fs.readFileSync(path.join(dist,'studio',entry.name,'index.html'),'utf8');
+  assert.match(html,/Concept illustratif/);
+  assert.match(html,/données fictives/);
+ }
 });
