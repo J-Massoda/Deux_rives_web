@@ -118,3 +118,12 @@ body{overflow-x:clip}.site-shell{overflow:visible}
 .dr-narrative--dark .eyebrow{color:#dbc4a4}
 .rich-use,.rich-faq{scroll-margin-top:100px}
 @media(max-width:850px){.dr-subhero{min-height:0!important;padding-block:54px!important}.dr-subhero-art{height:255px}}
+
+/* Browser screenshot QA identified inherited white headings on light interior heroes. */
+.dr-subhero,.dr-subhero .subhero-copy,.dr-subhero h1{color:#1b3526!important}
+.dr-subhero h1 i{color:#6a7f68!important;font-style:italic}
+.dr-subhero .eyebrow{color:#8f6d43!important}
+.dr-subhero p{color:#4f6859!important}
+.dr-hero-left.reveal{opacity:1!important;transform:none!important}
+.dr-hero-left .dr-kicker,.dr-hero-left h1{color:#1a3727}
+.dr-hero-left h1 em{color:#728365}
