@@ -11,7 +11,7 @@ const pages=[];
 function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory())walk(p);else if(entry.name==='index.html')pages.push(p);}}
 walk(dist);
 test('all public page paths and local assets resolve',()=>{
-  assert.equal(pages.length,65);
+  assert.equal(pages.length,68);
   for(const file of pages){
     const html=fs.readFileSync(file,'utf8');
     assert.match(html,/<html lang="fr">/);
@@ -132,5 +132,14 @@ test('Wave 2 renders all four separate functional product demos with strong disc
  const appCode=fs.readFileSync(path.join(dist,'assets','flagship-apps.js'),'utf8');
  for(const command of ['advance','progress','spend','sell','receive','analyse','approve','export','reset']){
   assert.ok(appCode.includes(command),'Missing scenario action '+command);
+ }
+});
+
+test('Wave 2 editorial: new guides are substantive, attributed and internally linked',()=>{
+ for(const id of ['logiciel-metier-ou-saas-comment-choisir','cadrer-mvp-logiciel-metier-questions','facturation-electronique-integration-logiciel-2026-2027']){
+  const html=fs.readFileSync(path.join(dist,'regards',id,'index.html'),'utf8');
+  assert.match(html,/Rédaction Deux Rives Web/);
+  assert.match(html,/article-related/);
+  assert.ok(html.split(/<p[\s>]/).length>=9,id+' should contain long-form practical guidance');
  }
 });
