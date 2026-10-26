@@ -52,3 +52,66 @@ test('studio exposes 24 distinct concept pages and clear prototype disclosures',
   assert.match(html,/données fictives/);
  }
 });
+
+test('Wave 1 content audit: every authored product has a unique story and tailored visual',()=>{
+ const projects=fs.readdirSync(path.join(dist,'studio'),{withFileTypes:true}).filter(x=>x.isDirectory());
+ assert.equal(projects.length,24);
+ const titles=new Set(),types=new Set();
+ for(const entry of projects){
+  const html=fs.readFileSync(path.join(dist,'studio',entry.name,'index.html'),'utf8');
+  const title=html.match(/<h1>([^<]+)<\/h1>/)?.[1];
+  assert.ok(title && !titles.has(title),entry.name+' has a unique product heading');
+  titles.add(title);
+  assert.match(html,/product-experience/);
+  assert.match(html,/Scénario représentatif/);
+  assert.match(html,/Architecture, qualité et sécurité/);
+  assert.match(html,/Concept illustratif/);
+  assert.match(html,/Questions fréquentes/);
+  const family=html.match(/data-ui="([^"]+)"/)?.[1];
+  assert.ok(family,entry.name+' should specify an interface style');
+  types.add(family);
+  assert.ok(html.split(/<p[\s>]/).length>=9,entry.name+' should have substantive copy');
+ }
+ assert.ok(types.size>=8,'at least eight visual interface families');
+});
+test('Wave 1 content audit: every sector and expertise has its own editorial sections',()=>{
+ const sectors=['services-professionnels','batiment-interventions','commerce-operations','education','sante-administrative','transport-logistique','immobilier-patrimoine','tourisme-hotellerie','ressources-humaines','industrie-ia-pilotage'];
+ const services=['logiciels-sur-mesure','automatisation-des-processus','intelligence-artificielle','sites-et-commerce','integrations-api','maintenance-evolution'];
+ for(const id of sectors){
+  const html=fs.readFileSync(path.join(dist,'secteurs',id,'index.html'),'utf8');
+  assert.match(html,/Expertise terrain/);
+  assert.match(html,/Une interface pensée pour la réalité de ce secteur/);
+  assert.match(html,/Questions pratiques avant de démarrer/);
+ }
+ for(const id of services){
+  const html=fs.readFileSync(path.join(dist,'expertises',id,'index.html'),'utf8');
+  assert.match(html,/Du besoin à l’usage/);
+  assert.match(html,/Des décisions explicites avant le développement/);
+  assert.match(html,/Questions pratiques avant de démarrer/);
+ }
+});
+test('Wave 1 interaction audit: centered sticky mega menu and seamless carousel',()=>{
+ const html=fs.readFileSync(path.join(dist,'index.html'),'utf8');
+ const css=fs.readFileSync(path.join(dist,'assets/wave1-polish.css'),'utf8');
+ const js=fs.readFileSync(path.join(dist,'assets/wave1-polish.js'),'utf8');
+ assert.equal((html.match(/class="dr-feature reveal"/g)||[]).length,8);
+ assert.match(html,/id="priority-products"/);
+ assert.match(html,/mega-preview/);
+ assert.match(html,/translate="no"/);
+ assert.match(html,/assets\/wave1-polish\.css/);
+ assert.match(css,/position:sticky!important/);
+ assert.match(css,/left:50%/);
+ assert.match(css,/scrollbar-width:none/);
+ assert.match(css,/summary::after/);
+ assert.match(js,/is-scrolled/);
+ assert.match(js,/scrollLeft/);
+});
+test('Wave 1 editorial audit: the three insights explain implementation considerations',()=>{
+ const articles=['quand-un-tableur-devient-un-systeme','automatiser-sans-perdre-le-controle','un-site-qui-continue-apres-le-formulaire'];
+ for(const id of articles){
+  const html=fs.readFileSync(path.join(dist,'regards',id,'index.html'),'utf8');
+  assert.match(html,/Une méthode à appliquer/);
+  assert.match(html,/Exemple fictif/);
+  assert.match(html,/VÉRIFICATION 01/);
+ }
+});
