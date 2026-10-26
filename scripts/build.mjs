@@ -77,7 +77,7 @@ function shell({title,description,body,route='',section='',image='assets/og-cove
   const pathParts=route.split('/').filter(Boolean);
   const breadcrumbParts=[{name:'Accueil',item:siteOrigin.replace(/\/$/,'')+'/'}];
   const sectionNames={applications:'Applications interactives',studio:'Studio de produits',expertises:'Expertises',secteurs:'Secteurs',demonstrations:'Démonstrations',regards:'Insights',contact:'Contact',methode:'Notre approche',agence:'À propos',realisations:'Réalisations'};
-  if(pathParts.length)breadcrumbParts.push({name:sectionNames[pathParts[0]]||pathParts[0],item:siteOrigin.replace(/\/$/,'')+'/'+pathParts[0]+'/'});
+  if(pathParts.length)breadcrumbParts.push({name:sectionNames[pathParts[0]]||pathParts[0],item:siteOrigin.replace(/\/$/,'')+'/'+(pathParts[0]==='applications'?'demonstrations':pathParts[0])+'/'});
   if(pathParts.length>1)breadcrumbParts.push({name:title,item:canonical});
   const schemas=[
     {'@context':'https://schema.org','@type':'WebPage',name:title,description, inLanguage:'fr-FR',url:canonical,isPartOf:{'@type':'WebSite',name:'Deux Rives Web',url:siteOrigin.replace(/\/$/,'')+'/'}},
