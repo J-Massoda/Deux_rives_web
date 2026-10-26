@@ -47,3 +47,12 @@
 @media(max-width:760px){.wave-trust,.wave-feature-grid,.wave-related>div{grid-template-columns:1fr}.wave-columns{grid-template-columns:1fr}.wave-flow{grid-template-columns:1fr 1fr}.wave-trust{gap:7px}.wave-hero h1{font-size:clamp(2.6rem,9vw,4rem)}}
 @media(max-width:490px){.wave-app-intro{padding:55px 20px}.wave-demo-section{padding:70px 0}.wave-feature-grid{gap:12px}.wave-editorial{padding:70px 20px}.wave-flow{grid-template-columns:1fr}.wave-hero-actions a{width:100%;justify-content:center}}
 @media(prefers-reduced-motion:reduce){.wave-related a{transition:none}}
+
+/* Research guides: readable technical essays with clear evidence and relevant links. */
+.article{max-width:1400px}.article-body{max-width:790px;margin:0 auto;padding-block:40px 75px}
+.article-body p{font-size:1.06rem;line-height:2;color:#415c4a;margin:0 0 30px}
+.article-author{font-size:.76rem;color:#7c897b;letter-spacing:.02em}
+.article-related{display:flex;flex-wrap:wrap;gap:14px;align-items:center;max-width:920px;margin:20px auto 70px;padding:24px;border-top:1px solid #dae5d9;border-bottom:1px solid #dae5d9}
+.article-related strong{margin-right:14px}.article-related a{border:1px solid #becfbc;padding:11px 14px;border-radius:8px;font-size:.77rem;color:#31503c}
+.article-body a{color:#1e6a42;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:760px){.article-body{padding-inline:22px}.article-related{margin-inline:22px}}
