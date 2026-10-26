@@ -106,3 +106,15 @@ body{overflow-x:clip}.site-shell{overflow:visible}
 @media(max-width:850px){.dr-narrative-heading,.dr-case-split{grid-template-columns:1fr}.dr-narrative-grid{grid-template-columns:1fr 1fr}.product-layout{grid-template-columns:130px 1fr}}
 @media(max-width:620px){.dr-narrative-grid,.product-cards,.product-flow{grid-template-columns:1fr}.product-layout{grid-template-columns:1fr}.product-rail{flex-direction:row;overflow:auto;white-space:nowrap;align-items:center}.product-rail strong{margin:0}.product-experience-head{gap:10px}.product-workspace{padding:20px}.mega-links{grid-template-columns:1fr}.header{top:0}.header.is-scrolled{padding-inline:4px}.rich-faq summary,.studio-faq summary{min-height:75px}.rich-faq details>p,.studio-faq details>p{padding-right:0}.dr-narrative{padding-inline:22px}.dr-feature-grid .dr-feature{flex-basis:85%}}
 @media(prefers-reduced-motion:reduce){.header,.header-inner,.header .mega,.nav-toggle::before,.rich-faq summary::after,.studio-faq summary::after{transition:none!important}}
+
+/* Content-focused interior hero proportions; more substantial sections start sooner. */
+.dr-subhero{min-height:440px!important;padding-block:clamp(54px,5vw,86px)!important;background:linear-gradient(125deg,#e9eee6 0%,#f9f8f2 63%)}
+.dr-subhero-art{height:clamp(270px,26vw,370px);box-shadow:0 22px 55px rgba(19,46,26,.17)}
+.dr-subhero h1{font-size:clamp(2.7rem,4.7vw,5.4rem)!important;max-width:840px}
+.dr-subhero p{max-width:690px}
+.dr-product-detail{padding-top:clamp(55px,5vw,85px)}
+.dr-product-detail h1{max-width:1120px;font-size:clamp(2.7rem,4.85vw,5.8rem)!important;line-height:1.1}
+.dr-product-detail .product-experience{margin-bottom:35px}
+.dr-narrative--dark .eyebrow{color:#dbc4a4}
+.rich-use,.rich-faq{scroll-margin-top:100px}
+@media(max-width:850px){.dr-subhero{min-height:0!important;padding-block:54px!important}.dr-subhero-art{height:255px}}
