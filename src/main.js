@@ -73,7 +73,7 @@ if (brief) {
     e.preventDefault();
     if (!brief.reportValidity()) return;
     const data=new FormData(brief);
-    content=`Projet pour Deux Rives Web\n\nNom : ${data.get('nom')}\nOrganisation : ${data.get('organisation')}\nE-mail : ${data.get('email')}\nHorizon : ${data.get('horizon')}\n\nProcessus à améliorer :\n${data.get('besoin')}\n\nRésultat souhaité :\n${data.get('resultat') || 'À définir ensemble'}\n`;
+    content=`Projet pour Deux Rives Web\n\nNom : ${data.get('nom')}\nOrganisation : ${data.get('organisation')}\nE-mail : ${data.get('email')}\nHorizon : ${data.get('horizon')}\nSecteur : ${data.get('secteur') || 'À définir'}\nType de projet : ${data.get('typeProjet') || 'À définir'}\nOutils en place et intégrations : ${data.get('outils') || 'À préciser'}\n\nProcessus à améliorer :\n${data.get('besoin')}\n\nRésultat souhaité :\n${data.get('resultat') || 'À définir ensemble'}\n`;
     const output=brief.querySelector('.brief-output'); output.hidden=false;
     output.querySelector('pre').textContent=content;
     const send=output.querySelector('[data-send]');
