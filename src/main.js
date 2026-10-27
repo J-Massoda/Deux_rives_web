@@ -77,7 +77,7 @@ if (brief) {
     const output=brief.querySelector('.brief-output'); output.hidden=false;
     output.querySelector('pre').textContent=content;
     const send=output.querySelector('[data-send]');
-    if (send && brief.dataset.email) send.href=`mailto:${encodeURIComponent(brief.dataset.email)}?subject=${encodeURIComponent('Projet — Deux Rives Web')}&body=${encodeURIComponent(content)}`;
+    if (send && brief.dataset.email) send.href=`mailto:${encodeURI(brief.dataset.email)}?subject=${encodeURIComponent('Projet — Deux Rives Web')}&body=${encodeURIComponent(content)}`;
     output.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'});
   });
   brief.querySelector('[data-copy]')?.addEventListener('click',async()=>{
