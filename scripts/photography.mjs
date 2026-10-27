@@ -11,7 +11,7 @@ const sectors={
 };
 const expertise={'logiciels-sur-mesure':[20,21],'automatisation-des-processus':[22,23],'sites-et-commerce':[32,35],'integrations-api':[36,38],'maintenance-evolution':[39,30],'intelligence-artificielle':[33,26]};
 const apps={'clientflow-pro':41,'cabinet-os':15,'missiondesk':42,'chantierpilot':13,'intervention-360':45,'devis-atelier':27,'commercepilot':14,'b2b-orderhub':54,'factureconnect':33,'campusflow':62,'eduprogress':51,'clinicdesk':59,'carefollow':40,'fleetcontrol':43,'routeboard':47,'immopilot':48,'propertycare':52,'stayflow':57,'experiencedesk':55,'talentpipeline':49,'teamops':60,'productionlens':46,'docupilot-ai':38,'insightboard':19};
-function photo(n,base,eager=false){const x=byId[at(n)];return `<img class="editorial-photo" src="${base}assets/${x.id}.webp" srcset="${base}assets/${x.id}-640.webp 640w, ${base}assets/${x.id}.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw" width="1536" height="1024" alt="${x.alt}" loading="${eager?'eager':'lazy'}" decoding="async" ${eager?'fetchpriority="high"':''}>`;}
+function photo(n,base,eager=false){const x=byId[at(n)];return `<img class="editorial-photo" src="${base}assets/${x.id}.webp" srcset="${base}assets/${x.id}-640.webp 640w, ${base}assets/${x.id}.webp ${x.width}w" sizes="(max-width: 700px) 100vw, 50vw" width="${x.width}" height="${x.height}" alt="${x.alt}" loading="${eager?'eager':'lazy'}" decoding="async" ${eager?'fetchpriority="high"':''}>`;}
 function story(ns,base,en=false){return `<section class="photo-story" aria-label="${en?'Illustrative business photography':'Illustrations des usages métier'}">${ns.map(n=>`<figure>${photo(n,base)}<figcaption>${en?'AI-generated illustration of a business context.':'Illustration générée par IA d’un contexte métier.'}</figcaption></figure>`).join('')}</section>`;}
 export function applyPhotography(route,page){
  const parts=route.split('/').filter(Boolean),base='../'.repeat(parts.length),id=parts.at(-1);let body=page.body, chosen;
@@ -36,6 +36,6 @@ export function applyPhotography(route,page){
   }
  }
  // Upgrade all renamed images with responsive sources, dimensions and meaningful descriptions.
- body=body.replace(/<img\b[^>]*>/g,tag=>{const match=tag.match(/src="([^"]*assets\/([^/]+)\.png)"/);if(!match||!byId[match[2]])return tag;const x=byId[match[2]],prefix=match[1].slice(0,-4);let result=tag.replace(match[1],prefix+'.webp');if(!/width=/.test(result))result=result.replace('<img','<img width="1536" height="1024" decoding="async"');if(!/srcset=/.test(result))result=result.replace('<img',`<img srcset="${prefix}-640.webp 640w, ${prefix}.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"`);return result;});
+ body=body.replace(/<img\b[^>]*>/g,tag=>{const match=tag.match(/src="([^"]*assets\/([^/]+)\.png)"/);if(!match||!byId[match[2]])return tag;const x=byId[match[2]],prefix=match[1].slice(0,-4);let result=tag.replace(match[1],prefix+'.webp');if(!/width=/.test(result))result=result.replace('<img',`<img width="${x.width}" height="${x.height}" decoding="async"`);if(!/srcset=/.test(result))result=result.replace('<img',`<img srcset="${prefix}-640.webp 640w, ${prefix}.webp ${x.width}w" sizes="(max-width: 700px) 100vw, 50vw"`);return result;});
  return {...page,body,...(chosen!==undefined?{image:'assets/'+at(chosen)+'.webp'}:{})};
 }
