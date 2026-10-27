@@ -23,7 +23,7 @@
     const found=card.textContent.toLocaleLowerCase('fr').includes(query),sector=selected==='Tous'||card.dataset.sector===selected;
     const shown=found&&sector;card.hidden=!shown;if(shown)visible++;
    });
-   if(count)count.textContent=visible+' concept'+(visible===1?'':'s');
+   if(count)count.textContent=visible+' démonstration'+(visible===1?'':'s');
    if(empty)empty.hidden=visible>0;
    filters.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.studioSector===selected)));
   }

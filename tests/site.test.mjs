@@ -43,12 +43,12 @@ test('unverified company details remain unpublished and preview is blocked from 
 test('studio exposes 24 distinct concept pages and clear prototype disclosures',()=>{
  const studio=fs.readFileSync(path.join(dist,'studio/index.html'),'utf8');
  assert.equal((studio.match(/class="concept-card reveal"/g)||[]).length,24);
- assert.match(studio,/Concepts exploratoires/);
+ assert.match(studio,/Démonstrations interactives/);
  const entries=fs.readdirSync(path.join(dist,'studio'),{withFileTypes:true}).filter(x=>x.isDirectory());
  assert.equal(entries.length,24);
  for(const entry of entries){
   const html=fs.readFileSync(path.join(dist,'studio',entry.name,'index.html'),'utf8');
-  assert.match(html,/Concept illustratif/);
+  assert.match(html,/Fiche de conception/);
   assert.match(html,/données fictives/);
  }
 });
@@ -65,7 +65,7 @@ test('Wave 1 content audit: every authored product has a unique story and tailor
   assert.match(html,/product-experience/);
   assert.match(html,/Scénario représentatif/);
   assert.match(html,/Architecture, qualité et sécurité/);
-  assert.match(html,/Concept illustratif/);
+  assert.match(html,/Fiche de conception/);
   assert.match(html,/Questions fréquentes/);
   const family=html.match(/data-ui="([^"]+)"/)?.[1];
   assert.ok(family,entry.name+' should specify an interface style');
@@ -85,9 +85,8 @@ test('Wave 1 content audit: every sector and expertise has its own editorial sec
  }
  for(const id of services){
   const html=fs.readFileSync(path.join(dist,'expertises',id,'index.html'),'utf8');
-  assert.match(html,/Du besoin à l’usage/);
-  assert.match(html,/Des décisions explicites avant le développement/);
-  assert.match(html,/Questions pratiques avant de démarrer/);
+  for(const section of ['perimetre','livrables','integrations','calendrier','propriete','support'])assert.ok(html.includes('id="'+section+'"'),id+' must answer '+section);
+  assert.equal((html.match(/class="section buying-section"/g)||[]).length,6);
  }
 });
 test('Wave 1 interaction audit: centered sticky mega menu and seamless carousel',()=>{
@@ -158,8 +157,8 @@ test('Wave 2: sector and service pages include specific operations and links',()
  }
  for(const id of serviceIds){
   const html=fs.readFileSync(path.join(dist,'expertises',id,'index.html'),'utf8');
-  assert.match(html,/INGÉNIERIE APPLIQUÉE/);
-  const match=html.match(/<section class="seo-operations seo-operations--sage">[\s\S]*?<h2>([^<]+)<\/h2>/);
+  assert.match(html,/Présenter votre besoin/);
+  const match=html.match(/<section class="section buying-section"[^>]*>[\s\S]*?<h2>([^<]+)<\/h2>/);
   assert.ok(match,'Service analysis heading missing '+id);
   assert.ok(!serviceHeadings.has(match[1]),'Service duplicate SEO title '+id);
   serviceHeadings.add(match[1]);
@@ -216,4 +215,31 @@ test('Performance: editorial images are optimized WebP and referenced by pages',
   assert.ok(fs.existsSync(original),'source original preserved: '+file);
   assert.ok(fs.statSync(optimized).size<fs.statSync(original).size,'WebP should compress '+file);
  }
+});
+
+test('Business contact and founder cards use approved details only',()=>{
+ const agency=fs.readFileSync(path.join(dist,'agence/index.html'),'utf8');
+ for(const name of ['Jean Emilien Massoda','Claude Armand'])assert.ok(agency.includes(name));
+ assert.equal((agency.match(/class="founder-card"/g)||[]).length,2);
+ assert.equal((agency.match(/src="..\/assets\/founder-default.svg"/g)||[]).length,2);
+ for(const file of pages){const html=fs.readFileSync(file,'utf8');assert.ok(html.includes('services@deuxrivesweb.fr'));assert.ok(html.includes('Paris, France'));assert.doesNotMatch(html,/hello@massoda|671.?260.?005|Illustration générée par IA d’un contexte métier|Les termes métier liés/);}
+ const contact=fs.readFileSync(path.join(dist,'contact/index.html'),'utf8');
+ assert.ok(contact.includes('data-copy'));assert.ok(contact.includes('data-send'));assert.ok(contact.includes('Il n’a pas encore été envoyé.'));
+ assert.doesNotMatch(contact,/l’adresse de l’entreprise sera ajoutée/);
+});
+test('Each catalogue entry links to a working application demo',()=>{
+ const catalog=fs.readFileSync(path.join(dist,'studio/index.html'),'utf8');assert.match(catalog,/24 démonstrations métier/);
+ for(const dir of fs.readdirSync(path.join(dist,'studio'),{withFileTypes:true}).filter(x=>x.isDirectory())){
+ const html=fs.readFileSync(path.join(dist,'studio',dir.name,'index.html'),'utf8');assert.ok(html.includes('../../applications/'+dir.name+'/'),dir.name);}
+});
+
+test('Search indexing requires complete launch details and the production origin',async()=>{
+ const {publicLaunchReady}=await import('../scripts/launch-readiness.mjs');
+ const {default:config}=await import('../site.config.mjs');
+ assert.equal(publicLaunchReady(config,config.origin),false);
+ const legal=Object.fromEntries(['companyName','legalForm','siren','rcs','registeredAddress','email','publisher','hostName','hostAddress'].map(k=>[k,'confirmed']));
+ const complete={...config,publishReady:true,legal};
+ assert.equal(publicLaunchReady(complete,config.origin),true);
+ assert.equal(publicLaunchReady(complete,'https://preview.example.test'),false);
+ assert.equal(publicLaunchReady({...complete,legal:{...legal,siren:''}},config.origin),false);
 });

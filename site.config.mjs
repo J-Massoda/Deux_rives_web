@@ -1,6 +1,7 @@
 export default {
   brand: 'Deux Rives Web',
   origin: 'https://deuxrivesweb.fr',
+  location: 'Paris, France',
   // Fill these from the registration documents and company mailbox before publication.
   legal: {
     companyName: '',
@@ -11,7 +12,7 @@ export default {
     vat: '',
     registeredAddress: '',
     phone: '',
-    email: '',
+    email: 'services@deuxrivesweb.fr',
     publisher: '',
     hostName: '',
     hostAddress: '',

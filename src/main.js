@@ -80,6 +80,11 @@ if (brief) {
     if (send && brief.dataset.email) send.href=`mailto:${encodeURIComponent(brief.dataset.email)}?subject=${encodeURIComponent('Projet — Deux Rives Web')}&body=${encodeURIComponent(content)}`;
     output.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'});
   });
+  brief.querySelector('[data-copy]')?.addEventListener('click',async()=>{
+    const status=brief.querySelector('[data-copy-status]');
+    try { await navigator.clipboard.writeText(content); status.textContent='Message copié. Collez-le dans votre e-mail à services@deuxrivesweb.fr.'; }
+    catch { status.textContent='Sélectionnez le texte ci-dessus pour le copier, ou téléchargez le brief.'; }
+  });
   brief.querySelector('[data-download]').addEventListener('click',()=>{
     if (!content) return;
     const blob=new Blob([content],{type:'text/plain;charset=utf-8'});
@@ -101,7 +106,7 @@ if(studioSearch){
    card.hidden=!match;
    if(match)visible++;
   });
-  if(counter)counter.textContent=visible+' concept'+(visible===1?'':'s');
+  if(counter)counter.textContent=visible+' démonstration'+(visible===1?'':'s');
  });
 }
 

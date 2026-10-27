@@ -126,5 +126,21 @@
     "filename": "industrie-ia-pilotage-contexte-metier.webp",
     "altDraft": "À rédiger après validation de la photographie",
     "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "agence/",
+    "slot": "cofounder-jean-emilien-massoda",
+    "status": "default-avatar",
+    "currentAsset": "founder-default.svg",
+    "futureFilename": "jean-emilien-massoda-cofondateur.webp",
+    "altDraft": "Portrait de Jean Emilien Massoda"
+  },
+  {
+    "route": "agence/",
+    "slot": "cofounder-claude-armand",
+    "status": "default-avatar",
+    "currentAsset": "founder-default.svg",
+    "futureFilename": "claude-armand-cofondateur.webp",
+    "altDraft": "Portrait de Claude Armand"
   }
 ]

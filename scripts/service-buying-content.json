@@ -1,0 +1,194 @@
+{
+  "logiciels-sur-mesure": [
+    [
+      "Périmètre",
+      "Un premier parcours complet, avec des limites explicites.",
+      "Le cadrage identifie les utilisateurs, les décisions et les données que la première version doit prendre en charge. Un portail client peut, par exemple, couvrir le dépôt d’une demande, la vérification des pièces et la validation du dossier, sans inclure dès le départ toute la facturation. Les fonctions différées et les cas exceptionnels sont consignés pour éviter un périmètre implicite."
+    ],
+    [
+      "Livrables",
+      "Ce que votre équipe pourra utiliser et vérifier.",
+      "La proposition précise les écrans, règles de gestion, rôles et critères de recette. Selon le projet, la livraison comprend l’application, les migrations convenues, les tests, une documentation d’exploitation et une séance de prise en main. Chaque livrable est relié à un scénario vérifiable : créer un dossier, retrouver son historique ou attribuer la prochaine action."
+    ],
+    [
+      "Intégrations",
+      "Connecter vos outils avant de remplacer vos habitudes.",
+      "Nous examinons les API, exports et identifiants disponibles dans le CRM, l’ERP ou les fichiers existants. La source de référence est définie pour chaque donnée. Une synchronisation doit préciser son déclenchement, son délai et la reprise après erreur. Une connexion sans API peut nécessiter un import contrôlé plutôt qu’une promesse d’échange en temps réel."
+    ],
+    [
+      "Calendrier",
+      "Un planning construit sur les dépendances réelles.",
+      "Le calendrier est proposé après examen du périmètre et des accès nécessaires. Il distingue cadrage, prototype, développement, recette et mise en ligne. Une migration complexe ou une validation par plusieurs équipes peut modifier l’ordre de livraison. Des démonstrations intermédiaires permettent de décider rapidement sans attendre la fin du projet."
+    ],
+    [
+      "Propriété",
+      "Des accès et une transmission définis au contrat.",
+      "La proposition distingue les développements spécifiques, les composants tiers et leurs licences. Les conditions de cession ou d’utilisation du code, la remise du dépôt et les accès à l’hébergement sont convenus avant démarrage. Les données doivent pouvoir être exportées selon un format défini ; les abonnements externes et leurs coûts restent identifiés."
+    ],
+    [
+      "Support",
+      "Préparer la vie du logiciel après sa livraison.",
+      "La maintenance est décrite séparément : corrections couvertes, mises à jour, sauvegardes, supervision et demandes d’évolution. Les horaires de support et les délais de prise en charge sont fixés selon la criticité, sans engagement implicite de disponibilité permanente. Un guide de reprise et les responsabilités d’exploitation facilitent le relais vers votre équipe."
+    ]
+  ],
+  "automatisation-des-processus": [
+    [
+      "Périmètre",
+      "Choisir un flux répétitif et ses exceptions.",
+      "Nous choisissons un processus observable : réception d’une demande, contrôle des informations, attribution et relance. Le cadrage distingue ce qui peut être exécuté automatiquement de ce qui exige un accord humain. Les déclencheurs, les données manquantes et les conditions d’arrêt sont décrits avant la configuration. Le but est de réduire un travail précis tout en gardant une reprise accessible."
+    ],
+    [
+      "Livrables",
+      "Un workflow documenté, testable et reprenable.",
+      "La livraison peut inclure les scénarios d’automatisation, les règles de validation, une file d’exceptions et les journaux nécessaires. La recette couvre le parcours normal mais aussi les doublons, erreurs et indisponibilités. Votre équipe reçoit une description des étapes et des consignes pour suspendre ou relancer un traitement sans répéter une action déjà réalisée."
+    ],
+    [
+      "Intégrations",
+      "Prévoir ce qui se passe quand un service ne répond pas.",
+      "Nous vérifions les quotas, autorisations et formats des outils de messagerie, CRM et gestion. Les échanges importants demandent une protection contre les doublons, des tentatives de reprise limitées et un suivi. La fréquence de synchronisation dépend des capacités des services. Les accès sont limités au besoin et les secrets sont conservés hors des scénarios visibles."
+    ],
+    [
+      "Calendrier",
+      "Déployer progressivement avec une période d’observation.",
+      "Une première étape mesure les volumes et les erreurs du flux actuel. Le prototype est ensuite testé sur des exemples contrôlés avant activation progressive. Le planning prévoit les accès fournisseurs et la disponibilité d’un responsable métier. La période d’observation sert à ajuster les règles et à confirmer que les exceptions restent traitables par l’équipe."
+    ],
+    [
+      "Propriété",
+      "Garder la maîtrise des comptes et des scénarios.",
+      "Les comptes d’automatisation, connexions et abonnements sont identifiés dans la proposition. Nous précisons qui les administre et comment transférer les scénarios quand la plateforme le permet. Les conditions de licence d’un outil externe peuvent limiter certains exports. La documentation conserve les règles métier afin de faciliter une reprise ou un changement de plateforme."
+    ],
+    [
+      "Support",
+      "Surveiller les traitements au-delà du premier lancement.",
+      "Un workflow peut être affecté par un changement d’API, une autorisation expirée ou une nouvelle règle interne. Le support convenu définit les alertes à examiner, le responsable des erreurs et la procédure de suspension. Les nouvelles automatisations font l’objet d’un périmètre distinct ; les ajustements doivent être testés avant remise en service."
+    ]
+  ],
+  "sites-et-commerce": [
+    [
+      "Périmètre",
+      "Relier le parcours de visite aux opérations commerciales.",
+      "Le cadrage distingue présentation des offres, demande de devis, catalogue et vente en ligne. Pour une boutique, il précise les variantes, stocks, zones de livraison et règles de commande. Un site de services peut commencer par quelques parcours de conversion et un espace d’administration simple. Les langues, contenus et responsabilités de mise à jour sont définis dès le départ."
+    ],
+    [
+      "Livrables",
+      "Des pages et des parcours prêts à être administrés.",
+      "Le devis détaille les gabarits, contenus intégrés, composants et fonctions de gestion. La recette vérifie la navigation, le formulaire, le panier lorsque prévu, l’affichage mobile et les messages d’erreur. Nous prévoyons les métadonnées, redirections et consignes éditoriales nécessaires. La formation porte sur les opérations quotidiennes : modifier une offre, publier un article ou traiter une commande."
+    ],
+    [
+      "Intégrations",
+      "Une commande doit rester cohérente après le paiement.",
+      "Les connecteurs vers paiement, livraison, CRM ou facturation sont choisis selon les plateformes disponibles. Nous définissons la transmission des statuts et la gestion des remboursements, annulations ou ruptures. Une commande ne doit pas être considérée comme payée sur la seule base d’un écran de confirmation. Les environnements de test et comptes marchands sont des dépendances du projet."
+    ],
+    [
+      "Calendrier",
+      "Anticiper les contenus et les validations.",
+      "Le planning distingue architecture des pages, direction visuelle, intégration et recette. Les fiches produits, traductions et conditions commerciales doivent être disponibles aux étapes convenues. Une migration nécessite un inventaire des URL et un plan de redirection. La date de lancement se confirme après validation des parcours, des accès et des informations publiques."
+    ],
+    [
+      "Propriété",
+      "Clarifier le domaine, les contenus et les licences.",
+      "La propriété du domaine, les accès d’administration et la gestion de l’hébergement sont établis avant livraison. Les créations spécifiques sont distinguées des thèmes, extensions et médias sous licence. La remise comprend les éléments prévus au contrat et les consignes d’export. Les frais récurrents sont identifiés pour que votre équipe connaisse le coût de fonctionnement."
+    ],
+    [
+      "Support",
+      "Préserver les parcours qui génèrent vos demandes.",
+      "Le suivi peut couvrir les mises à jour, sauvegardes et vérifications des formulaires ou commandes. Les changements de catalogue, nouvelles pages et campagnes sont distingués des corrections. Les objectifs de performance et les contrôles d’accessibilité sont réévalués après ajout de contenus. Le niveau de maintenance est choisi selon le rôle commercial du site."
+    ]
+  ],
+  "integrations-api": [
+    [
+      "Périmètre",
+      "Définir les données échangées et leur source.",
+      "Une intégration commence par un contrat d’échange : objets concernés, champs, sens de circulation et responsabilités. Nous précisons la fréquence attendue, les volumes et les règles de rapprochement. Synchroniser les contacts n’implique pas automatiquement de synchroniser les commandes. Les cas de suppression, conflit et modification simultanée sont examinés avant développement."
+    ],
+    [
+      "Livrables",
+      "Un connecteur dont les erreurs restent compréhensibles.",
+      "Les livrables peuvent comprendre le service d’intégration, les schémas de données, la documentation des endpoints et les tests contractuels. Les journaux et outils de reprise sont dimensionnés selon les enjeux. La recette vérifie les échanges valides, les doublons et les réponses inattendues. Une démonstration d’échec puis de reprise confirme que le système est exploitable."
+    ],
+    [
+      "Intégrations",
+      "Travailler avec les contraintes des fournisseurs.",
+      "Nous contrôlons l’authentification, les webhooks, la pagination et les limites de débit. Les événements peuvent arriver en retard ou dans un ordre différent ; les règles de traitement doivent le supporter. L’accès à un environnement de test et à la documentation fournisseur conditionne la faisabilité. Une API fermée peut imposer un export planifié ou une autre méthode convenue."
+    ],
+    [
+      "Calendrier",
+      "Commencer par un échange représentatif.",
+      "Un test technique valide d’abord les accès et les formats sur un cas limité. Le développement élargit ensuite le flux, puis teste les erreurs et le rattrapage des données. Les validations des éditeurs et les modifications de schéma sont des dépendances à prévoir. Le lancement peut être progressif, avec rapprochement des résultats avant automatisation complète."
+    ],
+    [
+      "Propriété",
+      "Transmettre le contrat d’échange et les accès utiles.",
+      "Les droits sur le connecteur spécifique et la remise du code sont définis contractuellement. Les identifiants fournisseurs restent associés aux comptes convenus avec votre entreprise. Nous documentons les variables de configuration sans intégrer les secrets au dépôt. Les licences des SDK tiers et les coûts d’usage des API sont indiqués séparément."
+    ],
+    [
+      "Support",
+      "Suivre les changements de version et les échanges bloqués.",
+      "Le support peut inclure surveillance des erreurs, renouvellement des accès et adaptation aux évolutions annoncées des API. Les alertes distinguent panne fournisseur, donnée invalide et défaut du connecteur. Les procédures de reprise évitent une nouvelle synchronisation aveugle. Le périmètre précise les horaires de suivi et les conditions d’une évolution non prévue du service externe."
+    ]
+  ],
+  "maintenance-evolution": [
+    [
+      "Périmètre",
+      "Auditer le système avant de promettre une reprise.",
+      "Nous examinons le dépôt, les dépendances, les environnements et le mode de déploiement. L’audit distingue incidents, dette technique et nouvelles demandes fonctionnelles. Les accès disponibles et la qualité de la documentation orientent les premières actions. Un outil critique peut demander une sécurisation progressive avant toute modification importante du fonctionnement."
+    ],
+    [
+      "Livrables",
+      "Un état du système et un plan d’intervention utilisable.",
+      "Selon le périmètre, vous recevez un inventaire technique, une liste de risques priorisés et un backlog d’actions. Les corrections sont accompagnées de tests ciblés et d’une note de changement. La documentation décrit les opérations importantes et la procédure de retour arrière. Les évolutions sont vérifiées sur un environnement distinct avant publication."
+    ],
+    [
+      "Intégrations",
+      "Cartographier les dépendances qui peuvent casser un parcours.",
+      "Un incident visible dans l’interface peut provenir d’une API, d’une file de tâches ou d’une configuration. Nous relions les symptômes aux échanges entre composants et contrôlons la traçabilité disponible. Les changements chez les fournisseurs sont recensés. Une correction doit être testée sur les parcours dépendants pour éviter de déplacer le problème vers un autre outil."
+    ],
+    [
+      "Calendrier",
+      "Prioriser selon l’impact et la continuité de service.",
+      "Les urgences sont distinguées des améliorations planifiées. Le calendrier dépend de la capacité à reproduire l’incident, de la présence de tests et des fenêtres de déploiement disponibles. Chaque intervention précise les vérifications et le retour arrière possible. Les délais de prise en charge sont convenus dans l’offre de support ; ils ne sont pas supposés identiques pour tous les systèmes."
+    ],
+    [
+      "Propriété",
+      "Maintenir une transmission possible à tout moment.",
+      "Les accès au dépôt, à l’hébergement et aux outils de suivi sont inventoriés avec votre équipe. Les modifications, décisions et versions livrées restent documentées. Les composants hérités et leurs licences sont distingués des développements nouveaux. Le contrat précise la remise des éléments et la procédure de transfert si votre organisation change de prestataire."
+    ],
+    [
+      "Support",
+      "Définir précisément le service attendu.",
+      "La maintenance peut couvrir corrections, mises à jour de sécurité, contrôles de sauvegarde et suivi des incidents. Les horaires, canaux de contact et niveaux de gravité sont décrits avant engagement. Les nouvelles fonctionnalités sont chiffrées ou priorisées séparément. Un point périodique permet d’évaluer les incidents récurrents et de décider des améliorations utiles."
+    ]
+  ],
+  "intelligence-artificielle": [
+    [
+      "Périmètre",
+      "Choisir une tâche d’assistance et ses limites.",
+      "Le cadrage précise la tâche, les données autorisées et les décisions qui restent humaines. Une extraction de facture peut proposer des champs à vérifier sans déclencher automatiquement un paiement. Nous établissons des exemples de réussite et d’erreur avant de choisir un modèle. Le périmètre exclut les promesses de précision universelle ou d’autonomie non évaluée."
+    ],
+    [
+      "Livrables",
+      "Un parcours d’évaluation avant un usage élargi.",
+      "La première livraison peut comprendre un prototype, un jeu d’évaluation convenu et une interface de revue. Les sorties incertaines sont identifiées pour validation, avec un historique adapté. Les critères d’acceptation portent sur les tâches réellement attendues, pas seulement sur une démonstration convaincante. La documentation expose les limites, les consignes d’usage et la reprise manuelle."
+    ],
+    [
+      "Intégrations",
+      "Encadrer les données envoyées aux services de modèles.",
+      "Nous examinons les fournisseurs, les autorisations et la conservation des données selon le contexte. Les résultats sont validés avant écriture dans un logiciel métier. Les appels aux outils doivent être limités et traçables. Le traitement de documents sensibles demande une étude spécifique ; les exemples publics de notre studio utilisent des informations fictives et aucun moteur IA réel."
+    ],
+    [
+      "Calendrier",
+      "Évaluer la faisabilité avant l’industrialisation.",
+      "Un premier essai compare plusieurs approches sur des exemples représentatifs. Les erreurs observées orientent la revue humaine, les contrôles et le choix de poursuivre. La connexion aux outils internes et la recette viennent ensuite. Le planning dépend de l’accès aux exemples, des exigences de confidentialité et du niveau de qualité retenu ; un prototype ne garantit pas une mise en production."
+    ],
+    [
+      "Propriété",
+      "Distinguer le code, les données et les services externes.",
+      "Les droits sur les développements spécifiques sont précisés dans la proposition. Les conditions du fournisseur de modèle, les licences des composants et les coûts d’usage restent identifiés. Nous définissons les règles applicables aux données d’évaluation et aux résultats conservés. La documentation permet de comprendre les dépendances et les possibilités de changement de fournisseur."
+    ],
+    [
+      "Support",
+      "Réévaluer le comportement quand le contexte change.",
+      "Un changement de modèle, de document ou de consigne peut modifier la qualité des résultats. Le suivi peut inclure des évaluations périodiques, un contrôle des coûts et la revue des incidents. La procédure doit permettre de suspendre une fonction et de revenir à un parcours manuel. Les ajustements sont testés sur les exemples de référence avant activation."
+    ]
+  ]
+}
