@@ -16,7 +16,7 @@ function collect(folder){
  }
 }
 collect(dist);
-assert.equal(paths.length,88,'Expected 88 generated pages');
+assert.equal(paths.length,94,'Expected 94 generated pages');
 const browser=await chromium.launch({headless:true});
 const report={pages:paths.length,viewports:[],warnings:[]};
 try{
@@ -33,7 +33,7 @@ try{
     width:document.documentElement.scrollWidth,
     client:document.documentElement.clientWidth
    }));
-   if(state.lang!=='fr')failures.push('wrong language: '+route);
+   if(state.lang!==(route.startsWith('/en/')?'en':'fr'))failures.push('wrong language: '+route);
    if(!state.h1)failures.push('missing heading: '+route);
    if(state.width>state.client+14)report.warnings.push('horizontal overflow '+viewport.width+'px: '+route+' '+state.width+'/'+state.client);
   }
