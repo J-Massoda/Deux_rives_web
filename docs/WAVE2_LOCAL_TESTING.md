@@ -17,6 +17,7 @@ cd Deux_rives_web
 git fetch origin
 git switch redesign/wave-1-corporate-foundation
 node --version
+npm install
 npm test
 npm run dev
 ```
@@ -33,7 +34,7 @@ npm test
 npm run dev
 ```
 
-This repository uses a dependency-free static-site generator. No `npm install` is necessary for local build and unit tests. The GitHub Actions browser workflow installs Playwright separately for screenshot and interaction checks.
+This repository uses a dependency-free static-site generator. Install dependencies with `npm install` before running tests; Sharp now converts the ten original PNG image assets to smaller WebP images when generating the site. The GitHub Actions browser workflow installs Playwright separately for screenshot and interaction checks.
 
 ## Interactive showcase routes
 
