@@ -11,10 +11,10 @@ const pages=[];
 function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory())walk(p);else if(entry.name==='index.html')pages.push(p);}}
 walk(dist);
 test('all public page paths and local assets resolve',()=>{
-  assert.equal(pages.length,72);
+  assert.equal(pages.length,94);
   for(const file of pages){
     const html=fs.readFileSync(file,'utf8');
-    assert.match(html,/<html lang="fr">/);
+    assert.match(html,/<html lang="(?:fr|en)">/);
     assert.match(html,/<main id="main">/);
     assert.match(html,/name="robots" content="noindex,nofollow"/);
     for(const [,value] of html.matchAll(/(?:href|src)="([^"]+)"/g)){
@@ -168,7 +168,7 @@ test('Wave 2: sector and service pages include specific operations and links',()
 test('Technical SEO metadata includes parseable breadcrumbs, site and article schema',()=>{
  for(const file of pages){
   const html=fs.readFileSync(file,'utf8');
-  assert.match(html,/meta property="og:locale" content="fr_FR"/);
+  assert.match(html,/meta property="og:locale" content="(?:fr_FR|en_GB)"/);
   const match=html.match(/<script type="application\/ld\+json">([^<]+)<\/script>/);
   assert.ok(match,'No JSON-LD: '+file);
   const schemas=JSON.parse(match[1]);
