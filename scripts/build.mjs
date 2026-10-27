@@ -11,6 +11,7 @@ import {buildEnglish} from './wave4-english.mjs';
 import {extraConcepts,extraIds} from './wave4-catalog.mjs';
 import {sectorSpotlight,sectorHero,sectorSpotlightCount} from './sector-spotlights.mjs';
 import {guides} from './wave2-guides.mjs';
+import {engineeringGuides} from './wave4-guides.mjs';
 import {extendOperationalSEO,sectorSeoCount,serviceSeoCount} from './wave2-seo-pages.mjs';
 import { buildShowcase, concepts } from './showcase.mjs';
 import { buildDeepProducts, authoredProductCount } from './product-depth.mjs';
@@ -59,7 +60,7 @@ const insights = [
   {id:'un-site-qui-continue-apres-le-formulaire',title:'Un site utile continue après le formulaire', tag:'Expérience client', lead:'Pour le client, « demande envoyée » n’est souvent que le début du parcours.', paragraphs:['Une interface peut être magnifique et pourtant laisser une personne dans l’incertitude après avoir cliqué sur « envoyer ». Le message est-il arrivé ? Quel délai attendre ? Faut-il fournir autre chose ?','Du côté de l’entreprise, la demande peut passer par plusieurs personnes et outils. Si personne ne possède la prochaine action, une relance devient nécessaire. Le site et les opérations ne devraient pas être conçus comme deux mondes séparés.','Un parcours complet relie la confirmation immédiate, l’attribution interne, les informations manquantes et la réponse finale. Selon la situation, cela peut demander un simple suivi de demandes ou un véritable espace client. Le niveau de système doit correspondre au volume et aux enjeux.','La première amélioration est souvent modeste : montrer un état fiable et nommer la prochaine étape. Cela peut transformer une expérience d’attente en une relation plus claire.']}
 ];
 
-insights.push(...guides);
+insights.push(...guides,...engineeringGuides);
 function shell({title,description,body,route='',section='',image='assets/og-cover.svg',lang='fr'}) {
   const base = '../'.repeat(route.split('/').filter(Boolean).length);
   const link = p => url(base,p);
