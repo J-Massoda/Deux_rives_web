@@ -33,7 +33,7 @@ body{overflow-x:clip}.site-shell{overflow:visible}
 .dr-carousel-toolbar{gap:12px}.dr-carousel-toolbar button{width:45px;height:45px}.dr-carousel-toolbar span{min-width:72px;text-align:center}
 .dr-carousel-toolbar button:disabled{opacity:.35;cursor:not-allowed}
 .dr-feature:focus-visible{outline:3px solid #b78c58;outline-offset:3px}
-.studio-rich-section,.rich-story{position:relative}.studio-rich-section:nth-of-type(odd){background:#f0f2eb;margin-inline:calc(-1 * clamp(22px,5vw,90px));padding-inline:clamp(22px,5vw,90px)}
+.studio-rich-section,.rich-story{position:relative}.studio-detail .studio-rich-section:nth-of-type(odd){background:#f0f2eb;margin-inline:calc(-1 * clamp(22px,5vw,90px));padding-inline:clamp(22px,5vw,90px)}
 /* FAQ: single-column spacious accordion rather than disjoint cards. */
 .rich-faq,.studio-faq{background:#e9eee6!important;padding:clamp(65px,8vw,110px) clamp(22px,5vw,90px)!important;border:0;border-radius:20px}
 .rich-faq-grid,.studio-faq-grid{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid #c9d5c9;margin-top:36px}
