@@ -13,12 +13,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Install build dependencies
+        run: npm install --no-audit --no-fund
       - name: Run full static site tests
         run: npm test
       - name: Verify generated image assets
         run: |
-          test -f 'dist/assets/ChatGPT Image Oct 26, 2026, 11_22_38 AM-1.png'
-          test -f 'dist/assets/ChatGPT Image Oct 26, 2026, 11_22_54 AM-10.png'
+          test -f 'dist/assets/ChatGPT Image Oct 26, 2026, 11_22_38 AM-1.webp'
+          test -f 'dist/assets/ChatGPT Image Oct 26, 2026, 11_22_54 AM-10.webp'
           test -f dist/index.html
           grep -q 'ClientFlow Pro' dist/index.html
           grep -q 'dr-hero' dist/index.html
