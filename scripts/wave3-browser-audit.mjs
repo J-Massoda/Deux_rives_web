@@ -27,6 +27,8 @@ try{
    assert.ok(b.x>=-3&&b.x+b.width<=width+3,'mobile nav clipped: '+JSON.stringify(b));
    await nav.locator('.nav-toggle').first().click();
    assert.ok(await nav.locator('.mega').first().isVisible(),'menu subsection should expand');
+   const separation=await nav.evaluate(el=>{const open=el.querySelector('.nav-item.submenu-open'),next=open?.nextElementSibling,mega=open?.querySelector('.mega');if(!open||!next||!mega)return null;const end=mega.getBoundingClientRect().bottom,begin=next.getBoundingClientRect().top;return {end,begin,delta:begin-end}});
+   assert.ok(separation&&separation.delta>=-2,'Expanded submenu overlaps following navigation: '+JSON.stringify(separation));
    if(width===390)await page.screenshot({path:'artifacts/browser/wave3-mobile-submenu-open.png'});
    await nav.locator('.nav-toggle').first().click();
    assert.equal(await nav.locator('.mega').first().isVisible(),false,'submenu should collapse');
