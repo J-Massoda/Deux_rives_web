@@ -11,7 +11,7 @@ const pages=[];
 function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory())walk(p);else if(entry.name==='index.html')pages.push(p);}}
 walk(dist);
 test('all public page paths and local assets resolve',()=>{
-  assert.equal(pages.length,61);
+  assert.equal(pages.length,72);
   for(const file of pages){
     const html=fs.readFileSync(file,'utf8');
     assert.match(html,/<html lang="fr">/);
@@ -113,5 +113,107 @@ test('Wave 1 editorial audit: the three insights explain implementation consider
   assert.match(html,/Une méthode à appliquer/);
   assert.match(html,/Exemple fictif/);
   assert.match(html,/VÉRIFICATION 01/);
+ }
+});
+
+test('Wave 2 renders all four separate functional product demos with strong disclosures',()=>{
+ const apps=['clientflow-pro','chantierpilot','commercepilot','docupilot-ai'];
+ for(const id of apps){
+  const html=fs.readFileSync(path.join(dist,'applications',id,'index.html'),'utf8');
+  assert.match(html,new RegExp('data-flagship-app="'+id+'"'));
+  assert.match(html,/SCÉNARIO INTERACTIF/);
+  assert.match(html,/DONNÉES FICTIVES|Données fictives|données fictives/);
+  assert.match(html,/QUESTIONS FRÉQUENTES/);
+  assert.match(html,/assets\/flagship-apps\.js/);
+  assert.match(html,/name="description"/);
+  assert.match(html,/logiciel|outil|traitement/i);
+  assert.ok(html.split(/<p[\s>]/).length>=10,'SEO context needs substantial paragraphs for '+id);
+ }
+ const appCode=fs.readFileSync(path.join(dist,'assets','flagship-apps.js'),'utf8');
+ for(const command of ['advance','progress','spend','sell','receive','analyse','approve','export','reset']){
+  assert.ok(appCode.includes(command),'Missing scenario action '+command);
+ }
+});
+
+test('Wave 2 editorial: new guides are substantive, attributed and internally linked',()=>{
+ for(const id of ['logiciel-metier-ou-saas-comment-choisir','cadrer-mvp-logiciel-metier-questions','facturation-electronique-integration-logiciel-2026-2027']){
+  const html=fs.readFileSync(path.join(dist,'regards',id,'index.html'),'utf8');
+  assert.match(html,/Rédaction Deux Rives Web/);
+  assert.match(html,/article-related/);
+  assert.ok(html.split(/<p[\s>]/).length>=9,id+' should contain long-form practical guidance');
+ }
+});
+test('Wave 2: sector and service pages include specific operations and links',()=>{
+ const sectorIds=['services-professionnels','batiment-interventions','commerce-operations','education','sante-administrative','transport-logistique','immobilier-patrimoine','tourisme-hotellerie','ressources-humaines','industrie-ia-pilotage'];
+ const serviceIds=['logiciels-sur-mesure','automatisation-des-processus','intelligence-artificielle','sites-et-commerce','integrations-api','maintenance-evolution'];
+ const sectorHeadings=new Set(),serviceHeadings=new Set();
+ for(const id of sectorIds){
+  const html=fs.readFileSync(path.join(dist,'secteurs',id,'index.html'),'utf8');
+  assert.match(html,/ANALYSE MÉTIER/);
+  const match=html.match(/<section class="seo-operations">[\s\S]*?<h2>([^<]+)<\/h2>/);
+  assert.ok(match,'Sector analysis heading missing '+id);
+  assert.ok(!sectorHeadings.has(match[1]),'Sector duplicate SEO title '+id);
+  sectorHeadings.add(match[1]);
+  assert.equal((html.match(/ENJEU 0[1-3]/g)||[]).length,3);
+ }
+ for(const id of serviceIds){
+  const html=fs.readFileSync(path.join(dist,'expertises',id,'index.html'),'utf8');
+  assert.match(html,/INGÉNIERIE APPLIQUÉE/);
+  const match=html.match(/<section class="seo-operations seo-operations--sage">[\s\S]*?<h2>([^<]+)<\/h2>/);
+  assert.ok(match,'Service analysis heading missing '+id);
+  assert.ok(!serviceHeadings.has(match[1]),'Service duplicate SEO title '+id);
+  serviceHeadings.add(match[1]);
+ }
+});
+test('Technical SEO metadata includes parseable breadcrumbs, site and article schema',()=>{
+ for(const file of pages){
+  const html=fs.readFileSync(file,'utf8');
+  assert.match(html,/meta property="og:locale" content="fr_FR"/);
+  const match=html.match(/<script type="application\/ld\+json">([^<]+)<\/script>/);
+  assert.ok(match,'No JSON-LD: '+file);
+  const schemas=JSON.parse(match[1]);
+  assert.ok(schemas.some(x=>x['@type']==='WebPage'));
+  assert.ok(schemas.some(x=>x['@type']==='BreadcrumbList'));
+  if(file.includes('/regards/')&&!file.endsWith('/regards/index.html')){
+   assert.ok(schemas.some(x=>x['@type']==='Article'));
+  }
+ }
+});
+
+test('Wave 3: four functional app routes, search filters, spotlights and inquiry links',()=>{
+ for(const id of ['intervention-360','factureconnect','devis-atelier','missiondesk']){
+  const html=fs.readFileSync(path.join(dist,'applications',id,'index.html'),'utf8');
+  assert.match(html,new RegExp('data-wave3-app="'+id+'"'));
+  assert.match(html,/DÉMONSTRATION FONCTIONNELLE/);
+  assert.match(html,/QUESTIONS FRÉQUENTES/);
+  assert.match(html,/Données fictives|DONNÉES FICTIVES/);
+  assert.match(html,/assets\/wave3-apps\.js/);
+ }
+ const studio=fs.readFileSync(path.join(dist,'studio/index.html'),'utf8');
+ assert.equal((studio.match(/data-studio-sector=/g)||[]).length,11);
+ assert.equal((studio.match(/data-sector="/g)||[]).length,24);
+ const sectorIds=['services-professionnels','batiment-interventions','commerce-operations','education','sante-administrative','transport-logistique','immobilier-patrimoine','tourisme-hotellerie','ressources-humaines','industrie-ia-pilotage'];
+ for(const id of sectorIds){
+  const html=fs.readFileSync(path.join(dist,'secteurs',id,'index.html'),'utf8');
+  assert.match(html,/sector-immersive/);
+  assert.match(html,/APERÇU DU CONCEPT/);
+ }
+ const css=fs.readFileSync(path.join(dist,'assets/wave3-premium.css'),'utf8');
+ assert.match(css,/\.header \.nav\.is-open/);
+ assert.match(css,/width:100%!important/);
+});
+
+test('Performance: editorial images are optimized WebP and referenced by pages',()=>{
+ const assets=fs.readdirSync(path.join(dist,'assets'));
+ const webps=assets.filter(name=>name.startsWith('ChatGPT Image ')&&name.endsWith('.webp'));
+ assert.equal(webps.length,10,'all approved editorial assets need optimized variants');
+ const home=fs.readFileSync(path.join(dist,'index.html'),'utf8');
+ assert.match(home,/ChatGPT Image[^"']+\.webp/);
+ assert.ok(!/ChatGPT Image[^"']+\.png/.test(home),'homepage must load WebP images');
+ for(const file of webps){
+  const original=path.join(dist,'assets',file.replace(/\.webp$/,'.png'));
+  const optimized=path.join(dist,'assets',file);
+  assert.ok(fs.existsSync(original),'source original preserved: '+file);
+  assert.ok(fs.statSync(optimized).size<fs.statSync(original).size,'WebP should compress '+file);
  }
 });

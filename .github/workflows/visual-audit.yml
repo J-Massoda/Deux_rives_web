@@ -1,4 +1,4 @@
-name: Browser visual QA — Wave 1
+name: Browser visual QA — Waves 1–3
 on:
   pull_request:
     branches: [main]
@@ -14,17 +14,21 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Install build dependencies
+        run: npm install --no-audit --no-fund
       - name: Build site and test all generated routes
         run: npm test
       - name: Install browser tooling
         run: |
           npm install --no-save playwright
           npx playwright install --with-deps chromium
-      - name: Serve static build and audit 61 desktop/mobile pages
+      - name: Serve static build and audit 72 desktop/mobile pages and flagship workflows
         run: |
           python3 -m http.server 4173 --directory dist >/tmp/deux-rives-server.log 2>&1 &
           sleep 2
           node scripts/browser-audit.mjs
+          node scripts/flagship-browser-audit.mjs
+          node scripts/wave3-browser-audit.mjs
       - name: Upload screenshot review pack
         if: always()
         uses: actions/upload-artifact@v4
