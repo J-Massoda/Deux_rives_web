@@ -65,7 +65,7 @@ insights.push(...guides,...engineeringGuides);
 function shell({title,description,body,route='',section='',image='assets/og-cover.svg',lang='fr'}) {
   const base = '../'.repeat(route.split('/').filter(Boolean).length);
   const link = p => url(base,p);
-  const nav = [
+  const nav = lang==='en' ? [{label:'Overview',href:'en/'},{label:'Software engineering',href:'en/software-engineering/'},{label:'Explore 24 demos',href:'studio/'},{label:'Contact',href:'contact/'}] : [
     {label:'Expertises', href:'expertises/', items:services.map(x=>[x.title,`expertises/${x.id}/`])},
     {label:'Secteurs', href:'secteurs/', items:sectors.map(x=>[x.title,`secteurs/${x.id}/`])},
     {label:'Démonstrations', href:'demonstrations/', items:[['Catalogue complet — 24 concepts','studio/'],...flagshipIds.map(id=>[({ 'clientflow-pro':'ClientFlow Pro',chantierpilot:'ChantierPilot',commercepilot:'CommercePilot','docupilot-ai':'DocuPilot AI'})[id],`applications/${id}/`]),...wave3Ids.map(id=>[({'intervention-360':'Intervention 360',factureconnect:'FactureConnect','devis-atelier':'Devis Atelier',missiondesk:'MissionDesk'})[id],`applications/${id}/`])]},
