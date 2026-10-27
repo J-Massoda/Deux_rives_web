@@ -31,10 +31,20 @@ try{
     lang:document.documentElement.lang,
     h1:document.querySelectorAll('h1').length,
     width:document.documentElement.scrollWidth,
-    client:document.documentElement.clientWidth
+    client:document.documentElement.clientWidth,
+    imageLayoutErrors:[...document.querySelectorAll('.wave-demo-index-grid img,.dr-feature-img img,.studio-image img,.dr-media-card img')].flatMap(img=>{
+      const rect=img.getBoundingClientRect(),css=getComputedStyle(img);
+      if(!rect.width)return [];
+      const expected=img.closest('.dr-media-card')?16/9:4/3;
+      return Math.abs(rect.width/rect.height-expected)>.06||css.objectFit!=='contain'
+        ?[img.getAttribute('src')+' '+Math.round(rect.width)+'x'+Math.round(rect.height)+' '+css.objectFit]:[];
+    }),
+    oversizedPhotos:[...document.querySelectorAll('.photo-story img')].filter(img=>img.getBoundingClientRect().height>521).map(img=>img.getAttribute('src'))
    }));
    if(state.lang!==(route.startsWith('/en/')?'en':'fr'))failures.push('wrong language: '+route);
    if(!state.h1)failures.push('missing heading: '+route);
+   for(const error of state.imageLayoutErrors)failures.push('cropped or stretched image at '+viewport.width+'px '+route+': '+error);
+   for(const src of state.oversizedPhotos)failures.push('oversized photo at '+viewport.width+'px '+route+': '+src);
    if(state.width>state.client+14)report.warnings.push('horizontal overflow '+viewport.width+'px: '+route+' '+state.width+'/'+state.client);
   }
   for(const route of ['/', '/regards/','/methode/','/studio/devis-atelier/','/studio/commercepilot/','/applications/clientflow-pro/','/applications/chantierpilot/','/applications/commercepilot/','/applications/docupilot-ai/','/applications/intervention-360/','/applications/factureconnect/','/applications/devis-atelier/','/applications/missiondesk/','/secteurs/transport-logistique/','/regards/facturation-electronique-integration-logiciel-2026-2027/']){

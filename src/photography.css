@@ -1,1 +1,11 @@
 .photo-story{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px;padding:36px var(--gutter,5vw);max-width:1440px;margin:auto}.photo-story figure{margin:0;min-width:0}.photo-story img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:14px}.photo-story figcaption{font-size:.7rem;color:#657266;line-height:1.5;margin-top:10px}.editorial-photo{object-fit:cover;object-position:center}.dr-subhero-art .editorial-photo{width:100%;height:100%;min-height:260px}.dr-section .photo-story{padding:0 0 32px}.dr-approach>.photo-story{grid-column:1/-1}.dr-home>.photo-story{padding:30px 5vw}.dr-final>img{object-position:center 55%}@media(max-width:700px){.photo-story{grid-template-columns:1fr;padding:24px 22px}.dr-subhero-art .editorial-photo{min-height:220px;max-height:340px}}
+/* Intrinsic dimensions reserve space; component CSS controls the visible frame. */
+.dr-feature-img,.studio-image{height:auto;aspect-ratio:4/3}
+.dr-feature-img img,.studio-image img{width:100%;height:100%;object-fit:contain}
+.dr-media-card img{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
+.photo-story img{height:auto;aspect-ratio:16/9;max-height:520px;object-fit:cover}
+.dr-approach{grid-template-columns:minmax(0,1fr) minmax(0,1.7fr)}
+.dr-approach-intro,.dr-approach-steps,.dr-media-card,.wave-demo-index-grid>a{min-width:0}
+.pv-case-visual .editorial-photo{height:auto;aspect-ratio:4/3;object-fit:cover}
+@media(max-width:1100px){.dr-approach{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:700px){.photo-story img{max-height:360px}.dr-subhero-art .editorial-photo{min-height:0}}
