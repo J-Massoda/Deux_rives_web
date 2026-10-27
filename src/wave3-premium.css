@@ -106,3 +106,17 @@
 .sector-hero-caption{font-size:.7rem;color:#697e6b;align-self:flex-end}
 @media(max-width:900px){.sector-custom-hero{min-height:0!important;display:grid!important;grid-template-columns:1fr!important;padding:60px 24px!important}.sector-hero-ui{min-height:0}.sector-hero-ui .product-layout{grid-template-columns:100px 1fr}}
 @media(max-width:550px){.sector-hero-ui .product-layout{grid-template-columns:1fr}.sector-hero-ui .product-rail{display:none}.sector-custom-hero{padding:42px 20px!important}.sector-hero-ui .product-workspace{padding:12px}.sector-hero-ui .ui-workspace-header h3{font-size:1.2rem}}
+
+/* Mobile submenu must participate in normal document flow, never paint over next item. */
+@media(max-width:1150px){
+ .header .nav{display:none!important}
+ .header .nav.is-open{display:flex!important}
+ .header .nav-item{display:block!important;position:relative!important;height:auto!important;min-height:60px!important;flex:0 0 auto!important;align-self:stretch!important;padding:0!important;overflow:visible!important}
+ .header .nav-item>a{display:block!important;padding:19px 58px 19px 5px!important;min-height:60px!important}
+ .header .nav-item .nav-toggle{position:absolute!important;right:1px!important;top:8px!important;margin:0!important;float:none!important}
+ .header .nav-item .mega{position:relative!important;display:none!important;left:auto!important;right:auto!important;top:auto!important;width:100%!important;min-height:0!important;height:auto!important;max-height:none!important;clear:both!important;overflow:visible!important;margin:0!important;transform:none!important;padding:8px 0 17px!important}
+ .header .nav-item.submenu-open .mega,.header .nav-item.submenu-open:hover .mega,.header .nav-item.submenu-open:focus-within .mega{display:block!important}
+ .header .mega-main{position:relative!important;display:block!important;width:100%!important;height:auto!important;overflow:visible!important}
+ .header .mega-links{height:auto!important;max-height:none!important;overflow:visible!important;display:grid!important;grid-template-columns:1fr!important;gap:4px!important}
+ .header .mega-links a{position:relative!important;display:flex!important;width:100%!important;min-height:46px!important}
+}
