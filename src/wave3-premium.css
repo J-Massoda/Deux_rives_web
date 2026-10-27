@@ -1,0 +1,66 @@
+/* Wave 3 visual direction: original editorial composition, grounded in existing brand palette */
+:root { --pv-ink:#142e22; --pv-fern:#284d38; --pv-mist:#e8eee7; --pv-paper:#fcfaf5; --pv-copper:#a27651; }
+@media (max-width:1150px) {
+ .header, .header.is-scrolled{position:sticky!important;top:0;z-index:5000!important;padding:0!important;background:#faf9f5!important;isolation:auto!important;border-bottom:1px solid #d7e2d6!important}
+ .header .header-inner,.header.is-scrolled .header-inner{position:relative!important;width:100%!important;max-width:none!important;min-height:70px!important;margin:0!important;padding:10px 20px!important;border:0!important;border-radius:0!important;background:#faf9f5!important;box-shadow:none!important;backdrop-filter:none!important;display:flex!important;align-items:center!important}
+ .header .brand{position:relative;z-index:5004;font-size:1rem;min-width:0}
+ .header .brand img{width:35px!important;height:35px!important}
+ .header .menu-button{margin-left:auto;position:relative;z-index:5004;display:flex!important;align-items:center;justify-content:center;flex-direction:column;flex:0 0 47px;width:47px!important;height:47px!important;gap:6px;border:1px solid #d2ded2;border-radius:9px;background:white}
+ .header .menu-button span{width:23px;height:2px;background:#1c3d2d;display:block;transition:transform .25s,opacity .2s}
+ .header .menu-button[aria-expanded="true"] span:first-child{transform:translateY(4px) rotate(45deg)}
+ .header .menu-button[aria-expanded="true"] span:last-child{transform:translateY(-4px) rotate(-45deg)}
+ .header .nav,.header.is-scrolled .nav{position:absolute!important;top:100%!important;left:0!important;right:0!important;width:100%!important;min-width:0!important;max-width:100%!important;height:auto!important;max-height:calc(100dvh - 70px)!important;overflow-y:auto!important;overscroll-behavior:contain;display:none!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;padding:14px 20px 34px!important;margin:0!important;border-top:1px solid #dce5db;background:#fcfbf7!important;box-shadow:0 24px 45px #152f2433!important;scrollbar-width:none;z-index:5002}
+ .header .nav.is-open,.header.is-scrolled .nav.is-open{display:flex!important}
+ .header .nav-item{display:grid!important;grid-template-columns:minmax(0,1fr) 43px;align-items:center;min-height:61px;border-bottom:1px solid #e2e9df;position:relative!important;gap:4px}
+ .header .nav-item>a{display:block;min-width:0;padding:19px 5px!important;font-size:1.02rem!important;font-weight:700!important;white-space:normal;overflow-wrap:anywhere}
+ .header .nav-toggle{display:flex!important;float:none!important;margin:0!important;align-items:center;justify-content:center;min-width:43px;width:43px!important;height:43px!important;border:1px solid #d8e4d7;border-radius:8px;background:#f3f7f1;color:#21432e}
+ .header .nav-toggle::before{left:16px!important;top:16px!important}
+ .header .nav-item.submenu-open .nav-toggle::before{top:21px!important}
+ .header .mega{position:static!important;grid-column:1/-1;left:auto!important;right:auto!important;top:auto!important;transform:none!important;width:100%!important;max-width:100%!important;max-height:none!important;overflow:visible!important;padding:10px 0 20px!important;margin:0!important;display:none!important;opacity:1!important;visibility:visible!important;box-shadow:none!important;border:0!important;border-radius:0!important;background:transparent!important;grid-template-columns:1fr!important}
+ .header .nav-item.submenu-open .mega,.header .nav-item.submenu-open:hover .mega,.header .nav-item.submenu-open:focus-within .mega{display:block!important}
+ .header .nav-item:hover .mega:not(.is-force-open){display:none!important}
+ .header .nav-item.submenu-open:hover .mega{display:block!important}
+ .header .mega-title{font-size:1.18rem!important}
+ .header .mega-links{display:grid!important;grid-template-columns:1fr!important;padding-top:14px;gap:2px!important}
+ .header .mega-links a{display:flex!important;align-items:center!important;min-height:47px;padding:12px!important;font-size:.88rem!important;background:#eff3ec;border-radius:6px}
+ .header .mega-preview{display:none!important}
+ .header .nav-cta{display:flex;justify-content:center;align-items:center;width:100%;padding:15px;margin-top:24px!important;border-radius:8px}
+ body.menu-open{overflow:hidden}
+ body.menu-open::after{content:'';position:fixed;inset:70px 0 0;background:rgba(12,36,21,.38);z-index:4999;pointer-events:none}
+}
+@media(max-width:360px){.header .brand{font-size:.89rem!important}.header .brand img{width:30px!important;height:30px!important}.header .header-inner{padding-inline:13px!important}}
+/* Replace air-filled 'Le contexte' with an immersive editorial case-study style. */
+.sector-immersive{margin:0;background:#173728;color:#f8f7f1;padding:clamp(65px,7vw,115px) clamp(20px,5vw,88px)}
+.sector-immersive-head{display:grid;grid-template-columns:minmax(0,.65fr) minmax(0,1.35fr);gap:clamp(20px,5vw,90px);align-items:start;margin-bottom:54px}
+.sector-immersive-head small{font-size:.73rem;letter-spacing:.16em;color:#d2b590;font-weight:800}
+.sector-immersive h2{color:#fff;font:400 clamp(2.55rem,4.45vw,5.3rem)/1.08 Georgia,serif;letter-spacing:-.045em;margin:0 0 26px}
+.sector-immersive-head p{max-width:920px;line-height:1.86;color:#d2e0d4;font-size:1.03rem}
+.sector-immersive-main{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);min-height:500px;border:1px solid #47634c;border-radius:17px;overflow:hidden}
+.sector-immersive-visual{padding:clamp(14px,2.6vw,32px);display:flex;align-items:center;justify-content:center;background:#dce6db;min-width:0}
+.sector-immersive-visual .product-experience{margin:0;width:100%;box-shadow:0 20px 40px #102f2320}
+.sector-immersive-visual .product-layout{grid-template-columns:118px 1fr;min-height:340px}
+.sector-immersive-visual .product-rail{padding:14px;gap:12px;font-size:.66rem}
+.sector-immersive-visual .product-workspace{padding:20px}
+.sector-immersive-visual .ui-workspace-header h3{font-size:1.35rem}
+.sector-immersive-story{display:flex;flex-direction:column;justify-content:space-between;padding:clamp(26px,4vw,55px);background:#254632}
+.sector-immersive-story strong{font:400 clamp(1.45rem,2.5vw,2.5rem) Georgia,serif;line-height:1.2}
+.sector-immersive-story p{color:#d6e1d8;line-height:1.83;font-size:.93rem}
+.sector-immersive-story a{color:#fbf3df;border-bottom:1px solid #b3c0ad;width:fit-content;padding:12px 0;font-weight:700;font-size:.82rem}
+.sector-story-numbers{display:flex;gap:16px;flex-wrap:wrap;border-top:1px solid #66846d;padding-top:20px;margin-top:35px}
+.sector-story-numbers span{font-size:.75rem;color:#c8d9ca}
+.sector-story-numbers b{display:block;color:#fff;font:400 1.6rem Georgia,serif;margin-bottom:8px}
+.sector-immersive-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:48px;border-top:1px solid #4b6b52}
+.sector-immersive-strip>div{padding:24px 24px 0 0;border-right:1px solid #4b6b52;margin-right:25px}
+.sector-immersive-strip>div:last-child{border:0;margin:0}
+.sector-immersive-strip strong{font:400 1.24rem Georgia,serif;color:#fdfbf5}
+.sector-immersive-strip p{font-size:.84rem;line-height:1.75;color:#d3dfd1}
+.sector-immersive + .section{background:#f7f7f1}
+@media(max-width:1120px){.sector-immersive-head{grid-template-columns:1fr}.sector-immersive-main{grid-template-columns:1fr}.sector-immersive-visual .product-experience{max-width:920px}}
+@media(max-width:710px){.sector-immersive-strip{grid-template-columns:1fr}.sector-immersive-strip>div{border:0;border-bottom:1px solid #4b6b52;padding:19px 0;margin:0}.sector-immersive-visual .product-layout{grid-template-columns:1fr}.sector-immersive-visual .product-rail{display:none}.sector-immersive-visual .product-workspace{padding:13px}.sector-immersive-main{min-height:auto}}
+/* Product studio filters and cards. */
+.studio-filter-row{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 27px}
+.studio-filter{border:1px solid #b7c9b9;border-radius:100px;background:#fff;color:#31523c;padding:11px 15px;font-size:.78rem;font-weight:700;transition:background .2s}
+.studio-filter[aria-pressed="true"]{background:#1b412d;color:#fff;border-color:#1b412d}
+.concept-card[hidden]{display:none!important}
+.studio-empty[hidden]{display:none!important}.studio-empty{text-align:center;padding:50px;color:#526a56;font-size:1.08rem}
+.concept-card:focus-visible,.studio-filter:focus-visible{outline:3px solid #a47b4d;outline-offset:3px}
