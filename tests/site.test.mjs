@@ -202,3 +202,18 @@ test('Wave 3: four functional app routes, search filters, spotlights and inquiry
  assert.match(css,/\.header \.nav\.is-open/);
  assert.match(css,/width:100%!important/);
 });
+
+test('Performance: editorial images are optimized WebP and referenced by pages',()=>{
+ const assets=fs.readdirSync(path.join(dist,'assets'));
+ const webps=assets.filter(name=>name.startsWith('ChatGPT Image ')&&name.endsWith('.webp'));
+ assert.equal(webps.length,10,'all approved editorial assets need optimized variants');
+ const home=fs.readFileSync(path.join(dist,'index.html'),'utf8');
+ assert.match(home,/ChatGPT Image[^"']+\.webp/);
+ assert.ok(!/ChatGPT Image[^"']+\.png/.test(home),'homepage must load WebP images');
+ for(const file of webps){
+  const original=path.join(dist,'assets',file.replace(/\.webp$/,'.png'));
+  const optimized=path.join(dist,'assets',file);
+  assert.ok(fs.existsSync(original),'source original preserved: '+file);
+  assert.ok(fs.statSync(optimized).size<fs.statSync(original).size,'WebP should compress '+file);
+ }
+});
