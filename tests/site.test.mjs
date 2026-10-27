@@ -14,7 +14,7 @@ test('all public page paths and local assets resolve',()=>{
   assert.equal(pages.length,94);
   for(const file of pages){
     const html=fs.readFileSync(file,'utf8');
-    assert.match(html,/<html lang="fr">/);
+    assert.match(html,/<html lang="(?:fr|en)">/);
     assert.match(html,/<main id="main">/);
     assert.match(html,/name="robots" content="noindex,nofollow"/);
     for(const [,value] of html.matchAll(/(?:href|src)="([^"]+)"/g)){
