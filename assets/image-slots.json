@@ -1,0 +1,130 @@
+[
+  {
+    "route": "expertises/logiciels-sur-mesure/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "logiciels-sur-mesure-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "expertises/automatisation-des-processus/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "automatisation-des-processus-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "expertises/sites-et-commerce/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "sites-et-commerce-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "expertises/integrations-api/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "integrations-api-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "expertises/maintenance-evolution/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "maintenance-evolution-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "expertises/intelligence-artificielle/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "intelligence-artificielle-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "secteurs/services-professionnels/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "services-professionnels-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "secteurs/batiment-interventions/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "batiment-interventions-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "secteurs/commerce-operations/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "commerce-operations-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "secteurs/education/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "education-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "secteurs/sante-administrative/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "sante-administrative-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "secteurs/transport-logistique/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "transport-logistique-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "secteurs/immobilier-patrimoine/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "immobilier-patrimoine-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "secteurs/tourisme-hotellerie/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "tourisme-hotellerie-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "secteurs/ressources-humaines/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "ressources-humaines-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  },
+  {
+    "route": "secteurs/industrie-ia-pilotage/",
+    "slot": "supporting-original-photography",
+    "status": "future-replacement",
+    "filename": "industrie-ia-pilotage-contexte-metier.webp",
+    "altDraft": "À rédiger après validation de la photographie",
+    "currentTreatment": "illustrative-generated-photography"
+  }
+]

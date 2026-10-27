@@ -1,14 +1,14 @@
 const files=[
-"ChatGPT Image Oct 26, 2026, 11_22_38 AM-1.png",
-"ChatGPT Image Oct 26, 2026, 11_22_39 AM-2.png",
-"ChatGPT Image Oct 26, 2026, 11_22_40 AM-3.png",
-"ChatGPT Image Oct 26, 2026, 11_22_42 AM-4.png",
-"ChatGPT Image Oct 26, 2026, 11_22_44 AM-5.png",
-"ChatGPT Image Oct 26, 2026, 11_22_47 AM-6.png",
-"ChatGPT Image Oct 26, 2026, 11_22_50 AM-7.png",
-"ChatGPT Image Oct 26, 2026, 11_22_51 AM-8.png",
-"ChatGPT Image Oct 26, 2026, 11_22_53 AM-9.png",
-"ChatGPT Image Oct 26, 2026, 11_22_54 AM-10.png"];
+"equipe-collaboration-bord-de-seine.png",
+"clientflow-pro-tableau-commercial.png",
+"chantierpilot-tableau-chantier.png",
+"commercepilot-catalogue-stocks.png",
+"docupilot-ai-validation-documents.png",
+"clientflow-pro-apercu-presentation.png",
+"chantierpilot-apercu-terrain.png",
+"docupilot-ai-apercu-presentation.png",
+"automatisation-traitement-documentaire.png",
+"paysage-deux-rives-coucher-soleil.png"];
 const pic=(i,alt,extra='')=>'<img src="assets/'+files[i]+'" alt="'+alt+'" loading="'+(i===0?'eager':'lazy')+'" '+extra+'>';
 export function buildCorporate(write,{sectors,services,insights}){
  const featured=[

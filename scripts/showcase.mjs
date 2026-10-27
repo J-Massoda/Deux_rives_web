@@ -48,10 +48,10 @@ const faqs=[
 ];
 const faqHtml=(q=faqs)=>'<section class="studio-rich-section studio-faq"><span class="eyebrow">Questions fréquentes</span><h2>Ce qu’il faut savoir avant de lancer un logiciel métier</h2><div class="studio-faq-grid">'+q.map(([a,b])=>'<details><summary>'+escape(a)+'</summary><p>'+escape(b)+'</p></details>').join('')+'</div></section>';
 const assetNames=[
-'ChatGPT Image Oct 26, 2026, 11_22_39 AM-2.png',
-'ChatGPT Image Oct 26, 2026, 11_22_40 AM-3.png',
-'ChatGPT Image Oct 26, 2026, 11_22_42 AM-4.png',
-'ChatGPT Image Oct 26, 2026, 11_22_44 AM-5.png'
+'clientflow-pro-tableau-commercial.png',
+'chantierpilot-tableau-chantier.png',
+'commercepilot-catalogue-stocks.png',
+'docupilot-ai-validation-documents.png'
 ];
 const flagshipImage={'clientflow-pro':0,'chantierpilot':1,'commercepilot':2,'docupilot-ai':3};
 const imageFor=id=>flagshipImage[id]===undefined?null:assetNames[flagshipImage[id]];

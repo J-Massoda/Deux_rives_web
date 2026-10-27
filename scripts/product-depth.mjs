@@ -43,10 +43,10 @@ catalog:'commerce',invoice:'finance',courses:'education',calendar:'health',route
 property:'property',booking:'hospitality',industry:'industry',documents:'industry',analytics:'industry'
 };
 const screenshot={
-'clientflow-pro':'ChatGPT Image Oct 26, 2026, 11_22_39 AM-2.png',
-'chantierpilot':'ChatGPT Image Oct 26, 2026, 11_22_40 AM-3.png',
-'commercepilot':'ChatGPT Image Oct 26, 2026, 11_22_42 AM-4.png',
-'docupilot-ai':'ChatGPT Image Oct 26, 2026, 11_22_44 AM-5.png'
+'clientflow-pro':'clientflow-pro-tableau-commercial.png',
+'chantierpilot':'chantierpilot-tableau-chantier.png',
+'commercepilot':'commercepilot-catalogue-stocks.png',
+'docupilot-ai':'docupilot-ai-validation-documents.png'
 };
 const faq=(name,audience)=>
 '<section class="studio-rich-section studio-faq"><span class="eyebrow">Questions fréquentes</span><h2>Préparer un projet '+enc(name)+'</h2><div class="studio-faq-grid">'+

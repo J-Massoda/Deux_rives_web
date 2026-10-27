@@ -21,7 +21,7 @@ const E={
 'maintenance-evolution':['La mise en production n’est pas une fin','La documentation, l’observation des incidents et la maîtrise des dépendances permettent d’améliorer un logiciel sans fragiliser son exploitation.','missiondesk','maintenance']
 };
 const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const img='ChatGPT Image Oct 26, 2026, 11_22_53 AM-9.png';
+const img='automatisation-traitement-documentaire.png';
 function sectorSection(id,base){
  const d=S[id];if(!d)return '';
  const [headline,context,stages,project,roles,kind]=d;
