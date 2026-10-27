@@ -14,13 +14,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Install build dependencies
+        run: npm install --no-audit --no-fund
       - name: Build site and test all generated routes
         run: npm test
       - name: Install browser tooling
         run: |
           npm install --no-save playwright
           npx playwright install --with-deps chromium
-      - name: Serve static build and audit 68 desktop/mobile pages and flagship workflows
+      - name: Serve static build and audit 72 desktop/mobile pages and flagship workflows
         run: |
           python3 -m http.server 4173 --directory dist >/tmp/deux-rives-server.log 2>&1 &
           sleep 2
