@@ -16,7 +16,7 @@ function collect(folder){
  }
 }
 collect(dist);
-assert.equal(paths.length,72,'Expected 72 generated pages');
+assert.equal(paths.length,88,'Expected 88 generated pages');
 const browser=await chromium.launch({headless:true});
 const report={pages:paths.length,viewports:[],warnings:[]};
 try{
