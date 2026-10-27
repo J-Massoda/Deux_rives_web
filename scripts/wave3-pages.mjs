@@ -1,5 +1,4 @@
 import {renderIndustryPreview} from './product-ui.mjs';
-import {renderIndustryPreview} from './product-ui.mjs';
 // These pages document demonstrable processes, not past client engagements.
 const studies={
 'intervention-360':{
