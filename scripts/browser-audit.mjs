@@ -16,7 +16,7 @@ function collect(folder){
  }
 }
 collect(dist);
-assert.equal(paths.length,68,'Expected 68 generated pages');
+assert.equal(paths.length,72,'Expected 72 generated pages');
 const browser=await chromium.launch({headless:true});
 const report={pages:paths.length,viewports:[],warnings:[]};
 try{
@@ -37,7 +37,7 @@ try{
    if(!state.h1)failures.push('missing heading: '+route);
    if(state.width>state.client+14)report.warnings.push('horizontal overflow '+viewport.width+'px: '+route+' '+state.width+'/'+state.client);
   }
-  for(const route of ['/', '/regards/','/methode/','/studio/devis-atelier/','/studio/commercepilot/','/applications/clientflow-pro/','/applications/chantierpilot/','/applications/commercepilot/','/applications/docupilot-ai/','/regards/facturation-electronique-integration-logiciel-2026-2027/']){
+  for(const route of ['/', '/regards/','/methode/','/studio/devis-atelier/','/studio/commercepilot/','/applications/clientflow-pro/','/applications/chantierpilot/','/applications/commercepilot/','/applications/docupilot-ai/','/applications/intervention-360/','/applications/factureconnect/','/applications/devis-atelier/','/applications/missiondesk/','/secteurs/transport-logistique/','/regards/facturation-electronique-integration-logiciel-2026-2027/']){
     await page.goto(base+route,{waitUntil:'domcontentloaded'});
     await page.evaluate(async()=>{for(let y=0;y<document.documentElement.scrollHeight;y+=640){window.scrollTo(0,y);await new Promise(r=>setTimeout(r,20))}window.scrollTo(0,0)});await page.waitForTimeout(520);
     if(route==='/')await page.screenshot({path:path.join(imagesDir,'home-'+viewport.width+'.png'),fullPage:true});
