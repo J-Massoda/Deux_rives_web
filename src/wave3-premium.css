@@ -84,3 +84,25 @@
 .inquiry-context{padding:12px 15px;background:#e8eee3;border-left:3px solid #46694d;color:#48614a;font-size:.81rem;line-height:1.6}
 @media(max-width:1050px){.pv-cases-head{grid-template-columns:1fr;gap:12px}.pv-cases-head p{grid-column:1}.pv-case-row{grid-template-columns:1fr}.pv-case-row--reverse{direction:ltr}.pv-case-visual{min-height:320px}.pv-case-visual img{max-height:330px}}
 @media(max-width:600px){.pv-case-visual{padding:14px;min-height:220px}.pv-case-content{padding:31px 24px}.pv-cases-head{margin-bottom:34px}}
+
+/* Sector hero composition: remove unrelated photographs and present the actual sector UI family. */
+.sector-custom-hero{min-height:590px!important;gap:clamp(25px,5vw,75px);align-items:center!important;background:linear-gradient(128deg,#faf9f4 22%,#e7efe4 100%)}
+.sector-custom-hero .subhero-copy{padding-block:30px}
+.sector-custom-hero h1{max-width:800px;font-size:clamp(2.7rem,5vw,5.6rem)!important}
+.sector-custom-hero p{max-width:660px;line-height:1.85}
+.sector-hero-link{display:inline-block;font-size:.83rem;font-weight:700;color:#1b5131;margin-top:25px;border-bottom:1px solid #66836b;padding-bottom:7px}
+.sector-hero-ui{height:auto!important;min-height:320px;width:100%;overflow:visible!important;border:0!important;box-shadow:none!important;background:transparent!important;display:flex;flex-direction:column;justify-content:center;gap:13px}
+.sector-hero-ui .product-experience{width:100%;margin:0;border:1px solid #d8e2d7;box-shadow:0 28px 50px #28412e24}
+.sector-hero-ui .product-experience-head{padding:10px 14px}.sector-hero-ui .product-experience-head strong{font-size:.73rem}
+.sector-hero-ui .product-experience-head span{font-size:.54rem}
+.sector-hero-ui .product-layout{grid-template-columns:112px 1fr;min-height:285px}
+.sector-hero-ui .product-rail{padding:13px;gap:10px;font-size:.64rem}
+.sector-hero-ui .product-rail strong{font-size:.72rem}
+.sector-hero-ui .product-workspace{padding:15px;min-height:270px}
+.sector-hero-ui .ui-workspace-header h3{font-size:1.28rem}
+.sector-hero-ui .product-tabs{font-size:.56rem}
+.sector-hero-ui .ui-workspace-header .ui-actions{display:none}
+.sector-hero-ui .product-workspace .ui-table-row{font-size:.63rem;padding:10px}
+.sector-hero-caption{font-size:.7rem;color:#697e6b;align-self:flex-end}
+@media(max-width:900px){.sector-custom-hero{min-height:0!important;display:grid!important;grid-template-columns:1fr!important;padding:60px 24px!important}.sector-hero-ui{min-height:0}.sector-hero-ui .product-layout{grid-template-columns:100px 1fr}}
+@media(max-width:550px){.sector-hero-ui .product-layout{grid-template-columns:1fr}.sector-hero-ui .product-rail{display:none}.sector-custom-hero{padding:42px 20px!important}.sector-hero-ui .product-workspace{padding:12px}.sector-hero-ui .ui-workspace-header h3{font-size:1.2rem}}
