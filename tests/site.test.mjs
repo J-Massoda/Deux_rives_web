@@ -11,7 +11,7 @@ const pages=[];
 function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory())walk(p);else if(entry.name==='index.html')pages.push(p);}}
 walk(dist);
 test('all public page paths and local assets resolve',()=>{
-  assert.equal(pages.length,68);
+  assert.equal(pages.length,72);
   for(const file of pages){
     const html=fs.readFileSync(file,'utf8');
     assert.match(html,/<html lang="fr">/);
@@ -178,4 +178,27 @@ test('Technical SEO metadata includes parseable breadcrumbs, site and article sc
    assert.ok(schemas.some(x=>x['@type']==='Article'));
   }
  }
+});
+
+test('Wave 3: four functional app routes, search filters, spotlights and inquiry links',()=>{
+ for(const id of ['intervention-360','factureconnect','devis-atelier','missiondesk']){
+  const html=fs.readFileSync(path.join(dist,'applications',id,'index.html'),'utf8');
+  assert.match(html,new RegExp('data-wave3-app="'+id+'"'));
+  assert.match(html,/DÉMONSTRATION FONCTIONNELLE/);
+  assert.match(html,/QUESTIONS FRÉQUENTES/);
+  assert.match(html,/Données fictives|DONNÉES FICTIVES/);
+  assert.match(html,/assets\/wave3-apps\.js/);
+ }
+ const studio=fs.readFileSync(path.join(dist,'studio/index.html'),'utf8');
+ assert.equal((studio.match(/data-studio-sector=/g)||[]).length,11);
+ assert.equal((studio.match(/data-sector="/g)||[]).length,24);
+ const sectorIds=['services-professionnels','batiment-interventions','commerce-operations','education','sante-administrative','transport-logistique','immobilier-patrimoine','tourisme-hotellerie','ressources-humaines','industrie-ia-pilotage'];
+ for(const id of sectorIds){
+  const html=fs.readFileSync(path.join(dist,'secteurs',id,'index.html'),'utf8');
+  assert.match(html,/sector-immersive/);
+  assert.match(html,/APERÇU DU CONCEPT/);
+ }
+ const css=fs.readFileSync(path.join(dist,'assets/wave3-premium.css'),'utf8');
+ assert.match(css,/\.header \.nav\.is-open/);
+ assert.match(css,/width:100%!important/);
 });
