@@ -10,6 +10,7 @@ If you already cloned this repository:
 git fetch origin
 git switch redesign/wave-1-corporate-foundation
 git pull --ff-only
+npm install
 npm test
 npm run dev
 \`\`\`
@@ -65,3 +66,7 @@ The GitHub Actions visual pipeline runs Playwright across all pages in desktop a
 - [ ] FAQ, typography, spacing, keyboard interaction and contrast reviewed
 - [ ] No horizontal overflow or broken internal links
 - [ ] Site content does not assert fictional customer projects or unverified legal details
+
+## Asset optimization
+
+The source repository retains the ten original concept PNG images. During `npm test` and `npm run dev`, the build uses Sharp to generate 1600-pixel-max WebP assets and changes the generated HTML references to those smaller images. Original PNGs remain available in source control. This is a build-time transformation, not an image CDN.
