@@ -8,6 +8,7 @@ import {buildFlagships, flagshipIds} from './flagships.mjs';
 import {buildWave3,wave3Ids} from './wave3-pages.mjs';
 import {buildWave4} from './wave4-pages.mjs';
 import {buildEnglish} from './wave4-english.mjs';
+import {buildEvaluation} from './wave4-evaluation.mjs';
 import {extraConcepts,extraIds} from './wave4-catalog.mjs';
 import {sectorSpotlight,sectorHero,sectorSpotlightCount} from './sector-spotlights.mjs';
 import {guides} from './wave2-guides.mjs';
@@ -187,6 +188,7 @@ buildWave3(write);
 if(extraIds.length!==16||extraIds.some(id=>!concepts.some(c=>c[0]===id)))throw Error('Wave 4 catalog mismatch');
 buildWave4(write);
 buildEnglish(write);
+buildEvaluation(write);
 fs.writeFileSync(path.join(out,'robots.txt'),config.publishReady&&legalComplete?'User-agent: *\nAllow: /\nSitemap: '+config.origin+'/sitemap.xml\n':'User-agent: *\nDisallow: /\n');
-if(config.publishReady&&legalComplete){const routes=['',...flagshipIds.map(x=>`applications/${x}/`),...wave3Ids.map(x=>`applications/${x}/`),...extraIds.map(x=>`applications/${x}/`), 'en/','en/software-engineering/', 'studio/', ...concepts.map(x=>`studio/${x[0]}/`), 'expertises/',...services.map(x=>`expertises/${x.id}/`),'secteurs/',...sectors.map(x=>`secteurs/${x.id}/`),'demonstrations/',...demos.map(x=>`demonstrations/${x.id}/`),'realisations/','agence/','methode/','regards/',...insights.map(x=>`regards/${x.id}/`),'contact/'];fs.writeFileSync(path.join(out,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${routes.map(r=>`<url><loc>${config.origin}/${r}</loc></url>`).join('')}</urlset>`);}
+if(config.publishReady&&legalComplete){const routes=['',...flagshipIds.map(x=>`applications/${x}/`),...wave3Ids.map(x=>`applications/${x}/`),...extraIds.map(x=>`applications/${x}/`), 'en/','en/software-engineering/','strategie-produits/', 'studio/', ...concepts.map(x=>`studio/${x[0]}/`), 'expertises/',...services.map(x=>`expertises/${x.id}/`),'secteurs/',...sectors.map(x=>`secteurs/${x.id}/`),'demonstrations/',...demos.map(x=>`demonstrations/${x.id}/`),'realisations/','agence/','methode/','regards/',...insights.map(x=>`regards/${x.id}/`),'contact/'];fs.writeFileSync(path.join(out,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${routes.map(r=>`<url><loc>${config.origin}/${r}</loc></url>`).join('')}</urlset>`);}
 console.log(`Built ${fs.readdirSync(out,{recursive:true}).filter(p=>String(p).endsWith('index.html')).length} French pages in dist/`);
