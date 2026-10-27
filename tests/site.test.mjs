@@ -220,7 +220,7 @@ test('Performance: editorial images are optimized WebP and referenced by pages',
 test('Business contact and founder cards use approved details only',()=>{
  const agency=fs.readFileSync(path.join(dist,'agence/index.html'),'utf8');
  for(const name of ['Jean Emilien Massoda','Claude Armand'])assert.ok(agency.includes(name));
- assert.equal((agency.match(/class="founder-card"/g)||[]).length,2);
+ assert.equal((agency.match(/class="founder-card\b/g)||[]).length,2);
  assert.equal((agency.match(/src="..\/assets\/founder-default.svg"/g)||[]).length,2);
  for(const file of pages){const html=fs.readFileSync(file,'utf8');assert.ok(html.includes('services@deuxrivesweb.fr'));assert.ok(html.includes('Paris, France'));assert.doesNotMatch(html,/hello@massoda|671.?260.?005|Illustration générée par IA d’un contexte métier|Les termes métier liés/);}
  const contact=fs.readFileSync(path.join(dist,'contact/index.html'),'utf8');
