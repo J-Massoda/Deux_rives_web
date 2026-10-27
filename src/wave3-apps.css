@@ -65,3 +65,26 @@
 @media(max-width:760px){.w3-stats,.wave3-page .wave3-editorial-cards{grid-template-columns:1fr}.w3-form{grid-template-columns:1fr 1fr}.w3-mission-grid{grid-template-columns:1fr}}
 @media(max-width:490px){.w3-root{padding-inline:14px}.w3-top{padding:15px;align-items:start}.w3-top>div{flex-direction:column;gap:4px;align-items:end}.w3-top>div>span{display:none}.w3-intro{padding:24px 18px}.w3-stats{padding:13px 15px;grid-template-columns:1fr 1fr}.w3-stat{padding:15px}.w3-split>main,.w3-split>aside{padding:19px 15px}.w3-form,.w3-board{grid-template-columns:1fr}.w3-invoice{grid-template-columns:1fr}.w3-invoice>div:nth-child(2){text-align:left}.w3-quote-label,.w3-quote-line{grid-template-columns:1.5fr .5fr 1fr 1fr;font-size:.65rem;padding:9px}.w3-intro h2{font-size:2.35rem}}
 @media(prefers-reduced-motion:reduce){.w3-button{transition:none}}
+
+/* Wave 3 heroes now contain informative product workspaces rather than decorative placeholders. */
+.wave3-page .wave-hero figure.wave3-hero-preview{display:block;min-height:0;background:#e4ede2;overflow:hidden;padding:14px}
+.wave3-hero-preview .product-experience{width:100%;margin:0;box-shadow:none;background:white}
+.wave3-hero-preview .product-experience-head{padding:9px 12px}
+.wave3-hero-preview .product-experience-head span{font-size:.54rem}
+.wave3-hero-preview .product-layout{grid-template-columns:92px 1fr;min-height:320px}
+.wave3-hero-preview .product-rail{padding:12px;gap:9px;font-size:.64rem}
+.wave3-hero-preview .product-rail strong{font-size:.72rem}
+.wave3-hero-preview .product-workspace{padding:15px;min-height:300px}
+.wave3-hero-preview .ui-workspace-header h3{font-size:1.3rem}
+.wave3-hero-preview .ui-workspace-header .ui-actions{display:none}
+.wave3-hero-preview .product-tabs{font-size:.63rem}
+.wave3-hero-preview .ui-table-row{font-size:.66rem;padding:8px 9px}
+.wave3-hero-preview .ui-quote{grid-template-columns:1fr}
+.wave3-hero-preview .ui-quote>aside{display:none}
+.wave3-hero-preview .ui-invoice{grid-template-columns:1fr 1fr}
+.wave3-hero-preview .ui-paper{padding:15px}
+.wave3-hero-preview .ui-paper h4{font-size:1rem}
+.wave3-hero-preview .ui-dispatch{grid-template-columns:1fr}
+.wave3-hero-preview .ui-route-map{min-height:130px}
+.wave3-hero-preview .ui-dispatch-list{display:none}
+@media(max-width:690px){.wave3-hero-preview .product-layout{grid-template-columns:1fr}.wave3-hero-preview .product-rail{display:none}.wave3-hero-preview .product-workspace{padding:12px}.wave3-hero-preview .ui-table-row{font-size:.58rem}}
