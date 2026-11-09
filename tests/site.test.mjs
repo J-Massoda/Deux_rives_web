@@ -4,6 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+import { projects } from '../scripts/portfolio-data.mjs';
+import { contactSettings } from '../scripts/contact-settings.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 execFileSync(process.execPath,[path.join(root,'scripts/build.mjs')]);
 const dist=path.join(root,'dist');
@@ -11,7 +13,7 @@ const pages=[];
 function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory())walk(p);else if(entry.name==='index.html')pages.push(p);}}
 walk(dist);
 test('all public page paths and local assets resolve',()=>{
-  assert.equal(pages.length,94);
+  assert.equal(pages.length,94 + projects.length);
   for(const file of pages){
     const html=fs.readFileSync(file,'utf8');
     assert.match(html,/<html lang="(?:fr|en)">/);
@@ -242,4 +244,51 @@ test('Search indexing requires complete launch details and the production origin
  assert.equal(publicLaunchReady(complete,config.origin),true);
  assert.equal(publicLaunchReady(complete,'https://preview.example.test'),false);
  assert.equal(publicLaunchReady({...complete,legal:{...legal,siren:''}},config.origin),false);
+});
+
+test('project catalogue lists distinct case studies with sitemap entries and preserves the launch gate', () => {
+  const catalogue = fs.readFileSync(path.join(dist, 'realisations/index.html'), 'utf8');
+  const ids = projects.map(({id}) => id);
+  assert.equal(new Set(ids).size, ids.length);
+  assert.equal((catalogue.match(/data-project data-type=/g) || []).length, ids.length);
+  assert.match(catalogue, /data-project-sector/);
+  assert.ok(catalogue.indexOf('<h3>Projets clients</h3>') < catalogue.indexOf('<h3>Prototypes et pilotes</h3>'));
+  const sitemapPath = path.join(dist, 'sitemap.xml');
+  const sitemap = fs.existsSync(sitemapPath) ? fs.readFileSync(sitemapPath, 'utf8') : '';
+  for (const id of ids) {
+    const project = fs.readFileSync(path.join(dist, 'realisations', id, 'index.html'), 'utf8');
+    assert.match(project, /Le travail réalisé/);
+    assert.equal((project.match(/Jean-Émilien Massoda/g) || []).length, 1);
+    assert.match(project, /noindex,nofollow/);
+    if (sitemap) assert.ok(sitemap.includes('<loc>https://deuxrivesweb.fr/realisations/' + id + '/</loc>'));
+  }
+  for (const id of ['leads-tracker', 'fashionista-africa', 'mobikumbu']) {
+    assert.ok(!ids.includes(id));
+  }
+  assert.match(catalogue, /href="..\/studio\/"/);
+});
+
+test('homepage testimonials use French and credit individual projects', () => {
+  const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
+  assert.ok(homepage.indexOf('Trois projets clients à découvrir') < homepage.indexOf('id="priority-products"'));
+  const section = homepage.match(/<section[^>]+aria-label="Témoignages">[\s\S]+?<\/section>/)?.[0];
+  assert.ok(section);
+  assert.match(section, /Deux Rives Web/);
+  assert.doesNotMatch(section, /Jean-Émilien|Massoda/);
+  assert.equal((section.match(/<blockquote lang="fr">/g) || []).length, 3);
+  assert.match(section, /Fondatrice, BPÉTALE/);
+});
+
+test('contact services use approved URLs and can be configured independently', () => {
+  const page = fs.readFileSync(path.join(dist, 'contact/index.html'), 'utf8');
+  assert.ok(page.indexOf('id="consultation"') < page.indexOf('id="brief-projet"'));
+  assert.match(page, /<details class="brief-optional">/);
+  const bookingUrl = 'https://calendar.app.google/example';
+  assert.deepEqual(contactSettings({}), { endpoint: '', bookingUrl: '' });
+  assert.deepEqual(contactSettings({ GOOGLE_BOOKING_URL: bookingUrl }), { endpoint: '', bookingUrl });
+  assert.deepEqual(contactSettings({ FORMSPREE_FORM_ID: 'abc123' }), {
+    endpoint: 'https://formspree.io/f/abc123', bookingUrl: ''
+  });
+  assert.throws(() => contactSettings({ GOOGLE_BOOKING_URL: 'https://other.example/' }));
+  assert.throws(() => contactSettings({ FORMSPREE_FORM_ID: 'https://other.example' }));
 });

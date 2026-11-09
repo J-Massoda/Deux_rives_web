@@ -1,6 +1,6 @@
 /* Wave 3 visual direction: original editorial composition, grounded in existing brand palette */
 :root { --pv-ink:#142e22; --pv-fern:#284d38; --pv-mist:#e8eee7; --pv-paper:#fcfaf5; --pv-copper:#a27651; }
-@media (max-width:1150px) {
+@media (max-width:1240px) {
  .header, .header.is-scrolled{position:sticky!important;top:0;z-index:5000!important;padding:0!important;background:#faf9f5!important;isolation:auto!important;border-bottom:1px solid #d7e2d6!important}
  .header .header-inner,.header.is-scrolled .header-inner{position:relative!important;width:100%!important;max-width:none!important;min-height:70px!important;margin:0!important;padding:10px 20px!important;border:0!important;border-radius:0!important;background:#faf9f5!important;box-shadow:none!important;backdrop-filter:none!important;display:flex!important;align-items:center!important}
  .header .brand{position:relative;z-index:5004;font-size:1rem;min-width:0}
@@ -108,7 +108,7 @@
 @media(max-width:550px){.sector-hero-ui .product-layout{grid-template-columns:1fr}.sector-hero-ui .product-rail{display:none}.sector-custom-hero{padding:42px 20px!important}.sector-hero-ui .product-workspace{padding:12px}.sector-hero-ui .ui-workspace-header h3{font-size:1.2rem}}
 
 /* Mobile submenu must participate in normal document flow, never paint over next item. */
-@media(max-width:1150px){
+@media(max-width:1240px){
  .header .nav{display:none!important}
  .header .nav.is-open{display:flex!important}
  .header .nav-item{display:block!important;position:relative!important;height:auto!important;min-height:60px!important;flex:0 0 auto!important;align-self:stretch!important;padding:0!important;overflow:visible!important}

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright';
+import { projects } from './portfolio-data.mjs';
 
 const base='http://127.0.0.1:4173';
 const dist=path.resolve('dist');
@@ -16,7 +17,7 @@ function collect(folder){
  }
 }
 collect(dist);
-assert.equal(paths.length,94,'Expected 94 generated pages');
+assert.equal(paths.length, 94 + projects.length, 'Expected existing pages and all project case studies');
 const browser=await chromium.launch({headless:true});
 const report={pages:paths.length,viewports:[],warnings:[]};
 try{
@@ -47,7 +48,18 @@ try{
    for(const src of state.oversizedPhotos)failures.push('oversized photo at '+viewport.width+'px '+route+': '+src);
    if(state.width>state.client+14)report.warnings.push('horizontal overflow '+viewport.width+'px: '+route+' '+state.width+'/'+state.client);
   }
-  for(const route of ['/', '/regards/','/methode/','/studio/devis-atelier/','/studio/commercepilot/','/applications/clientflow-pro/','/applications/chantierpilot/','/applications/commercepilot/','/applications/docupilot-ai/','/applications/intervention-360/','/applications/factureconnect/','/applications/devis-atelier/','/applications/missiondesk/','/secteurs/transport-logistique/','/regards/facturation-electronique-integration-logiciel-2026-2027/']){
+  await page.goto(base+'/realisations/',{waitUntil:'domcontentloaded'});
+  const projectCards=page.locator('#catalogue-realisations [data-project]:visible');
+  await page.locator('[data-project-query]').fill('bpetale');
+  await page.locator('[data-project-sector]').selectOption('commerce-operations');
+  await page.locator('[data-project-type]').selectOption('client');
+  assert.equal(await projectCards.count(),1,'Search and filters should select BPÉTALE');
+  assert.match(await projectCards.first().innerText(),/BPÉTALE/);
+  await page.locator('[data-project-expertise]').selectOption('integrations-api');
+  assert.ok(await page.locator('[data-project-empty]').isVisible(),'Show the empty state for incompatible filters');
+  await page.locator('[data-project-reset]').click();
+  assert.equal(await projectCards.count(),projects.length,'Reset should show every project');
+  for(const route of ['/', '/realisations/','/realisations/bpetale-ltd/','/contact/','/regards/','/methode/','/studio/devis-atelier/','/studio/commercepilot/','/applications/clientflow-pro/','/applications/chantierpilot/','/applications/commercepilot/','/applications/docupilot-ai/','/applications/intervention-360/','/applications/factureconnect/','/applications/devis-atelier/','/applications/missiondesk/','/secteurs/transport-logistique/','/regards/facturation-electronique-integration-logiciel-2026-2027/']){
     await page.goto(base+route,{waitUntil:'domcontentloaded'});
     await page.evaluate(async()=>{for(let y=0;y<document.documentElement.scrollHeight;y+=640){window.scrollTo(0,y);await new Promise(r=>setTimeout(r,20))}window.scrollTo(0,0)});await page.waitForTimeout(520);
     if(route==='/')await page.screenshot({path:path.join(imagesDir,'home-'+viewport.width+'.png'),fullPage:true});
@@ -58,7 +70,7 @@ try{
   await page.waitForTimeout(150);
   const header=await page.locator('.header').evaluate(e=>({top:e.getBoundingClientRect().top,scrolled:e.classList.contains('is-scrolled')}));
   if(!header.scrolled || Math.abs(header.top)>15) failures.push('sticky header morph failed at '+viewport.width);
-  if(viewport.width>=1151){
+  if(viewport.width>=1241){
    await page.evaluate(()=>window.scrollTo(0,0));
    await page.locator('.nav-toggle').first().click();
    const bounds=await page.locator('.mega').first().evaluate(e=>({left:e.getBoundingClientRect().left,right:e.getBoundingClientRect().right}));

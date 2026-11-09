@@ -16,11 +16,38 @@ const run=async(path,fn,viewport={width:1366,height:900})=>{
  }finally{await ctx.close()}
 };
 try{
- for(const width of [390,375,768]){
+ for (const width of [1241, 1280, 1366, 1920]) {
+  await run('/', async page => {
+   await page.emulateMedia({ reducedMotion: 'reduce' });
+   await page.evaluate(() => document.fonts.ready);
+   assert.equal(await page.locator('.menu-button').isVisible(), false);
+   async function assertHeaderSpacing() {
+    const gap = await page.locator('.header-inner').evaluate(header => {
+     const brand = header.querySelector('.brand').getBoundingClientRect();
+     const firstLink = header.querySelector('.nav-item > a').getBoundingClientRect();
+     const cta = header.querySelector('.nav-cta').getBoundingClientRect();
+     return { brand: firstLink.left - brand.right, right: header.getBoundingClientRect().right - cta.right };
+    });
+    assert.ok(gap.brand >= 20, 'Wordmark too close to the menu at ' + width + 'px: ' + gap.brand);
+    assert.ok(gap.right >= 0, 'CTA extends beyond the header at ' + width + 'px');
+   }
+   await assertHeaderSpacing();
+   await page.evaluate(() => window.scrollTo(0, 900));
+   await page.waitForFunction(() => document.querySelector('.header').classList.contains('is-scrolled'));
+   await page.evaluate(() => window.scrollTo(0, 500));
+   await assertHeaderSpacing();
+   if (width === 1920) await page.screenshot({path:'artifacts/browser/scrolled-desktop-header.png'});
+   await page.evaluate(() => window.scrollTo(0, 0));
+   await page.waitForFunction(() => !document.querySelector('.header').classList.contains('is-scrolled'));
+   await assertHeaderSpacing();
+  }, {width, height:900});
+ }
+ for(const width of [390,375,768,1240]){
   await run('/',async page=>{
    const menu=page.locator('.menu-button');
    await menu.click();const nav=page.locator('.header .nav');
    assert.ok(await nav.isVisible(),'mobile nav should open');
+   assert.ok(await nav.getByRole('link',{name:'Réalisations',exact:true}).isVisible(),'compact menu includes the portfolio');
    if(width===390)await page.screenshot({path:'artifacts/browser/wave3-mobile-menu-open.png'});
    const b=await nav.boundingBox();
    assert.ok(b.width>=width*.85,'mobile nav too narrow: '+b.width+'/'+width);

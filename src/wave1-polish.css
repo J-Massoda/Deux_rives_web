@@ -7,7 +7,7 @@ body{overflow-x:clip}.site-shell{overflow:visible}
 .header-inner{position:relative;max-width:1500px;min-height:86px;padding-inline:clamp(20px,4vw,70px);transition:min-height .38s,max-width .38s,border-radius .38s,box-shadow .38s,background .38s,padding .38s}
 .header.is-scrolled{padding:8px 10px;background:transparent;border-color:transparent}
 .header.is-scrolled .header-inner{min-height:67px;max-width:1230px;background:rgba(255,253,248,.96);border:1px solid rgba(193,207,191,.8);border-radius:20px;box-shadow:0 12px 40px rgba(16,41,25,.12);backdrop-filter:blur(18px);padding-inline:clamp(18px,3vw,40px)}
-.brand{font-size:1.15rem}.brand em{color:#9b7852}.brand img{width:40px;height:40px}
+.brand{flex:none;font-size:1.15rem}.brand em{color:#9b7852}.brand img{width:40px;height:40px}
 .header.is-scrolled .brand img{width:32px;height:32px}.nav{position:static}.nav-item{position:static}
 .nav-item>a{padding:30px 0;font-size:.81rem;transition:color .2s}.header.is-scrolled .nav-item>a{padding:22px 0}
 .nav-toggle{position:relative;font-size:0!important;width:27px;height:35px;padding:0;border-radius:8px;float:none!important}
@@ -93,7 +93,12 @@ body{overflow-x:clip}.site-shell{overflow:visible}
 .rich-story>div:first-child,.rich-assurance>div:first-child{position:relative}
 .rich-story>div:first-child::before,.rich-assurance>div:first-child::before{content:'';display:block;width:55px;height:3px;background:#a88862;margin-bottom:28px}
 .article,.insight-grid{background:#f3f4ef}
-@media(max-width:1150px){
+@media(min-width:1241px){
+  .header .header-inner{column-gap:24px}
+  .header .nav{gap:clamp(14px,1.25vw,22px);margin-inline-start:auto}
+  .header .nav-item>a{white-space:nowrap}
+}
+@media(max-width:1240px){
 .header .mega{position:static;left:auto;top:auto;right:auto;width:100%;max-height:none;display:none;transform:none!important;opacity:1;visibility:visible;padding:22px 0;box-shadow:none;border:0;border-radius:0;grid-template-columns:1fr}
 .header .nav-item.submenu-open .mega{display:grid}
 .header .nav-item:hover .mega:not(.is-force-open){display:none}
