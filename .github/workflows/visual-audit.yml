@@ -24,7 +24,7 @@ jobs:
         run: |
           npm install --no-save playwright
           npx playwright install --with-deps chromium
-      - name: Serve static build and audit 94 desktop/mobile pages and flagship workflows
+      - name: Serve static build and audit desktop/mobile pages and flagship workflows
         run: |
           python3 -m http.server 4173 --directory dist >/tmp/deux-rives-server.log 2>&1 &
           sleep 2
