@@ -10,112 +10,112 @@ export const projects = [
     id: 'bpetale-ltd', name: 'BPÉTALE', type: 'client', expertise: 'sites-et-commerce', sector: 'commerce-operations', cover: 'bpetale-natural-essence-cover.jpg',
     summary: 'Une plateforme WordPress multimarque et un espace de suivi des matières premières.',
     challenge: 'Faire cohabiter les activités beauté, voyages et confiserie sur un même site tout en laissant à chaque marque un parcours clair.',
-    delivery: 'Jean-Émilien a retravaillé les parcours WordPress et WooCommerce et développé un espace de suivi des livraisons, des recettes et de la production. L’étude détaille aussi les vérifications de la mise à niveau locale.',
+    delivery: 'La refonte WordPress et WooCommerce clarifie le parcours de chaque marque. Un espace dédié permet de suivre les livraisons, les recettes et la production. La fiche d’origine détaille les vérifications de la mise à niveau locale.',
     live: 'https://bpetale.com/'
   },
   {
     id: 'freshbox-tech-marketplace', name: 'FreshBox Tech Marketplace', type: 'client', expertise: 'sites-et-commerce', sector: 'commerce-operations', cover: 'freshbox-tech-cover.jpg',
     summary: 'Un catalogue B2B pour découvrir des solutions et orienter les demandes vers les bons partenaires.',
     challenge: 'Donner une structure commune à des offres, catégories et partenaires différents pour que les acheteurs puissent s’orienter.',
-    delivery: 'Jean-Émilien a travaillé sur l’architecture WooCommerce et WCFM, le parcours de navigation, le méga-menu et la mise en place du catalogue partenaires.',
+    delivery: 'Une architecture WooCommerce et WCFM structure le catalogue partenaires. Le parcours de navigation et le méga-menu aident les acheteurs à retrouver les offres par catégorie.',
     live: 'https://market.freshboxtech.com/'
   },
   {
     id: 'residences-loumia', name: 'Résidences Loumia', type: 'client', expertise: 'sites-et-commerce', sector: 'tourisme-hotellerie', cover: 'residences-loumia-cover.jpg',
     summary: 'Une expérience web pour présenter plusieurs résidences et faciliter leur découverte.',
     challenge: 'Présenter une offre d’hébergement répartie entre plusieurs résidences avec une navigation et une identité communes.',
-    delivery: 'Jean-Émilien a contribué à la conception UI/UX et aux interactions GSAP du site. L’étude présente les écrans réalisés pour la découverte des propriétés.',
+    delivery: 'La conception UI/UX et les interactions GSAP accompagnent la découverte des propriétés. La fiche d’origine présente les écrans conçus pour ce parcours.',
     live: 'https://residencesloumia.com/'
   },
   {
     id: 'afremit', name: 'Afremit', type: 'prototype', expertise: 'logiciels-sur-mesure', sector: 'education', cover: 'afremit-cover.svg',
     summary: 'Un pilote pour suivre les demandes de paiement de frais de scolarité à distance.',
     challenge: 'Une famille à l’étranger a besoin de savoir qui traite sa demande, ce qui a été vérifié et où en est le règlement.',
-    delivery: 'En tant que cofondateur d’Afremit, Jean-Émilien a participé au cadrage produit et au développement du pilote, de l’inscription des prestataires au suivi des demandes de test.',
+    delivery: 'Le travail de cofondation a porté sur le cadrage produit et le développement du pilote, de l’inscription des prestataires au suivi des demandes de test.',
     demo: 'https://j-massoda.github.io/Afremit/'
   },
   {
     id: 'deux-rives-web', name: 'Deux Rives Web', type: 'interne', expertise: 'sites-et-commerce', sector: 'services-professionnels', cover: 'deux-rives-web-preview.jpg',
     summary: 'Un site d’ingénierie logicielle avec des scénarios métier accessibles dans le navigateur.',
     challenge: 'Aider un décideur à comprendre une offre de développement sur mesure avant son premier échange avec l’équipe.',
-    delivery: 'Le site associe des pages d’expertise et de secteur à des prototypes que les visiteurs peuvent essayer. Jean-Émilien, cofondateur de l’agence, présente la démarche et l’architecture statique dans son portfolio.',
+    delivery: 'Le site associe des pages d’expertise et de secteur à des prototypes que les visiteurs peuvent essayer. La fiche d’origine détaille la démarche et l’architecture statique du site.',
     internalDemo: 'demonstrations/'
   },
   {
     id: 'bridgegate', name: 'BridgeGate', type: 'prototype', expertise: 'integrations-api', sector: 'industrie-ia-pilotage', cover: 'bridgegate-cover.svg',
     summary: 'Un poste de suivi pour repérer et reprendre les échanges qui échouent entre systèmes.',
     challenge: 'Quand une mise à jour n’arrive pas au système suivant, l’équipe doit identifier l’échec et décider quoi faire.',
-    delivery: 'Jean-Émilien a créé un prototype qui donne du contexte à chaque incident d’intégration et permet d’examiner puis de reprendre un échange en échec.',
+    delivery: 'Le prototype donne du contexte à chaque incident d’intégration. Il permet d’examiner puis de reprendre un échange en échec.',
     demo: 'https://j-massoda.github.io/bridgegate/'
   },
   {
     id: 'eventflow-go', name: 'EventFlow Go', type: 'prototype', expertise: 'integrations-api', sector: 'commerce-operations', cover: 'eventflow-go-cover.svg',
     summary: 'Un parcours d’intégration qui conserve la trace des changements de commande.',
     challenge: 'Une mise à jour de commande doit parvenir aux autres systèmes même si un destinataire est temporairement indisponible.',
-    delivery: 'Jean-Émilien a conçu un prototype autour de la livraison d’événements, de l’observation des erreurs et de la reprise des transmissions.',
+    delivery: 'Le prototype couvre la livraison d’événements, l’observation des erreurs et la reprise des transmissions.',
     demo: 'https://j-massoda.github.io/eventflow-go/'
   },
   {
     id: 'intakedesk', name: 'IntakeDesk', type: 'prototype', expertise: 'automatisation-des-processus', sector: 'services-professionnels', cover: 'intakedesk-cover.svg',
     summary: 'Une file de travail pour qualifier les demandes entrantes avant de démarrer une prestation.',
     challenge: 'Les demandes reçues par plusieurs canaux se perdent facilement avant leur qualification et leur attribution.',
-    delivery: 'Jean-Émilien a prototypé un parcours de réception et de suivi qui rend visibles les informations manquantes et la prochaine action.',
+    delivery: 'Le parcours de réception et de suivi rend visibles les informations manquantes et la prochaine action.',
     demo: 'https://j-massoda.github.io/intake-desk-pluggin/'
   },
   {
     id: 'packetlens', name: 'PacketLens', type: 'prototype', expertise: 'automatisation-des-processus', sector: 'services-professionnels', cover: 'packetlens-cover.svg',
     summary: 'Une revue documentaire qui montre les pièces reçues, manquantes ou encore à valider.',
     challenge: 'Un dossier paraît complet jusqu’au moment où une pièce obligatoire manque ou n’a pas été contrôlée.',
-    delivery: 'Jean-Émilien a construit un prototype de revue qui relie les exigences aux pièces reçues et indique la raison d’un blocage.',
+    delivery: 'Le prototype de revue relie les exigences aux pièces reçues et indique la raison d’un blocage.',
     demo: 'https://j-massoda.github.io/packetlens/'
   },
   {
     id: 'signaldesk', name: 'SignalDesk', type: 'prototype', expertise: 'automatisation-des-processus', sector: 'industrie-ia-pilotage', cover: 'signaldesk-cover.svg',
     summary: 'Une vue commune pour attribuer et suivre les exceptions opérationnelles.',
     challenge: 'Des alertes issues de plusieurs outils deviennent difficiles à traiter quand personne ne sait qui en est responsable.',
-    delivery: 'Jean-Émilien a créé un prototype qui rassemble les exceptions et permet d’associer à chacune un responsable et une prochaine action.',
+    delivery: 'Le prototype rassemble les exceptions et permet d’associer à chacune un responsable et une prochaine action.',
     demo: 'https://j-massoda.github.io/signaldesk/'
   },
   {
     id: 'vendorpulse', name: 'VendorPulse', type: 'prototype', expertise: 'automatisation-des-processus', sector: 'commerce-operations', cover: 'vendorpulse-cover.svg',
     summary: 'Un outil de suivi des commandes en retard ou bloquées chez un fournisseur.',
     challenge: 'Un tableau de bord peut signaler un retard sans aider l’équipe à savoir qui doit agir.',
-    delivery: 'Jean-Émilien a prototypé une file de suivi qui fait remonter les commandes à examiner et aide l’équipe à décider de la relance.',
+    delivery: 'Une file de suivi fait remonter les commandes à examiner et aide l’équipe à décider de la relance.',
     demo: 'https://j-massoda.github.io/vendorpulse-woo-pluggin/'
   },
   {
     id: 'africa-payment-reconciliation-lab', name: 'Africa Payment Reconciliation Lab', type: 'prototype', expertise: 'integrations-api', sector: 'commerce-operations', cover: 'reconlab-cover.svg',
     summary: 'Un banc d’essai pour rapprocher des événements de paiement et des écritures de registre.',
     challenge: 'Les paiements peuvent arriver plusieurs fois, dans un ordre différent ou sans référence directement exploitable.',
-    delivery: 'Jean-Émilien a développé un MVP qui combine webhooks signés, traitement idempotent, rapprochement et revue des exceptions.',
+    delivery: 'Le MVP combine webhooks signés, traitement idempotent, rapprochement et revue des exceptions.',
     demo: 'https://j-massoda.github.io/africa-payment-reconciliation-lab/'
   },
   {
     id: 'ai-agent-security-sandbox', name: 'AI Agent Security Sandbox', type: 'prototype', expertise: 'intelligence-artificielle', sector: 'industrie-ia-pilotage', cover: 'sentinel-cover.svg',
     summary: 'Un environnement interactif pour superviser les actions sensibles d’un agent IA.',
     challenge: 'Une équipe doit comprendre ce qu’un agent peut faire et garder la main sur les actions qui nécessitent une approbation.',
-    delivery: 'Jean-Émilien a construit une démonstration qui combine permissions limitées, validation humaine, traces d’audit et scénarios de récupération.',
+    delivery: 'La démonstration combine permissions limitées, validation humaine, traces d’audit et scénarios de récupération.',
     demo: 'https://j-massoda.github.io/ai-agent-security-sandbox/'
   },
   {
     id: 'developer-productivity-release-intelligence-hub', name: 'Release Intelligence Hub', type: 'prototype', expertise: 'maintenance-evolution', sector: 'industrie-ia-pilotage', cover: 'pulsedeck-dashboard-preview.png',
     summary: 'Une vue interactive reliant déploiements, incidents, santé CI et responsabilités.',
     challenge: 'Les informations sur une mise en production sont souvent réparties entre plusieurs outils et difficiles à lire ensemble.',
-    delivery: 'Jean-Émilien a assemblé un tableau de bord reliant les déploiements aux incidents, aux indicateurs inspirés de DORA et aux équipes responsables.',
+    delivery: 'Le tableau de bord relie les déploiements aux incidents, aux indicateurs inspirés de DORA et aux équipes responsables.',
     demo: 'https://j-massoda.github.io/Developer-Productivity-Release-Intelligence-Hub/'
   },
   {
     id: 'offline-first-sme-operations-suite', name: 'Offline-First SME Operations Suite', type: 'prototype', expertise: 'logiciels-sur-mesure', sector: 'commerce-operations', cover: 'kioskflow-cover.svg',
     summary: 'Une application d’opérations qui accepte des saisies pendant une coupure de réseau.',
     challenge: 'Une équipe doit continuer à travailler sans perdre de données, puis résoudre les conflits à la reconnexion.',
-    delivery: 'Jean-Émilien a développé une PWA avec IndexedDB, service worker, file de synchronisation durable et revue explicite des conflits.',
+    delivery: 'L’application web progressive combine IndexedDB, un service worker, une file de synchronisation durable et une revue explicite des conflits.',
     demo: 'https://j-massoda.github.io/Offline-First-SME-Operations-Suite/'
   },
   {
     id: 'woocommerce-integration-reliability-kit', name: 'WooCommerce Integration Reliability Kit', type: 'prototype', expertise: 'integrations-api', sector: 'commerce-operations', cover: 'relaykit-cover.svg',
     summary: 'Un plugin WooCommerce pour mieux suivre les transmissions de commandes aux prestataires.',
     challenge: 'Un échec d’intégration peut laisser une commande en attente et créer des doublons si les relances manquent de contrôle.',
-    delivery: 'Jean-Émilien a développé un plugin qui réunit requêtes signées, déduplication, reprises limitées et récupération des commandes en échec.',
+    delivery: 'Le plugin réunit requêtes signées, déduplication, reprises limitées et récupération des commandes en échec.',
     demo: 'https://j-massoda.github.io/WooCommerce-Integration-Reliability-Kit/'
   },
   {
@@ -123,85 +123,85 @@ export const projects = [
     cover: 'https://user-images.githubusercontent.com/97313664/185477053-a7ea91b5-e148-4728-8b5b-a5d29b6d9494.png',
     summary: 'Une expérimentation Python et Jupyter sur les données historiques d’Ethereum.',
     challenge: 'Transformer un historique de prix en données utilisables pour évaluer une expérience de prévision à court terme.',
-    delivery: 'Jean-Émilien a travaillé sur la collecte des données, leur préparation et la comparaison des prédictions. L’étude présente un exercice exploratoire de modélisation.'
+    delivery: 'L’étude exploratoire couvre la collecte des données, leur préparation et la comparaison des prédictions.'
   },
   {
     id: 'phenotyping-flow', name: 'Phenotyping Flow', type: 'conception', expertise: 'logiciels-sur-mesure', sector: 'sante-administrative', cover: 'phenotyping-flow-controller.jpg',
     summary: 'Une étude d’interface pour organiser des sessions d’observation et des expériences en laboratoire.',
     challenge: 'Rendre compréhensibles les étapes et états d’un système de contrôle que plusieurs opérateurs doivent utiliser.',
-    delivery: 'Jean-Émilien a conçu une cartographie du parcours et une interface de contrôle en mode sombre. Le portfolio présente les planches de conception et les écrans.'
+    delivery: 'Le travail de conception associe une cartographie du parcours à une interface de contrôle en mode sombre. La fiche d’origine présente les planches et les écrans.'
   },
   {
     id: 'agribusiness', name: 'Agribusiness', type: 'conception', expertise: 'sites-et-commerce', cover: 'agribusiness-cover.jpg',
     summary: 'Un projet d’études de vitrine agricole pour mettre en relation producteurs et acheteurs.',
     challenge: 'Permettre à un visiteur de découvrir les produits de plusieurs producteurs dans un parcours de navigation commun.',
-    delivery: 'Jean-Émilien a construit le frontend du concept et illustré les étapes de découverte des produits.',
+    delivery: 'L’interface du concept illustre les étapes de découverte des produits proposés par différents producteurs.',
     demo: 'https://j-massoda.github.io/Shopping-website/'
   },
   {
     id: 'sneaker-shop', name: 'Sneaker Shop', type: 'conception', expertise: 'sites-et-commerce', sector: 'commerce-operations', cover: 'sneaker-shop-cover.jpg',
     summary: 'Un concept de page de présentation responsive pour une boutique de baskets.',
     challenge: 'Présenter une gamme de produits avec une hiérarchie visuelle qui fonctionne sur mobile comme sur ordinateur.',
-    delivery: 'Jean-Émilien a réalisé une page de présentation et travaillé la composition, la navigation et l’adaptation aux différentes tailles d’écran.',
+    delivery: 'La page de présentation explore la composition, la navigation et l’adaptation aux différentes tailles d’écran.',
     demo: 'https://j-massoda.github.io/Sneaker-shop/'
   },
   {
     id: 'changemap', name: 'ChangeMap', type: 'prototype', expertise: 'automatisation-des-processus', sector: 'ressources-humaines', cover: 'lab-changemap.svg', lab: true,
     summary: 'Un suivi des consignes à mettre à jour après une décision interne.',
     challenge: 'Une consigne a changé, mais ses anciennes versions restent dans les procédures, messages ou outils utilisés par l’équipe.',
-    delivery: 'Jean-Émilien a prototypé un inventaire des points à mettre à jour, de leurs responsables et des vérifications à effectuer.',
+    delivery: 'Le prototype inventorie les points à mettre à jour, leurs responsables et les vérifications à effectuer.',
     demo: 'https://j-massoda.github.io/changemap/'
   },
   {
     id: 'citebid', name: 'Citebid', type: 'prototype', expertise: 'intelligence-artificielle', sector: 'services-professionnels', cover: 'lab-citebid.svg', lab: true,
     summary: 'Un MVP privé pour lire un appel d’offres et structurer la préparation d’une réponse.',
     challenge: 'Les critères d’éligibilité, pièces et échéances peuvent être dispersés dans un dossier de consultation.',
-    delivery: 'Jean-Émilien a créé un MVP pour organiser la lecture et préparer une revue structurée des exigences. Le prototype se découvre dans un pilote guidé.'
+    delivery: 'Le MVP organise la lecture du dossier et la revue des exigences. Un pilote guidé permet de découvrir le prototype.'
   },
   {
     id: 'clientflow', name: 'ClientFlow', type: 'prototype', expertise: 'logiciels-sur-mesure', sector: 'services-professionnels', cover: 'lab-clientflow.svg', lab: true,
     summary: 'Un pilote pour accompagner une demande depuis le premier contact jusqu’au dossier prêt à traiter.',
     challenge: 'Les équipes de services peuvent perdre le fil entre la demande, la collecte des documents et le transfert à un spécialiste.',
-    delivery: 'Jean-Émilien a cadré un parcours de qualification avec des étapes visibles et des critères de passage d’un responsable à l’autre.'
+    delivery: 'Le parcours de qualification rend visibles les étapes et les critères de passage d’un responsable à l’autre.'
   },
   {
     id: 'clinic-operations', name: 'Clinic Operations', type: 'prototype', expertise: 'logiciels-sur-mesure', sector: 'sante-administrative', cover: 'lab-clinic.svg', lab: true,
     summary: 'Un pilote de coordination entre la prise de rendez-vous, l’accueil et le suivi administratif.',
     challenge: 'Les demandes, les arrivées et les tâches de l’équipe peuvent se retrouver dans des files séparées.',
-    delivery: 'Jean-Émilien a décrit un pilote permettant à une clinique de tester le passage de relais entre confirmation, accueil et suivi.'
+    delivery: 'Le pilote décrit un parcours pour tester le passage de relais entre confirmation, accueil et suivi.'
   },
   {
     id: 'invoice-follow-up', name: 'Invoice Follow-up', type: 'prototype', expertise: 'automatisation-des-processus', sector: 'services-professionnels', cover: 'lab-invoice.svg', lab: true,
     summary: 'Un pilote pour retrouver les factures à suivre et la dernière action convenue.',
     challenge: 'Une promesse de règlement peut rester dans la boîte de réception d’un seul collaborateur.',
-    delivery: 'Jean-Émilien a cadré un espace de suivi réunissant les factures ouvertes, le contexte de la relance et la prochaine action.'
+    delivery: 'L’espace de suivi réunit les factures ouvertes, le contexte de la relance et la prochaine action.'
   },
   {
     id: 'knowledgeops', name: 'KnowledgeOps', type: 'prototype', expertise: 'logiciels-sur-mesure', sector: 'ressources-humaines', cover: 'lab-knowledge.svg', lab: true,
     summary: 'Un pilote de recherche interne qui relie chaque réponse à sa source et à son responsable.',
     challenge: 'Une réponse circule dans plusieurs canaux, sans indication de la version à jour ni du propriétaire de la règle.',
-    delivery: 'Jean-Émilien a exploré un parcours de recherche qui aide à trouver la source et à repérer les réponses qui demandent une validation.'
+    delivery: 'Le parcours de recherche aide à retrouver la source d’une réponse et à repérer celles qui demandent une validation.'
   },
   {
     id: 'sourcecheck', name: 'SourceCheck', type: 'prototype', expertise: 'integrations-api', sector: 'services-professionnels', cover: 'lab-sourcecheck.svg', lab: true,
     summary: 'Une comparaison de deux exports CSV pour détecter les données manquantes ou contradictoires.',
     challenge: 'Deux outils peuvent donner des réponses différentes sur le même dossier, sans signaler l’écart.',
-    delivery: 'Jean-Émilien a développé un prototype qui rapproche deux jeux de données et permet de prioriser les différences à examiner.',
+    delivery: 'Le prototype rapproche deux jeux de données et permet de prioriser les écarts à examiner.',
     demo: 'https://j-massoda.github.io/sourcecheck/'
   },
   {
     id: 'workflowfit', name: 'WorkflowFit', type: 'prototype', expertise: 'automatisation-des-processus', sector: 'industrie-ia-pilotage', cover: 'lab-workflowfit.svg', lab: true,
     summary: 'Un prototype pour comparer un parcours existant et un pilote avant de généraliser un changement.',
     challenge: 'Une équipe peut adopter un outil sans connaître le temps que le parcours actuel perd à chaque étape.',
-    delivery: 'Jean-Émilien a construit une démonstration qui enregistre les étapes, compare les délais et aide à choisir le prochain point à tester.',
+    delivery: 'La démonstration enregistre les étapes, compare les délais et aide à choisir le prochain point à tester.',
     demo: 'https://j-massoda.github.io/workflowfit/'
   }
 ];
 
 export const testimonials = [
-  { project: 'bpetale-ltd', person: 'Rosemary Hart', role: 'Fondatrice, BPÉTALE', quote: 'Massoda has been instrumental in structuring our online store, CRM workflows, and business systems, helping connect operational processes into a coherent digital infrastructure.' },
-  { project: 'freshbox-tech-marketplace', person: 'Louis M.', role: 'Fondateur, FreshBox', quote: 'Massoda translated the Freshbox idea into a functional, user-focused system. He delivered practical solutions that let us test the concept with real users.' },
-  { project: 'residences-loumia', person: 'M. Perez', role: 'Responsable, Résidences Loumia', quote: 'Massoda understood our operational needs and implemented practical digital tools that simplified day-to-day management at the residence.' },
-  { project: 'residences-loumia', person: 'M. Pedrel M.', role: 'Direction, Résidences Loumia', quote: 'Dependable and systems-oriented, Massoda helped improve our workflows and brought clarity to how digital tools support the business.' },
-  { project: 'afremit', person: 'M. Mabuti', role: 'Fondateur, Afremit', quote: 'As a co-founder, Massoda helped shape our product thinking and build the initial platform. His technical execution and product focus were essential as we brought the concept online.' }
+  { project: 'bpetale-ltd', person: 'Rosemary Hart', role: 'Fondatrice, BPÉTALE', quote: 'Cet accompagnement a joué un rôle clé dans la structuration de notre boutique en ligne, de nos processus CRM et de nos outils métier. Il nous a aidés à relier nos opérations au sein d’un environnement numérique cohérent.' },
+  { project: 'freshbox-tech-marketplace', person: 'Louis M.', role: 'Fondateur, FreshBox', quote: 'Cette collaboration a donné vie à l’idée de FreshBox en la transformant en un système fonctionnel, pensé pour ses utilisateurs. Les solutions mises en place nous ont permis de tester le concept avec de vrais utilisateurs.' },
+  { project: 'residences-loumia', person: 'M. Perez', role: 'Responsable, Résidences Loumia', quote: 'Nos besoins opérationnels ont été bien compris. Les outils numériques mis en place ont simplifié la gestion quotidienne de la résidence.' },
+  { project: 'residences-loumia', person: 'M. Pedrel M.', role: 'Direction, Résidences Loumia', quote: 'Nous avons apprécié la fiabilité de l’accompagnement et la vision d’ensemble. Cette collaboration nous a aidés à améliorer nos processus et à mieux comprendre comment les outils numériques soutiennent notre activité.' },
+  { project: 'afremit', person: 'M. Mabuti', role: 'Fondateur, Afremit', quote: 'Le travail de cofondation nous a aidés à définir notre vision produit et à construire la première version de la plateforme. La réalisation technique et l’attention portée au produit ont joué un rôle essentiel dans la mise en ligne du concept.' }
 ];

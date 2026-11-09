@@ -257,6 +257,7 @@ test('project catalogue lists distinct case studies with sitemap entries and pre
   for (const id of ids) {
     const project = fs.readFileSync(path.join(dist, 'realisations', id, 'index.html'), 'utf8');
     assert.match(project, /Le travail réalisé/);
+    assert.equal((project.match(/Jean-Émilien Massoda/g) || []).length, 1);
     assert.match(project, /noindex,nofollow/);
     if (sitemap) assert.ok(sitemap.includes('<loc>https://deuxrivesweb.fr/realisations/' + id + '/</loc>'));
   }
@@ -264,6 +265,16 @@ test('project catalogue lists distinct case studies with sitemap entries and pre
     assert.ok(!ids.includes(id));
   }
   assert.match(catalogue, /href="..\/studio\/"/);
+});
+
+test('homepage testimonials use French and credit individual projects', () => {
+  const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
+  const section = homepage.match(/<section[^>]+aria-label="Témoignages">[\s\S]+?<\/section>/)?.[0];
+  assert.ok(section);
+  assert.match(section, /Deux Rives Web/);
+  assert.doesNotMatch(section, /Jean-Émilien|Massoda/);
+  assert.equal((section.match(/<blockquote lang="fr">/g) || []).length, 3);
+  assert.match(section, /Fondatrice, BPÉTALE/);
 });
 
 test('contact services use approved URLs and can be configured independently', () => {

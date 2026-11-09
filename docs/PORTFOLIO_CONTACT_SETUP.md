@@ -4,7 +4,7 @@
 
 - Le catalogue, les filtres et les fiches partagent les données de `scripts/portfolio-data.mjs`.
 - Les fiches d’origine viennent du portfolio public de Jean-Émilien Massoda et de son Business Systems Lab. Les visuels WebP du dossier `assets/realisations/` sont issus de ces fiches. Les prototypes, projets internes et projets présentés par le cofondateur ont des libellés distincts.
-- Avant de fusionner, confirmer l’attribution et la possibilité de réutiliser sur le site de l’agence les visuels et les citations déjà publiés sur le portfolio. Les citations sont reproduites dans leur langue d’origine.
+- Avant de fusionner, confirmer l’attribution et la possibilité de réutiliser sur le site de l’agence les visuels et les citations déjà publiés sur le portfolio. Les témoignages sont présentés en français, à partir des versions du portfolio. L’attribution du témoignage reste celle de son auteur et la contribution au projet figure sur sa fiche.
 - Les démonstrations interactives de Deux Rives Web restent accessibles dans leurs rubriques habituelles. Les fiches proposent aussi des liens vers les démonstrations autonomes existantes lorsqu’une URL figure dans le portfolio source.
 - La production continue à générer le sitemap avec les fiches, tandis que les règles de prépublication conservent `Disallow: /` et `noindex,nofollow`.
 

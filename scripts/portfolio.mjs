@@ -29,7 +29,7 @@ export function createPortfolio({ services, sectors }) {
 
   function quotes(list, base) {
     return list.map(({ project, person, role, quote }) => `<figure class="portfolio-quote">
-      <blockquote lang="en"><p>${escape(quote)}</p></blockquote>
+      <blockquote lang="fr"><p>${escape(quote)}</p></blockquote>
       <figcaption><strong>${escape(person)}</strong><span>${escape(role)}</span>
       <a href="${base}realisations/${project}/">Voir la réalisation <span aria-hidden="true">↗</span></a></figcaption>
     </figure>`).join('');
@@ -51,7 +51,7 @@ export function createPortfolio({ services, sectors }) {
       ? `<option value="${id}">${escape(name)}</option>` : '').join('');
     return `<section class="section portfolio-section" id="catalogue-realisations">
       <div class="portfolio-section-head"><div><span class="eyebrow">Explorer les projets</span><h2>Du travail concret, avec son contexte.</h2></div>
-      <p>Parcourez les projets clients, les réalisations internes et les prototypes présentés par notre cofondateur.</p></div>
+      <p>Parcourez les projets clients, les réalisations internes et les prototypes présentés par Deux Rives Web.</p></div>
       <div class="portfolio-controls" data-project-filters hidden>
         <label>Rechercher <input data-project-query type="search" placeholder="Nom, secteur, besoin…"></label>
         <label>Expertise <select data-project-expertise><option value="">Toutes les expertises</option>${expertise}</select></label>
@@ -69,8 +69,8 @@ export function createPortfolio({ services, sectors }) {
     const featured = ['bpetale-ltd', 'freshbox-tech-marketplace', 'residences-loumia', 'bridgegate'];
     return selection(featured.map(id => projects.find(project => project.id === id)), '', 'Des projets à découvrir') +
       `<section class="section portfolio-section" aria-label="Témoignages">
-        <div class="portfolio-section-head"><div><span class="eyebrow">Témoignages</span><h2>Ils ont travaillé avec Jean-Émilien.</h2></div>
-        <p>Retours sur des collaborations présentées par Jean-Émilien Massoda, cofondateur de Deux Rives Web.</p></div>
+        <div class="portfolio-section-head"><div><span class="eyebrow">Témoignages</span><h2>La parole aux clients et partenaires.</h2></div>
+        <p>Deux Rives Web présente leurs retours sur le travail réalisé et l’usage des outils au quotidien.</p></div>
         <div class="portfolio-quotes">${quotes(testimonials.slice(0, 3), '')}</div>
       </section>`;
   }
@@ -81,8 +81,8 @@ export function createPortfolio({ services, sectors }) {
       const expertise = expertiseNames.get(project.expertise);
       const sector = sectorNames.get(project.sector);
       const context = project.type === 'interne'
-        ? 'Projet interne de Deux Rives Web'
-        : 'Projet présenté par Jean-Émilien Massoda, cofondateur de Deux Rives Web';
+        ? 'Projet interne de Deux Rives Web · Contribution de Jean-Émilien Massoda, cofondateur'
+        : 'Contribution de Jean-Émilien Massoda, cofondateur de Deux Rives Web';
       const projectQuotes = testimonials.filter(quote => quote.project === project.id);
       const demoUrl = project.internalDemo ? base + project.internalDemo : project.demo;
       const external = project.live ?? demoUrl;
