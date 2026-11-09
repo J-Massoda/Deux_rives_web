@@ -69,16 +69,49 @@ if (demo) {
 const brief = document.querySelector('[data-brief]');
 if (brief) {
   let content='';
-  brief.addEventListener('submit', e => {
-    e.preventDefault();
-    if (!brief.reportValidity()) return;
-    const data=new FormData(brief);
+  const directSend = brief.querySelector('[data-submit-brief]');
+  const sendStatus = brief.querySelector('[data-send-status]');
+  function prepare(data) {
     content=`Projet pour Deux Rives Web\n\nNom : ${data.get('nom')}\nOrganisation : ${data.get('organisation')}\nE-mail : ${data.get('email')}\nHorizon : ${data.get('horizon')}\nSecteur : ${data.get('secteur') || 'À définir'}\nType de projet : ${data.get('typeProjet') || 'À définir'}\nOutils en place et intégrations : ${data.get('outils') || 'À préciser'}\n\nProcessus à améliorer :\n${data.get('besoin')}\n\nRésultat souhaité :\n${data.get('resultat') || 'À définir ensemble'}\n`;
     const output=brief.querySelector('.brief-output'); output.hidden=false;
     output.querySelector('pre').textContent=content;
     const send=output.querySelector('[data-send]');
     if (send && brief.dataset.email) send.href=`mailto:${encodeURI(brief.dataset.email)}?subject=${encodeURIComponent('Projet — Deux Rives Web')}&body=${encodeURIComponent(content)}`;
+    return output;
+  }
+  brief.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!brief.reportValidity()) return;
+    const output = prepare(new FormData(brief));
     output.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'});
+  });
+  directSend?.addEventListener('click', async () => {
+    if (!brief.reportValidity()) return;
+    const data = new FormData(brief);
+    prepare(data);
+    const payload = new FormData();
+    payload.set('email', data.get('email'));
+    payload.set('message', content);
+    directSend.disabled = true;
+    sendStatus.dataset.error = 'false';
+    sendStatus.textContent = 'Envoi en cours…';
+    try {
+      const response = await fetch(brief.dataset.endpoint, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: payload,
+        signal: AbortSignal.timeout(15000)
+      });
+      const result = await response.json();
+      if (!response.ok || result.ok !== true) throw new Error('Submission failed');
+      sendStatus.textContent = 'Votre demande a bien été transmise.';
+      brief.querySelector('[data-brief-review]').hidden = true;
+      directSend.textContent = 'Demande transmise';
+    } catch {
+      sendStatus.dataset.error = 'true';
+      sendStatus.textContent = 'Nous n’avons pas pu confirmer l’envoi. Réessayez ou utilisez votre messagerie.';
+      directSend.disabled = false;
+    }
   });
   brief.querySelector('[data-copy]')?.addEventListener('click',async()=>{
     const status=brief.querySelector('[data-copy-status]');
@@ -123,3 +156,46 @@ if(priorityCarousel){
 document.querySelectorAll('.mega a').forEach(link=>{
  link.addEventListener('focus',()=>link.closest('.nav-item')?.classList.add('submenu-open'));
 });
+
+const projectCatalogue = document.querySelector('#catalogue-realisations');
+if (projectCatalogue) {
+  const filters = projectCatalogue.querySelector('[data-project-filters]');
+  const query = filters.querySelector('[data-project-query]');
+  const expertise = filters.querySelector('[data-project-expertise]');
+  const sector = filters.querySelector('[data-project-sector]');
+  const type = filters.querySelector('[data-project-type]');
+  const count = projectCatalogue.querySelector('[data-project-count]');
+  const empty = projectCatalogue.querySelector('[data-project-empty]');
+  const normalize = value => value.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase().trim();
+  const entries = [...projectCatalogue.querySelectorAll('[data-project]')]
+    .map(card => ({ card, search: normalize(card.dataset.search) }));
+
+  function filterProjects() {
+    const terms = normalize(query.value).split(/\s+/).filter(Boolean);
+    let visible = 0;
+    for (const { card, search } of entries) {
+      card.hidden = !terms.every(term => search.includes(term)) ||
+        Boolean(expertise.value && card.dataset.expertise !== expertise.value) ||
+        Boolean(sector.value && card.dataset.sector !== sector.value) ||
+        Boolean(type.value && card.dataset.type !== type.value);
+      if (!card.hidden) visible++;
+    }
+    count.textContent = visible + (visible === 1 ? ' projet' : ' projets');
+    empty.hidden = visible !== 0;
+  }
+
+  query.addEventListener('input', filterProjects);
+  expertise.addEventListener('change', filterProjects);
+  sector.addEventListener('change', filterProjects);
+  type.addEventListener('change', filterProjects);
+  filters.querySelector('[data-project-reset]').addEventListener('click', () => {
+    query.value = '';
+    expertise.value = '';
+    sector.value = '';
+    type.value = '';
+    filterProjects();
+    query.focus();
+  });
+  filters.hidden = false;
+  filterProjects();
+}

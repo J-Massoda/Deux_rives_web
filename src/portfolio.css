@@ -1,0 +1,186 @@
+.portfolio-section {
+  border-top: 1px solid #dedfd7;
+}
+.portfolio-section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.25rem 2.25rem;
+  margin-bottom: 1.75rem;
+}
+.portfolio-section-head h2,
+.portfolio-case h1 {
+  margin: .45rem 0 0;
+}
+.portfolio-section-head p {
+  margin: 0;
+  max-width: 36ch;
+}
+.portfolio-grid,
+.portfolio-quotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 255px), 1fr));
+  gap: 1rem;
+}
+.portfolio-card,
+.portfolio-quote {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #dedfd7;
+  border-radius: 14px;
+}
+.portfolio-card a {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  text-decoration: none;
+}
+.portfolio-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 13px 13px 0 0;
+  background: #e9eae4;
+}
+.portfolio-card-copy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+}
+.portfolio-card h3 {
+  margin: .55rem 0 .45rem;
+  overflow-wrap: anywhere;
+}
+.portfolio-card p {
+  margin: 0 0 1rem;
+}
+.portfolio-label,
+.portfolio-credit {
+  color: #44534a;
+  font-size: .85rem;
+}
+.portfolio-link {
+  color: #254637;
+  font-weight: 700;
+  text-underline-offset: .22em;
+}
+.portfolio-card .portfolio-link {
+  margin-top: auto;
+}
+.portfolio-card a:hover .portfolio-link {
+  text-decoration: underline;
+}
+.portfolio-controls {
+  display: grid;
+  grid-template-columns: minmax(12rem, 2fr) repeat(3, minmax(0, 1fr)) auto;
+  gap: .75rem;
+  align-items: end;
+  padding: 1rem;
+  background: #efefe7;
+  border-radius: 14px;
+}
+.portfolio-controls label {
+  display: grid;
+  gap: .3rem;
+  font-size: .9rem;
+  font-weight: 700;
+}
+.portfolio-controls input,
+.portfolio-controls select {
+  min-width: 0;
+  min-height: 46px;
+  padding: .55rem .65rem;
+  color: inherit;
+  background: #fff;
+  border: 1px solid #a8aea2;
+  border-radius: 6px;
+  font: inherit;
+}
+.portfolio-controls[hidden],
+.portfolio-card[hidden] {
+  display: none;
+}
+.portfolio-count {
+  margin: 1rem 0;
+}
+.portfolio-case {
+  max-width: 1400px;
+  margin-inline: auto;
+}
+.portfolio-case-header {
+  margin: 2rem 0;
+}
+.portfolio-lead {
+  max-width: 58ch;
+  font-size: 1.18rem;
+}
+.portfolio-case-cover {
+  margin: 0;
+  background: #e8ebe4;
+  border-radius: 16px;
+}
+.portfolio-case-cover img {
+  display: block;
+  width: 100%;
+  max-height: 560px;
+  object-fit: contain;
+  border-radius: inherit;
+}
+.portfolio-case-body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 3rem;
+  margin: 2.5rem 0;
+}
+.portfolio-case-body h2 {
+  margin: .4rem 0;
+}
+.portfolio-actions,
+.portfolio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .65rem;
+}
+.portfolio-tags a {
+  padding: .35rem .65rem;
+  border: 1px solid #a8aea2;
+  border-radius: 100px;
+}
+.portfolio-case-quotes {
+  margin-top: 3rem;
+}
+.portfolio-quote {
+  margin: 0;
+  padding: 1.25rem;
+}
+.portfolio-quote blockquote {
+  margin: 0 0 1rem;
+}
+.portfolio-quote figcaption > * {
+  display: block;
+}
+.portfolio-quote figcaption a {
+  margin-top: .35rem;
+}
+.consultation-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem 1.5rem;
+}
+.consultation-panel p {
+  max-width: 54ch;
+}
+.brief-send-status[data-error="true"] {
+  color: #9c241a;
+}
+@media (max-width: 1000px) {
+  .portfolio-controls {grid-template-columns: repeat(2, minmax(0, 1fr))}
+}
+@media (max-width: 580px) {
+  .portfolio-controls, .portfolio-case-body {grid-template-columns: 1fr}
+  .portfolio-section-head {align-items: start; flex-direction: column}
+}
