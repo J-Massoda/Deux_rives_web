@@ -184,3 +184,84 @@
   .portfolio-controls, .portfolio-case-body {grid-template-columns: 1fr}
   .portfolio-section-head {align-items: start; flex-direction: column}
 }
+
+#catalogue-realisations,
+#consultation,
+#brief-projet {
+  scroll-margin-top: 7rem;
+}
+.portfolio-group + .portfolio-group {
+  margin-top: 2.5rem;
+}
+.portfolio-group > h3 {
+  margin: 0 0 1rem;
+}
+.portfolio-card h4 {
+  margin: .55rem 0 .45rem;
+  font-size: 1.1rem;
+  overflow-wrap: anywhere;
+}
+.portfolio-evidence {
+  margin: 0 0 2rem;
+}
+.portfolio-evidence > p {
+  max-width: 72ch;
+}
+.portfolio-proof {
+  max-width: 900px;
+  margin: 1.25rem 0;
+}
+.portfolio-proof img {
+  display: block;
+  width: 100%;
+  border: 1px solid #dedfd7;
+  border-radius: 12px;
+}
+.portfolio-proof figcaption {
+  margin-top: .5rem;
+  color: #44534a;
+  font-size: .9rem;
+}
+.stock-example {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #cddbd0;
+  border-radius: 12px;
+}
+.stock-example header {
+  display: grid;
+  gap: .3rem;
+  padding: .85rem 1rem;
+  background: #e7eee7;
+}
+.stock-example table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.stock-example :is(th, td) {
+  padding: .6rem clamp(.45rem, 2vw, 1rem);
+  border-top: 1px solid #dedfd7;
+}
+.stock-example td {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.portfolio-flow {
+  max-width: 68ch;
+  padding-inline-start: 1.4em;
+}
+.portfolio-flow li + li {
+  margin-top: .45rem;
+}
+.contact-entry .portfolio-actions {
+  margin-top: 1rem;
+}
+.brief-optional {
+  margin-bottom: .8rem;
+}
+.brief-optional summary {
+  cursor: pointer;
+  margin-bottom: .75rem;
+  font-weight: 700;
+}

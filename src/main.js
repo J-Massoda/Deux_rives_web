@@ -167,6 +167,7 @@ if (projectCatalogue) {
   const count = projectCatalogue.querySelector('[data-project-count]');
   const empty = projectCatalogue.querySelector('[data-project-empty]');
   const normalize = value => value.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase().trim();
+  const groups = [...projectCatalogue.querySelectorAll('[data-project-group]')];
   const entries = [...projectCatalogue.querySelectorAll('[data-project]')]
     .map(card => ({ card, search: normalize(card.dataset.search) }));
 
@@ -180,6 +181,7 @@ if (projectCatalogue) {
         Boolean(type.value && card.dataset.type !== type.value);
       if (!card.hidden) visible++;
     }
+    for (const group of groups) group.hidden = !group.querySelector('[data-project]:not([hidden])');
     count.textContent = visible + (visible === 1 ? ' projet' : ' projets');
     empty.hidden = visible !== 0;
   }

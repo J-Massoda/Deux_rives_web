@@ -30,11 +30,10 @@ export function refineTrustContent(route,page){
  if(parts[0]==='studio'&&parts.length===2)body=body.replace('Fiche de conception · données fictives','Fiche de conception · démonstration interactive · données fictives');
  if(parts[0]==='applications'&&parts.length===2)body=body.replace(/(<h1>)/,'<p class="demo-status">Démonstration interactive · données fictives</p>$1');
  if(route==='contact/'){
-  body=body.replace('<section class="section contact-layout">',`<section class="section contact-entry"><span class="eyebrow">Paris, France</span><h2>Votre projet commence par un échange.</h2><p>Écrivez à <a href="mailto:services@deuxrivesweb.fr">services@deuxrivesweb.fr</a> ou préparez votre message ci-dessous. Vous pourrez le relire, le copier ou l’ouvrir dans votre messagerie avant de l’envoyer.</p></section><section class="section contact-layout">`);
+  body=body.replace('<section class="section consultation-panel"',`<section class="section contact-entry"><span class="eyebrow">Paris, France</span><h2>Deux façons de nous parler de votre projet.</h2><p>Choisissez un échange de vive voix ou préparez une courte description de votre besoin.</p><div class="portfolio-actions"><a class="button button-accent" href="#brief-projet">Préparer mon brief</a><a class="button button-outline" href="#consultation">Planifier un échange</a></div></section><section class="section consultation-panel"`);
   body=body.replace('<h4>Votre brief est prêt</h4>','<h4>Votre message est prêt à être relu</h4><p data-brief-review>Il n’a pas encore été envoyé. Relisez le brief, puis choisissez l’une des options ci-dessous.</p>');
   body=body.replace('<button type="button" data-download>','<button type="button" data-copy>Copier le message</button><span data-copy-status role="status"></span><button type="button" data-download>');
   body=body.replace('Ouvrir ma messagerie','Ouvrir ma messagerie pour envoyer');
-  body=body.replace('organisation" autocomplete="organization" required','organisation" autocomplete="organization"');
   body=body.replace('name="email" type="email" autocomplete="email" required','name="email" type="email" autocomplete="email" required maxlength="254"');
  }
  return {...page,body};

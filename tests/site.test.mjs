@@ -252,6 +252,7 @@ test('project catalogue lists distinct case studies with sitemap entries and pre
   assert.equal(new Set(ids).size, ids.length);
   assert.equal((catalogue.match(/data-project data-type=/g) || []).length, ids.length);
   assert.match(catalogue, /data-project-sector/);
+  assert.ok(catalogue.indexOf('<h3>Projets clients</h3>') < catalogue.indexOf('<h3>Prototypes et pilotes</h3>'));
   const sitemapPath = path.join(dist, 'sitemap.xml');
   const sitemap = fs.existsSync(sitemapPath) ? fs.readFileSync(sitemapPath, 'utf8') : '';
   for (const id of ids) {
@@ -269,6 +270,7 @@ test('project catalogue lists distinct case studies with sitemap entries and pre
 
 test('homepage testimonials use French and credit individual projects', () => {
   const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
+  assert.ok(homepage.indexOf('Trois projets clients à découvrir') < homepage.indexOf('id="priority-products"'));
   const section = homepage.match(/<section[^>]+aria-label="Témoignages">[\s\S]+?<\/section>/)?.[0];
   assert.ok(section);
   assert.match(section, /Deux Rives Web/);
@@ -278,6 +280,9 @@ test('homepage testimonials use French and credit individual projects', () => {
 });
 
 test('contact services use approved URLs and can be configured independently', () => {
+  const page = fs.readFileSync(path.join(dist, 'contact/index.html'), 'utf8');
+  assert.ok(page.indexOf('id="consultation"') < page.indexOf('id="brief-projet"'));
+  assert.match(page, /<details class="brief-optional">/);
   const bookingUrl = 'https://calendar.app.google/example';
   assert.deepEqual(contactSettings({}), { endpoint: '', bookingUrl: '' });
   assert.deepEqual(contactSettings({ GOOGLE_BOOKING_URL: bookingUrl }), { endpoint: '', bookingUrl });

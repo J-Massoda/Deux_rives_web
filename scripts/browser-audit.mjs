@@ -70,7 +70,7 @@ try{
   await page.waitForTimeout(150);
   const header=await page.locator('.header').evaluate(e=>({top:e.getBoundingClientRect().top,scrolled:e.classList.contains('is-scrolled')}));
   if(!header.scrolled || Math.abs(header.top)>15) failures.push('sticky header morph failed at '+viewport.width);
-  if(viewport.width>=1151){
+  if(viewport.width>=1241){
    await page.evaluate(()=>window.scrollTo(0,0));
    await page.locator('.nav-toggle').first().click();
    const bounds=await page.locator('.mega').first().evaluate(e=>({left:e.getBoundingClientRect().left,right:e.getBoundingClientRect().right}));

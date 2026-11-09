@@ -1,3 +1,4 @@
+import {arrowUpRight as arrow} from './icons.mjs';
 import { projects, projectTypes, testimonials } from './portfolio-data.mjs';
 
 const escape = value => String(value).replace(/[&<>"']/g, char => ({
@@ -11,7 +12,7 @@ export function createPortfolio({ services, sectors }) {
   const expertiseNames = new Map(services.map(({id, title}) => [id, title]));
   const sectorNames = new Map(sectors.map(({id, title}) => [id, title]));
 
-  function card(project, base) {
+  function card(project, base, heading = 'h3') {
     const expertise = expertiseNames.get(project.expertise);
     const sector = sectorNames.get(project.sector);
     const tags = [project.name, project.summary, expertise, sector, projectTypes[project.type]].filter(Boolean).join(' ');
@@ -20,8 +21,8 @@ export function createPortfolio({ services, sectors }) {
         <img src="${escape(coverUrl(project, base))}" alt="" loading="lazy" decoding="async">
         <div class="portfolio-card-copy">
           <span class="portfolio-label">${escape(projectTypes[project.type])} · ${escape(expertise)}</span>
-          <h3>${escape(project.name)}</h3><p>${escape(project.summary)}</p>
-          <span class="portfolio-link">Voir le projet <span aria-hidden="true">↗</span></span>
+          <${heading}>${escape(project.name)}</${heading}><p>${escape(project.summary)}</p>
+          <span class="portfolio-link">Voir le projet ${arrow}</span>
         </div>
       </a>
     </article>`;
@@ -31,7 +32,7 @@ export function createPortfolio({ services, sectors }) {
     return list.map(({ project, person, role, quote }) => `<figure class="portfolio-quote">
       <blockquote lang="fr"><p>${escape(quote)}</p></blockquote>
       <figcaption><strong>${escape(person)}</strong><span>${escape(role)}</span>
-      <a href="${base}realisations/${project}/">Voir la réalisation <span aria-hidden="true">↗</span></a></figcaption>
+      <a href="${base}realisations/${project}/">Voir la réalisation ${arrow}</a></figcaption>
     </figure>`).join('');
   }
 
@@ -39,7 +40,7 @@ export function createPortfolio({ services, sectors }) {
     if (!list.length) return '';
     return `<section class="section portfolio-section" aria-label="${escape(title)}">
       <div class="portfolio-section-head"><div><span class="eyebrow">Réalisations</span><h2>${escape(title)}</h2></div>
-      <a class="portfolio-link" href="${base}realisations/">Voir toutes les réalisations <span aria-hidden="true">↗</span></a></div>
+      <a class="portfolio-link" href="${base}realisations/">Voir toutes les réalisations ${arrow}</a></div>
       <div class="portfolio-grid">${list.map(project => card(project, base)).join('')}</div>
     </section>`;
   }
@@ -49,6 +50,11 @@ export function createPortfolio({ services, sectors }) {
     const expertise = Array.from(expertiseNames, ([id, name]) => `<option value="${id}">${escape(name)}</option>`).join('');
     const sectors = Array.from(sectorNames, ([id, name]) => projects.some(project => project.sector === id)
       ? `<option value="${id}">${escape(name)}</option>` : '').join('');
+    const groups = [
+      ['Projets clients', ['client']],
+      ['Prototypes et pilotes', ['prototype']],
+      ['Projets internes et études de conception', ['interne', 'conception']]
+    ];
     return `<section class="section portfolio-section" id="catalogue-realisations">
       <div class="portfolio-section-head"><div><span class="eyebrow">Explorer les projets</span><h2>Du travail concret, avec son contexte.</h2></div>
       <p>Parcourez les projets clients, les réalisations internes et les prototypes présentés par Deux Rives Web.</p></div>
@@ -60,19 +66,55 @@ export function createPortfolio({ services, sectors }) {
         <button type="button" class="button button-outline" data-project-reset>Réinitialiser</button>
       </div>
       <p class="portfolio-count" data-project-count role="status">${projects.length} projets</p>
-      <div class="portfolio-grid">${projects.map(project => card(project, '../')).join('')}</div>
+      ${groups.map(([label, types]) => `<section class="portfolio-group" data-project-group>
+        <h3>${label}</h3>
+        <div class="portfolio-grid">${projects.filter(project => types.includes(project.type)).map(project => card(project, '../', 'h4')).join('')}</div>
+      </section>`).join('')}
       <p data-project-empty hidden>Aucun projet ne correspond à cette recherche.</p>
     </section>`;
   }
 
   function homepage() {
-    const featured = ['bpetale-ltd', 'freshbox-tech-marketplace', 'residences-loumia', 'bridgegate'];
-    return selection(featured.map(id => projects.find(project => project.id === id)), '', 'Des projets à découvrir') +
+    return selection(projects.filter(project => project.type === 'client'), '', 'Trois projets clients à découvrir') +
       `<section class="section portfolio-section" aria-label="Témoignages">
         <div class="portfolio-section-head"><div><span class="eyebrow">Témoignages</span><h2>La parole aux clients et partenaires.</h2></div>
         <p>Deux Rives Web présente leurs retours sur le travail réalisé et l’usage des outils au quotidien.</p></div>
         <div class="portfolio-quotes">${quotes(testimonials.slice(0, 3), '')}</div>
       </section>`;
+  }
+
+  function projectEvidence(project, base) {
+    const evidence = project.evidence;
+    if (!evidence) return '';
+    const visual = evidence.image
+      ? `<figure class="portfolio-proof">
+        <img src="${base}assets/realisations/${escape(evidence.image)}" alt="${escape(evidence.alt)}" loading="lazy" decoding="async">
+        <figcaption>${escape(evidence.caption)}</figcaption>
+      </figure>`
+      : evidence.inventoryExample ? `<figure class="portfolio-proof">
+        <div class="stock-example">
+          <header><span class="eyebrow">BPÉTALE Operations</span><strong>Suivi d’une matière première</strong></header>
+          <table>
+            <thead><tr><th scope="col">Mouvement</th><th scope="col">Quantité</th><th scope="col">Solde</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Stock initial</th><td></td><td>1 200 g</td></tr>
+              <tr><th scope="row">Réception fournisseur</th><td>+800 g</td><td>2 000 g</td></tr>
+              <tr><th scope="row">Lot de production</th><td>−300 g</td><td>1 700 g</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figcaption>Vue illustrative avec des données fictives. Le tableau montre les mouvements d’une seule matière.</figcaption>
+      </figure>
+      <ol class="portfolio-flow">
+        <li>Le personnel enregistre la quantité reçue et sa référence fournisseur.</li>
+        <li>En production, l’équipe choisit une recette approuvée et saisit le poids du lot. L’aperçu montre les quantités à déduire avant validation.</li>
+        <li>À la validation, l’outil déduit les matières du stock et ajoute les mouvements à l’historique.</li>
+      </ol>` : '';
+    return `<section class="portfolio-evidence">
+      <span class="eyebrow">03 · En pratique</span>
+      <h2>${escape(evidence.title)}</h2><p>${escape(project.outcome)}</p>
+      ${visual}
+    </section>`;
   }
 
   function build(write) {
@@ -110,10 +152,11 @@ export function createPortfolio({ services, sectors }) {
             <section><span class="eyebrow">01 · Contexte</span><h2>Le besoin</h2><p>${escape(project.challenge)}</p></section>
             <section><span class="eyebrow">02 · Contribution</span><h2>Le travail réalisé</h2><p>${escape(project.delivery)}</p></section>
           </div>
+          ${projectEvidence(project, base)}
           <div class="portfolio-actions">
-            ${external ? `<a class="button button-accent" href="${escape(external)}">${externalLabel} ↗</a>` : ''}
-            <a class="button button-outline" href="${originalUrl(project)}">Voir la fiche d’origine ↗</a>
-            <a class="portfolio-link" href="${base}contact/">Parler d’un projet similaire ↗</a>
+            ${external ? `<a class="button button-accent" href="${escape(external)}">${externalLabel} ${arrow}</a>` : ''}
+            <a class="button button-outline" href="${originalUrl(project)}">Voir la fiche d’origine ${arrow}</a>
+            <a class="portfolio-link" href="${base}contact/">Parler d’un projet similaire ${arrow}</a>
           </div>
           ${projectQuotes.length ? `<section class="portfolio-case-quotes"><h2>Témoignages sur ce projet</h2><div class="portfolio-quotes">${quotes(projectQuotes, base)}</div></section>` : ''}
         </article>`

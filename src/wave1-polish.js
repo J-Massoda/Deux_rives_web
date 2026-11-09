@@ -17,7 +17,7 @@
       if(!event.relatedTarget || !item.contains(event.relatedTarget))closeItem(item);
     });
     item.addEventListener('pointerleave',()=>{
-      if(window.matchMedia('(min-width:1151px)').matches && !item.contains(document.activeElement))closeItem(item);
+      if(window.matchMedia('(min-width:1241px)').matches && !item.contains(document.activeElement))closeItem(item);
     });
   });
   const slides=document.querySelector('#priority-products');

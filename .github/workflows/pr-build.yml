@@ -19,8 +19,8 @@ jobs:
         run: npm test
       - name: Verify generated image assets
         run: |
-          test -f 'dist/assets/ChatGPT Image Oct 26, 2026, 11_22_38 AM-1.webp'
-          test -f 'dist/assets/ChatGPT Image Oct 26, 2026, 11_22_54 AM-10.webp'
+          test -f 'dist/assets/equipe-collaboration-bord-de-seine.webp'
+          test -f 'dist/assets/clientflow-pro-tableau-commercial.webp'
           test -f dist/index.html
           grep -q 'ClientFlow Pro' dist/index.html
           grep -q 'dr-hero' dist/index.html

@@ -11,6 +11,8 @@ export const projects = [
     summary: 'Une plateforme WordPress multimarque et un espace de suivi des matières premières.',
     challenge: 'Faire cohabiter les activités beauté, voyages et confiserie sur un même site tout en laissant à chaque marque un parcours clair.',
     delivery: 'La refonte WordPress et WooCommerce clarifie le parcours de chaque marque. Un espace dédié permet de suivre les livraisons, les recettes et la production. La fiche d’origine détaille les vérifications de la mise à niveau locale.',
+    outcome: 'L’espace de gestion donne aux équipes un historique commun des livraisons, des déductions de production et des corrections. Les fonctions décrites ici correspondent à la version vérifiée en local. Le lien public montre la boutique et les univers de la marque.',
+    evidence: { title: 'De la réception au lot de production', inventoryExample: true },
     live: 'https://bpetale.com/'
   },
   {
@@ -18,6 +20,8 @@ export const projects = [
     summary: 'Un catalogue B2B pour découvrir des solutions et orienter les demandes vers les bons partenaires.',
     challenge: 'Donner une structure commune à des offres, catégories et partenaires différents pour que les acheteurs puissent s’orienter.',
     delivery: 'Une architecture WooCommerce et WCFM structure le catalogue partenaires. Le parcours de navigation et le méga-menu aident les acheteurs à retrouver les offres par catégorie.',
+    outcome: 'Le rendu personnalisé a rétabli la navigation par catégories sans modification des fichiers du thème. Le catalogue donne aux marques partenaires des pages structurées que les acheteurs peuvent parcourir.',
+    evidence: { title: 'Un catalogue structuré pour les partenaires', image: 'freshbox-catalogue.webp', alt: 'Écran du projet FreshBox Tech Marketplace', caption: 'Capture de la plateforme présentée dans la fiche d’origine de FreshBox Tech Marketplace.' },
     live: 'https://market.freshboxtech.com/'
   },
   {
@@ -25,6 +29,8 @@ export const projects = [
     summary: 'Une expérience web pour présenter plusieurs résidences et faciliter leur découverte.',
     challenge: 'Présenter une offre d’hébergement répartie entre plusieurs résidences avec une navigation et une identité communes.',
     delivery: 'La conception UI/UX et les interactions GSAP accompagnent la découverte des propriétés. La fiche d’origine présente les écrans conçus pour ce parcours.',
+    outcome: 'La correction du défilement GSAP a rétabli la navigation entre les pages. Les formulaires de demande orientent les messages vers la boîte de la résidence sélectionnée.',
+    evidence: { title: 'Une expérience commune pour plusieurs résidences', image: 'loumia-parcours.webp', alt: 'Aperçu du parcours de découverte des Résidences Loumia', caption: 'Capture du parcours présenté dans la fiche d’origine de Résidences Loumia.' },
     live: 'https://residencesloumia.com/'
   },
   {
