@@ -1,11 +1,10 @@
 import {arrowUpRight as arrow} from './icons.mjs';
-import { projects, projectTypes, testimonials } from './portfolio-data.mjs';
+import { clientDemos, projects, projectTypes, testimonials } from './portfolio-data.mjs';
 
 const escape = value => String(value).replace(/[&<>"']/g, char => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 }[char]));
 const projectUrl = (project, base) => base + 'realisations/' + project.id + '/';
-const originalUrl = project => 'https://massoda.me/' + (project.lab ? 'business-systems-lab/' : 'portfolio/') + project.id + '.html';
 function coverUrl(project, base) {
   if (project.cover.startsWith('https:')) return project.cover;
   if (project.type === 'produit') return base + 'assets/' + project.cover;
@@ -80,8 +79,30 @@ export function createPortfolio({ services, sectors }) {
     </section>`;
   }
 
+  function clientPreviews(base) {
+    return `<section class="section portfolio-section" id="demos-clients" aria-labelledby="demos-clients-title">
+      <div class="portfolio-section-head">
+        <h2 id="demos-clients-title">Sites de démonstration</h2>
+        <p>Explorez les sites et les parcours que nous proposons lors de nos échanges avec des clients.</p>
+      </div>
+      <div class="portfolio-grid">
+        ${clientDemos.map(demo => `<article class="portfolio-card">
+          <a href="${escape(demo.live)}">
+            <img src="${base}assets/realisations/${demo.id}.webp" alt="" loading="lazy" decoding="async">
+            <div class="portfolio-card-copy">
+              <span class="portfolio-label">${escape(demo.category)}</span>
+              <h3>${escape(demo.name)}</h3><p>${escape(demo.summary)}</p>
+              <span class="portfolio-link">Ouvrir la démonstration ${arrow}</span>
+            </div>
+          </a>
+        </article>`).join('')}
+      </div>
+    </section>`;
+  }
+
   function homepage() {
     return selection(projects.filter(project => project.type === 'client'), '', 'Des projets clients à découvrir') +
+      clientPreviews('') +
       `<section class="section portfolio-section" aria-label="Témoignages">
         <div class="portfolio-section-head"><div><span class="eyebrow">Témoignages</span><h2>La parole aux clients et partenaires.</h2></div>
         <p>Deux Rives Web présente leurs retours sur le travail réalisé et l’usage des outils au quotidien.</p></div>
@@ -147,7 +168,6 @@ export function createPortfolio({ services, sectors }) {
           ${projectEvidence(project, base)}
           <div class="portfolio-actions">
             ${external ? `<a class="button button-accent" href="${escape(external)}">${externalLabel} ${arrow}</a>` : ''}
-            ${isProduct ? '' : `<a class="button button-outline" href="${originalUrl(project)}">Voir la fiche d’origine ${arrow}</a>`}
             <a class="portfolio-link" href="${base}contact/">Parler d’un projet similaire ${arrow}</a>
           </div>
           ${projectQuotes.length ? `<section class="portfolio-case-quotes"><h2>Témoignages sur ce projet</h2><div class="portfolio-quotes">${quotes(projectQuotes, base)}</div></section>` : ''}
@@ -157,7 +177,7 @@ export function createPortfolio({ services, sectors }) {
   }
 
   return {
-    build, catalogue, homepage,
+    build, catalogue, clientPreviews, homepage,
     forExpertise: id => selection(projects.filter(project => project.expertise === id).slice(0, 4), '../../', 'Projets liés à cette expertise'),
     forSector: id => selection(projects.filter(project => project.sector === id).slice(0, 4), '../../', 'Projets liés à ce secteur')
   };

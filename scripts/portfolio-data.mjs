@@ -207,3 +207,27 @@ export const testimonials = [
   { project: 'residences-loumia', person: 'M. Pedrel M.', role: 'Direction, Résidences Loumia', quote: 'Nous avons apprécié la fiabilité de l’accompagnement et la vision d’ensemble. Cette collaboration nous a aidés à améliorer nos processus et à mieux comprendre comment les outils numériques soutiennent notre activité.' },
   { project: 'afremit', person: 'M. Mabuti', role: 'Fondateur, Afremit', quote: 'Le travail de cofondation nous a aidés à définir notre vision produit et à construire la première version de la plateforme. La réalisation technique et l’attention portée au produit ont joué un rôle essentiel dans la mise en ligne du concept.' }
 ];
+
+export const clientDemos = [
+  {
+    id: 'lumen-clinic',
+    name: 'Lumen Clinic',
+    category: 'Santé · Site de clinique',
+    summary: 'Une visite de clinique fictive, de la présentation des soins à la prise de rendez-vous.',
+    live: 'https://deux-rives-web.github.io/Lumen-clinic/'
+  },
+  {
+    id: 'librairie-du-temple',
+    name: 'Librairie du Temple',
+    category: 'Commerce · Librairie en ligne',
+    summary: 'Une proposition de modernisation centrée sur les rayons, les nouveautés et la recherche de livres.',
+    live: 'https://j-massoda.github.io/librairie-du-temple-demo/'
+  },
+  {
+    id: 'librairie-du-temple-marais',
+    name: 'Les Rayons du Marais',
+    category: 'Commerce · Librairie en ligne',
+    summary: 'Une seconde direction visuelle pour la Librairie du Temple, avec un catalogue interactif.',
+    live: 'https://j-massoda.github.io/librairie-du-temple-marais-demo/'
+  }
+];
