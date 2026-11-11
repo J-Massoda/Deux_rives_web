@@ -41,13 +41,6 @@ export const projects = [
     demo: 'https://j-massoda.github.io/Afremit/'
   },
   {
-    id: 'deux-rives-web', name: 'Deux Rives Web', type: 'interne', expertise: 'sites-et-commerce', sector: 'services-professionnels', cover: 'deux-rives-web-preview.jpg',
-    summary: 'Un site d’ingénierie logicielle avec des scénarios métier accessibles dans le navigateur.',
-    challenge: 'Aider un décideur à comprendre une offre de développement sur mesure avant son premier échange avec l’équipe.',
-    delivery: 'Le site associe des pages d’expertise et de secteur à des prototypes que les visiteurs peuvent essayer. La fiche d’origine détaille la démarche et l’architecture statique du site.',
-    internalDemo: 'demonstrations/'
-  },
-  {
     id: 'bridgegate', name: 'BridgeGate', type: 'prototype', expertise: 'integrations-api', sector: 'industrie-ia-pilotage', cover: 'bridgegate-cover.svg',
     summary: 'Un poste de suivi pour repérer et reprendre les échanges qui échouent entre systèmes.',
     challenge: 'Quand une mise à jour n’arrive pas au système suivant, l’équipe doit identifier l’échec et décider quoi faire.',

@@ -1,6 +1,6 @@
 export function contactSettings(env = process.env) {
   const formId = env.FORMSPREE_FORM_ID?.trim() ?? '';
-  const bookingUrl = env.GOOGLE_BOOKING_URL?.trim() ?? '';
+  const bookingUrl = env.GOOGLE_BOOKING_URL?.trim() || 'https://calendar.app.google/sKCVgdHbJ9b6D5NN6';
 
   if (formId && !/^[a-z0-9]+$/i.test(formId)) {
     throw new Error('FORMSPREE_FORM_ID must contain only the Formspree form ID.');

@@ -30,7 +30,7 @@ jobs:
       - name: Build and verify pages
         env:
           PUBLIC_ORIGIN: ${{ steps.pages.outputs.base_url }}
-          GOOGLE_BOOKING_URL: ${{ vars.GOOGLE_BOOKING_URL }}
+          GOOGLE_BOOKING_URL: ${{ vars.GOOGLE_BOOKING_URL || 'https://calendar.app.google/sKCVgdHbJ9b6D5NN6' }}
           FORMSPREE_FORM_ID: ${{ vars.FORMSPREE_FORM_ID }}
         run: npm test
       - name: Upload generated site

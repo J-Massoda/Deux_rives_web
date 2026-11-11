@@ -18,6 +18,6 @@ export default {
     hostAddress: '',
     hostPhone: ''
   },
-  // Search indexing remains off until legal and contact details are complete.
+  // Indexing is enabled only when publishReady is true, the required legal fields are complete and the origin is the production URL.
   publishReady: false
 };
