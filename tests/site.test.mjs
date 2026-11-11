@@ -277,6 +277,7 @@ test('Legal details and contact information use the same business configuration'
   assert.match(privacy, /pendant la relation commerciale, puis 3 ans/);
   assert.match(privacy, /10 ans à compter de la clôture de l’exercice/);
   assert.match(privacy, /https:\/\/www\.cnil\.fr\/fr\/plaintes/);
+  assert.match(privacy, /GitHub enregistre l’adresse IP des visiteurs/);
   assert.match(cookies, /stockage local de votre navigateur/);
 });
 
