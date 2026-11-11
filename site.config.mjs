@@ -1,6 +1,7 @@
 export default {
   brand: 'Deux Rives Web',
   origin: 'https://deuxrivesweb.fr',
+  googleSiteVerification: 'jraO-U6bagwsaZ98wutsGY5AcxtJ_YovAX2gDEtQ_wA',
   location: 'Paris, France',
   socialProfiles: {
     LinkedIn: 'https://www.linkedin.com/company/deuxrivesweb',
