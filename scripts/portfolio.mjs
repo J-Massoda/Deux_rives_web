@@ -46,18 +46,19 @@ export function createPortfolio({ services, sectors }) {
   }
 
   function catalogue() {
-    const types = Object.entries(projectTypes).map(([id, name]) => `<option value="${id}">${escape(name)}</option>`).join('');
+    const availableTypes = Object.entries(projectTypes).filter(([id]) => projects.some(project => project.type === id));
+    const types = availableTypes.map(([id, name]) => `<option value="${id}">${escape(name)}</option>`).join('');
     const expertise = Array.from(expertiseNames, ([id, name]) => `<option value="${id}">${escape(name)}</option>`).join('');
     const sectors = Array.from(sectorNames, ([id, name]) => projects.some(project => project.sector === id)
       ? `<option value="${id}">${escape(name)}</option>` : '').join('');
     const groups = [
       ['Projets clients', ['client']],
       ['Prototypes et pilotes', ['prototype']],
-      ['Projets internes et études de conception', ['interne', 'conception']]
+      ['Études de conception', ['conception']]
     ];
     return `<section class="section portfolio-section" id="catalogue-realisations">
       <div class="portfolio-section-head"><div><span class="eyebrow">Explorer les projets</span><h2>Du travail concret, avec son contexte.</h2></div>
-      <p>Parcourez les projets clients, les réalisations internes et les prototypes présentés par Deux Rives Web.</p></div>
+      <p>Parcourez les projets clients, les prototypes et les études de conception présentés par Deux Rives Web.</p></div>
       <div class="portfolio-controls" data-project-filters hidden>
         <label>Rechercher <input data-project-query type="search" placeholder="Nom, secteur, besoin…"></label>
         <label>Expertise <select data-project-expertise><option value="">Toutes les expertises</option>${expertise}</select></label>

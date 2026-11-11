@@ -4,9 +4,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+import config from '../site.config.mjs';
+import { publicLaunchReady } from '../scripts/launch-readiness.mjs';
 import { projects } from '../scripts/portfolio-data.mjs';
 import { contactSettings } from '../scripts/contact-settings.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const launchReady = publicLaunchReady(config, (process.env.PUBLIC_ORIGIN || config.origin).replace(/\/$/, ''));
 execFileSync(process.execPath,[path.join(root,'scripts/build.mjs')]);
 const dist=path.join(root,'dist');
 const pages=[];
@@ -18,9 +21,10 @@ test('all public page paths and local assets resolve',()=>{
     const html=fs.readFileSync(file,'utf8');
     assert.match(html,/<html lang="(?:fr|en)">/);
     assert.match(html,/<main id="main">/);
-    assert.match(html,/name="robots" content="noindex,nofollow"/);
+    if (launchReady) assert.doesNotMatch(html,/name="robots" content="noindex,nofollow"/);
+    else assert.match(html,/name="robots" content="noindex,nofollow"/);
     for(const [,value] of html.matchAll(/(?:href|src)="([^"]+)"/g)){
-      if(value.startsWith('#')||/^(?:https?:|mailto:|data:)/.test(value))continue;
+      if(value.startsWith('#')||/^(?:https?:|mailto:|tel:|data:)/.test(value))continue;
       const pathname=value.split(/[?#]/)[0];
       if(!pathname)continue;
       let target=path.resolve(path.dirname(file),pathname);
@@ -33,13 +37,19 @@ test('five working demo surfaces carry fictional-data disclosures and distinct s
   const ids=['services-professionnels','batiment-interventions','commerce-operations','education','sante-administrative'];
   for(const id of ids){const html=fs.readFileSync(path.join(dist,'demonstrations',id,'index.html'),'utf8');assert.match(html,new RegExp(`data-demo="${id}"`));assert.match(html,/Données fictives/);assert.match(html,/demo-add/);assert.match(html,/demo-reset/);}
 });
-test('unverified company details remain unpublished and preview is blocked from indexing',()=>{
+test('launch status is consistent with the current legal and origin state',()=>{
   const legal=fs.readFileSync(path.join(dist,'mentions-legales/index.html'),'utf8');
   const contact=fs.readFileSync(path.join(dist,'contact/index.html'),'utf8');
-  assert.match(legal,/À compléter avant publication/);
-  assert.match(contact,/Préparer votre brief/);
-  assert.doesNotMatch(contact,/action="https?:/);
-  assert.match(fs.readFileSync(path.join(dist,'robots.txt'),'utf8'),/Disallow: \/$/m);
+  if (launchReady) {
+    assert.doesNotMatch(legal,/À compléter avant publication|À compléter/);
+    assert.match(fs.readFileSync(path.join(dist,'robots.txt'),'utf8'),/^Allow: \/$/m);
+    assert.match(fs.readFileSync(path.join(dist,'robots.txt'),'utf8'),/Sitemap: https:\/\/deuxrivesweb\.fr\/sitemap\.xml/);
+  } else {
+    assert.doesNotMatch(legal,/À compléter avant publication|À compléter/);
+    assert.match(contact,/Préparer votre brief/);
+    assert.doesNotMatch(contact,/action="https?:/);
+    assert.match(fs.readFileSync(path.join(dist,'robots.txt'),'utf8'),/Disallow: \/$/m);
+  }
 });
 
 test('studio exposes 24 distinct concept pages and clear prototype disclosures',()=>{
@@ -238,7 +248,7 @@ test('Each catalogue entry links to a working application demo',()=>{
 test('Search indexing requires complete launch details and the production origin',async()=>{
  const {publicLaunchReady}=await import('../scripts/launch-readiness.mjs');
  const {default:config}=await import('../site.config.mjs');
- assert.equal(publicLaunchReady(config,config.origin),false);
+ assert.equal(publicLaunchReady(config,config.origin),launchReady);
  const legal=Object.fromEntries(['companyName','legalForm','siren','rcs','registeredAddress','email','publisher','hostName','hostAddress'].map(k=>[k,'confirmed']));
  const complete={...config,publishReady:true,legal};
  assert.equal(publicLaunchReady(complete,config.origin),true);
@@ -259,13 +269,30 @@ test('project catalogue lists distinct case studies with sitemap entries and pre
     const project = fs.readFileSync(path.join(dist, 'realisations', id, 'index.html'), 'utf8');
     assert.match(project, /Le travail réalisé/);
     assert.equal((project.match(/Jean-Émilien Massoda/g) || []).length, 1);
-    assert.match(project, /noindex,nofollow/);
+    if (launchReady) assert.doesNotMatch(project, /noindex,nofollow/);
+    else assert.match(project, /noindex,nofollow/);
     if (sitemap) assert.ok(sitemap.includes('<loc>https://deuxrivesweb.fr/realisations/' + id + '/</loc>'));
   }
   for (const id of ['leads-tracker', 'fashionista-africa', 'mobikumbu']) {
     assert.ok(!ids.includes(id));
   }
   assert.match(catalogue, /href="..\/studio\/"/);
+});
+
+test('when launchReady, sitemap routes resolve without duplicates or internal project links', () => {
+  if (!launchReady) return;
+  const sitemapPath = path.join(dist, 'sitemap.xml');
+  const sitemap = fs.readFileSync(sitemapPath, 'utf8');
+  const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc]) => loc);
+  assert.ok(locs.length > 0);
+  assert.equal(new Set(locs).size, locs.length);
+  for (const loc of locs) {
+    const route = loc.replace(/^https:\/\/deuxrivesweb\.fr/, '').replace(/\/$/, '');
+    if (!route || route === '/sitemap.xml') continue;
+    const htmlPath = path.join(dist, route.replace(/^\//, ''), 'index.html');
+    assert.ok(fs.existsSync(htmlPath), `${loc} does not resolve to a page`);
+    assert.doesNotMatch(loc, /\/realisations\/deux-rives-web\//);
+  }
 });
 
 test('homepage testimonials use French and credit individual projects', () => {
@@ -284,10 +311,10 @@ test('contact services use approved URLs and can be configured independently', (
   assert.ok(page.indexOf('id="consultation"') < page.indexOf('id="brief-projet"'));
   assert.match(page, /<details class="brief-optional">/);
   const bookingUrl = 'https://calendar.app.google/example';
-  assert.deepEqual(contactSettings({}), { endpoint: '', bookingUrl: '' });
+  assert.deepEqual(contactSettings({}), { endpoint: '', bookingUrl: 'https://calendar.app.google/sKCVgdHbJ9b6D5NN6' });
   assert.deepEqual(contactSettings({ GOOGLE_BOOKING_URL: bookingUrl }), { endpoint: '', bookingUrl });
   assert.deepEqual(contactSettings({ FORMSPREE_FORM_ID: 'abc123' }), {
-    endpoint: 'https://formspree.io/f/abc123', bookingUrl: ''
+    endpoint: 'https://formspree.io/f/abc123', bookingUrl: 'https://calendar.app.google/sKCVgdHbJ9b6D5NN6'
   });
   assert.throws(() => contactSettings({ GOOGLE_BOOKING_URL: 'https://other.example/' }));
   assert.throws(() => contactSettings({ FORMSPREE_FORM_ID: 'https://other.example' }));
