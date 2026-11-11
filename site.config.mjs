@@ -2,6 +2,10 @@ export default {
   brand: 'Deux Rives Web',
   origin: 'https://deuxrivesweb.fr',
   location: 'Paris, France',
+  socialProfiles: {
+    LinkedIn: 'https://www.linkedin.com/company/deuxrivesweb',
+    TikTok: 'https://www.tiktok.com/@deux.rives.web'
+  },
   legal: {
     companyName: 'Claude Armand Eboa Ngoupe, entrepreneur individuel (EI)',
     tradeName: 'Deux Rives Web',
