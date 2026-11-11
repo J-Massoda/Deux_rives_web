@@ -6,7 +6,11 @@ const escape = value => String(value).replace(/[&<>"']/g, char => ({
 }[char]));
 const projectUrl = (project, base) => base + 'realisations/' + project.id + '/';
 const originalUrl = project => 'https://massoda.me/' + (project.lab ? 'business-systems-lab/' : 'portfolio/') + project.id + '.html';
-const coverUrl = (project, base) => project.cover.startsWith('https:') ? project.cover : base + 'assets/realisations/' + project.id + '.webp';
+function coverUrl(project, base) {
+  if (project.cover.startsWith('https:')) return project.cover;
+  if (project.type === 'produit') return base + 'assets/' + project.cover;
+  return base + 'assets/realisations/' + project.id + '.webp';
+}
 
 export function createPortfolio({ services, sectors }) {
   const expertiseNames = new Map(services.map(({id, title}) => [id, title]));
@@ -53,12 +57,13 @@ export function createPortfolio({ services, sectors }) {
       ? `<option value="${id}">${escape(name)}</option>` : '').join('');
     const groups = [
       ['Projets clients', ['client']],
+      ['Extensions réutilisables', ['produit']],
       ['Prototypes et pilotes', ['prototype']],
       ['Études de conception', ['conception']]
     ];
     return `<section class="section portfolio-section" id="catalogue-realisations">
       <div class="portfolio-section-head"><div><span class="eyebrow">Explorer les projets</span><h2>Du travail concret, avec son contexte.</h2></div>
-      <p>Parcourez les projets clients, les prototypes et les études de conception présentés par Deux Rives Web.</p></div>
+      <p>Parcourez les projets clients, les extensions réutilisables, les prototypes et les études de conception présentés par Deux Rives Web.</p></div>
       <div class="portfolio-controls" data-project-filters hidden>
         <label>Rechercher <input data-project-query type="search" placeholder="Nom, secteur, besoin…"></label>
         <label>Expertise <select data-project-expertise><option value="">Toutes les expertises</option>${expertise}</select></label>
@@ -76,12 +81,13 @@ export function createPortfolio({ services, sectors }) {
   }
 
   function homepage() {
-    return selection(projects.filter(project => project.type === 'client'), '', 'Trois projets clients à découvrir') +
+    return selection(projects.filter(project => project.type === 'client'), '', 'Des projets clients à découvrir') +
       `<section class="section portfolio-section" aria-label="Témoignages">
         <div class="portfolio-section-head"><div><span class="eyebrow">Témoignages</span><h2>La parole aux clients et partenaires.</h2></div>
         <p>Deux Rives Web présente leurs retours sur le travail réalisé et l’usage des outils au quotidien.</p></div>
         <div class="portfolio-quotes">${quotes(testimonials.slice(0, 3), '')}</div>
-      </section>`;
+      </section>` +
+      selection(projects.filter(project => project.type === 'produit'), '', 'Extensions pour le commerce');
   }
 
   function projectEvidence(project, base) {
@@ -92,25 +98,7 @@ export function createPortfolio({ services, sectors }) {
         <img src="${base}assets/realisations/${escape(evidence.image)}" alt="${escape(evidence.alt)}" loading="lazy" decoding="async">
         <figcaption>${escape(evidence.caption)}</figcaption>
       </figure>`
-      : evidence.inventoryExample ? `<figure class="portfolio-proof">
-        <div class="stock-example">
-          <header><span class="eyebrow">BPÉTALE Operations</span><strong>Suivi d’une matière première</strong></header>
-          <table>
-            <thead><tr><th scope="col">Mouvement</th><th scope="col">Quantité</th><th scope="col">Solde</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Stock initial</th><td></td><td>1 200 g</td></tr>
-              <tr><th scope="row">Réception fournisseur</th><td>+800 g</td><td>2 000 g</td></tr>
-              <tr><th scope="row">Lot de production</th><td>−300 g</td><td>1 700 g</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <figcaption>Vue illustrative avec des données fictives. Le tableau montre les mouvements d’une seule matière.</figcaption>
-      </figure>
-      <ol class="portfolio-flow">
-        <li>Le personnel enregistre la quantité reçue et sa référence fournisseur.</li>
-        <li>En production, l’équipe choisit une recette approuvée et saisit le poids du lot. L’aperçu montre les quantités à déduire avant validation.</li>
-        <li>À la validation, l’outil déduit les matières du stock et ajoute les mouvements à l’historique.</li>
-      </ol>` : '';
+      : '';
     return `<section class="portfolio-evidence">
       <span class="eyebrow">03 · En pratique</span>
       <h2>${escape(evidence.title)}</h2><p>${escape(project.outcome)}</p>
@@ -123,7 +111,10 @@ export function createPortfolio({ services, sectors }) {
       const base = '../../';
       const expertise = expertiseNames.get(project.expertise);
       const sector = sectorNames.get(project.sector);
-      const context = project.type === 'interne'
+      const isProduct = project.type === 'produit';
+      const context = isProduct
+        ? 'Extension Deux Rives Web · Intégration sur demande'
+        : project.type === 'interne'
         ? 'Projet interne de Deux Rives Web · Contribution de Jean-Émilien Massoda, cofondateur'
         : 'Contribution de Jean-Émilien Massoda, cofondateur de Deux Rives Web';
       const projectQuotes = testimonials.filter(quote => quote.project === project.id);
@@ -156,7 +147,7 @@ export function createPortfolio({ services, sectors }) {
           ${projectEvidence(project, base)}
           <div class="portfolio-actions">
             ${external ? `<a class="button button-accent" href="${escape(external)}">${externalLabel} ${arrow}</a>` : ''}
-            <a class="button button-outline" href="${originalUrl(project)}">Voir la fiche d’origine ${arrow}</a>
+            ${isProduct ? '' : `<a class="button button-outline" href="${originalUrl(project)}">Voir la fiche d’origine ${arrow}</a>`}
             <a class="portfolio-link" href="${base}contact/">Parler d’un projet similaire ${arrow}</a>
           </div>
           ${projectQuotes.length ? `<section class="portfolio-case-quotes"><h2>Témoignages sur ce projet</h2><div class="portfolio-quotes">${quotes(projectQuotes, base)}</div></section>` : ''}
@@ -167,7 +158,7 @@ export function createPortfolio({ services, sectors }) {
 
   return {
     build, catalogue, homepage,
-    forExpertise: id => selection(projects.filter(project => project.expertise === id).slice(0, 3), '../../', 'Projets liés à cette expertise'),
-    forSector: id => selection(projects.filter(project => project.sector === id).slice(0, 3), '../../', 'Projets liés à ce secteur')
+    forExpertise: id => selection(projects.filter(project => project.expertise === id).slice(0, 4), '../../', 'Projets liés à cette expertise'),
+    forSector: id => selection(projects.filter(project => project.sector === id).slice(0, 4), '../../', 'Projets liés à ce secteur')
   };
 }

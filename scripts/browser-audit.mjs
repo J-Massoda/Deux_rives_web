@@ -50,16 +50,16 @@ try{
   }
   await page.goto(base+'/realisations/',{waitUntil:'domcontentloaded'});
   const projectCards=page.locator('#catalogue-realisations [data-project]:visible');
-  await page.locator('[data-project-query]').fill('bpetale');
+  await page.locator('[data-project-query]').fill('freshbox');
   await page.locator('[data-project-sector]').selectOption('commerce-operations');
   await page.locator('[data-project-type]').selectOption('client');
-  assert.equal(await projectCards.count(),1,'Search and filters should select BPÉTALE');
-  assert.match(await projectCards.first().innerText(),/BPÉTALE/);
+  assert.equal(await projectCards.count(),1,'Search and filters should select FreshBox');
+  assert.match(await projectCards.first().innerText(),/FreshBox/);
   await page.locator('[data-project-expertise]').selectOption('integrations-api');
   assert.ok(await page.locator('[data-project-empty]').isVisible(),'Show the empty state for incompatible filters');
   await page.locator('[data-project-reset]').click();
   assert.equal(await projectCards.count(),projects.length,'Reset should show every project');
-  for(const route of ['/', '/realisations/','/realisations/bpetale-ltd/','/contact/','/regards/','/methode/','/studio/devis-atelier/','/studio/commercepilot/','/applications/clientflow-pro/','/applications/chantierpilot/','/applications/commercepilot/','/applications/docupilot-ai/','/applications/intervention-360/','/applications/factureconnect/','/applications/devis-atelier/','/applications/missiondesk/','/secteurs/transport-logistique/','/regards/facturation-electronique-integration-logiciel-2026-2027/']){
+  for(const route of ['/', '/realisations/','/realisations/freshbox-tech-marketplace/','/contact/','/regards/','/methode/','/studio/devis-atelier/','/studio/commercepilot/','/applications/clientflow-pro/','/applications/chantierpilot/','/applications/commercepilot/','/applications/docupilot-ai/','/applications/intervention-360/','/applications/factureconnect/','/applications/devis-atelier/','/applications/missiondesk/','/secteurs/transport-logistique/','/regards/facturation-electronique-integration-logiciel-2026-2027/']){
     await page.goto(base+route,{waitUntil:'domcontentloaded'});
     await page.evaluate(async()=>{for(let y=0;y<document.documentElement.scrollHeight;y+=640){window.scrollTo(0,y);await new Promise(r=>setTimeout(r,20))}window.scrollTo(0,0)});await page.waitForTimeout(520);
     if(route==='/')await page.screenshot({path:path.join(imagesDir,'home-'+viewport.width+'.png'),fullPage:true});

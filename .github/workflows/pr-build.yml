@@ -24,3 +24,7 @@ jobs:
           test -f dist/index.html
           grep -q 'ClientFlow Pro' dist/index.html
           grep -q 'dr-hero' dist/index.html
+      - name: Verify non-production builds block indexing
+        env:
+          PUBLIC_ORIGIN: https://preview.example.test
+        run: npm test

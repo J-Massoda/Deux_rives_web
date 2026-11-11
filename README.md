@@ -37,15 +37,15 @@ Les fichiers destinés à l'hébergement se trouvent dans `dist/`. Pour modifier
 | `src/styles.css` | Couleurs, typographie, mise en page et animations. |
 | `src/main.js` | Menu, démonstrations et génération du brief. |
 | `scripts/generate-art.mjs` | Source des neuf graphiques SVG originaux. |
-| `site.config.mjs` | Domaine projeté, coordonnées et données légales à vérifier. |
+| `site.config.mjs` | Domaine de production, coordonnées et mentions légales. |
 
-## Avant toute publication
+## Mise en production
 
-Cette version est destinée à une revue locale. Le domaine `deuxrivesweb.fr` est un projet d'achat, et les coordonnées de la société ne sont pas encore fournies. La configuration laisse `publishReady: false`; les pages indiquent `noindex,nofollow` et `robots.txt` bloque l'indexation. Les mentions légales affichent les champs à compléter. Ne mettez `publishReady: true` qu'après avoir vérifié **tous** les champs de `legal`, configuré une adresse e-mail qui reçoit réellement les demandes, relu les textes légaux et confirmé le domaine.
+GitHub Pages publie la branche `main` sur `https://deuxrivesweb.fr`. Le build autorise l’indexation uniquement pour ce domaine, quand `publishReady` et les mentions légales requises sont renseignés. Un build sur une autre origine conserve `Disallow: /` et `noindex,nofollow`.
 
-Les scénarios sont des exemples fictifs. La page Réalisations ne présente aucun client inventé ni résultat chiffré. Lorsqu'un cas client réel peut être publié avec autorisation, ajoutez une étude de cas distincte précisant le rôle de Deux Rives Web et les résultats constatés.
+Suivez le [guide de lancement](docs/LAUNCH_CHECKLIST.md) pour vérifier le domaine, tester la prise de contact et soumettre le sitemap à Google Search Console.
 
-Le site fonctionne sur un hébergement statique tel que GitHub Pages. Les démonstrations actuelles sont des simulations locales : authentification, persistance partagée, notifications, intégrations et envoi de formulaire exigeraient un service serveur séparé. Le générateur de brief n'envoie rien par lui-même. Une évolution possible est GitHub Pages pour le site et des services Cloudflare Workers pour les fonctions serveur.
+Les démonstrations utilisent des scénarios fictifs et fonctionnent localement dans le navigateur. Pour les options de réservation et d’envoi du brief, consultez le [guide de prise de contact](docs/PORTFOLIO_CONTACT_SETUP.md).
 
 ## Parcours de contrôle manuel
 
@@ -54,4 +54,3 @@ Le site fonctionne sur un hébergement statique tel que GitHub Pages. Les démon
 3. Remplissez le brief de contact, générez-le et téléchargez le fichier texte.
 4. Vérifiez les pages sur mobile et avec la préférence de réduction des animations.
 
-La marque et les textes proposés sont une première direction à valider ensemble avant l'achat du domaine et le lancement public.

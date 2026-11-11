@@ -1,4 +1,4 @@
-name: Preview on GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -32,7 +32,9 @@ jobs:
           PUBLIC_ORIGIN: ${{ steps.pages.outputs.base_url }}
           GOOGLE_BOOKING_URL: ${{ vars.GOOGLE_BOOKING_URL || 'https://calendar.app.google/sKCVgdHbJ9b6D5NN6' }}
           FORMSPREE_FORM_ID: ${{ vars.FORMSPREE_FORM_ID }}
-        run: npm test
+        run: |
+          test -n "$PUBLIC_ORIGIN"
+          npm test
       - name: Upload generated site
         uses: actions/upload-pages-artifact@v4
         with:
@@ -48,6 +50,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Publish preview
+      - name: Publish site
         id: deployment
         uses: actions/deploy-pages@v4
