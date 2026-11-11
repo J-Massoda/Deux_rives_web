@@ -1,5 +1,6 @@
 export const projectTypes = {
   client: 'Projet client',
+  produit: 'Extension réutilisable',
   interne: 'Projet interne',
   prototype: 'Prototype ou pilote',
   conception: 'Étude de conception'
@@ -7,13 +8,16 @@ export const projectTypes = {
 
 export const projects = [
   {
-    id: 'bpetale-ltd', name: 'BPÉTALE', type: 'client', expertise: 'sites-et-commerce', sector: 'commerce-operations', cover: 'bpetale-natural-essence-cover.jpg',
-    summary: 'Une plateforme WordPress multimarque et un espace de suivi des matières premières.',
-    challenge: 'Faire cohabiter les activités beauté, voyages et confiserie sur un même site tout en laissant à chaque marque un parcours clair.',
-    delivery: 'La refonte WordPress et WooCommerce clarifie le parcours de chaque marque. Un espace dédié permet de suivre les livraisons, les recettes et la production. La fiche d’origine détaille les vérifications de la mise à niveau locale.',
-    outcome: 'L’espace de gestion donne aux équipes un historique commun des livraisons, des déductions de production et des corrections. Les fonctions décrites ici correspondent à la version vérifiée en local. Le lien public montre la boutique et les univers de la marque.',
-    evidence: { title: 'De la réception au lot de production', inventoryExample: true },
-    live: 'https://bpetale.com/'
+    id: 'vitrine-woocommerce', name: 'Extension vitrine WooCommerce', type: 'produit', expertise: 'sites-et-commerce', sector: 'commerce-operations', cover: 'commerce-equipe-catalogue.webp',
+    summary: 'Une vitrine de catalogue pour organiser les collections, les fiches et les demandes clients dans WordPress.',
+    challenge: 'Un commerce doit présenter ses gammes clairement et permettre à son équipe de tenir le catalogue à jour.',
+    delivery: 'L’extension organise les catégories et les fiches autour du catalogue WooCommerce. Deux Rives Web étudie les adaptations selon le thème, le catalogue et le parcours du client.'
+  },
+  {
+    id: 'extension-inventaire', name: 'Extension de gestion des stocks', type: 'produit', expertise: 'sites-et-commerce', sector: 'commerce-operations', cover: 'commerce-inventaire-entrepot.webp',
+    summary: 'Un module pour consulter les quantités et retrouver l’historique des mouvements de stock.',
+    challenge: 'Une équipe doit savoir combien d’articles sont disponibles et comprendre l’origine d’un écart.',
+    delivery: 'Le module réunit les quantités, les entrées, les sorties et les corrections. Deux Rives Web étudie l’intégration selon les références et les outils déjà en place.'
   },
   {
     id: 'freshbox-tech-marketplace', name: 'FreshBox Tech Marketplace', type: 'client', expertise: 'sites-et-commerce', sector: 'commerce-operations', cover: 'freshbox-tech-cover.jpg',
@@ -198,7 +202,6 @@ export const projects = [
 ];
 
 export const testimonials = [
-  { project: 'bpetale-ltd', person: 'Rosemary Hart', role: 'Fondatrice, BPÉTALE', quote: 'Cet accompagnement a joué un rôle clé dans la structuration de notre boutique en ligne, de nos processus CRM et de nos outils métier. Il nous a aidés à relier nos opérations au sein d’un environnement numérique cohérent.' },
   { project: 'freshbox-tech-marketplace', person: 'Louis M.', role: 'Fondateur, FreshBox', quote: 'Cette collaboration a donné vie à l’idée de FreshBox en la transformant en un système fonctionnel, pensé pour ses utilisateurs. Les solutions mises en place nous ont permis de tester le concept avec de vrais utilisateurs.' },
   { project: 'residences-loumia', person: 'M. Perez', role: 'Responsable, Résidences Loumia', quote: 'Nos besoins opérationnels ont été bien compris. Les outils numériques mis en place ont simplifié la gestion quotidienne de la résidence.' },
   { project: 'residences-loumia', person: 'M. Pedrel M.', role: 'Direction, Résidences Loumia', quote: 'Nous avons apprécié la fiabilité de l’accompagnement et la vision d’ensemble. Cette collaboration nous a aidés à améliorer nos processus et à mieux comprendre comment les outils numériques soutiennent notre activité.' },

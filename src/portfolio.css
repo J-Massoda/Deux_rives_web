@@ -222,38 +222,6 @@
   color: #44534a;
   font-size: .9rem;
 }
-.stock-example {
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid #cddbd0;
-  border-radius: 12px;
-}
-.stock-example header {
-  display: grid;
-  gap: .3rem;
-  padding: .85rem 1rem;
-  background: #e7eee7;
-}
-.stock-example table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
-.stock-example :is(th, td) {
-  padding: .6rem clamp(.45rem, 2vw, 1rem);
-  border-top: 1px solid #dedfd7;
-}
-.stock-example td {
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-.portfolio-flow {
-  max-width: 68ch;
-  padding-inline-start: 1.4em;
-}
-.portfolio-flow li + li {
-  margin-top: .45rem;
-}
 .contact-entry .portfolio-actions {
   margin-top: 1rem;
 }

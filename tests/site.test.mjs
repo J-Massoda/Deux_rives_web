@@ -9,7 +9,8 @@ import { publicLaunchReady } from '../scripts/launch-readiness.mjs';
 import { projects } from '../scripts/portfolio-data.mjs';
 import { contactSettings } from '../scripts/contact-settings.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const launchReady = publicLaunchReady(config, (process.env.PUBLIC_ORIGIN || config.origin).replace(/\/$/, ''));
+const origin = (process.env.PUBLIC_ORIGIN || config.origin).replace(/\/$/, '');
+const launchReady = publicLaunchReady(config, origin);
 execFileSync(process.execPath,[path.join(root,'scripts/build.mjs')]);
 const dist=path.join(root,'dist');
 const pages=[];
@@ -245,15 +246,39 @@ test('Each catalogue entry links to a working application demo',()=>{
  const html=fs.readFileSync(path.join(dist,'studio',dir.name,'index.html'),'utf8');assert.ok(html.includes('../../applications/'+dir.name+'/'),dir.name);}
 });
 
-test('Search indexing requires complete launch details and the production origin',async()=>{
- const {publicLaunchReady}=await import('../scripts/launch-readiness.mjs');
- const {default:config}=await import('../site.config.mjs');
- assert.equal(publicLaunchReady(config,config.origin),launchReady);
- const legal=Object.fromEntries(['companyName','legalForm','siren','rcs','registeredAddress','email','publisher','hostName','hostAddress'].map(k=>[k,'confirmed']));
- const complete={...config,publishReady:true,legal};
- assert.equal(publicLaunchReady(complete,config.origin),true);
- assert.equal(publicLaunchReady(complete,'https://preview.example.test'),false);
- assert.equal(publicLaunchReady({...complete,legal:{...legal,siren:''}},config.origin),false);
+test('Search indexing requires complete launch details and the production origin', () => {
+  assert.equal(publicLaunchReady(config, config.origin), true);
+  assert.equal(publicLaunchReady(config, 'https://preview.example.test'), false);
+  assert.equal(publicLaunchReady({ ...config, publishReady: false }, config.origin), false);
+  for (const key of ['siren', 'registration', 'phone', 'hostPhone']) {
+    const incomplete = { ...config, legal: { ...config.legal, [key]: '' } };
+    assert.equal(publicLaunchReady(incomplete, config.origin), false, key);
+  }
+});
+
+test('Legal details and contact information use the same business configuration', () => {
+  const readPage = route => fs.readFileSync(path.join(dist, route, 'index.html'), 'utf8');
+  const legal = readPage('mentions-legales');
+  const privacy = readPage('confidentialite');
+  const cookies = readPage('cookies');
+  assert.match(legal, /Claude Armand Eboa Ngoupe, entrepreneur individuel/);
+  assert.match(legal, /132070814/);
+  assert.match(legal, /16 rue Auguste Daix, 94260 Fresnes/);
+  assert.match(legal, /Registre national des entreprises/);
+  assert.match(legal, /TVA non applicable, art\. 293 B du CGI/);
+  assert.match(legal, /GitHub, Inc\./);
+  assert.match(legal, /Téléphone de l’hébergeur/);
+  assert.doesNotMatch(legal, /Capital social|Immatriculation RCS|Numéro de TVA/);
+  for (const route of ['', 'contact', 'mentions-legales']) {
+    assert.ok(readPage(route).includes(config.legal.phone), route);
+    assert.ok(readPage(route).includes('tel:' + config.legal.phone.replace(/\s/g, '')), route);
+  }
+  assert.match(privacy, /3 ans à compter du dernier échange/);
+  assert.match(privacy, /pendant la relation commerciale, puis 3 ans/);
+  assert.match(privacy, /10 ans à compter de la clôture de l’exercice/);
+  assert.match(privacy, /https:\/\/www\.cnil\.fr\/fr\/plaintes/);
+  assert.match(privacy, /GitHub enregistre l’adresse IP des visiteurs/);
+  assert.match(cookies, /stockage local de votre navigateur/);
 });
 
 test('project catalogue lists distinct case studies with sitemap entries and preserves the launch gate', () => {
@@ -268,7 +293,12 @@ test('project catalogue lists distinct case studies with sitemap entries and pre
   for (const id of ids) {
     const project = fs.readFileSync(path.join(dist, 'realisations', id, 'index.html'), 'utf8');
     assert.match(project, /Le travail réalisé/);
-    assert.equal((project.match(/Jean-Émilien Massoda/g) || []).length, 1);
+    if (projects.find(entry => entry.id === id).type === 'produit') {
+      assert.match(project, /Extension Deux Rives Web · Intégration sur demande/);
+      assert.doesNotMatch(project, /Voir la fiche d’origine/);
+    } else {
+      assert.equal((project.match(/Jean-Émilien Massoda/g) || []).length, 1);
+    }
     if (launchReady) assert.doesNotMatch(project, /noindex,nofollow/);
     else assert.match(project, /noindex,nofollow/);
     if (sitemap) assert.ok(sitemap.includes('<loc>https://deuxrivesweb.fr/realisations/' + id + '/</loc>'));
@@ -277,33 +307,44 @@ test('project catalogue lists distinct case studies with sitemap entries and pre
     assert.ok(!ids.includes(id));
   }
   assert.match(catalogue, /href="..\/studio\/"/);
+  assert.match(catalogue, /<h3>Extensions réutilisables<\/h3>/);
+  assert.equal(fs.existsSync(path.join(dist, 'realisations', 'bpetale-ltd')), false);
+  assert.equal(fs.existsSync(path.join(dist, 'assets', 'realisations', 'bpetale-ltd.webp')), false);
 });
 
 test('when launchReady, sitemap routes resolve without duplicates or internal project links', () => {
-  if (!launchReady) return;
   const sitemapPath = path.join(dist, 'sitemap.xml');
+  if (origin !== config.origin) {
+    assert.equal(fs.existsSync(sitemapPath), false);
+    return;
+  }
+  if (!launchReady) return;
   const sitemap = fs.readFileSync(sitemapPath, 'utf8');
   const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc]) => loc);
   assert.ok(locs.length > 0);
   assert.equal(new Set(locs).size, locs.length);
   for (const loc of locs) {
     const route = loc.replace(/^https:\/\/deuxrivesweb\.fr/, '').replace(/\/$/, '');
-    if (!route || route === '/sitemap.xml') continue;
     const htmlPath = path.join(dist, route.replace(/^\//, ''), 'index.html');
     assert.ok(fs.existsSync(htmlPath), `${loc} does not resolve to a page`);
-    assert.doesNotMatch(loc, /\/realisations\/deux-rives-web\//);
+    const html = fs.readFileSync(htmlPath, 'utf8');
+    assert.ok(html.includes('<link rel="canonical" href="' + loc + '">'), loc);
+    assert.doesNotMatch(html, /<meta name="robots" content="noindex/);
+    assert.doesNotMatch(loc, /\/realisations\/(?:deux-rives-web|bpetale-ltd)\//);
   }
 });
 
 test('homepage testimonials use French and credit individual projects', () => {
   const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
-  assert.ok(homepage.indexOf('Trois projets clients à découvrir') < homepage.indexOf('id="priority-products"'));
+  assert.match(homepage, /Des projets clients à découvrir/);
+  assert.ok(homepage.indexOf('Des projets clients à découvrir') < homepage.indexOf('id="priority-products"'));
+  assert.doesNotMatch(homepage, /BPÉTALE|Rosemary Hart/i);
   const section = homepage.match(/<section[^>]+aria-label="Témoignages">[\s\S]+?<\/section>/)?.[0];
   assert.ok(section);
   assert.match(section, /Deux Rives Web/);
   assert.doesNotMatch(section, /Jean-Émilien|Massoda/);
   assert.equal((section.match(/<blockquote lang="fr">/g) || []).length, 3);
-  assert.match(section, /Fondatrice, BPÉTALE/);
+  assert.match(section, /Fondateur, FreshBox/);
 });
 
 test('contact services use approved URLs and can be configured independently', () => {
