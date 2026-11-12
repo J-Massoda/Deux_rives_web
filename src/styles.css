@@ -8,3 +8,33 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
 
 .inline-arrow{display:inline-block;vertical-align:-.15em;flex:none}
+
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.footer-social-link {
+  display: inline-grid;
+  min-width: 44px;
+  min-height: 44px;
+  place-items: center;
+  border: 1px solid #82998a;
+  border-radius: 50%;
+  color: #e9eee7;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+  border-color: #e9eee7;
+  background: #e9eee7;
+  color: #182b21;
+}
+
+.footer-social-link:focus-visible {
+  outline: 2px solid #e9eee7;
+  outline-offset: 3px;
+}
