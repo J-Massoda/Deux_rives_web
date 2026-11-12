@@ -215,19 +215,5 @@ export const clientDemos = [
     category: 'Santé · Site de clinique',
     summary: 'Une visite de clinique fictive, de la présentation des soins à la prise de rendez-vous.',
     live: 'https://deux-rives-web.github.io/Lumen-clinic/'
-  },
-  {
-    id: 'librairie-du-temple',
-    name: 'Librairie du Temple',
-    category: 'Commerce · Librairie en ligne',
-    summary: 'Une proposition de modernisation centrée sur les rayons, les nouveautés et la recherche de livres.',
-    live: 'https://j-massoda.github.io/librairie-du-temple-demo/'
-  },
-  {
-    id: 'librairie-du-temple-marais',
-    name: 'Les Rayons du Marais',
-    category: 'Commerce · Librairie en ligne',
-    summary: 'Une seconde direction visuelle pour la Librairie du Temple, avec un catalogue interactif.',
-    live: 'https://j-massoda.github.io/librairie-du-temple-marais-demo/'
   }
 ];
