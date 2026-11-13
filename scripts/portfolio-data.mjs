@@ -8,13 +8,13 @@ export const projectTypes = {
 
 export const projects = [
   {
-    id: 'vitrine-woocommerce', name: 'Extension vitrine WooCommerce', type: 'produit', expertise: 'sites-et-commerce', sector: 'commerce-operations', cover: 'sector-commerce.svg',
+    id: 'vitrine-woocommerce', name: 'Extension vitrine WooCommerce', type: 'produit', expertise: 'sites-et-commerce', sector: 'commerce-operations', cover: 'commerce-equipe-catalogue.webp',
     summary: 'Une vitrine de catalogue pour organiser les collections, les fiches et les demandes clients dans WordPress.',
     challenge: 'Un commerce doit présenter ses gammes clairement et permettre à son équipe de tenir le catalogue à jour.',
     delivery: 'L’extension organise les catégories et les fiches autour du catalogue WooCommerce. Deux Rives Web étudie les adaptations selon le thème, le catalogue et le parcours du client.'
   },
   {
-    id: 'extension-inventaire', name: 'Extension de gestion des stocks', type: 'produit', expertise: 'sites-et-commerce', sector: 'commerce-operations', cover: 'flow.svg',
+    id: 'extension-inventaire', name: 'Extension de gestion des stocks', type: 'produit', expertise: 'sites-et-commerce', sector: 'commerce-operations', cover: 'commerce-inventaire-entrepot.webp',
     summary: 'Un module pour consulter les quantités et retrouver l’historique des mouvements de stock.',
     challenge: 'Une équipe doit savoir combien d’articles sont disponibles et comprendre l’origine d’un écart.',
     delivery: 'Le module réunit les quantités, les entrées, les sorties et les corrections. Deux Rives Web étudie l’intégration selon les références et les outils déjà en place.'

@@ -21,6 +21,7 @@ const E={
 'maintenance-evolution':['La mise en production n’est pas une fin','La documentation, l’observation des incidents et la maîtrise des dépendances permettent d’améliorer un logiciel sans fragiliser son exploitation.','missiondesk','maintenance']
 };
 const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const img='automatisation-traitement-documentaire.png';
 function sectorSection(id,base){
  const d=S[id];if(!d)return '';
  const [headline,context,stages,project,roles,kind]=d;
@@ -30,7 +31,7 @@ function sectorSection(id,base){
 function serviceSection(id,base){
  const d=E[id];if(!d)return '';
  const [title,context,project,kind]=d;
- return '<section class="dr-narrative dr-narrative--sage"><div class="dr-case-split"><div><span class="eyebrow">Du besoin à l’usage</span><h2>'+safe(title)+'</h2><p>'+safe(context)+'</p><p>Deux Rives Web aborde chaque demande par les flux d’information, les personnes concernées et la qualité du résultat attendu. Les choix techniques sont évalués à partir des contraintes de sécurité, de maintenance, d’intégration et du rythme d’évolution envisagé.</p><a href="'+base+'studio/'+project+'/">Un concept pour illustrer cette approche ↗</a></div><div><img alt="" loading="lazy" src="'+base+'assets/flow.svg"></div></div></section>'+
+ return '<section class="dr-narrative dr-narrative--sage"><div class="dr-case-split"><div><span class="eyebrow">Du besoin à l’usage</span><h2>'+safe(title)+'</h2><p>'+safe(context)+'</p><p>Deux Rives Web aborde chaque demande par les flux d’information, les personnes concernées et la qualité du résultat attendu. Les choix techniques sont évalués à partir des contraintes de sécurité, de maintenance, d’intégration et du rythme d’évolution envisagé.</p><a href="'+base+'studio/'+project+'/">Un concept pour illustrer cette approche ↗</a></div><div><img alt="Illustration éditoriale du travail collaboratif et des systèmes numériques" loading="lazy" src="'+base+'assets/'+img+'"></div></div></section>'+
 '<section class="dr-narrative"><div class="dr-narrative-heading"><span class="eyebrow">Ce que nous préparons</span><div><h2>Des décisions explicites avant le développement.</h2><p>Un atelier de cadrage identifie les parcours prioritaires, les données disponibles, les points de contrôle et les règles d’accès. Le prototype sert à vérifier les hypothèses : la définition du succès doit précéder le choix d’une technologie.</p></div></div><div class="dr-narrative-grid"><article class="dr-narrative-card"><small>01 · Cadrage</small><h3>Observer le processus</h3><p>Comprendre ce qui fonctionne déjà, les exceptions et les conséquences des erreurs.</p></article><article class="dr-narrative-card"><small>02 · Design</small><h3>Valider le parcours</h3><p>Tester l’enchaînement des décisions avec les futurs utilisateurs, sur des cas concrets.</p></article><article class="dr-narrative-card"><small>03 · Livraison</small><h3>Assurer la continuité</h3><p>Prévoir les tests, la documentation, la sécurité et l’amélioration après déploiement.</p></article></div></section>';
 }
 function general(route,base){

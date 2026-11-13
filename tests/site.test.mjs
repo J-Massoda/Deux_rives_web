@@ -365,6 +365,18 @@ test('homepage leads with the interactive workflow, client evidence and Lumen de
   assert.match(homepage, /assets\/realisations\/lumen-desktop\.webp/);
   assert.match(homepage, /assets\/realisations\/lumen-mobile\.webp/);
   assert.doesNotMatch(homepage, /dr-hero-photo|dr-float|photo-story|librairie-du-temple/);
+  assert.match(homepage, /<img src="assets\/commerce-equipe-catalogue\.webp"/);
+  assert.match(homepage, /<img src="assets\/commerce-inventaire-entrepot\.webp"/);
+});
+
+test('standard inner-page heroes use a decorative line illustration', () => {
+  for (const route of ['expertises', 'expertises/logiciels-sur-mesure', 'secteurs', 'demonstrations',
+    'demonstrations/batiment-interventions', 'realisations', 'regards']) {
+    const html = fs.readFileSync(path.join(dist, route, 'index.html'), 'utf8');
+    const hero = html.match(/<section class="subhero dr-subhero">[\s\S]*?<\/section>/)?.[0];
+    assert.ok(hero, route);
+    assert.match(hero, /<div class="subhero-gesture" aria-hidden="true"><img src="[^"]*\/hero-gesture\.svg"[^>]+alt=""/);
+  }
 });
 
 test('homepage testimonials use French and credit individual projects', () => {
