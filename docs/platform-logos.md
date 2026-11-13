@@ -8,10 +8,10 @@ Le bandeau présente des outils et plateformes. Les marques et leurs logos appar
 | WeWeb | [Documentation WeWeb](https://developer.weweb.io/) |
 | GoodBarber | [Kit presse GoodBarber](https://fr.goodbarber.com/press/kit/) |
 | PandaSuite | [Icône fournie par PandaSuite sur l’App Store](https://apps.apple.com/us/app/pandasuite/id1672584663) |
-| Ksaar | [Ressources de marque Ksaar](https://en.ksaar.com/logo-ksaar) |
+| Ksaar | [Documentation de l’intégration Ksaar dans Make](https://apps.make.com/ksaar?fromImt=1) |
 | Axelor, Convertigo | [Axelor Open Suite](https://github.com/axelor/axelor-open-suite) et [Convertigo](https://github.com/convertigo/convertigo) |
 | Bonitasoft | [Logo corporate 2022 par Bonitasoft](https://commons.wikimedia.org/wiki/File:2022_Logo-Bonitasoft.png), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Image affichée sans modification. |
-| FlutterFlow, Xano | [Site de Xano](https://www.xano.com/) et [fiche d’intégration Webflow](https://webflow.com/integrations/xano) |
+| FlutterFlow, Xano | [Site de Xano](https://www.xano.com/) et [fiche Xano sur Clubic](https://www.clubic.com/telecharger-fiche614746-xano.html) |
 | Softr | [Documentation Softr](https://docs.softr.io/) |
 | Tally | [Documentation Tally](https://tally.so/help/form-templates) |
 | Jotform | [Kit de marque Jotform](https://www.jotform.com/resources/) |

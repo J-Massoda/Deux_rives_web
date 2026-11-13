@@ -9,7 +9,7 @@ const logos = [
   ['AWS', 'aws.svg'],
   ['GoodBarber', 'https://portal.ww-cdn.com/portal_static/images/presse/black_symbol_goodbarber.cdccede38736.svg'],
   ['PandaSuite', 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/96/a6/ea/96a6ea96-1e1a-ca2f-ea4e-6d22960dbb22/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/1200x630wa.png'],
-  ['Ksaar', 'https://cdn.prod.website-files.com/61f830c0e555e51ff59c24fb/647f1de9dce10ff1f704b881_Logo%20Ksaar%20transparent.png'],
+  ['Ksaar', 'https://make-cxp-documentation.ams3.digitaloceanspaces.com/apps-center-icons/ksaar.png'],
   ['Axelor', 'axelor.webp'],
   ['Convertigo', 'convertigo.webp'],
   ['Bonitasoft', 'https://upload.wikimedia.org/wikipedia/commons/2/2a/2022_Logo-Bonitasoft.png'],
@@ -25,13 +25,13 @@ const logos = [
   ['n8n', 'n8n.svg'],
   ['Airtable', 'airtable.svg'],
   ['Notion', 'notion.svg'],
-  ['Xano', 'https://cdn.prod.website-files.com/687e8d1b96312cc631cafec7/68dd0245260632638bda5187_xano.png'],
+  ['Xano', 'https://pic.clubic.com/v1/images/2416513/raw'],
   ['Baserow', 'baserow.svg'],
   ['Shopify', 'shopify.svg'],
   ['Gumroad', 'gumroad.svg'],
   ['Stripe Payments', 'stripe.svg'],
   ['Tally', 'https://s3-us-west-2.amazonaws.com/public.notion-static.com/7053b1cc-93fd-4a8b-847c-91b85210754c/Tally_Icon_-_Black_1.png'],
-  ['Jotform', 'https://cdn.jotfor.ms/p/resources/assets/img-min/jf-logo.svg']
+  ['Jotform', 'https://www.jotform.com/resources/assets/logo-nb/jotform-logo-transparent-800x800.png']
 ];
 
 export function platformLogos() {
