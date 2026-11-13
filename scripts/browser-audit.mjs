@@ -67,6 +67,19 @@ try{
   assert.equal(await status.textContent(), 'Reçue');
   assert.equal(await advance.evaluate(button => button === document.activeElement), true);
 
+  const logos = page.locator('.platform-logos');
+  const logoTrack = logos.locator('.platform-logos-track');
+  const toggle = logos.getByRole('button', {name: 'Mettre en pause le défilement des logos'});
+  assert.equal(await logoTrack.evaluate(track => getComputedStyle(track).animationName), 'platform-logos-scroll');
+  await toggle.click();
+  assert.equal(await logoTrack.evaluate(track => getComputedStyle(track).animationPlayState), 'paused');
+  await logos.getByRole('button', {name: 'Reprendre le défilement des logos'}).click();
+  assert.equal(await logoTrack.evaluate(track => getComputedStyle(track).animationPlayState), 'running');
+  await page.emulateMedia({reducedMotion: 'reduce'});
+  assert.equal(await logoTrack.evaluate(track => getComputedStyle(track).animationName), 'none');
+  assert.equal(await toggle.isVisible(), false);
+  await page.emulateMedia({reducedMotion: 'no-preference'});
+
   await page.goto(base+'/realisations/',{waitUntil:'domcontentloaded'});
   const projectCards=page.locator('#catalogue-realisations [data-project]:visible');
   await page.locator('[data-project-query]').fill('freshbox');

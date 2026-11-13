@@ -244,3 +244,16 @@ if (homeWorkflow) {
   });
   homeWorkflow.querySelector('.studio-workflow-actions').hidden = false;
 }
+
+const platformLogos = document.querySelector('.platform-logos');
+if (platformLogos) {
+  const toggle = platformLogos.querySelector('.platform-logos-toggle');
+  platformLogos.setAttribute('data-animated', '');
+  toggle.hidden = false;
+  toggle.addEventListener('click', () => {
+    const paused = platformLogos.toggleAttribute('data-paused');
+    toggle.setAttribute('aria-label', paused
+      ? 'Reprendre le défilement des logos'
+      : 'Mettre en pause le défilement des logos');
+  });
+}

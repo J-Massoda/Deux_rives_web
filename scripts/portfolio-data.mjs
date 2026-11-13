@@ -45,6 +45,16 @@ export const projects = [
     live: 'https://bpetale.com/'
   },
   {
+    id: 'mobikumbu', name: 'Mobi-Kumbu', type: 'client', expertise: 'integrations-api', cover: 'mobikumbu.webp',
+    summary: 'Un service de mobile money avec un canal USSD accessible depuis un téléphone basique.',
+    challenge: 'Permettre aux personnes sans smartphone ou sans connexion mobile fiable d’accéder au service par un code court. Le parcours doit rester lisible sur un petit écran et gérer les limites d’une session USSD.',
+    delivery: 'La contribution a commencé par un MVP USSD indépendant. Dans la version collaborative, elle a couvert les menus USSD, la logique serveur, l’intégration du code court et les échanges avec les API REST de la plateforme. Un autre développeur a pris en charge le portefeuille et les composants bancaires.',
+    outcome: 'Le canal USSD relie une session ouverte par code court aux services de la plateforme. Les API REST permettent l’échange entre les composants. AWS fait partie de l’environnement cloud du projet. Mobi-Kumbu propose aussi une application Android de portefeuille mobile, référencée sur Google Play.',
+    evidence: { title: 'USSD, API REST et environnement AWS' },
+    live: 'https://mobikumbu.com/',
+    android: 'https://play.google.com/store/apps/details?id=com.mobikumbu.customer&hl=fr'
+  },
+  {
     id: 'afremit', name: 'Afremit', type: 'prototype', expertise: 'logiciels-sur-mesure', sector: 'education', cover: 'afremit-cover.svg',
     summary: 'Un pilote pour suivre les demandes de paiement de frais de scolarité à distance.',
     challenge: 'Une famille à l’étranger a besoin de savoir qui traite sa demande, ce qui a été vérifié et où en est le règlement.',

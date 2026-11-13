@@ -1,5 +1,6 @@
 import {arrowUpRight as arrow} from './icons.mjs';
 import { clientDemos, projects, projectTypes, testimonials } from './portfolio-data.mjs';
+import { platformLogos } from './platform-logos.mjs';
 
 const escape = value => String(value).replace(/[&<>"']/g, char => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -39,9 +40,9 @@ export function createPortfolio({ services, sectors }) {
     </figure>`).join('');
   }
 
-  function selection(list, base, title) {
+  function selection(list, base, title, sectionClass = '') {
     if (!list.length) return '';
-    return `<section class="section portfolio-section" aria-label="${escape(title)}">
+    return `<section class="section portfolio-section${sectionClass}" aria-label="${escape(title)}">
       <div class="portfolio-section-head"><div><span class="eyebrow">Réalisations</span><h2>${escape(title)}</h2></div>
       <a class="portfolio-link" href="${base}realisations/">Voir toutes les réalisations ${arrow}</a></div>
       <div class="portfolio-grid">${list.map(project => card(project, base)).join('')}</div>
@@ -145,7 +146,8 @@ export function createPortfolio({ services, sectors }) {
   }
 
   function homepage() {
-    return featuredClient() + featuredDemo() +
+    return featuredClient() + selection(projects.filter(({id}) => id === 'mobikumbu'), '', 'Ingénierie mobile et cloud', ' portfolio-section--featured') +
+      platformLogos() + featuredDemo() +
       `<section class="section portfolio-section" aria-label="Témoignages">
         <div class="portfolio-section-head"><div><span class="eyebrow">Témoignages</span><h2>La parole aux clients et partenaires.</h2></div>
         <p>Deux Rives Web présente leurs retours sur le travail réalisé et l’usage des outils au quotidien.</p></div>
@@ -211,6 +213,7 @@ export function createPortfolio({ services, sectors }) {
           ${projectEvidence(project, base)}
           <div class="portfolio-actions">
             ${external ? `<a class="button button-accent" href="${escape(external)}">${externalLabel} ${arrow}</a>` : ''}
+            ${project.android ? `<a class="button button-outline" href="${escape(project.android)}">Voir l’application sur Google Play ${arrow}</a>` : ''}
             <a class="portfolio-link" href="${base}contact/">Parler d’un projet similaire ${arrow}</a>
           </div>
           ${projectQuotes.length ? `<section class="portfolio-case-quotes"><h2>Témoignages sur ce projet</h2><div class="portfolio-quotes">${quotes(projectQuotes, base)}</div></section>` : ''}
