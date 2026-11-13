@@ -15,20 +15,11 @@ function photo(n,base,eager=false){const x=byId[at(n)];return `<img class="edito
 function story(ns,base,en=false){return `<section class="photo-story" aria-label="${en?'Business contexts':'Contextes métier'}">${ns.map(n=>`<figure>${photo(n,base)}</figure>`).join('')}</section>`;}
 export function applyPhotography(route,page){
  const parts=route.split('/').filter(Boolean),base='../'.repeat(parts.length),id=parts.at(-1);let body=page.body, chosen;
- if(!route){
-  body=body.replace(/<img[^>]+src="assets\/equipe-collaboration-bord-de-seine.png"[^>]*>/,photo(10,'',true));
-  body=body.replace(/(<div class="pv-case-visual">)<img[^>]*>/,(_,open)=>open+photo(13,''));
-  body=body.replace(/(<div class="pv-case-row pv-case-row--reverse"><div class="pv-case-visual">)<img[^>]*>/,(_,open)=>open+photo(14,''));
-  body=body.replace('<div class="dr-value-grid">',story([11],'')+'<div class="dr-value-grid">');
-  body=body.replace('<div class="dr-service-grid">',story([12],'')+'<div class="dr-service-grid">');
-  body=body.replace('<section class="dr-section dr-approach">',story([25],'')+'<section class="dr-section dr-approach">');
-  body=body.replace('assets/paysage-deux-rives-coucher-soleil.png','assets/rencontre-professionnelle-bord-de-seine.png');
-  chosen=10;
- }else{
+ if(route){
   let pair=parts[0]==='secteurs'?sectors[id]:parts[0]==='expertises'?expertise[id]:null;
   if(pair){chosen=pair[0];body=body.replace(/(<div class="subhero-art[^>]*>)<img[^>]*>/,(_,open)=>open+photo(pair[0],base,true));body=body.replace(/(<div class="feature-art">)<img[^>]*>/,(_,open)=>open+photo(pair[1],base));if(id==='commerce-operations')body=body.replace('</section>','</section>'+story([29],base));if(!body.includes(at(pair[1])+'.webp'))body=body.replace('</section>','</section>'+story([pair[1]],base));}
   else {
-   const corporate={'agence/':[24,0],'methode/':[31,37],'strategie-produits/':[28],'expertises/':[23],'secteurs/':[16,17,18],'demonstrations/':[30],'studio/':[20],'realisations/':[19],'regards/':[15],'en/':[10],'en/software-engineering/':[36]};
+   const corporate={'methode/':[31,37],'strategie-produits/':[28],'expertises/':[23],'secteurs/':[16,17,18],'demonstrations/':[30],'studio/':[20],'realisations/':[19],'regards/':[15],'en/':[10],'en/software-engineering/':[36]};
    let ns=corporate[route];
    if((parts[0]==='applications'||parts[0]==='studio')&&apps[id]!==undefined)ns=[apps[id]];
    if(parts[0]==='regards'&&parts.length>1)ns=[/tableur/.test(id)?15:/automat/.test(id)?22:/api/.test(id)?36:/factur/.test(id)?33:/saas/.test(id)?37:/mvp/.test(id)?26:/architecture/.test(id)?38:28];

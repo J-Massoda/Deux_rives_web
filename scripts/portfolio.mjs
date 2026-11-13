@@ -100,9 +100,52 @@ export function createPortfolio({ services, sectors }) {
     </section>`;
   }
 
+  function featuredClient() {
+    const project = projects.find(({id}) => id === 'freshbox-tech-marketplace');
+    const {image, alt} = project.evidence;
+    return `<section class="section studio-case" id="projet-en-vedette" aria-labelledby="studio-case-title">
+      <div class="studio-section-intro">
+        <p class="studio-label">Réalisation client · Commerce B2B</p>
+        <h2 id="studio-case-title">${escape(project.name)}</h2>
+        <p>Des offres de plusieurs partenaires, réunies dans un catalogue facile à parcourir.</p>
+      </div>
+      <div class="studio-case-layout">
+        <figure class="studio-case-screen">
+          <img src="assets/realisations/${escape(image)}" alt="${escape(alt)}" loading="lazy" decoding="async">
+          <figcaption>Capture du catalogue et de sa navigation.</figcaption>
+        </figure>
+        <div>
+          <dl class="studio-case-details">
+            <div><dt>Le besoin</dt><dd>${escape(project.challenge)}</dd></div>
+            <div><dt>La contribution</dt><dd>${escape(project.delivery)}</dd></div>
+            <div><dt>Le résultat</dt><dd>${escape(project.outcome)}</dd></div>
+          </dl>
+          <a class="portfolio-link" href="${projectUrl(project, '')}">Lire l’étude de cas ${arrow}</a>
+          <a class="portfolio-link studio-case-all" href="realisations/">Toutes nos réalisations ${arrow}</a>
+        </div>
+      </div>
+    </section>`;
+  }
+
+  function featuredDemo() {
+    const demo = clientDemos.find(({id}) => id === 'lumen-clinic');
+    if (!demo) return clientPreviews('');
+    return `<section class="section studio-demo" id="demos-clients" aria-labelledby="demos-clients-title">
+      <div class="studio-demo-copy">
+        <p class="studio-label">Site de démonstration · Santé</p>
+        <h2 id="demos-clients-title">${escape(demo.name)}</h2>
+        <p>Explorez le site d’une clinique fictive. Consultez les pages de soins et essayez le parcours de prise de rendez-vous.</p>
+        <a class="dr-btn dr-btn-dark" href="${escape(demo.live)}">Ouvrir la démonstration ${arrow}</a>
+      </div>
+      <figure class="studio-demo-screens">
+        <img src="assets/realisations/lumen-desktop.webp" alt="Page d’accueil de Lumen Clinic sur ordinateur" width="1120" height="720" loading="lazy" decoding="async">
+        <img src="assets/realisations/lumen-mobile.webp" alt="Page d’accueil de Lumen Clinic sur mobile" width="390" height="650" loading="lazy" decoding="async">
+      </figure>
+    </section>`;
+  }
+
   function homepage() {
-    return selection(projects.filter(project => project.type === 'client'), '', 'Des projets clients à découvrir') +
-      clientPreviews('') +
+    return featuredClient() + featuredDemo() +
       `<section class="section portfolio-section" aria-label="Témoignages">
         <div class="portfolio-section-head"><div><span class="eyebrow">Témoignages</span><h2>La parole aux clients et partenaires.</h2></div>
         <p>Deux Rives Web présente leurs retours sur le travail réalisé et l’usage des outils au quotidien.</p></div>

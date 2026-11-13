@@ -220,7 +220,7 @@ test('Performance: editorial images are optimized WebP and referenced by pages',
  const webps=assets.filter(name=>name.endsWith('.webp')&&!name.endsWith('-640.webp'));
  assert.equal(webps.length,59,'all approved editorial assets need optimized variants');
  const home=fs.readFileSync(path.join(dist,'index.html'),'utf8');
- assert.match(home,/equipe-conception-logiciel-paris\.webp/);
+ assert.match(home,/assets\/realisations\/freshbox-catalogue\.webp/);
  assert.ok(!/assets\/[^"']+\.png/.test(home),'homepage must load WebP images');
  for(const file of webps){
   const original=path.join(dist,'assets',file.replace(/\.webp$/,'.png'));
@@ -334,10 +334,21 @@ test('when launchReady, sitemap routes resolve without duplicates or internal pr
   }
 });
 
+test('homepage leads with the interactive workflow, client evidence and Lumen demo', () => {
+  const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
+  const sections = ['data-home-workflow', 'id="projet-en-vedette"', 'id="demos-clients"', 'id="priority-products"'];
+  const positions = sections.map(marker => homepage.indexOf(marker));
+  assert.ok(positions.every((position, index) => position >= 0 && (index === 0 || position > positions[index - 1])));
+  assert.match(homepage, /aria-current="step">Reçue/);
+  assert.match(homepage, /assets\/realisations\/freshbox-catalogue\.webp/);
+  assert.match(homepage, /href="realisations\/freshbox-tech-marketplace\/"/);
+  assert.match(homepage, /assets\/realisations\/lumen-desktop\.webp/);
+  assert.match(homepage, /assets\/realisations\/lumen-mobile\.webp/);
+  assert.doesNotMatch(homepage, /dr-hero-photo|dr-float|photo-story|librairie-du-temple/);
+});
+
 test('homepage testimonials use French and credit individual projects', () => {
   const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
-  assert.match(homepage, /Des projets clients à découvrir/);
-  assert.ok(homepage.indexOf('Des projets clients à découvrir') < homepage.indexOf('id="priority-products"'));
   assert.doesNotMatch(homepage, /BPÉTALE|Rosemary Hart/i);
   const section = homepage.match(/<section[^>]+aria-label="Témoignages">[\s\S]+?<\/section>/)?.[0];
   assert.ok(section);
