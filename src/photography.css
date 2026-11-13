@@ -35,3 +35,22 @@
 .founders .founder-social--pending{opacity:.42;cursor:default}
 @media(max-width:650px){.founder-grid{grid-template-columns:minmax(0,1fr);gap:26px;max-width:440px}.founder-heading{max-width:440px}.founder-caption{padding:24px}.founder-role{left:18px;top:18px}.founder-portrait{aspect-ratio:6/5}}
 @media(prefers-reduced-motion:reduce){.founders .founder-card,.founders .founder-portrait img{transition:none}.founders .founder-card:hover,.founder-card:hover .founder-portrait img{transform:none}}
+
+.sector-media {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: start;
+  gap: 12px;
+  max-width: 1080px;
+}
+.sector-media figure { width: 100%; }
+.sector-media img { background: #e8ede5; }
+.sector-media a { text-decoration: underline; text-underline-offset: .2em; }
+.sector-media .sector-media-video {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .5em;
+  padding-block: .5rem;
+  color: #244c35;
+  font-weight: 700;
+}

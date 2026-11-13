@@ -308,8 +308,11 @@ test('project catalogue lists distinct case studies with sitemap entries and pre
   }
   assert.match(catalogue, /href="..\/studio\/"/);
   assert.match(catalogue, /<h3>Extensions réutilisables<\/h3>/);
-  assert.equal(fs.existsSync(path.join(dist, 'realisations', 'bpetale-ltd')), false);
-  assert.equal(fs.existsSync(path.join(dist, 'assets', 'realisations', 'bpetale-ltd.webp')), false);
+  const bpetale = fs.readFileSync(path.join(dist, 'realisations/bpetale-ltd/index.html'), 'utf8');
+  assert.match(catalogue, /href="..\/realisations\/bpetale-ltd\/"/);
+  assert.match(bpetale, /href="https:\/\/bpetale\.com\/"/);
+  assert.match(bpetale, /assets\/realisations\/bpetale-ltd\.webp/);
+  assert.doesNotMatch(bpetale, /href="https:\/\/(?:www\.)?massoda\.me\//);
 });
 
 test('when launchReady, sitemap routes resolve without duplicates or internal project links', () => {
@@ -330,7 +333,24 @@ test('when launchReady, sitemap routes resolve without duplicates or internal pr
     const html = fs.readFileSync(htmlPath, 'utf8');
     assert.ok(html.includes('<link rel="canonical" href="' + loc + '">'), loc);
     assert.doesNotMatch(html, /<meta name="robots" content="noindex/);
-    assert.doesNotMatch(loc, /\/realisations\/(?:deux-rives-web|bpetale-ltd)\//);
+    assert.doesNotMatch(loc, /\/realisations\/deux-rives-web\//);
+  }
+});
+
+test('sector pages pair workplace photography with optional video links', () => {
+  const media = [
+    ['batiment-interventions', '8961001', '6473959'],
+    ['commerce-operations', '4483942', '4292903'],
+    ['sante-administrative', '4269275', '6755024']
+  ];
+  for (const [sector, photo, video] of media) {
+    const html = fs.readFileSync(path.join(dist, 'secteurs', sector, 'index.html'), 'utf8');
+    const story = html.match(/<section class="photo-story sector-media"[\s\S]+?<\/section>/)?.[0];
+    assert.ok(story, sector);
+    assert.ok(story.includes(`https://images.pexels.com/photos/${photo}/`));
+    assert.match(story, new RegExp(`href="https://www[.]pexels[.]com/video/[^"]+-${video}/"`));
+    assert.doesNotMatch(story, /<iframe|autoplay/);
+    assert.match(html, /class="subhero-art dr-subhero-art sector-hero-ui"/);
   }
 });
 

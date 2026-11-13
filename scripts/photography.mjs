@@ -9,6 +9,43 @@ const sectors={
  'education':[51,62], 'sante-administrative':[59,40], 'transport-logistique':[43,47],
  'immobilier-patrimoine':[48,52], 'tourisme-hotellerie':[57,55], 'ressources-humaines':[49,60], 'industrie-ia-pilotage':[44,46]
 };
+const sectorMedia = {
+ 'batiment-interventions': {
+  photoId: '8961001',
+  photo: 'https://www.pexels.com/photo/person-in-green-and-blue-shirt-holding-white-digital-tablet-8961001/',
+  alt: 'Un intervenant consulte des plans sur une tablette en extérieur.',
+  credit: 'Mikael Blomkvist',
+  video: 'https://www.pexels.com/video/man-using-digital-tablet-6473959/',
+  videoLabel: 'Voir la préparation d’une rénovation'
+ },
+ 'commerce-operations': {
+  photoId: '4483942',
+  photo: 'https://www.pexels.com/photo/photo-of-a-man-scanning-products-in-a-warehouse-4483942/',
+  alt: 'Un opérateur scanne des références dans un entrepôt.',
+  credit: 'Tiger Lily',
+  video: 'https://www.pexels.com/video/man-scanning-the-codes-of-the-stocks-in-the-warehouse-4292903/',
+  videoLabel: 'Voir un contrôle de stock par scan'
+ },
+ 'sante-administrative': {
+  photoId: '4269275',
+  photo: 'https://www.pexels.com/photo/a-receptionist-looking-at-a-tablet-4269275/',
+  alt: 'Une personne à l’accueil d’une clinique consulte une tablette.',
+  credit: 'Cedric Fauntleroy',
+  video: 'https://www.pexels.com/video/patient-in-a-reception-of-a-clinic-6755024/',
+  videoLabel: 'Voir un exemple d’accueil en clinique'
+ }
+};
+
+function sectorMediaStory({photoId, photo, alt, credit, video, videoLabel}) {
+ const cdn = `https://images.pexels.com/photos/${photoId}/pexels-photo-${photoId}.jpeg?auto=compress&amp;cs=tinysrgb`;
+ return `<section class="photo-story sector-media" aria-label="Contexte métier">
+   <figure>
+    <img src="${cdn}&amp;w=1280" srcset="${cdn}&amp;w=640 640w, ${cdn}&amp;w=1280 1280w" sizes="(max-width: 700px) 90vw, 70vw" alt="${alt}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+    <figcaption>Photo d’illustration · <a href="${photo}">${credit} / Pexels</a></figcaption>
+   </figure>
+   <a class="sector-media-video" href="${video}"><span aria-hidden="true">▶</span> ${videoLabel} <small>(Pexels)</small></a>
+ </section>`;
+}
 const expertise={'logiciels-sur-mesure':[20,21],'automatisation-des-processus':[22,23],'sites-et-commerce':[32,35],'integrations-api':[36,38],'maintenance-evolution':[39,30],'intelligence-artificielle':[33,26]};
 const apps={'clientflow-pro':41,'cabinet-os':15,'missiondesk':42,'chantierpilot':13,'intervention-360':45,'devis-atelier':27,'commercepilot':14,'b2b-orderhub':54,'factureconnect':33,'campusflow':62,'eduprogress':51,'clinicdesk':59,'carefollow':40,'fleetcontrol':43,'routeboard':47,'immopilot':48,'propertycare':52,'stayflow':57,'experiencedesk':55,'talentpipeline':49,'teamops':60,'productionlens':46,'docupilot-ai':38,'insightboard':19};
 function photo(n,base,eager=false){const x=byId[at(n)];return `<img class="editorial-photo" src="${base}assets/${x.id}.webp" srcset="${base}assets/${x.id}-640.webp 640w, ${base}assets/${x.id}.webp ${x.width}w" sizes="(max-width: 700px) 100vw, 50vw" width="${x.width}" height="${x.height}" alt="${x.alt}" loading="${eager?'eager':'lazy'}" decoding="async" ${eager?'fetchpriority="high"':''}>`;}
@@ -17,7 +54,10 @@ export function applyPhotography(route,page){
  const parts=route.split('/').filter(Boolean),base='../'.repeat(parts.length),id=parts.at(-1);let body=page.body, chosen;
  if(route){
   let pair=parts[0]==='secteurs'?sectors[id]:parts[0]==='expertises'?expertise[id]:null;
-  if(pair){chosen=pair[0];body=body.replace(/(<div class="subhero-art[^>]*>)<img[^>]*>/,(_,open)=>open+photo(pair[0],base,true));body=body.replace(/(<div class="feature-art">)<img[^>]*>/,(_,open)=>open+photo(pair[1],base));if(id==='commerce-operations')body=body.replace('</section>','</section>'+story([29],base));if(!body.includes(at(pair[1])+'.webp'))body=body.replace('</section>','</section>'+story([pair[1]],base));}
+  const media = parts[0] === 'secteurs' && sectorMedia[id];
+  if(media){
+   body=body.replace('</section>','</section>'+sectorMediaStory(media));
+  }else if(pair){chosen=pair[0];body=body.replace(/(<div class="subhero-art[^>]*>)<img[^>]*>/,(_,open)=>open+photo(pair[0],base,true));body=body.replace(/(<div class="feature-art">)<img[^>]*>/,(_,open)=>open+photo(pair[1],base));if(!body.includes(at(pair[1])+'.webp'))body=body.replace('</section>','</section>'+story([pair[1]],base));}
   else {
    const corporate={'methode/':[31,37],'strategie-produits/':[28],'expertises/':[23],'secteurs/':[16,17,18],'demonstrations/':[30],'studio/':[20],'realisations/':[19],'regards/':[15],'en/':[10],'en/software-engineering/':[36]};
    let ns=corporate[route];
