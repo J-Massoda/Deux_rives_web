@@ -49,6 +49,21 @@ try{
    if(state.width>state.client+14)report.warnings.push('horizontal overflow '+viewport.width+'px: '+route+' '+state.width+'/'+state.client);
   }
   await page.goto(base+'/', {waitUntil:'domcontentloaded'});
+  for (const [selector, asset] of [
+    ['.studio-hero', 'equipe-collaboration-bord-de-seine.webp'],
+    ['.studio-final', 'paysage-deux-rives-coucher-soleil.webp']
+  ]) {
+    const section = page.locator(selector);
+    assert.equal(await section.evaluate(async (element, filename) => {
+      const {backgroundImage, backgroundSize} = getComputedStyle(element);
+      const url = backgroundImage.match(/url\("([^"]+)"\)/)?.[1];
+      if (!url?.endsWith('/assets/' + filename) || !backgroundSize.includes('cover')) return false;
+      const image = new Image();
+      image.src = url;
+      await image.decode();
+      return image.naturalWidth > 0;
+    }, asset), true, `Homepage background ${asset} should load and cover the section at ${viewport.width}px`);
+  }
   const workflow = page.locator('[data-home-workflow]');
   const advance = workflow.locator('[data-workflow-advance]');
   const reset = workflow.locator('[data-workflow-reset]');
