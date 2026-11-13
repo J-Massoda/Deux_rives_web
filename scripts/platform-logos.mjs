@@ -1,7 +1,7 @@
 const logos = [
   ['Codeur.com', 'https://pbs.twimg.com/profile_images/1067045199434653698/IAv3NWoi.jpg'],
   ['Malt', 'malt.svg'],
-  ['WeWeb', 'https://developer.weweb.io/assets/WEWEB-LOGO_SANS_TEXTE.HRyat2aV.png'],
+  ['WeWeb', 'https://storage-cdn.weweb.io/7bb3494d-f11e-4552-841d-4cfb3e9d58db/users-storage/95a794d4/weweb-favicon-black.png', 'https://developer.weweb.io/assets/WEWEB-LOGO_SANS_TEXTE.HRyat2aV.png'],
   ['Webflow', 'webflow.svg'],
   ['WordPress', 'wordpress.svg'],
   ['Wix', 'wix.svg'],
@@ -31,13 +31,13 @@ const logos = [
   ['Gumroad', 'gumroad.svg'],
   ['Stripe Payments', 'stripe.svg'],
   ['Tally', 'https://s3-us-west-2.amazonaws.com/public.notion-static.com/7053b1cc-93fd-4a8b-847c-91b85210754c/Tally_Icon_-_Black_1.png'],
-  ['Jotform', 'https://www.jotform.com/resources/assets/logo-nb/jotform-logo-transparent-800x800.png']
+  ['Jotform', 'jotform.svg']
 ];
 
 export function platformLogos() {
-  const list = duplicate => `<ul class="platform-logos-list"${duplicate ? ' aria-hidden="true"' : ''}>${logos.map(([name, asset]) => {
+  const list = duplicate => `<ul class="platform-logos-list"${duplicate ? ' aria-hidden="true"' : ''}>${logos.map(([name, asset, alternate]) => {
     const source = asset.startsWith('https://') ? asset : 'assets/platforms/' + asset;
-    return `<li><img src="${source}" alt="${duplicate ? '' : name}" width="108" height="34" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li>`;
+    return `<li><img src="${source}" alt="${duplicate ? '' : name}" width="108" height="34" loading="lazy" decoding="async" referrerpolicy="no-referrer"${alternate ? ` data-logo-alternate="${alternate}"` : ''}><span class="platform-logo-fallback" hidden>${name}</span></li>`;
   }).join('')}</ul>`;
   return `<section class="platform-logos" aria-label="Outils et plateformes">
     <div class="platform-logos-window"><div class="platform-logos-track">${list(false)}${list(true)}</div></div>

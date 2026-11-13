@@ -248,6 +248,20 @@ if (homeWorkflow) {
 const platformLogos = document.querySelector('.platform-logos');
 if (platformLogos) {
   const toggle = platformLogos.querySelector('.platform-logos-toggle');
+  for (const logo of platformLogos.querySelectorAll('img')) {
+    function recoverLogo() {
+      const alternate = logo.dataset.logoAlternate;
+      if (alternate) {
+        delete logo.dataset.logoAlternate;
+        logo.src = alternate;
+        return;
+      }
+      logo.hidden = true;
+      logo.nextElementSibling.hidden = false;
+    }
+    logo.addEventListener('error', recoverLogo);
+    if (logo.complete && !logo.naturalWidth) recoverLogo();
+  }
   platformLogos.setAttribute('data-animated', '');
   toggle.hidden = false;
   toggle.addEventListener('click', () => {
@@ -256,4 +270,24 @@ if (platformLogos) {
       ? 'Reprendre le défilement des logos'
       : 'Mettre en pause le défilement des logos');
   });
+}
+
+const featuredCases = document.querySelector('#projet-en-vedette');
+if (featuredCases) {
+  const slides = Array.from(featuredCases.querySelectorAll('[data-case-slide]'));
+  const controls = featuredCases.querySelector('.studio-case-controls');
+  const count = controls.querySelector('[data-case-count]');
+  let active = 0;
+
+  function showCase(index) {
+    active = (index + slides.length) % slides.length;
+    for (const [position, slide] of slides.entries()) slide.hidden = position !== active;
+    count.textContent = (active + 1) + ' / ' + slides.length;
+  }
+
+  for (const button of controls.querySelectorAll('[data-case-step]')) {
+    button.addEventListener('click', () => showCase(active + Number(button.dataset.caseStep)));
+  }
+  showCase(active);
+  controls.hidden = false;
 }

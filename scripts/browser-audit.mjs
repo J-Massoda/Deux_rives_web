@@ -70,6 +70,26 @@ try{
   const logos = page.locator('.platform-logos');
   const logoTrack = logos.locator('.platform-logos-track');
   const toggle = logos.getByRole('button', {name: 'Mettre en pause le défilement des logos'});
+  const cases = page.locator('#projet-en-vedette');
+  const currentCase = cases.locator('[data-case-slide]:visible');
+  const nextCase = cases.getByRole('button', {name: 'Réalisation suivante'});
+  const prevCase = cases.getByRole('button', {name: 'Réalisation précédente'});
+  const caseWidths = [];
+  for (const title of ['FreshBox Tech Marketplace', 'Mobi-Kumbu', 'BPÉTALE']) {
+    assert.equal(await currentCase.count(), 1);
+    assert.equal(await currentCase.getByRole('heading', {level: 2}).textContent(), title);
+    const screenshot = currentCase.locator('img');
+    await screenshot.scrollIntoViewIfNeeded();
+    await screenshot.evaluate(image => image.decode());
+    caseWidths.push((await currentCase.boundingBox()).width);
+    await nextCase.click();
+  }
+  assert.equal(await currentCase.getByRole('heading', {level: 2}).textContent(), 'FreshBox Tech Marketplace');
+  await prevCase.click();
+  assert.equal(await currentCase.getByRole('heading', {level: 2}).textContent(), 'BPÉTALE');
+  await nextCase.click();
+  assert.ok(caseWidths.every(width => width === caseWidths[0]), 'All featured cases use the same width');
+
   assert.equal(await logoTrack.evaluate(track => getComputedStyle(track).animationName), 'platform-logos-scroll');
   await toggle.click();
   assert.equal(await logoTrack.evaluate(track => getComputedStyle(track).animationPlayState), 'paused');
@@ -78,6 +98,23 @@ try{
   await page.emulateMedia({reducedMotion: 'reduce'});
   assert.equal(await logoTrack.evaluate(track => getComputedStyle(track).animationName), 'none');
   assert.equal(await toggle.isVisible(), false);
+  const stripBounds = await logos.evaluate(strip => {
+    const style = getComputedStyle(strip);
+    const items = [...strip.querySelectorAll('ul:not([aria-hidden]) li')];
+    return {
+      borders: [style.borderTopWidth, style.borderBottomWidth],
+      oversized: items.filter(item => {
+        const visual = item.querySelector(':not([hidden])');
+        const outer = item.getBoundingClientRect();
+        const inner = visual.getBoundingClientRect();
+        return inner.width > outer.width || inner.height > outer.height;
+      }).length
+    };
+  });
+  assert.deepEqual(stripBounds, {borders: ['0px', '0px'], oversized: 0});
+  const jotform = logos.getByRole('img', {name: 'Jotform'});
+  await jotform.scrollIntoViewIfNeeded();
+  assert.equal(await jotform.evaluate(image => image.decode().then(() => image.naturalWidth > 0)), true);
   await page.emulateMedia({reducedMotion: 'no-preference'});
 
   await page.goto(base+'/realisations/',{waitUntil:'domcontentloaded'});

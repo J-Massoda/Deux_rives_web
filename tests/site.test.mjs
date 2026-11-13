@@ -220,8 +220,8 @@ test('Performance: editorial images are optimized WebP and referenced by pages',
  const webps=assets.filter(name=>name.endsWith('.webp')&&!name.endsWith('-640.webp'));
  assert.equal(webps.length,59,'all approved editorial assets need optimized variants');
  const home=fs.readFileSync(path.join(dist,'index.html'),'utf8');
- assert.match(home,/assets\/realisations\/freshbox-catalogue\.webp/);
- assert.ok(!/assets\/[^"']+\.png/.test(home),'homepage must load WebP images');
+ assert.match(home,/assets\/realisations\/freshbox-tech-marketplace\.webp/);
+ assert.ok(!/src="(?:\.\.\/)*assets\/[^"']+\.png/.test(home),'local homepage photos must load as WebP');
  for(const file of webps){
   const original=path.join(dist,'assets',file.replace(/\.webp$/,'.png'));
   const optimized=path.join(dist,'assets',file);
@@ -361,7 +361,7 @@ test('homepage leads with the interactive workflow, client evidence and Lumen de
   const positions = sections.map(marker => homepage.indexOf(marker));
   assert.ok(positions.every((position, index) => position >= 0 && (index === 0 || position > positions[index - 1])));
   assert.match(homepage, /aria-current="step">Reçue/);
-  assert.match(homepage, /assets\/realisations\/freshbox-catalogue\.webp/);
+  assert.match(homepage, /assets\/realisations\/freshbox-tech-marketplace\.webp/);
   assert.match(homepage, /href="realisations\/freshbox-tech-marketplace\/"/);
   assert.match(homepage, /assets\/realisations\/lumen-desktop\.webp/);
   assert.match(homepage, /assets\/realisations\/lumen-mobile\.webp/);
@@ -384,6 +384,13 @@ test('Mobi-Kumbu has a homepage card, live preview and Android store link', () =
   const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
   const page = fs.readFileSync(path.join(dist, 'realisations/mobikumbu/index.html'), 'utf8');
   assert.match(homepage, /href="realisations\/mobikumbu\/"/);
+  assert.equal((homepage.match(/href="realisations\/mobikumbu\/"/g) || []).length, 1);
+  const featured = homepage.match(/<section class="section studio-case"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(featured);
+  assert.deepEqual([...featured.matchAll(/id="vedette-([^"]+)" aria-labelledby/g)].map(match => match[1]),
+    ['freshbox-tech-marketplace', 'mobikumbu', 'bpetale-ltd']);
+  assert.equal([...featured.matchAll(/class="studio-case-screen"/g)].length, 3);
+  assert.equal([...featured.matchAll(/<dt>Le résultat<\/dt><dd>[^<]+<\/dd>/g)].length, 3);
   assert.match(page, /USSD, API REST et environnement AWS/);
   assert.match(page, /href="https:\/\/mobikumbu\.com\/">Visiter le site/);
   assert.match(page, /href="https:\/\/play\.google\.com\/store\/apps\/details\?id=com\.mobikumbu\.customer&amp;hl=fr"/);
@@ -403,9 +410,9 @@ test('platform logo list includes all brands and hides the animation copy from a
 
 test('homepage testimonials use French and credit individual projects', () => {
   const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
-  assert.doesNotMatch(homepage, /BPÉTALE|Rosemary Hart/i);
   const section = homepage.match(/<section[^>]+aria-label="Témoignages">[\s\S]+?<\/section>/)?.[0];
   assert.ok(section);
+  assert.doesNotMatch(section, /BPÉTALE|Rosemary Hart/i);
   assert.match(section, /Deux Rives Web/);
   assert.doesNotMatch(section, /Jean-Émilien|Massoda/);
   assert.equal((section.match(/<blockquote lang="fr">/g) || []).length, 3);

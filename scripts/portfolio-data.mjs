@@ -42,6 +42,7 @@ export const projects = [
     summary: 'Un site WordPress qui réunit les activités beauté, voyages et confiserie de BPÉTALE.',
     challenge: 'Présenter trois activités au sein d’un même site et donner à chacune un parcours clair.',
     delivery: 'La refonte WordPress et WooCommerce a structuré les univers de marque et les parcours vers les produits et les services.',
+    outcome: 'Le site regroupe la boutique Natural Essence, les offres de voyages et la gamme Krunchies. Chaque activité dispose de son propre parcours de découverte.',
     live: 'https://bpetale.com/'
   },
   {
