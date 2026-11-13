@@ -49,6 +49,21 @@ try{
    if(state.width>state.client+14)report.warnings.push('horizontal overflow '+viewport.width+'px: '+route+' '+state.width+'/'+state.client);
   }
   await page.goto(base+'/', {waitUntil:'domcontentloaded'});
+  for (const [selector, asset] of [
+    ['.studio-hero', 'equipe-collaboration-bord-de-seine.webp'],
+    ['.studio-final', 'paysage-deux-rives-coucher-soleil.webp']
+  ]) {
+    const section = page.locator(selector);
+    assert.equal(await section.evaluate(async (element, filename) => {
+      const {backgroundImage, backgroundSize} = getComputedStyle(element);
+      const url = backgroundImage.match(/url\("([^"]+)"\)/)?.[1];
+      if (!url?.endsWith('/assets/' + filename) || !backgroundSize.includes('cover')) return false;
+      const image = new Image();
+      image.src = url;
+      await image.decode();
+      return image.naturalWidth > 0;
+    }, asset), true, `Homepage background ${asset} should load and cover the section at ${viewport.width}px`);
+  }
   const workflow = page.locator('[data-home-workflow]');
   const advance = workflow.locator('[data-workflow-advance]');
   const reset = workflow.locator('[data-workflow-reset]');
@@ -66,6 +81,56 @@ try{
   await reset.click();
   assert.equal(await status.textContent(), 'Reçue');
   assert.equal(await advance.evaluate(button => button === document.activeElement), true);
+
+  const logos = page.locator('.platform-logos');
+  const logoTrack = logos.locator('.platform-logos-track');
+  const toggle = logos.getByRole('button', {name: 'Mettre en pause le défilement des logos'});
+  const cases = page.locator('#projet-en-vedette');
+  const currentCase = cases.locator('[data-case-slide]:visible');
+  const nextCase = cases.getByRole('button', {name: 'Réalisation suivante'});
+  const prevCase = cases.getByRole('button', {name: 'Réalisation précédente'});
+  const caseWidths = [];
+  for (const title of ['FreshBox Tech Marketplace', 'Mobi-Kumbu', 'BPÉTALE']) {
+    assert.equal(await currentCase.count(), 1);
+    assert.equal(await currentCase.getByRole('heading', {level: 2}).textContent(), title);
+    const screenshot = currentCase.locator('img');
+    await screenshot.scrollIntoViewIfNeeded();
+    await screenshot.evaluate(image => image.decode());
+    caseWidths.push((await currentCase.boundingBox()).width);
+    await nextCase.click();
+  }
+  assert.equal(await currentCase.getByRole('heading', {level: 2}).textContent(), 'FreshBox Tech Marketplace');
+  await prevCase.click();
+  assert.equal(await currentCase.getByRole('heading', {level: 2}).textContent(), 'BPÉTALE');
+  await nextCase.click();
+  assert.ok(caseWidths.every(width => width === caseWidths[0]), 'All featured cases use the same width');
+
+  assert.equal(await logoTrack.evaluate(track => getComputedStyle(track).animationName), 'platform-logos-scroll');
+  await toggle.click();
+  assert.equal(await logoTrack.evaluate(track => getComputedStyle(track).animationPlayState), 'paused');
+  await logos.getByRole('button', {name: 'Reprendre le défilement des logos'}).click();
+  assert.equal(await logoTrack.evaluate(track => getComputedStyle(track).animationPlayState), 'running');
+  await page.emulateMedia({reducedMotion: 'reduce'});
+  assert.equal(await logoTrack.evaluate(track => getComputedStyle(track).animationName), 'none');
+  assert.equal(await toggle.isVisible(), false);
+  const stripBounds = await logos.evaluate(strip => {
+    const style = getComputedStyle(strip);
+    const items = [...strip.querySelectorAll('ul:not([aria-hidden]) li')];
+    return {
+      borders: [style.borderTopWidth, style.borderBottomWidth],
+      oversized: items.filter(item => {
+        const visual = item.querySelector(':not([hidden])');
+        const outer = item.getBoundingClientRect();
+        const inner = visual.getBoundingClientRect();
+        return inner.width > outer.width || inner.height > outer.height;
+      }).length
+    };
+  });
+  assert.deepEqual(stripBounds, {borders: ['0px', '0px'], oversized: 0});
+  const jotform = logos.getByRole('img', {name: 'Jotform'});
+  await jotform.scrollIntoViewIfNeeded();
+  assert.equal(await jotform.evaluate(image => image.decode().then(() => image.naturalWidth > 0)), true);
+  await page.emulateMedia({reducedMotion: 'no-preference'});
 
   await page.goto(base+'/realisations/',{waitUntil:'domcontentloaded'});
   const projectCards=page.locator('#catalogue-realisations [data-project]:visible');

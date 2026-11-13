@@ -220,8 +220,8 @@ test('Performance: editorial images are optimized WebP and referenced by pages',
  const webps=assets.filter(name=>name.endsWith('.webp')&&!name.endsWith('-640.webp'));
  assert.equal(webps.length,59,'all approved editorial assets need optimized variants');
  const home=fs.readFileSync(path.join(dist,'index.html'),'utf8');
- assert.match(home,/assets\/realisations\/freshbox-catalogue\.webp/);
- assert.ok(!/assets\/[^"']+\.png/.test(home),'homepage must load WebP images');
+ assert.match(home,/assets\/realisations\/freshbox-tech-marketplace\.webp/);
+ assert.ok(!/src="(?:\.\.\/)*assets\/[^"']+\.png/.test(home),'local homepage photos must load as WebP');
  for(const file of webps){
   const original=path.join(dist,'assets',file.replace(/\.webp$/,'.png'));
   const optimized=path.join(dist,'assets',file);
@@ -233,6 +233,7 @@ test('Performance: editorial images are optimized WebP and referenced by pages',
 test('Business contact and founder cards use approved details only',()=>{
  const agency=fs.readFileSync(path.join(dist,'agence/index.html'),'utf8');
  for(const name of ['Jean Emilien Massoda','Claude Armand'])assert.ok(agency.includes(name));
+ assert.match(agency, /<h3>Claude Armand<\/h3>[\s\S]*?href="https:\/\/www\.linkedin\.com\/in\/eboa-claude\/"/);
  assert.equal((agency.match(/class="founder-card\b/g)||[]).length,2);
  assert.equal((agency.match(/src="..\/assets\/founder-default.svg"/g)||[]).length,2);
  for(const file of pages){const html=fs.readFileSync(file,'utf8');assert.ok(html.includes('services@deuxrivesweb.fr'));assert.ok(html.includes('Paris, France'));assert.doesNotMatch(html,/hello@massoda|671.?260.?005|Illustration générée par IA d’un contexte métier|Les termes métier liés/);}
@@ -303,7 +304,7 @@ test('project catalogue lists distinct case studies with sitemap entries and pre
     else assert.match(project, /noindex,nofollow/);
     if (sitemap) assert.ok(sitemap.includes('<loc>https://deuxrivesweb.fr/realisations/' + id + '/</loc>'));
   }
-  for (const id of ['leads-tracker', 'fashionista-africa', 'mobikumbu']) {
+  for (const id of ['leads-tracker', 'fashionista-africa']) {
     assert.ok(!ids.includes(id));
   }
   assert.match(catalogue, /href="..\/studio\/"/);
@@ -360,7 +361,7 @@ test('homepage leads with the interactive workflow, client evidence and Lumen de
   const positions = sections.map(marker => homepage.indexOf(marker));
   assert.ok(positions.every((position, index) => position >= 0 && (index === 0 || position > positions[index - 1])));
   assert.match(homepage, /aria-current="step">Reçue/);
-  assert.match(homepage, /assets\/realisations\/freshbox-catalogue\.webp/);
+  assert.match(homepage, /assets\/realisations\/freshbox-tech-marketplace\.webp/);
   assert.match(homepage, /href="realisations\/freshbox-tech-marketplace\/"/);
   assert.match(homepage, /assets\/realisations\/lumen-desktop\.webp/);
   assert.match(homepage, /assets\/realisations\/lumen-mobile\.webp/);
@@ -379,11 +380,39 @@ test('standard inner-page heroes use a decorative line illustration', () => {
   }
 });
 
+test('Mobi-Kumbu has a homepage card, live preview and Android store link', () => {
+  const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
+  const page = fs.readFileSync(path.join(dist, 'realisations/mobikumbu/index.html'), 'utf8');
+  assert.match(homepage, /href="realisations\/mobikumbu\/"/);
+  assert.equal((homepage.match(/href="realisations\/mobikumbu\/"/g) || []).length, 1);
+  const featured = homepage.match(/<section class="section studio-case"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(featured);
+  assert.deepEqual([...featured.matchAll(/id="vedette-([^"]+)" aria-labelledby/g)].map(match => match[1]),
+    ['freshbox-tech-marketplace', 'mobikumbu', 'bpetale-ltd']);
+  assert.equal([...featured.matchAll(/class="studio-case-screen"/g)].length, 3);
+  assert.equal([...featured.matchAll(/<dt>Le résultat<\/dt><dd>[^<]+<\/dd>/g)].length, 3);
+  assert.match(page, /USSD, API REST et environnement AWS/);
+  assert.match(page, /href="https:\/\/mobikumbu\.com\/">Visiter le site/);
+  assert.match(page, /href="https:\/\/play\.google\.com\/store\/apps\/details\?id=com\.mobikumbu\.customer&amp;hl=fr"/);
+});
+
+test('platform logo list includes all brands and hides the animation copy from assistive technology', () => {
+  const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
+  const section = homepage.match(/<section class="platform-logos"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(section);
+  const [original, duplicate] = [...section.matchAll(/<ul class="platform-logos-list"[^>]*>[\s\S]*?<\/ul>/g)].map(match => match[0]);
+  const expected = ['Codeur.com', 'Malt', 'WeWeb', 'Webflow', 'WordPress', 'Wix', 'Firebase', 'AWS', 'GoodBarber', 'PandaSuite', 'Ksaar', 'Axelor', 'Convertigo', 'Bonitasoft', 'Bubble', 'Framer', 'Carrd', 'Glide', 'Adalo', 'FlutterFlow', 'Softr', 'Zapier', 'Make', 'n8n', 'Airtable', 'Notion', 'Xano', 'Baserow', 'Shopify', 'Gumroad', 'Stripe Payments', 'Tally', 'Jotform'];
+  assert.deepEqual([...original.matchAll(/alt="([^"]+)"/g)].map(match => match[1]), expected);
+  assert.match(duplicate, /aria-hidden="true"/);
+  assert.equal([...duplicate.matchAll(/alt=""/g)].length, expected.length);
+  assert.match(section, /class="platform-logos-toggle" type="button"/);
+});
+
 test('homepage testimonials use French and credit individual projects', () => {
   const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
-  assert.doesNotMatch(homepage, /BPÉTALE|Rosemary Hart/i);
   const section = homepage.match(/<section[^>]+aria-label="Témoignages">[\s\S]+?<\/section>/)?.[0];
   assert.ok(section);
+  assert.doesNotMatch(section, /BPÉTALE|Rosemary Hart/i);
   assert.match(section, /Deux Rives Web/);
   assert.doesNotMatch(section, /Jean-Émilien|Massoda/);
   assert.equal((section.match(/<blockquote lang="fr">/g) || []).length, 3);

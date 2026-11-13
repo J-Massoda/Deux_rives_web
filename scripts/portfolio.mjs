@@ -1,5 +1,6 @@
 import {arrowUpRight as arrow} from './icons.mjs';
 import { clientDemos, projects, projectTypes, testimonials } from './portfolio-data.mjs';
+import { platformLogos } from './platform-logos.mjs';
 
 const escape = value => String(value).replace(/[&<>"']/g, char => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -100,30 +101,44 @@ export function createPortfolio({ services, sectors }) {
     </section>`;
   }
 
-  function featuredClient() {
-    const project = projects.find(({id}) => id === 'freshbox-tech-marketplace');
-    const {image, alt} = project.evidence;
-    return `<section class="section studio-case" id="projet-en-vedette" aria-labelledby="studio-case-title">
-      <div class="studio-section-intro">
-        <p class="studio-label">Réalisation client · Commerce B2B</p>
-        <h2 id="studio-case-title">${escape(project.name)}</h2>
-        <p>Des offres de plusieurs partenaires, réunies dans un catalogue facile à parcourir.</p>
-      </div>
-      <div class="studio-case-layout">
-        <figure class="studio-case-screen">
-          <img src="assets/realisations/${escape(image)}" alt="${escape(alt)}" loading="lazy" decoding="async">
-          <figcaption>Capture du catalogue et de sa navigation.</figcaption>
-        </figure>
-        <div>
-          <dl class="studio-case-details">
-            <div><dt>Le besoin</dt><dd>${escape(project.challenge)}</dd></div>
-            <div><dt>La contribution</dt><dd>${escape(project.delivery)}</dd></div>
-            <div><dt>Le résultat</dt><dd>${escape(project.outcome)}</dd></div>
-          </dl>
-          <a class="portfolio-link" href="${projectUrl(project, '')}">Lire l’étude de cas ${arrow}</a>
-          <a class="portfolio-link studio-case-all" href="realisations/">Toutes nos réalisations ${arrow}</a>
+  function featuredClients() {
+    const featured = [
+      ['freshbox-tech-marketplace', 'Commerce B2B', 'freshbox-tech-marketplace.webp', 'Accueil du catalogue B2B FreshBox Tech Marketplace'],
+      ['mobikumbu', 'Fintech · USSD et AWS', 'mobikumbu.webp', 'Accueil du site Mobi-Kumbu'],
+      ['bpetale-ltd', 'Commerce en ligne', 'bpetale-ltd.webp', 'Accueil de la boutique BPÉTALE Natural Essence']
+    ];
+    const slides = featured.map(([id, category, image, caption]) => {
+      const project = projects.find(entry => entry.id === id);
+      return `<article class="studio-case-slide" id="vedette-${id}" aria-labelledby="vedette-titre-${id}" data-case-slide>
+        <div class="studio-section-intro">
+          <p class="studio-label">Réalisation client · ${escape(category)}</p>
+          <h2 id="vedette-titre-${id}">${escape(project.name)}</h2>
+          <p>${escape(project.summary)}</p>
         </div>
+        <div class="studio-case-layout">
+          <figure class="studio-case-screen">
+            <img src="assets/realisations/${image}" alt="${escape(caption)}" loading="lazy" decoding="async">
+            <figcaption>${escape(caption)}</figcaption>
+          </figure>
+          <div>
+            <dl class="studio-case-details">
+              <div><dt>Le besoin</dt><dd>${escape(project.challenge)}</dd></div>
+              <div><dt>La contribution</dt><dd>${escape(project.delivery)}</dd></div>
+              <div><dt>Le résultat</dt><dd>${escape(project.outcome)}</dd></div>
+            </dl>
+            <a class="portfolio-link" href="${projectUrl(project, '')}">Lire l’étude de cas ${arrow}</a>
+            <a class="portfolio-link studio-case-all" href="realisations/">Toutes nos réalisations ${arrow}</a>
+          </div>
+        </div>
+      </article>`;
+    }).join('');
+    return `<section class="section studio-case" id="projet-en-vedette" aria-label="Réalisations en vedette">
+      <div class="studio-case-controls" hidden>
+        <button type="button" data-case-step="-1" aria-label="Réalisation précédente">←</button>
+        <span class="studio-case-count" aria-live="polite" aria-atomic="true" data-case-count></span>
+        <button type="button" data-case-step="1" aria-label="Réalisation suivante">→</button>
       </div>
+      ${slides}
     </section>`;
   }
 
@@ -145,7 +160,7 @@ export function createPortfolio({ services, sectors }) {
   }
 
   function homepage() {
-    return featuredClient() + featuredDemo() +
+    return featuredClients() + platformLogos() + featuredDemo() +
       `<section class="section portfolio-section" aria-label="Témoignages">
         <div class="portfolio-section-head"><div><span class="eyebrow">Témoignages</span><h2>La parole aux clients et partenaires.</h2></div>
         <p>Deux Rives Web présente leurs retours sur le travail réalisé et l’usage des outils au quotidien.</p></div>
@@ -211,6 +226,7 @@ export function createPortfolio({ services, sectors }) {
           ${projectEvidence(project, base)}
           <div class="portfolio-actions">
             ${external ? `<a class="button button-accent" href="${escape(external)}">${externalLabel} ${arrow}</a>` : ''}
+            ${project.android ? `<a class="button button-outline" href="${escape(project.android)}">Voir l’application sur Google Play ${arrow}</a>` : ''}
             <a class="portfolio-link" href="${base}contact/">Parler d’un projet similaire ${arrow}</a>
           </div>
           ${projectQuotes.length ? `<section class="portfolio-case-quotes"><h2>Témoignages sur ce projet</h2><div class="portfolio-quotes">${quotes(projectQuotes, base)}</div></section>` : ''}

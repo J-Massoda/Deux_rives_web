@@ -17,13 +17,16 @@ body{background:#f8f7f2;color:#192c22}.header{background:#fbfaf6}.header-inner{m
 .header .mega{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(190px,.85fr);gap:22px;width:min(810px,93vw);padding:24px;border:1px solid #e4e7df;border-radius:16px;background:#fffcf8;box-shadow:0 28px 65px rgba(21,43,29,.2);transform:translateY(12px) scale(.985);transform-origin:top center;transition:opacity .24s ease,visibility .24s ease,transform .32s cubic-bezier(.22,1,.36,1)}.header .nav-item:hover .mega,.header .nav-item:focus-within .mega,.header .nav-item.submenu-open .mega{transform:translateY(0) scale(1)}.mega-main{min-width:0}.mega-preview{display:flex;flex-direction:column;gap:11px;padding:12px;background:#e9eee7;border-radius:10px;align-self:stretch;justify-content:start;min-width:0}.mega-preview img{width:100%;height:125px;object-fit:cover;border-radius:6px}.mega-preview strong{font:400 1.18rem Georgia,serif;line-height:1.35;letter-spacing:-.02em}.mega-preview>span{font-size:.76rem;color:#42634b;font-weight:700;margin-top:auto}.mega-links a{font-size:.79rem;font-weight:600}.rich-story,.rich-assurance{display:grid;grid-template-columns:1fr 1fr;gap:clamp(35px,6vw,100px);align-items:start}.rich-story h2,.rich-assurance h2,.rich-use h2,.rich-faq h2{font:400 clamp(2.3rem,3.8vw,4.2rem)/1.15 Georgia,serif;letter-spacing:-.04em}.rich-story p,.rich-assurance p,.rich-use p,.rich-faq p{line-height:1.8;color:#5a6b60;font-size:1rem}.rich-use-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:23px;margin-top:40px}.rich-use-grid article{background:#fff;border:1px solid #e0e5dd;padding:32px;border-radius:13px}.rich-use-grid article>span{font-size:.77rem;font-weight:700;letter-spacing:.08em;color:#a1815f}.rich-use-grid h3{font:400 1.75rem Georgia,serif;margin:24px 0 12px}.rich-faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:35px}.rich-faq-grid details{background:#fff;border:1px solid #e0e4dd;padding:25px;border-radius:10px}.rich-faq-grid summary{cursor:pointer;font-weight:700;line-height:1.5}.rich-faq-grid details p{margin-top:14px}.rich-assurance{background:#e8ede7!important}.rich-use{background:#f3f4ee!important}@media(max-width:1000px){.header .mega{width:min(720px,92vw)}}@media(max-width:700px){.header .mega{display:block;width:100%;max-height:55vh;overflow:auto;box-shadow:none;border-radius:0;padding:16px}.mega-preview{margin-top:12px}.rich-story,.rich-assurance,.rich-use-grid,.rich-faq-grid{grid-template-columns:1fr}}@media(prefers-reduced-motion:reduce){.header .mega{transition:none}}
 
 /* Studio homepage */
+.dr-home { --studio-green: 23 54 41; }
 .dr-hero.studio-hero {
   grid-template-columns: minmax(0, 1fr) minmax(0, .94fr);
   align-items: center;
   gap: clamp(36px, 6vw, 112px);
   min-height: 0;
   padding: clamp(56px, 7vw, 122px) max(22px, 6vw);
-  background: #f6f4ed;
+  background:
+    linear-gradient(100deg, #f6f4edf7 0%, #f6f4ede8 49%, #f6f4ed9e 100%),
+    #f6f4ed url("equipe-collaboration-bord-de-seine.webp") center / cover no-repeat;
 }
 .studio-hero .dr-hero-left { padding-top: 0; }
 .studio-hero .dr-hero-left > p:not(.studio-label) { max-width: 47ch; color: #46564b; }
@@ -37,7 +40,7 @@ body{background:#f8f7f2;color:#192c22}.header{background:#fbfaf6}.header-inner{m
 }
 .dr-home .studio-hero h1 { font-size: clamp(3.4rem, 5.55vw, 6.5rem); line-height: 1.02; }
 .studio-hero h1 em { display: inline; color: #3c5b46; }
-.studio-workflow { min-width: 0; background: #173629; color: #f5f3e8; padding: clamp(18px, 3vw, 40px); border-radius: 14px; }
+.studio-workflow { min-width: 0; background: rgb(var(--studio-green)); color: #f5f3e8; padding: clamp(18px, 3vw, 40px); border-radius: 14px; }
 .studio-workflow-header { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
 .studio-workflow-header strong { font-size: 1rem; }
 .studio-workflow-header span { color: #d5e5d5; font-size: .78rem; }
@@ -76,10 +79,21 @@ body{background:#f8f7f2;color:#192c22}.header{background:#fbfaf6}.header-inner{m
 .studio-demo-screens { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 1fr); align-items: end; gap: 10px; margin: 0; }
 .studio-demo-screens img { display: block; width: 100%; height: auto; border: 1px solid #8c9b90; border-radius: 7px; box-shadow: 0 8px 20px #1a37271a; }
 .dr-home .dr-insight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.dr-home .studio-final {
+  background: rgb(var(--studio-green)) url("paysage-deux-rives-coucher-soleil.webp") center 55% / cover no-repeat;
+}
+.dr-home .studio-final::after {
+  background: rgb(var(--studio-green) / .82);
+}
 .studio-final .dr-btn-dark { background: #f5f3e8; color: #173629; }
 .studio-final .dr-btn-dark:hover { background: #dae4d7; }
 @media (max-width: 900px) {
   .dr-hero.studio-hero, .studio-case-layout, .studio-demo { grid-template-columns: 1fr; }
+  .dr-hero.studio-hero {
+    background-image:
+      linear-gradient(180deg, #f6f4edf5 0%, #f6f4ede8 48%, #f6f4edb3 100%),
+      url("equipe-collaboration-bord-de-seine.webp");
+  }
 }
 @media (max-width: 680px) {
   .dr-home .studio-hero h1 { font-size: clamp(2.65rem, 9vw, 4rem); }
