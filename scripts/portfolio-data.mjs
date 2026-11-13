@@ -38,6 +38,13 @@ export const projects = [
     live: 'https://residencesloumia.com/'
   },
   {
+    id: 'bpetale-ltd', name: 'BPÉTALE', type: 'client', expertise: 'sites-et-commerce', sector: 'commerce-operations', cover: 'bpetale-natural-essence-cover.jpg',
+    summary: 'Un site WordPress qui réunit les activités beauté, voyages et confiserie de BPÉTALE.',
+    challenge: 'Présenter trois activités au sein d’un même site et donner à chacune un parcours clair.',
+    delivery: 'La refonte WordPress et WooCommerce a structuré les univers de marque et les parcours vers les produits et les services.',
+    live: 'https://bpetale.com/'
+  },
+  {
     id: 'afremit', name: 'Afremit', type: 'prototype', expertise: 'logiciels-sur-mesure', sector: 'education', cover: 'afremit-cover.svg',
     summary: 'Un pilote pour suivre les demandes de paiement de frais de scolarité à distance.',
     challenge: 'Une famille à l’étranger a besoin de savoir qui traite sa demande, ce qui a été vérifié et où en est le règlement.',

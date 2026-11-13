@@ -48,6 +48,25 @@ try{
    for(const src of state.oversizedPhotos)failures.push('oversized photo at '+viewport.width+'px '+route+': '+src);
    if(state.width>state.client+14)report.warnings.push('horizontal overflow '+viewport.width+'px: '+route+' '+state.width+'/'+state.client);
   }
+  await page.goto(base+'/', {waitUntil:'domcontentloaded'});
+  const workflow = page.locator('[data-home-workflow]');
+  const advance = workflow.locator('[data-workflow-advance]');
+  const reset = workflow.locator('[data-workflow-reset]');
+  const owner = workflow.locator('[data-workflow-owner]');
+  const status = workflow.locator('[data-workflow-status]');
+  assert.equal(await owner.textContent(), 'À attribuer');
+  assert.equal(await status.textContent(), 'Reçue');
+  await advance.click();
+  assert.equal(await owner.textContent(), 'Camille');
+  assert.equal(await status.textContent(), 'Attribuée');
+  await advance.click();
+  assert.equal(await status.textContent(), 'En cours');
+  assert.equal(await workflow.locator('[aria-current="step"]').textContent(), 'En cours');
+  assert.equal(await reset.evaluate(button => button === document.activeElement), true);
+  await reset.click();
+  assert.equal(await status.textContent(), 'Reçue');
+  assert.equal(await advance.evaluate(button => button === document.activeElement), true);
+
   await page.goto(base+'/realisations/',{waitUntil:'domcontentloaded'});
   const projectCards=page.locator('#catalogue-realisations [data-project]:visible');
   await page.locator('[data-project-query]').fill('freshbox');

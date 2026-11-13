@@ -220,7 +220,7 @@ test('Performance: editorial images are optimized WebP and referenced by pages',
  const webps=assets.filter(name=>name.endsWith('.webp')&&!name.endsWith('-640.webp'));
  assert.equal(webps.length,59,'all approved editorial assets need optimized variants');
  const home=fs.readFileSync(path.join(dist,'index.html'),'utf8');
- assert.match(home,/equipe-conception-logiciel-paris\.webp/);
+ assert.match(home,/assets\/realisations\/freshbox-catalogue\.webp/);
  assert.ok(!/assets\/[^"']+\.png/.test(home),'homepage must load WebP images');
  for(const file of webps){
   const original=path.join(dist,'assets',file.replace(/\.webp$/,'.png'));
@@ -308,8 +308,11 @@ test('project catalogue lists distinct case studies with sitemap entries and pre
   }
   assert.match(catalogue, /href="..\/studio\/"/);
   assert.match(catalogue, /<h3>Extensions réutilisables<\/h3>/);
-  assert.equal(fs.existsSync(path.join(dist, 'realisations', 'bpetale-ltd')), false);
-  assert.equal(fs.existsSync(path.join(dist, 'assets', 'realisations', 'bpetale-ltd.webp')), false);
+  const bpetale = fs.readFileSync(path.join(dist, 'realisations/bpetale-ltd/index.html'), 'utf8');
+  assert.match(catalogue, /href="..\/realisations\/bpetale-ltd\/"/);
+  assert.match(bpetale, /href="https:\/\/bpetale\.com\/"/);
+  assert.match(bpetale, /assets\/realisations\/bpetale-ltd\.webp/);
+  assert.doesNotMatch(bpetale, /href="https:\/\/(?:www\.)?massoda\.me\//);
 });
 
 test('when launchReady, sitemap routes resolve without duplicates or internal project links', () => {
@@ -330,14 +333,54 @@ test('when launchReady, sitemap routes resolve without duplicates or internal pr
     const html = fs.readFileSync(htmlPath, 'utf8');
     assert.ok(html.includes('<link rel="canonical" href="' + loc + '">'), loc);
     assert.doesNotMatch(html, /<meta name="robots" content="noindex/);
-    assert.doesNotMatch(loc, /\/realisations\/(?:deux-rives-web|bpetale-ltd)\//);
+    assert.doesNotMatch(loc, /\/realisations\/deux-rives-web\//);
+  }
+});
+
+test('sector pages pair workplace photography with optional video links', () => {
+  const media = [
+    ['batiment-interventions', '8961001', '6473959'],
+    ['commerce-operations', '4483942', '4292903'],
+    ['sante-administrative', '4269275', '6755024']
+  ];
+  for (const [sector, photo, video] of media) {
+    const html = fs.readFileSync(path.join(dist, 'secteurs', sector, 'index.html'), 'utf8');
+    const story = html.match(/<section class="photo-story sector-media"[\s\S]+?<\/section>/)?.[0];
+    assert.ok(story, sector);
+    assert.ok(story.includes(`https://images.pexels.com/photos/${photo}/`));
+    assert.match(story, new RegExp(`href="https://www[.]pexels[.]com/video/[^"]+-${video}/"`));
+    assert.doesNotMatch(story, /<iframe|autoplay/);
+    assert.match(html, /class="subhero-art dr-subhero-art sector-hero-ui"/);
+  }
+});
+
+test('homepage leads with the interactive workflow, client evidence and Lumen demo', () => {
+  const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
+  const sections = ['data-home-workflow', 'id="projet-en-vedette"', 'id="demos-clients"', 'id="priority-products"'];
+  const positions = sections.map(marker => homepage.indexOf(marker));
+  assert.ok(positions.every((position, index) => position >= 0 && (index === 0 || position > positions[index - 1])));
+  assert.match(homepage, /aria-current="step">Reçue/);
+  assert.match(homepage, /assets\/realisations\/freshbox-catalogue\.webp/);
+  assert.match(homepage, /href="realisations\/freshbox-tech-marketplace\/"/);
+  assert.match(homepage, /assets\/realisations\/lumen-desktop\.webp/);
+  assert.match(homepage, /assets\/realisations\/lumen-mobile\.webp/);
+  assert.doesNotMatch(homepage, /dr-hero-photo|dr-float|photo-story|librairie-du-temple/);
+  assert.match(homepage, /<img src="assets\/commerce-equipe-catalogue\.webp"/);
+  assert.match(homepage, /<img src="assets\/commerce-inventaire-entrepot\.webp"/);
+});
+
+test('standard inner-page heroes use a decorative line illustration', () => {
+  for (const route of ['expertises', 'expertises/logiciels-sur-mesure', 'secteurs', 'demonstrations',
+    'demonstrations/batiment-interventions', 'realisations', 'regards']) {
+    const html = fs.readFileSync(path.join(dist, route, 'index.html'), 'utf8');
+    const hero = html.match(/<section class="subhero dr-subhero">[\s\S]*?<\/section>/)?.[0];
+    assert.ok(hero, route);
+    assert.match(hero, /<div class="subhero-gesture" aria-hidden="true"><img src="[^"]*\/hero-gesture\.svg"[^>]+alt=""/);
   }
 });
 
 test('homepage testimonials use French and credit individual projects', () => {
   const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
-  assert.match(homepage, /Des projets clients à découvrir/);
-  assert.ok(homepage.indexOf('Des projets clients à découvrir') < homepage.indexOf('id="priority-products"'));
   assert.doesNotMatch(homepage, /BPÉTALE|Rosemary Hart/i);
   const section = homepage.match(/<section[^>]+aria-label="Témoignages">[\s\S]+?<\/section>/)?.[0];
   assert.ok(section);

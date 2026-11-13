@@ -201,3 +201,46 @@ if (projectCatalogue) {
   filters.hidden = false;
   filterProjects();
 }
+
+const homeWorkflow = document.querySelector('[data-home-workflow]');
+if (homeWorkflow) {
+  const owner = homeWorkflow.querySelector('[data-workflow-owner]');
+  const status = homeWorkflow.querySelector('[data-workflow-status]');
+  const next = homeWorkflow.querySelector('[data-workflow-next]');
+  const advance = homeWorkflow.querySelector('[data-workflow-advance]');
+  const reset = homeWorkflow.querySelector('[data-workflow-reset]');
+  const steps = [...homeWorkflow.querySelectorAll('.studio-workflow-steps li')];
+  const states = [
+    {owner: 'À attribuer', next: 'À faire · Choisir qui prend en charge la demande.', action: 'Attribuer à Camille'},
+    {owner: 'Camille', next: 'Camille prend en charge la demande. Le devis reste à mettre à jour.', action: 'Commencer le traitement'},
+    {owner: 'Camille', next: 'Traitement en cours. Camille peut maintenant vérifier les modifications du devis.'}
+  ];
+  let current = 0;
+
+  function renderWorkflow() {
+    const state = states[current];
+    owner.textContent = state.owner;
+    status.textContent = steps[current].textContent;
+    next.textContent = state.next;
+    advance.hidden = !state.action;
+    advance.textContent = state.action ?? '';
+    reset.hidden = current === 0;
+    for (const [index, step] of steps.entries()) {
+      if (index === current) step.setAttribute('aria-current', 'step');
+      else step.removeAttribute('aria-current');
+      step.toggleAttribute('data-complete', index < current);
+    }
+  }
+
+  advance.addEventListener('click', () => {
+    current++;
+    renderWorkflow();
+    if (advance.hidden) reset.focus();
+  });
+  reset.addEventListener('click', () => {
+    current = 0;
+    renderWorkflow();
+    advance.focus();
+  });
+  homeWorkflow.querySelector('.studio-workflow-actions').hidden = false;
+}
