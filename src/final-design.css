@@ -25,8 +25,7 @@ body{background:#f8f7f2;color:#192c22}.header{background:#fbfaf6}.header-inner{m
   min-height: 0;
   padding: clamp(56px, 7vw, 122px) max(22px, 6vw);
   background:
-    linear-gradient(100deg, #f6f4edf7 0%, #f6f4ede8 49%, transparent 78%),
-    linear-gradient(rgb(var(--studio-green) / .6), rgb(var(--studio-green) / .6)),
+    linear-gradient(100deg, #f6f4edf7 0%, #f6f4ede8 49%, #f6f4ed9e 100%),
     #f6f4ed url("equipe-collaboration-bord-de-seine.webp") center / cover no-repeat;
 }
 .studio-hero .dr-hero-left { padding-top: 0; }
@@ -92,8 +91,7 @@ body{background:#f8f7f2;color:#192c22}.header{background:#fbfaf6}.header-inner{m
   .dr-hero.studio-hero, .studio-case-layout, .studio-demo { grid-template-columns: 1fr; }
   .dr-hero.studio-hero {
     background-image:
-      linear-gradient(180deg, #f6f4edf5 0%, #f6f4ede8 48%, transparent 80%),
-      linear-gradient(rgb(var(--studio-green) / .65), rgb(var(--studio-green) / .65)),
+      linear-gradient(180deg, #f6f4edf5 0%, #f6f4ede8 48%, #f6f4edb3 100%),
       url("equipe-collaboration-bord-de-seine.webp");
   }
 }
