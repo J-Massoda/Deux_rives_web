@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright';
 import { projects } from './portfolio-data.mjs';
-import { portfolioPosts } from './portfolio-blog.mjs';
+import { journalPosts } from './company-blog.mjs';
 
 const base='http://127.0.0.1:4173';
 const dist=path.resolve('dist');
@@ -18,7 +18,7 @@ function collect(folder){
  }
 }
 collect(dist);
-assert.equal(paths.length, 94 + projects.length + portfolioPosts.length, 'Expected existing pages, project case studies and imported portfolio articles');
+assert.equal(paths.length, 94 + projects.length + journalPosts.length, 'Expected existing pages, project case studies and imported portfolio articles');
 const browser=await chromium.launch({headless:true});
 const report={pages:paths.length,viewports:[],warnings:[]};
 try{
@@ -173,3 +173,4 @@ fs.writeFileSync(path.resolve('artifacts/browser/audit.json'),JSON.stringify(rep
 console.log(JSON.stringify(report,null,2));
 const failures=report.viewports.flatMap(x=>x.failures);
 if(failures.length)throw new Error('Browser audit failures: '+failures.join('; '));
+

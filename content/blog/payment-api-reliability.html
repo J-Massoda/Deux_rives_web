@@ -1,4 +1,4 @@
-<h1>API de paiement : idempotence, rapprochement et reprise des webhooks</h1>
+<h1>Intégration API de paiement : idempotence, webhooks et rapprochement</h1>
 <p class="blog-category">Paiements &amp; API</p>
 <p class="blog-lead">Connecter l’API est la partie visible. La fiabilité se joue lorsque la réponse se perd ou que deux systèmes divergent.</p>
 <p>Que doit faire votre application lorsque le prestataire débite le client mais que votre serveur ne reçoit jamais la confirmation ?</p>
@@ -9,13 +9,13 @@
 <p>Cette incertitude doit être représentée : en attente, en traitement, réussie, échouée, annulée ou à examiner. Un simple champ réussite/échec ne suffit pas.</p>
 <h2>L’idempotence sécurise les nouvelles tentatives</h2>
 <p>Une opération idempotente ne produit qu’un effet métier, même si la demande est envoyée plusieurs fois. Le client attribue une clé unique à l’opération et la réutilise. Le serveur reconnaît le premier résultat et répond de façon cohérente sans recréer le débit.</p>
-<p>Stripe documente cette méthode pour les requêtes POST et recommande des clés à forte entropie, comme UUIDv4, sans données personnelles ni sensibles.</p>
+<p><a href="https://docs.stripe.com/api/idempotent_requests">Stripe documente cette méthode</a> pour les requêtes POST et recommande des clés à forte entropie, comme UUIDv4, sans données personnelles ni sensibles.</p>
 <p>La clé représente l’intention métier, pas la tentative réseau. « Payer la facture 8472 » conserve la même clé ; en créer une nouvelle à chaque essai annule la protection.</p>
 <p>L’application impose aussi l’unicité en base. Elle conserve fournisseur, type d’opération, référence métier, clé, empreinte de la requête et référence finale. Une vérification uniquement applicative reste vulnérable à deux demandes simultanées.</p>
 <h2>Les webhooks apportent des preuves</h2>
 <p>Une banque peut confirmer plus tard, un paiement être contesté ou un remboursement changer d’état. Les webhooks sont essentiels ; leur livraison n’est pourtant pas leur traitement.</p>
 <p>Le récepteur vérifie la signature sur le corps brut, enregistre l’identifiant, refuse les doublons, conserve l’événement, répond rapidement et délègue les opérations lentes à une file.</p>
-<p>Stripe recommande une réponse HTTP 2xx avant les traitements complexes et exige le corps brut pour la signature. Analyser puis reconstruire le contenu peut casser cette vérification.</p>
+<p><a href="https://docs.stripe.com/webhooks">Stripe recommande une réponse HTTP 2xx</a> avant les traitements complexes et exige le corps brut pour la signature. Analyser puis reconstruire le contenu peut casser cette vérification.</p>
 <p>Les événements peuvent être répétés, retardés ou reçus dans le désordre. Leur traitement a donc sa propre idempotence : un identifiant déjà traité ne doit produire aucun nouvel effet.</p>
 <h2>Conserver l’histoire en base</h2>
 <p>Un état modifiable ne suffit pas. Il faut un historique ajouté sans réécrire le passé, avec date de l’événement fournisseur, réception locale et fin du traitement.</p>
@@ -26,7 +26,7 @@
 <p>Il peut exploiter les fichiers de règlement quotidiens, interroger les API pour les attentes trop anciennes ou combiner les deux à fort volume.</p>
 <p>Les différences doivent être classées. Une réussite fournisseur encore en attente localement peut être corrigée si références et montants concordent. Un montant ou une devise différente exige une escalade. Une réussite locale absente chez le prestataire doit être étudiée avant livraison.</p>
 <h2>Définir une politique de reprise</h2>
-<p>Les tentatives sont limitées, observables et adaptées à l’erreur. Une expiration réseau ou une réponse 5xx peut justifier un délai exponentiel avec variation aléatoire. Une erreur de validation ne disparaîtra probablement pas au cinquième essai. Une erreur d’authentification doit alerter l’exploitation.</p>
+<p>Les tentatives sont limitées, observables et adaptées à l’erreur. Une expiration réseau ou une réponse 5xx peut justifier un <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/retry">délai exponentiel avec variation aléatoire</a>. Une erreur de validation ne disparaîtra probablement pas au cinquième essai. Une erreur d’authentification doit alerter l’exploitation.</p>
 <p>Après épuisement du nombre d’essais, l’élément passe dans un état récupérable ou une file d’échecs. Les équipes doivent pouvoir examiner, rejouer ou résoudre sans perdre les références initiales et protections d’idempotence.</p>
 <h2>Séparer paiement et exécution de la commande</h2>
 <p>Un paiement réussi peut déclencher allocation de stock, recharge téléphonique, abonnement, expédition ou appel externe. Chaque étape peut échouer après le débit.</p>
@@ -37,3 +37,4 @@
 <h2>La reprise constitue la véritable intégration</h2>
 <p>La requête prouve que le code communique avec un prestataire. La reprise prouve que l’activité peut en dépendre.</p>
 <p>Idempotence, webhooks signés, rapprochement, processus durables, journaux et indicateurs ne sont pas des finitions facultatives. Ils constituent le système.</p>
+

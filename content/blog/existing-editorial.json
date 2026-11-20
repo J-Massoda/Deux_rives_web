@@ -1,0 +1,136 @@
+{
+  "quand-un-tableur-devient-un-systeme": {
+    "title": "Remplacer un tableur par un logiciel métier : les bons signaux",
+    "seoTitle": "Du tableur au logiciel métier : quand faut-il évoluer ?",
+    "description": "Repérer les limites d’un tableur partagé et préparer une transition vers un logiciel métier : données, rôles, historique et reprise du travail.",
+    "image": "assets/atelier-processus-entreprise.webp",
+    "imageAlt": "Illustration d’un atelier d’analyse des processus d’entreprise.",
+    "lead": "Plusieurs versions, des règles implicites et des relances manuelles signalent parfois qu’un tableur doit évoluer vers un outil métier partagé.",
+    "headings": {
+      "0": "Quand le fichier devient un processus partagé",
+      "1": "Identifier les règles qui dépassent le tableur",
+      "2": "Organiser une transition progressive"
+    },
+    "modified": "2026-11-20"
+  },
+  "automatiser-sans-perdre-le-controle": {
+    "title": "Automatisation des processus : prévoir les erreurs et les reprises",
+    "seoTitle": "Automatisation des processus : erreurs, contrôles et reprise",
+    "description": "Automatiser un processus d’entreprise avec des états lisibles, des contrôles et une reprise des erreurs que les équipes peuvent réellement utiliser.",
+    "image": "assets/automatisation-traitement-documentaire.webp",
+    "imageAlt": "Illustration de l’automatisation d’un traitement documentaire.",
+    "lead": "Une automatisation professionnelle montre ce qui a réussi, ce qui attend et qui peut reprendre le traitement lorsqu’un service échoue.",
+    "headings": {
+      "0": "Automatiser un déclencheur ne suffit pas",
+      "1": "Montrer les états et les erreurs",
+      "2": "Préparer la reprise du traitement"
+    },
+    "modified": "2026-11-20"
+  },
+  "un-site-qui-continue-apres-le-formulaire": {
+    "title": "Site professionnel : organiser le suivi après un formulaire",
+    "seoTitle": "Site professionnel : relier formulaire et suivi commercial",
+    "description": "Relier votre site au suivi commercial : confirmation, attribution, informations manquantes et prochaine action après une demande de contact.",
+    "image": "assets/conseil-support-utilisateurs.webp",
+    "imageAlt": "Illustration d’un échange de support et de suivi d’une demande utilisateur.",
+    "lead": "Un site professionnel doit expliquer la suite du contact et relier la demande reçue à une personne, une décision et une prochaine étape.",
+    "headings": {
+      "0": "Le parcours client continue après la conversion",
+      "1": "Attribuer la responsabilité de la prochaine action",
+      "2": "Relier le site aux opérations"
+    },
+    "modified": "2026-11-20"
+  },
+  "logiciel-metier-ou-saas-comment-choisir": {
+    "title": null,
+    "seoTitle": "Logiciel sur mesure ou SaaS : choisir pour une PME",
+    "description": "Comparer SaaS, sur-mesure et intégrations selon le travail réel, le coût total, la maintenance et la capacité d’évolution d’une PME en France.",
+    "image": "assets/conseil-strategie-client.webp",
+    "imageAlt": "Illustration d’un échange de conseil sur la stratégie et les besoins d’un client.",
+    "lead": "Comparer un SaaS et un logiciel sur mesure demande d’examiner les règles métier, les intégrations et le coût d’exploitation complet.",
+    "headings": {
+      "0": "Partir du travail à accomplir",
+      "2": "Comparer le coût total",
+      "3": "Valider le scénario et les intégrations"
+    },
+    "modified": "2026-11-20"
+  },
+  "cadrer-mvp-logiciel-metier-questions": {
+    "title": null,
+    "seoTitle": "MVP de logiciel métier : les questions avant le développement",
+    "description": "Cadrer un MVP métier avec des utilisateurs, données, règles, intégrations et critères de réussite précis avant de commencer le développement.",
+    "image": "assets/presentation-prototype-produit.webp",
+    "imageAlt": "Illustration de la présentation d’un prototype de produit logiciel.",
+    "lead": "Un MVP métier doit accomplir un parcours essentiel, avec des règles claires et des preuves d’utilité avant d’étendre le produit.",
+    "headings": {
+      "0": "Cadrer le problème et son utilité",
+      "1": "Définir les utilisateurs, les données et les exceptions",
+      "3": "Préciser les intégrations et l’exploitation",
+      "5": "Fixer les limites de la première version"
+    },
+    "modified": "2026-11-20"
+  },
+  "facturation-electronique-integration-logiciel-2026-2027": {
+    "title": null,
+    "seoTitle": "Facturation électronique en France : préparer les intégrations",
+    "description": "Préparer l’intégration de la facturation électronique en France : calendrier 2026–2027, données, plateforme agréée et traitement des anomalies.",
+    "image": "assets/docupilot-ai-validation-documents.webp",
+    "imageAlt": "Illustration d’une interface de contrôle documentaire DocuPilot AI, avec données fictives.",
+    "lead": "La facturation électronique en France demande des données fiables et des échanges suivis entre logiciel métier, comptabilité et plateforme agréée.",
+    "headings": {
+      "0": "Calendrier de la facturation électronique en France",
+      "1": "Distinguer une facture structurée d’un PDF",
+      "2": "Relier logiciel métier et plateforme agréée",
+      "3": "Préparer les données et les reprises",
+      "5": "Évaluer un scénario avant l’intégration"
+    },
+    "modified": "2026-11-20"
+  },
+  "architecture-logiciel-metier-roles-donnees-permissions": {
+    "title": null,
+    "seoTitle": "Architecture logiciel métier : rôles, données et autorisations",
+    "description": "Concevoir l’architecture d’un logiciel métier : rôles, droits d’accès, données, transitions et tests de refus avant de développer les écrans.",
+    "image": "assets/atelier-decouverte-besoins.webp",
+    "imageAlt": "Illustration d’un atelier de découverte des besoins et des responsabilités métier.",
+    "lead": "L’architecture d’un logiciel métier relie les rôles, les données et les décisions. Ces règles doivent être vérifiées avant de dépendre des écrans.",
+    "headings": {
+      "0": "Identifier les rôles et les responsabilités",
+      "1": "Structurer les données et leur historique",
+      "2": "Vérifier les accès côté serveur",
+      "3": "Définir les sources de vérité",
+      "4": "Tester un processus complet"
+    },
+    "modified": "2026-11-20"
+  },
+  "integrations-api-webhooks-reprise-erreurs": {
+    "title": null,
+    "seoTitle": "Intégration API et webhooks : gérer les erreurs et doublons",
+    "description": "Concevoir des intégrations API durables : contrat de données, webhooks, idempotence, sécurité et reprise des erreurs entre logiciels métier.",
+    "image": "assets/commerce-gestion-point-de-vente.webp",
+    "imageAlt": "Illustration d’un outil de gestion reliant les opérations d’un point de vente.",
+    "lead": "Une intégration API fiable prévoit les réponses tardives, les doublons et la reprise d’un échange sans perdre l’information métier.",
+    "headings": {
+      "0": "Définir le contrat de données",
+      "1": "Traiter les événements et les doublons",
+      "3": "Sécuriser les échanges et les clés",
+      "4": "Tester les défaillances"
+    },
+    "modified": "2026-11-20"
+  },
+  "du-prototype-au-produit-saas-securite-exploitation": {
+    "title": null,
+    "seoTitle": "Du prototype au SaaS : sécurité et critères de lancement",
+    "description": "Préparer le lancement d’un SaaS métier : isolation des clients, sécurité, sauvegardes, supervision, support et validation du modèle de produit.",
+    "image": "assets/equipe-conception-logiciel-paris.webp",
+    "imageAlt": "Illustration d’une équipe de conception logicielle à Paris.",
+    "lead": "Un prototype montre un parcours. Un SaaS commercialisé doit aussi isoler les organisations, protéger les données et organiser l’exploitation du service.",
+    "headings": {
+      "0": "Identifier les utilisateurs et isoler les organisations",
+      "1": "Fiabiliser le traitement en production",
+      "2": "Organiser la supervision et les reprises",
+      "3": "Vérifier le modèle commercial",
+      "4": "Préparer la documentation et le support"
+    },
+    "modified": "2026-11-20"
+  }
+}

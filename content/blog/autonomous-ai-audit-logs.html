@@ -1,4 +1,4 @@
-<h1>Agents IA autonomes : journaux d’audit, validations et responsabilités</h1>
+<h1>Agents IA en entreprise : audit, validations et responsabilités</h1>
 <p class="blog-category">IA &amp; gouvernance</p>
 <p class="blog-lead">Un agent fiable doit laisser des preuves de ses actions et rendre visibles les limites de son autorité.</p>
 <p>Que se passe-t-il lorsqu’un système d’IA ne se contente plus de recommander une action, mais l’exécute ?</p>
@@ -7,7 +7,7 @@
 <h2>L’autonomie transforme un résultat en action</h2>
 <p>Le logiciel traditionnel suit des chemins prévus par les ingénieurs. Un agent reçoit un objectif large, choisit les outils, décompose le travail et ajuste son plan. Cette souplesse multiplie aussi les chemins vers un résultat dangereux.</p>
 <p>Un modèle malveillant n’est pas nécessaire : instruction ambiguë, contexte ancien, intégration trop permissive ou réponse mal interprétée suffisent. Avec le droit d’agir, une petite erreur devient un changement en production.</p>
-<p>Les travaux OWASP citent autonomie excessive, mauvais usage des outils, empoisonnement de la mémoire, abus d’identité et de privilèges et défaillances en cascade. Il faut sécuriser toute la chaîne d’action.</p>
+<p>Les <a href="https://owasp.org/www-project-agentic-ai/">travaux OWASP</a> citent autonomie excessive, mauvais usage des outils, empoisonnement de la mémoire, abus d’identité et de privilèges et défaillances en cascade. Il faut sécuriser toute la chaîne d’action.</p>
 <h2>Le journal doit expliquer davantage que « l’IA l’a fait »</h2>
 <p>Un ingénieur, auditeur ou régulateur doit pouvoir reconstituer l’exécution. Le journal enregistre au minimum :</p><ul><li>l’initiateur ;</li><li>l’objectif et les règles fournis ;</li><li>le modèle et sa configuration ;</li><li>les outils autorisés ;</li><li>les requêtes et réponses importantes ;</li><li>les changements de droits et validations ;</li><li>les ressources créées, lues, modifiées ou supprimées ;</li><li>erreurs, nouvelles tentatives, annulations et état final ;</li><li>la personne ou le compte de service responsable.</li></ul>
 <p>Les données sensibles doivent être masquées sans vider le journal. « Tâche terminée » apporte trop peu de preuves ; exposer des secrets est dangereux. L’observabilité utile se situe entre les deux.</p>
@@ -23,7 +23,7 @@
 <h2>La responsabilité ne peut appartenir au modèle</h2>
 <p>Les personnes et l’organisation choisissent le système, fixent ses droits, approuvent son usage et exploitent ses contrôles. Elles restent responsables.</p>
 <p>Chaque agent en production a donc un propriétaire, chargé des revues d’accès, règles, incidents, mesures et arrêt du système, sans devoir regarder chaque étape réussie.</p>
-<p>Le cadre NIST organise le travail autour de quatre fonctions : gouverner, cartographier, mesurer et gérer. Cela évite une gouvernance limitée au lancement : environnements, modèles, outils et erreurs évoluent.</p>
+<p>Le <a href="https://www.nist.gov/itl/ai-risk-management-framework">cadre NIST</a> organise le travail autour de quatre fonctions : gouverner, cartographier, mesurer et gérer. Cela évite une gouvernance limitée au lancement : environnements, modèles, outils et erreurs évoluent.</p>
 <h2>Un modèle de contrôle concret</h2>
 <ol><li>Authentifier la demande et classer la tâche.</li><li>Créer un identifiant unique et consigner l’objectif approuvé.</li><li>Attribuer outils limités et identifiants temporaires.</li><li>Contrôler chaque requête selon les règles.</li><li>Suspendre les actions importantes pour une validation claire.</li><li>Écrire les événements dans un stockage d’audit indépendant.</li><li>Vérifier le résultat au lieu de croire le message de fin.</li><li>Révoquer les accès temporaires et conserver les preuves nécessaires.</li></ol>
 <p>Ce modèle ne supprime pas les échecs ; il aide à les contenir, les comprendre et les corriger.</p>
@@ -31,3 +31,4 @@
 <p>Ses capacités impressionnent. Les actions qu’il ne peut accomplir silencieusement construisent la confiance.</p>
 <p>Après chaque exécution importante, l’équipe doit savoir ce que l’agent savait, ce qu’il pouvait faire, ce qu’il a fait et qui assume le résultat.</p>
 <p>Sans ces réponses, l’autonomie repose sur un logiciel puissant et trop peu de preuves.</p>
+

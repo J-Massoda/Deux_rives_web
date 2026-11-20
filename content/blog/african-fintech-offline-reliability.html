@@ -26,7 +26,7 @@
 <p>Il faut créer une transaction durable avant l’appel externe final, fournir un accusé de réception ou un état d’attente explicite, puis confirmer par SMS, reçu agent ou code de consultation.</p>
 <p>Les opérations accompagnées par un agent exigent des rôles clairs et une traçabilité. Enregistrer le client, l’agent, le canal ou l’appareil, la localisation lorsqu’elle est légitimement nécessaire et la méthode d’autorisation protège les deux parties. Les preuves ne doivent pas exposer des données personnelles inutiles.</p>
 <h2>L’idempotence protège clients et agents</h2>
-<p>Tout ordre déplaçant de l’argent exige une clé métier stable. Une nouvelle tentative liée au réseau ne doit pas créer un second débit. L’unicité doit être imposée en base et les fonctions d’idempotence du fournisseur utilisées lorsqu’elles existent.</p>
+<p>Tout ordre déplaçant de l’argent exige une <a href="https://docs.stripe.com/api/idempotent_requests">clé métier stable</a>. Une nouvelle tentative liée au réseau ne doit pas créer un second débit. L’unicité doit être imposée en base et les fonctions d’idempotence du fournisseur utilisées lorsqu’elles existent.</p>
 <p>Lorsqu’un réseau n’en propose pas, il faut combiner unicité interne, recherche par référence fournisseur et rapprochement prudent. Un délai d’attente dépassé ne prouve jamais un échec.</p>
 <p>La même règle vaut pour les notifications : un fournisseur peut envoyer plusieurs fois le même événement. Son traitement doit pouvoir être répété sans multiplier les effets.</p>
 <h2>Définir les limites du stockage local</h2>
@@ -37,9 +37,11 @@
 <p>Cette vue montre la chronologie, le système faisant autorité, la dernière réponse, le rapprochement et les actions de reprise sûres. Les ajustements manuels à impact financier important nécessitent un double contrôle ou une validation.</p>
 <p>La supervision suit disponibilité, latence, ancienneté des attentes, retard des notifications, doublons, écarts et annulations. Un fournisseur peut être techniquement accessible tout en se dégradant assez pour pénaliser les clients.</p>
 <h2>Le paiement instantané ne supprime pas la fragmentation</h2>
-<p>Les travaux d’AfricaNenda sur les systèmes de paiement instantané inclusifs décrivent leur expansion et l’importance d’une conception accessible. Cette infrastructure est utile, mais les produits continueront à relier plusieurs schémas, opérateurs et canaux pendant des années.</p>
+<p>Les <a href="https://www.africa-nenda.org/">travaux d’AfricaNenda</a> sur les systèmes de paiement instantané inclusifs décrivent leur expansion et l’importance d’une conception accessible. Cette infrastructure est utile, mais les produits continueront à relier plusieurs schémas, opérateurs et canaux pendant des années.</p>
 <p>L’interopérabilité élargit la couverture. Elle ne remplace ni les adaptateurs, ni les preuves, ni le rapprochement, ni la communication.</p>
 <h2>La fiabilité fait partie de l’inclusion financière</h2>
 <p>Un faible solde minimum ou une interface mobile ne suffisent pas. Un produit inclusif reste compréhensible avec une mauvaise connexion et retrouve un état correct lorsque les systèmes divergent.</p>
 <p>La tolérance aux coupures protège l’intention. L’idempotence protège des effets en double. Le modèle interne absorbe les différences. Le rapprochement restaure la cohérence. Les outils opérationnels rendent l’assistance possible.</p>
 <p>Pour la fintech africaine, il s’agit des conditions réelles d’utilisation, et non de cas marginaux.</p>
+
+
