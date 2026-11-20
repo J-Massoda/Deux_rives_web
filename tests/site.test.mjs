@@ -7,6 +7,7 @@ import { execFileSync } from 'node:child_process';
 import config from '../site.config.mjs';
 import { publicLaunchReady } from '../scripts/launch-readiness.mjs';
 import { projects } from '../scripts/portfolio-data.mjs';
+import { portfolioPosts } from '../scripts/portfolio-blog.mjs';
 import { contactSettings } from '../scripts/contact-settings.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const origin = (process.env.PUBLIC_ORIGIN || config.origin).replace(/\/$/, '');
@@ -17,7 +18,7 @@ const pages=[];
 function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory())walk(p);else if(entry.name==='index.html')pages.push(p);}}
 walk(dist);
 test('all public page paths and local assets resolve',()=>{
-  assert.equal(pages.length,94 + projects.length);
+  assert.equal(pages.length,94 + projects.length + portfolioPosts.length);
   for(const file of pages){
     const html=fs.readFileSync(file,'utf8');
     assert.match(html,/<html lang="(?:fr|en)">/);
@@ -32,6 +33,35 @@ test('all public page paths and local assets resolve',()=>{
       if(fs.existsSync(target)&&fs.statSync(target).isDirectory())target=path.join(target,'index.html');
       assert.ok(fs.existsSync(target),`${file}: broken local link ${value}`);
     }
+  }
+});
+test('all 32 portfolio posts have French pages, distinct featured images and source attribution',()=>{
+  assert.equal(portfolioPosts.length,32);
+  assert.equal(portfolioPosts.filter(post=>post.source.includes('/blog/')).length,29);
+  assert.equal(portfolioPosts.filter(post=>post.source.includes('/creative-portfolio/')).length,3);
+  assert.equal(new Set(portfolioPosts.map(post=>post.id)).size,32);
+  assert.equal(new Set(portfolioPosts.map(post=>post.image)).size,32);
+  const index=fs.readFileSync(path.join(dist,'regards/index.html'),'utf8');
+  assert.equal((index.match(/class="portfolio-blog-card"/g)||[]).length,32);
+  const sitemap=fs.existsSync(path.join(dist,'sitemap.xml'))?fs.readFileSync(path.join(dist,'sitemap.xml'),'utf8'):null;
+  for(const post of portfolioPosts){
+    const html=fs.readFileSync(path.join(dist,'regards',post.id,'index.html'),'utf8');
+    assert.match(html,/<html lang="fr">/);
+    assert.equal((html.match(/<h1>/g)||[]).length,1);
+    assert.ok(html.includes(`href="../regards/${post.id}/"`)===false);
+    assert.ok(index.includes(`href="../regards/${post.id}/"`));
+    assert.ok(html.includes(`href="${post.source}"`));
+    assert.match(html,/<meta property="og:type" content="article">/);
+    const schemas=JSON.parse(html.match(/<script type="application\/ld\+json">([^<]+)<\/script>/)[1]);
+    const article=schemas.find(item=>item['@type']==='Article');
+    assert.equal(article.author.name,'Jean Emilien Massoda');
+    assert.equal(article.inLanguage,'fr-FR');
+    assert.equal(article.isBasedOn,post.source);
+    assert.equal(article.image,new URL(post.image,origin+'/').href);
+    assert.ok(!/og-cover|flow\.svg|default|placeholder/.test(post.image));
+    if(post.date)assert.equal(article.datePublished,post.date);
+    else assert.equal(article.datePublished,undefined);
+    if(sitemap)assert.ok(sitemap.includes(`/regards/${post.id}/</loc>`));
   }
 });
 test('five working demo surfaces carry fictional-data disclosures and distinct scenarios',()=>{
@@ -432,3 +462,4 @@ test('contact services use approved URLs and can be configured independently', (
   assert.throws(() => contactSettings({ GOOGLE_BOOKING_URL: 'https://other.example/' }));
   assert.throws(() => contactSettings({ FORMSPREE_FORM_ID: 'https://other.example' }));
 });
+

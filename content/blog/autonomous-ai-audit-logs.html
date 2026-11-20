@@ -1,0 +1,33 @@
+<h1>Agents IA autonomes : journaux d’audit, validations et responsabilités</h1>
+<p class="blog-category">IA &amp; gouvernance</p>
+<p class="blog-lead">Un agent fiable doit laisser des preuves de ses actions et rendre visibles les limites de son autorité.</p>
+<p>Que se passe-t-il lorsqu’un système d’IA ne se contente plus de recommander une action, mais l’exécute ?</p>
+<p>Le problème change entièrement. Un assistant rédigeant un e-mail présente un type de risque. Un agent pouvant ouvrir une demande de fusion, consulter des données clients, modifier le cloud ou déclencher un paiement intervient dans un processus aux conséquences réelles.</p>
+<p>La gouvernance ne peut donc pas se résumer à un bouton « approuver » final. Il faut un historique fiable, des validations bien placées, des droits limités et un responsable identifié.</p>
+<h2>L’autonomie transforme un résultat en action</h2>
+<p>Le logiciel traditionnel suit des chemins prévus par les ingénieurs. Un agent reçoit un objectif large, choisit les outils, décompose le travail et ajuste son plan. Cette souplesse multiplie aussi les chemins vers un résultat dangereux.</p>
+<p>Un modèle malveillant n’est pas nécessaire : instruction ambiguë, contexte ancien, intégration trop permissive ou réponse mal interprétée suffisent. Avec le droit d’agir, une petite erreur devient un changement en production.</p>
+<p>Les travaux OWASP citent autonomie excessive, mauvais usage des outils, empoisonnement de la mémoire, abus d’identité et de privilèges et défaillances en cascade. Il faut sécuriser toute la chaîne d’action.</p>
+<h2>Le journal doit expliquer davantage que « l’IA l’a fait »</h2>
+<p>Un ingénieur, auditeur ou régulateur doit pouvoir reconstituer l’exécution. Le journal enregistre au minimum :</p><ul><li>l’initiateur ;</li><li>l’objectif et les règles fournis ;</li><li>le modèle et sa configuration ;</li><li>les outils autorisés ;</li><li>les requêtes et réponses importantes ;</li><li>les changements de droits et validations ;</li><li>les ressources créées, lues, modifiées ou supprimées ;</li><li>erreurs, nouvelles tentatives, annulations et état final ;</li><li>la personne ou le compte de service responsable.</li></ul>
+<p>Les données sensibles doivent être masquées sans vider le journal. « Tâche terminée » apporte trop peu de preuves ; exposer des secrets est dangereux. L’observabilité utile se situe entre les deux.</p>
+<p>L’intégrité compte également. Si l’agent peut modifier à la fois un dossier et la preuve de sa modification, celle-ci n’est pas fiable. Les événements importants doivent être conservés dans un stockage contrôlé, avec accès limité, durée adaptée et détection des altérations.</p>
+<h2>Placer les validations selon le risque</h2>
+<p>Tout faire approuver ralentit l’agent et pousse à cliquer machinalement. Ne rien approuver suppose que chaque action est réversible. Les deux approches sont mauvaises.</p>
+<p>Il faut classer les actions selon leur impact.</p><p>Les actions peu risquées et réversibles peuvent souvent être automatiques : lire une documentation publique, préparer un brouillon local ou lancer des tests isolés.</p><p>Les actions intermédiaires peuvent rester dans un cadre strict : modification hors production, schéma défini, volume limité et retour arrière possible.</p><p>Les actions importantes exigent une autorisation explicite : production, droits d’accès, argent, suppression de données, contact client ou exposition d’informations privées ne doivent pas être dissimulés dans une longue chaîne.</p>
+<p>L’écran de validation explique en langage clair action, ressource, conséquences et preuves. « Autoriser l’appel ? » ne suffit pas pour décider en connaissance de cause.</p>
+<h2>Le moindre privilège est une exigence d’architecture</h2>
+<p>L’agent reçoit les droits strictement nécessaires, pour la durée utile : identités séparées par environnement, jetons limités, destinations réseau contrôlées, écritures restreintes et identifiants temporaires expirants.</p>
+<p>La conception des outils compte. Une fonction dédiée comme <code>create_support_draft</code> est plus sûre qu’un accès libre à toute la base. Un outil contraint réduit les états invalides possibles.</p>
+<p>Les permissions ne doivent pas se transmettre automatiquement entre agents. Recherche, programmation et déploiement ont des responsabilités différentes, visibles dans identités, outils et événements d’audit.</p>
+<h2>La responsabilité ne peut appartenir au modèle</h2>
+<p>Les personnes et l’organisation choisissent le système, fixent ses droits, approuvent son usage et exploitent ses contrôles. Elles restent responsables.</p>
+<p>Chaque agent en production a donc un propriétaire, chargé des revues d’accès, règles, incidents, mesures et arrêt du système, sans devoir regarder chaque étape réussie.</p>
+<p>Le cadre NIST organise le travail autour de quatre fonctions : gouverner, cartographier, mesurer et gérer. Cela évite une gouvernance limitée au lancement : environnements, modèles, outils et erreurs évoluent.</p>
+<h2>Un modèle de contrôle concret</h2>
+<ol><li>Authentifier la demande et classer la tâche.</li><li>Créer un identifiant unique et consigner l’objectif approuvé.</li><li>Attribuer outils limités et identifiants temporaires.</li><li>Contrôler chaque requête selon les règles.</li><li>Suspendre les actions importantes pour une validation claire.</li><li>Écrire les événements dans un stockage d’audit indépendant.</li><li>Vérifier le résultat au lieu de croire le message de fin.</li><li>Révoquer les accès temporaires et conserver les preuves nécessaires.</li></ol>
+<p>Ce modèle ne supprime pas les échecs ; il aide à les contenir, les comprendre et les corriger.</p>
+<h2>Ce qui rend un agent digne de confiance</h2>
+<p>Ses capacités impressionnent. Les actions qu’il ne peut accomplir silencieusement construisent la confiance.</p>
+<p>Après chaque exécution importante, l’équipe doit savoir ce que l’agent savait, ce qu’il pouvait faire, ce qu’il a fait et qui assume le résultat.</p>
+<p>Sans ces réponses, l’autonomie repose sur un logiciel puissant et trop peu de preuves.</p>

@@ -1,0 +1,36 @@
+<h1>L’IA écrit davantage de code. Qui assume le jugement d’ingénierie ?</h1>
+<p class="blog-category">Qualité logicielle</p>
+<p class="blog-lead">Les exigences, l’architecture, la sécurité et la responsabilité demeurent humaines, même lorsque la génération accélère.</p>
+<p>Si un assistant écrit l’essentiel d’une fonctionnalité, qui répond de sa défaillance en production ?</p><p>Ce n’est pas le modèle. Ce sont les personnes et l’organisation qui ont choisi le besoin, accepté la réalisation et publié le changement.</p>
+<p>Les outils progressent dans la création de fonctions, tests, migrations, documentation et modifications complètes. Ils réduisent les répétitions et accélèrent les retours. Ils peuvent aussi créer une illusion : un code apparu rapidement et d’apparence familière serait forcément compris.</p>
+<p>La compétence rare se déplace de la saisie de chaque ligne vers un jugement solide sur un volume plus important de propositions.</p>
+<h2>Générer du code ne définit pas le problème</h2>
+<p>Avant de coder, quelqu’un décide ce que le système doit faire. Les besoins comportent ambiguïtés, incitations, contraintes juridiques, cas limites et hypothèses implicites. Une réalisation techniquement correcte peut résoudre le mauvais problème.</p>
+<p>Un ingénieur expérimenté interroge ce que la demande omet : deux utilisateurs agissent-ils simultanément ? Quel système fait autorité ? L’action est-elle réversible ? Quelles données ne doivent jamais atteindre le modèle ? Comment enquêter sur un résultat contesté ? Comment migrer l’existant ?</p>
+<p>L’IA peut aider à explorer ces questions. Elle ne doit pas y répondre silencieusement au nom de l’entreprise.</p>
+<h2>L’architecture est une suite d’arbitrages</h2>
+<p>Il existe rarement une architecture universellement correcte. L’équipe arbitre simplicité et flexibilité, cohérence et disponibilité, services gérés et portabilité, rapidité immédiate et maintenance future.</p>
+<p>Le code généré peut optimiser seulement la tâche visible, ajouter une dépendance déjà couverte, dupliquer une abstraction ou ignorer des règles opérationnelles absentes du contexte.</p>
+<p>L’ingénieur doit replacer le changement dans le système : propriété des données, limites des défaillances, capacités de l’équipe, sécurité, coût et feuille de route.</p>
+<h2>Un code plausible n’est pas un code vérifié</h2>
+<p>Une syntaxe propre peut masquer une API dépassée, un cas limite mal traité, des autorisations affaiblies, une requête coûteuse ou un test validant une hypothèse erronée.</p>
+<p>La revue exige des preuves : exécution, examen des différences, tests des résultats attendus et des erreurs, documentation des dépendances, analyse statique, types, sécurité et mesures de performance pertinentes.</p>
+<p>La profondeur du contrôle dépend de l’impact. Une correction documentaire ne demande pas le même examen qu’une modification d’autorisation de paiement.</p>
+<h2>La sécurité dépend du contexte</h2>
+<p>Dépôts, tickets, journaux et outils rendent les agents utiles. Ce contexte peut contenir secrets, données clients, code vulnérable et instructions non fiables.</p>
+<p>Il faut limiter les accès, séparer les identifiants de développement et de production, examiner les appels d’outils, protéger les branches et rechercher secrets et dépendances vulnérables. Mentionner la production dans une tâche ne justifie pas de donner accès à celle-ci.</p>
+<p>Les recommandations OWASP soulignent les risques d’autonomie excessive, de mauvais usage des outils et d’abus d’identité ou de privilèges. Ils relèvent de la conception du système ; un bon modèle ne compense pas des identifiants sans restriction.</p>
+<h2>La revue peut devenir le goulot</h2>
+<p>Lorsque chaque développeur produit plusieurs changements dans le temps autrefois consacré à un seul, la capacité de revue devient limitante. L’équipe risque de fusionner plus vite qu’elle ne comprend.</p>
+<p>Il faut améliorer l’organisation :</p><ul><li>garder des changements assez petits pour être compris ;</li><li>préciser problème et critères d’acceptation ;</li><li>demander hypothèses et incertitudes ;</li><li>automatiser tests et contrôles de sécurité ;</li><li>préserver la revue humaine des décisions importantes ;</li><li>mesurer les résultats en production ;</li><li>documenter les raisons des choix structurants.</li></ul>
+<p>L’IA doit augmenter les progrès validés, pas seulement la quantité de code.</p>
+<h2>Savoir quand ne pas automatiser</h2>
+<p>Refactorisations répétitives, bases de tests, brouillons, recherche dans le dépôt et prototypes isolés se prêtent à la délégation. D’autres tâches dépendent fortement du contexte interne, de la confiance ou de décisions irréversibles.</p>
+<p>Un bon ingénieur distingue ces situations. Il sait quand une réalisation manuelle est plus claire qu’une abstraction générée, quand une migration doit être progressive et quand un incident client appelle une communication humaine.</p>
+<h2>Juniors et seniors voient leur travail évoluer</h2>
+<p>Les fondamentaux restent indispensables. Réviser une sortie inconnue demande de comprendre langage, framework, base de données et réseau.</p>
+<p>Le junior risque d’accepter ce qu’il ne peut expliquer. Le senior risque de justifier un périmètre trop large par la vitesse. Tous deux doivent lire les différences, prévoir le comportement, tester cette prévision et examiner les désaccords avec la réalité.</p>
+<p>Le mentorat doit enseigner à contester les résultats, et pas seulement à les demander.</p>
+<h2>La responsabilité demeure humaine</h2>
+<p>Fusionner un changement, c’est accepter comportement, risques et coût de maintenance. L’équipe qui déploie assume l’impact client. L’entreprise qui en bénéficie assume sa gouvernance.</p>
+<p>Cela explique l’usage professionnel de ces outils, sans diminuer leur valeur. Les ingénieurs saisiront peut-être moins de lignes routinières et coordonneront davantage d’automatismes. Exigences, architecture, vérification, sécurité et responsabilité deviennent alors le cœur du métier.</p>

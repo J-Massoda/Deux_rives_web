@@ -1,0 +1,43 @@
+<h1>Après « commande payée » : fiabiliser les intégrations WooCommerce</h1>
+<p class="blog-category">WooCommerce &amp; API</p>
+<p class="blog-lead">Un paiement réussi ne garantit ni le stock, ni la livraison, ni l’activation du service commandé.</p>
+<p>Que garantit réellement « commande payée » ?</p>
+<p>Un événement financier a abouti. Cela ne garantit pas la réservation du stock, l’acceptation du fournisseur, l’activation d’un service ou la réception du produit.</p>
+<p>Une boutique reliée à la logistique, aux recharges, abonnements, réservations ou API externes suit un processus distribué. Chaque frontière peut échouer indépendamment.</p>
+<h2>Partir du bon événement WooCommerce</h2>
+<p>L’intégration ne doit pas dépendre de la page de remerciement ni d’une redirection : onglets fermés, confirmations asynchrones et requêtes rejouées existent.</p>
+<p>Utiliser un événement serveur ou un état fiable. Le hook dépend du métier et de la passerelle : paiement terminé, commande en traitement ou règlement confirmé. La réalisation doit préciser quel état autorise l’exécution.</p>
+<p>Produits virtuels, téléchargements, virements et passerelles personnalisées peuvent suivre des transitions différentes.</p>
+<h2>Garder le récepteur court</h2>
+<p>La fonction valide la commande, crée une tâche durable et rend la main. Elle ne garde pas le paiement ouvert pendant un appel tiers lent.</p>
+<p>Action Scheduler, courant dans WordPress et WooCommerce, fournit une file traçable pour ces traitements. Elle permet de reprendre une erreur temporaire sans demander un nouveau paiement.</p>
+<p>La tâche conserve des identifiants stables : commande, type d’exécution, version et clé métier. Elle charge ensuite les données actuelles de façon sûre, au lieu de copier sans contrôle tous les champs.</p>
+<h2>Rendre l’exécution idempotente</h2>
+<p>Hooks répétés, changement manuel de statut, redémarrage et expiration après acceptation distante peuvent tous reproduire une demande.</p>
+<p>Créer un enregistrement d’exécution avec contrainte d’unicité sur commande et opération. Réutiliser une clé stable. Si le fournisseur ne gère pas l’idempotence, consulter sa transaction avant de répéter une demande incertaine.</p>
+<p>Une métadonnée comme <code>_sent_to_provider = yes</code> n’explique pas acceptation, refus ou exécution partielle.</p>
+<p>Prévoir des états : en file, en envoi, acceptée, confirmée, en reprise, échouée et revue manuelle. Conserver référence et tentatives.</p>
+<h2>Signer correctement les requêtes</h2>
+<p>HMAC, RSA, OAuth ou JWT signé suivent les règles du fournisseur. La difficulté vient souvent de la forme exacte des données : ordre, espaces, encodage, dates, fins de ligne, variante base64 et corps brut ou chaîne normalisée.</p>
+<p>Clés privées et secrets restent hors du code public, avec droits limités. Ne pas journaliser secrets ni en-têtes d’autorisation complets. Un diagnostic sûr conserve identifiants, dates, empreintes et contenu masqué.</p>
+<p>Si une liste d’adresses IP est requise, vérifier l’adresse de sortie réelle du serveur ou du proxy. L’adresse publique entrante n’est pas nécessairement la sortante. Sans sortie stable, prévoir une solution d’hébergement ou un service adapté.</p>
+<h2>La réponse est une preuve parmi d’autres</h2>
+<p>HTTP 200 peut contenir une erreur métier ou un simple accusé de réception. Examiner statut réseau et métier, vérifier le schéma et conserver la référence.</p>
+<p>Si l’opération reste en attente, planifier une consultation ou attendre un événement signé. Une expiration ne prouve pas l’échec : enregistrer l’incertitude et interroger avant de réessayer.</p>
+<h2>Vérifier les webhooks et empêcher leur rejeu</h2>
+<p>Contrôler la signature sur le corps brut, appliquer une fenêtre temporelle si le fournisseur la permet et enregistrer l’identifiant avant traitement.</p>
+<p>Répondre vite et déléguer le travail lourd. Un doublon ne doit pas livrer deux fois. Un événement ancien ne doit pas faire régresser une confirmation sans motif valide.</p>
+<p>La documentation WooCommerce indique que des échecs de livraison répétés peuvent désactiver les webhooks. Leur santé doit donc être surveillée.</p>
+<h2>Adapter les reprises à l’erreur</h2>
+<p>Expirations, limitation de débit et indisponibilités temporaires justifient des reprises espacées avec variation aléatoire. Données invalides, produit non pris en charge et mauvais identifiants demandent une correction.</p>
+<p>Limiter le nombre d’essais, prévoir la revue manuelle et avertir la bonne équipe avant que le client découvre le problème.</p>
+<p>Journaux Action Scheduler, notes de commande et journal d’intégration se complètent. Les notes visibles au client restent compréhensibles ; les détails techniques sont réservés à l’exploitation.</p>
+<h2>Prévoir la reprise par un opérateur</h2>
+<p>Un administrateur habilité doit voir état, dernière réponse, action sûre et risque de doublon.</p>
+<p>Il peut actualiser, reprendre sans danger, demander un remboursement, joindre une référence ou clôturer après exécution manuelle vérifiée. Chaque intervention est auditée.</p>
+<h2>Tester aussi les défaillances</h2>
+<ul><li>Expiration après acceptation.</li><li>Événements WooCommerce en double.</li><li>Notifications répétées ou tardives.</li><li>Signatures invalides.</li><li>Limitations et erreurs 5xx.</li><li>Traitement interrompu.</li><li>Correspondance produit disparue.</li><li>Commande payée à rembourser après échec définitif.</li></ul>
+<p>L’objectif est un état correct et explicable même en échec, au-delà d’un message vert.</p>
+<h2>Un système d’exploitation de la commande</h2>
+<p>Le plugin contient le code, mais la fiabilité vient du tout : déclencheur fiable, tâches durables, idempotence, authentification, événements vérifiés, reprises limitées, rapprochement, surveillance et intervention humaine.</p>
+<p>Le client voit une ligne. Le système doit la rendre vraie.</p>

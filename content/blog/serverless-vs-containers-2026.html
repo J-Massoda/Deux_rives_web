@@ -1,0 +1,12 @@
+<h1>Serverless ou conteneurs : choisir selon la charge réelle</h1>
+<p class="blog-category">Architecture cloud</p>
+<p class="blog-lead">Trafic, durée des traitements, coût et contraintes d’exploitation donnent un meilleur cadre qu’une liste de fonctionnalités.</p>
+<p>La comparaison revient constamment. Pour décider, il faut partir de la forme réelle de la charge et de ses contraintes.</p>
+<h2>Choisir le serverless lorsque…</h2>
+<ul><li><strong>Le trafic est irrégulier ou imprévisible.</strong> Lambda, Azure Functions et Google Cloud Functions adaptent automatiquement la capacité ; la facturation à l’invocation évite une partie du coût d’inactivité.</li><li><strong>L’équipe veut réduire l’exploitation.</strong> Moins de serveurs à maintenir, de clusters à gérer et de capacité à prévoir peuvent rendre du temps aux petites équipes.</li><li><strong>Les tâches sont courtes.</strong> API, événements et tâches planifiées s’y prêtent lorsque l’exécution se compte en secondes plutôt qu’en heures.</li></ul>
+<h2>Choisir les conteneurs lorsque…</h2>
+<ul><li><strong>La charge soutenue exige une performance prévisible.</strong> Des services continus évitent certaines variations liées aux démarrages à froid et au coût de chaque invocation.</li><li><strong>Les traitements ou connexions durent.</strong> Processus longs, WebSocket et état mémoire maintenu conviennent mieux à un service durable qu’à une fonction courte sans état.</li><li><strong>La portabilité compte.</strong> Un conteneur bien conçu peut fonctionner sur différents clouds ou sur site ; une fonction dépend davantage du modèle d’exécution du fournisseur.</li><li><strong>Le trafic est élevé et constant.</strong> Une capacité provisionnée fortement utilisée peut coûter moins que la somme des invocations.</li></ul>
+<h2>La combinaison réaliste</h2>
+<p>Beaucoup de systèmes utilisent les deux : fonctions pour événements, webhooks et pics ; conteneurs, avec Kubernetes ou des services gérés comme ECS ou Cloud Run, pour les composants centraux. Le choix exclusif est souvent trop restrictif au-delà d’un petit projet.</p>
+<h2>Un point de départ pratique</h2>
+<p>Pour un nouveau produit au trafic inconnu, le serverless peut donner le temps d’observer l’usage grâce à sa simplicité opérationnelle. Les composants dépassant ses contraintes pourront être conteneurisés ensuite. Le choix doit rester lié aux besoins observés.</p>

@@ -1,0 +1,39 @@
+<h1>API de paiement : idempotence, rapprochement et reprise des webhooks</h1>
+<p class="blog-category">Paiements &amp; API</p>
+<p class="blog-lead">Connecter l’API est la partie visible. La fiabilité se joue lorsque la réponse se perd ou que deux systèmes divergent.</p>
+<p>Que doit faire votre application lorsque le prestataire débite le client mais que votre serveur ne reçoit jamais la confirmation ?</p>
+<p>Réessayer peut débiter deux fois. Marquer l’opération en échec peut contredire le fournisseur. Attendre sans mécanisme reporte le problème sur l’assistance.</p>
+<p>Le travail difficile commence lorsque les réseaux expirent, les webhooks arrivent tard, les traitements redémarrent et les états divergent.</p>
+<h2>Un délai dépassé ne prouve pas un échec</h2>
+<p>Un système distribué ne distingue pas toujours une opération échouée d’une réussite dont l’accusé de réception s’est perdu. La connexion peut tomber après le traitement ; le serveur peut abandonner pendant que le prestataire poursuit. Une nouvelle tentative risque alors d’être comprise comme une nouvelle instruction.</p>
+<p>Cette incertitude doit être représentée : en attente, en traitement, réussie, échouée, annulée ou à examiner. Un simple champ réussite/échec ne suffit pas.</p>
+<h2>L’idempotence sécurise les nouvelles tentatives</h2>
+<p>Une opération idempotente ne produit qu’un effet métier, même si la demande est envoyée plusieurs fois. Le client attribue une clé unique à l’opération et la réutilise. Le serveur reconnaît le premier résultat et répond de façon cohérente sans recréer le débit.</p>
+<p>Stripe documente cette méthode pour les requêtes POST et recommande des clés à forte entropie, comme UUIDv4, sans données personnelles ni sensibles.</p>
+<p>La clé représente l’intention métier, pas la tentative réseau. « Payer la facture 8472 » conserve la même clé ; en créer une nouvelle à chaque essai annule la protection.</p>
+<p>L’application impose aussi l’unicité en base. Elle conserve fournisseur, type d’opération, référence métier, clé, empreinte de la requête et référence finale. Une vérification uniquement applicative reste vulnérable à deux demandes simultanées.</p>
+<h2>Les webhooks apportent des preuves</h2>
+<p>Une banque peut confirmer plus tard, un paiement être contesté ou un remboursement changer d’état. Les webhooks sont essentiels ; leur livraison n’est pourtant pas leur traitement.</p>
+<p>Le récepteur vérifie la signature sur le corps brut, enregistre l’identifiant, refuse les doublons, conserve l’événement, répond rapidement et délègue les opérations lentes à une file.</p>
+<p>Stripe recommande une réponse HTTP 2xx avant les traitements complexes et exige le corps brut pour la signature. Analyser puis reconstruire le contenu peut casser cette vérification.</p>
+<p>Les événements peuvent être répétés, retardés ou reçus dans le désordre. Leur traitement a donc sa propre idempotence : un identifiant déjà traité ne doit produire aucun nouvel effet.</p>
+<h2>Conserver l’histoire en base</h2>
+<p>Un état modifiable ne suffit pas. Il faut un historique ajouté sans réécrire le passé, avec date de l’événement fournisseur, réception locale et fin du traitement.</p>
+<p>Cette chronologie permet d’expliquer un compte débité associé à une commande encore impayée. Sans elle, le diagnostic repose sur des suppositions.</p>
+<ul><li>Identifiant interne de transaction.</li><li>Références client et commande.</li><li>Fournisseur et identifiant fournisseur.</li><li>Montant et devise.</li><li>États courant et précédent.</li><li>Clé d’idempotence.</li><li>Identifiant d’événement.</li><li>Nombre d’essais et dernière erreur.</li><li>Dates de demande, accusé, notification et règlement.</li><li>Résultat du rapprochement et notes des opérateurs.</li></ul>
+<h2>Le rapprochement comble les écarts</h2>
+<p>Les webhooks ne doivent pas être le seul mécanisme de cohérence. Le rapprochement compare le registre interne aux données faisant autorité et repère opérations absentes, dupliquées ou contradictoires.</p>
+<p>Il peut exploiter les fichiers de règlement quotidiens, interroger les API pour les attentes trop anciennes ou combiner les deux à fort volume.</p>
+<p>Les différences doivent être classées. Une réussite fournisseur encore en attente localement peut être corrigée si références et montants concordent. Un montant ou une devise différente exige une escalade. Une réussite locale absente chez le prestataire doit être étudiée avant livraison.</p>
+<h2>Définir une politique de reprise</h2>
+<p>Les tentatives sont limitées, observables et adaptées à l’erreur. Une expiration réseau ou une réponse 5xx peut justifier un délai exponentiel avec variation aléatoire. Une erreur de validation ne disparaîtra probablement pas au cinquième essai. Une erreur d’authentification doit alerter l’exploitation.</p>
+<p>Après épuisement du nombre d’essais, l’élément passe dans un état récupérable ou une file d’échecs. Les équipes doivent pouvoir examiner, rejouer ou résoudre sans perdre les références initiales et protections d’idempotence.</p>
+<h2>Séparer paiement et exécution de la commande</h2>
+<p>Un paiement réussi peut déclencher allocation de stock, recharge téléphonique, abonnement, expédition ou appel externe. Chaque étape peut échouer après le débit.</p>
+<p>L’exécution doit donc être durable : état enregistré, file, commandes idempotentes et procédure de compensation ou remboursement. Une redirection du navigateur ne prouve jamais le paiement : onglets fermés, redirections manquées et requêtes falsifiées existent.</p>
+<h2>L’observabilité fait partie du produit</h2>
+<p>Suivre taux de réussite, ancienneté des attentes, latence des webhooks, doublons, reprises, codes d’erreur, écarts et retard de livraison. Les alertes doivent refléter l’impact client ou financier.</p>
+<p>L’assistance doit rechercher par commande, client, référence ou téléphone sans accès aux secrets inutiles. Elle doit comprendre l’historique et l’action sûre.</p>
+<h2>La reprise constitue la véritable intégration</h2>
+<p>La requête prouve que le code communique avec un prestataire. La reprise prouve que l’activité peut en dépendre.</p>
+<p>Idempotence, webhooks signés, rapprochement, processus durables, journaux et indicateurs ne sont pas des finitions facultatives. Ils constituent le système.</p>

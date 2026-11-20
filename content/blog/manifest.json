@@ -1,0 +1,652 @@
+[
+  {
+    "sourceSlug": "africa-electric-vehicle-shift-infrastructure",
+    "id": "vehicules-electriques-en-afrique-le-role-du-carburant-des-politiques-publiques-et-des-infrastructures",
+    "title": "Véhicules électriques en Afrique : le rôle du carburant, des politiques publiques et des infrastructures",
+    "tag": "Mobilité & énergie",
+    "lead": "La transition électrique africaine se joue autant dans les motos, les bus et les logiciels que dans les voitures particulières.",
+    "source": "https://massoda.me/blog/africa-electric-vehicle-shift-infrastructure.html",
+    "image": "https://massoda.me/media/africa-ev-shift-featured.png",
+    "imageAlt": "Illustration de l’article « Véhicules électriques en Afrique : le rôle du carburant, des politiques publiques et des infrastructures »",
+    "date": null,
+    "links": [
+      {
+        "url": "https://www.uneca.org/stories/ethiopia-launches-national-e-mobility-strategy-2025%E2%80%932030",
+        "label": "United Nations Economic Commission for Africa, “Ethiopia launches National E-Mobility Strategy 2025–2030”"
+      },
+      {
+        "url": "https://apnews.com/article/d4d5ffa1a7b06d3b2e34d59dcc80f0e7",
+        "label": "Associated Press, reporting on Africa's rising imports of Chinese electric vehicles and Ethiopia's adoption"
+      },
+      {
+        "url": "https://www.ft.com/content/14cb294b-cdf0-4623-9393-3287fb85a4e4",
+        "label": "Financial Times, “Iran war supercharges electric vehicle uptake in Africa”"
+      },
+      {
+        "url": "https://about.bnef.com/insights/clean-transport/electric-vehicle-outlook/",
+        "label": "BloombergNEF, Electric Vehicle Outlook 2026"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "african-fintech-offline-reliability",
+    "id": "fintech-africaine-tolerer-les-coupures-rapprocher-les-transactions-et-relier-des-reseaux-fragmentes",
+    "title": "Fintech africaine : tolérer les coupures, rapprocher les transactions et relier des réseaux fragmentés",
+    "tag": "Fintech & fiabilité",
+    "lead": "Un paiement doit rester compréhensible et vérifiable, même lorsque la connexion disparaît ou que les opérateurs ne sont pas d’accord.",
+    "source": "https://massoda.me/blog/african-fintech-offline-reliability.html",
+    "image": "https://massoda.me/media/african-fintech-offline-reliability-featured.png",
+    "imageAlt": "Illustration de l’article « Fintech africaine : tolérer les coupures, rapprocher les transactions et relier des réseaux fragmentés »",
+    "date": null,
+    "links": [
+      {
+        "url": "https://www.africa-nenda.org/",
+        "label": "AfricaNenda: State of Inclusive Instant Payment Systems in Africa 2026"
+      },
+      {
+        "url": "https://www.gsma.com/mobilefordevelopment/",
+        "label": "GSMA: State of Mobile Internet Connectivity"
+      },
+      {
+        "url": "https://www.worldbank.org/en/publication/globalfindex",
+        "label": "World Bank: Global Findex"
+      },
+      {
+        "url": "https://stripe.com/docs/payments/checkout/one-time#idempotent-requests",
+        "label": "Stripe: Idempotent requests"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "agentic-engineering-workflows",
+    "id": "de-lassistant-ia-aux-agents-comment-evoluent-les-methodes-de-developpement",
+    "title": "De l’assistant IA aux agents : comment évoluent les méthodes de développement",
+    "tag": "IA & ingénierie",
+    "lead": "Quand un outil exécute plusieurs tâches, le développeur doit superviser un ensemble de décisions et de preuves.",
+    "source": "https://massoda.me/blog/agentic-engineering-workflows.html",
+    "image": "https://massoda.me/media/agentic-engineering-workflows-featured.png",
+    "imageAlt": "Illustration de l’article « De l’assistant IA aux agents : comment évoluent les méthodes de développement »",
+    "date": null,
+    "links": [
+      {
+        "url": "https://www.nist.gov/itl/ssd",
+        "label": "NIST Secure Software Development Framework"
+      },
+      {
+        "url": "https://platform.openai.com/docs/guides",
+        "label": "OpenAI Developers"
+      },
+      {
+        "url": "https://docs.github.com/en/code-security",
+        "label": "GitHub documentation: Code security"
+      },
+      {
+        "url": "https://digital-strategy.ec.europa.eu/en/library/white-paper-artificial-intelligence",
+        "label": "European Commission: Agentic AI and European adoption"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "ai-coding-agents-what-actually-changed-2026",
+    "id": "agents-de-programmation-ia-ce-qui-a-reellement-change-en-2026",
+    "title": "Agents de programmation IA : ce qui a réellement changé en 2026",
+    "tag": "Développement & IA",
+    "lead": "Au-delà du discours commercial, les agents déplacent le travail vers la définition des tâches, la revue et la vérification.",
+    "source": "https://massoda.me/blog/ai-coding-agents-what-actually-changed-2026.html",
+    "image": "https://massoda.me/media/ai-coding-agents-featured.png",
+    "imageAlt": "Illustration de l’article « Agents de programmation IA : ce qui a réellement changé en 2026 »",
+    "date": null,
+    "links": []
+  },
+  {
+    "sourceSlug": "ai-data-centers-small-modular-reactors",
+    "id": "centres-de-donnees-ia-et-petits-reacteurs-modulaires-promesses-et-chemin-vers-lexploitation",
+    "title": "Centres de données IA et petits réacteurs modulaires : promesses et chemin vers l’exploitation",
+    "tag": "IA & énergie",
+    "lead": "Un besoin réel d’électricité ne transforme pas automatiquement un projet de réacteur en capacité disponible.",
+    "source": "https://massoda.me/blog/ai-data-centers-small-modular-reactors.html",
+    "image": "https://massoda.me/media/ai-needs-power-featured.png",
+    "imageAlt": "Illustration de l’article « Centres de données IA et petits réacteurs modulaires : promesses et chemin vers l’exploitation »",
+    "date": null,
+    "links": [
+      {
+        "url": "https://www.ft.com/content/a2f0e0f8-9350-4124-af77-62219e77e777",
+        "label": "Financial Times, “Short sellers reap $2bn profit as modular nuclear reactor stocks tumble”"
+      },
+      {
+        "url": "https://www.energy.gov/ne/articles/what-high-assay-low-enriched-uranium-haleu",
+        "label": "US Department of Energy, “What is High-Assay Low-Enriched Uranium (HALEU)?”"
+      },
+      {
+        "url": "https://www.nuscalepower.com/press-releases/2026/nuscale-power-reports-second-quarter-2026-results",
+        "label": "NuScale Power, Second Quarter 2026 Results"
+      },
+      {
+        "url": "https://oklo.com/newsroom/news-details/2026/Oklo-Publishes-Second-Quarter-2026-Financial-Results-and-Business-Update/default.aspx",
+        "label": "Oklo, Second Quarter 2026 Financial Results and Business Update"
+      },
+      {
+        "url": "https://www.globenewswire.com/news-release/2026/05/14/3295394/0/en/nano-nuclear-reports-q2-fy-2026-financial-results-and-provides-business-update.html",
+        "label": "NANO Nuclear Energy, Q2 FY2026 Financial Results and Business Update"
+      },
+      {
+        "url": "https://www.nrc.gov/reactors/new-reactors/advanced.html",
+        "label": "US Nuclear Regulatory Commission, Advanced Reactors"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "ai-engineering-judgment",
+    "id": "lia-ecrit-davantage-de-code-qui-assume-le-jugement-dingenierie",
+    "title": "L’IA écrit davantage de code. Qui assume le jugement d’ingénierie ?",
+    "tag": "Qualité logicielle",
+    "lead": "Les exigences, l’architecture, la sécurité et la responsabilité demeurent humaines, même lorsque la génération accélère.",
+    "source": "https://massoda.me/blog/ai-engineering-judgment.html",
+    "image": "https://massoda.me/media/ai-engineering-judgment-featured.png",
+    "imageAlt": "Illustration de l’article « L’IA écrit davantage de code. Qui assume le jugement d’ingénierie ? »",
+    "date": null,
+    "links": [
+      {
+        "url": "https://www.nist.gov/itl/ssd",
+        "label": "NIST Secure Software Development Framework"
+      },
+      {
+        "url": "https://docs.github.com/en/code-security",
+        "label": "GitHub documentation: Code security"
+      },
+      {
+        "url": "https://owasp.org/www-project-agentic-ai/",
+        "label": "OWASP Agentic AI Threats and Mitigations"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "ai-infrastructure-boom-what-it-means-for-developers",
+    "id": "le-boom-des-infrastructures-ia-ce-quil-change-pour-les-developpeurs-en-2026",
+    "title": "Le boom des infrastructures IA : ce qu’il change pour les développeurs en 2026",
+    "tag": "Cloud & carrières",
+    "lead": "Les investissements matériels créent aussi des besoins en logiciels, exploitation et maîtrise des coûts.",
+    "source": "https://massoda.me/blog/ai-infrastructure-boom-what-it-means-for-developers.html",
+    "image": "https://massoda.me/media/ai-infrastructure-boom-featured.png",
+    "imageAlt": "Illustration de l’article « Le boom des infrastructures IA : ce qu’il change pour les développeurs en 2026 »",
+    "date": null,
+    "links": []
+  },
+  {
+    "sourceSlug": "ai-productivity-after-the-first-draft",
+    "id": "apres-le-premier-brouillon-ou-passent-les-gains-de-productivite-de-lia",
+    "title": "Après le premier brouillon : où passent les gains de productivité de l’IA ?",
+    "tag": "IA & organisation",
+    "lead": "Le brouillon est arrivé en quelques minutes. Pourquoi le travail a-t-il encore pris toute l’après-midi ?",
+    "source": "https://massoda.me/blog/ai-productivity-after-the-first-draft.html",
+    "image": "assets/blog/ai-productivity-after-the-first-draft.webp",
+    "imageAlt": "Illustration de l’article « Après le premier brouillon : où passent les gains de productivité de l’IA ? »",
+    "date": "2026-10-11",
+    "links": [
+      {
+        "url": "https://newsroom.workday.com/2026-01-14-New-Workday-Research-Companies-Are-Leaving-AI-Gains-on-the-Table",
+        "label": "January 2026 survey reported by Workday"
+      },
+      {
+        "url": "https://newsroom.workday.com/2026-10-05-Workday-Global-Workforce-Report-AI-Is-Rewriting-Jobs-More-Than-Its-Cutting-Them",
+        "label": "separate October 2026 workforce report"
+      },
+      {
+        "url": "https://massoda.me/portfolio/index.html",
+        "label": "engineering portfolio"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "ai-supply-chain-tariff-enforcement",
+    "id": "lia-aux-frontieres-donnees-logistiques-et-controle-des-droits-de-douane",
+    "title": "L’IA aux frontières : données logistiques et contrôle des droits de douane",
+    "tag": "Données & logistique",
+    "lead": "Une origine déclarée doit pouvoir être rapprochée de preuves, sans confondre un signal de risque avec une fraude établie.",
+    "source": "https://massoda.me/blog/ai-supply-chain-tariff-enforcement.html",
+    "image": "https://massoda.me/media/ai-at-the-border-featured.png",
+    "imageAlt": "Illustration de l’article « L’IA aux frontières : données logistiques et contrôle des droits de douane »",
+    "date": null,
+    "links": [
+      {
+        "url": "https://www.whitehouse.gov/wp-content/uploads/2026/08/The-Great-Transshipment-Scam.pdf",
+        "label": "The White House, “The Great Transshipment Scam”"
+      },
+      {
+        "url": "https://www.ft.com/content/5d5ed2dd-8326-4cad-aac3-5816448ceccf",
+        "label": "Financial Times, “US accuses more than 40 countries of helping China avoid Donald Trump's tariffs”"
+      },
+      {
+        "url": "https://www.csis.org/analysis/primer-transshipment",
+        "label": "Center for Strategic and International Studies, “A Primer on Transshipment”"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "autonomous-ai-audit-logs",
+    "id": "agents-ia-autonomes-journaux-daudit-validations-et-responsabilites",
+    "title": "Agents IA autonomes : journaux d’audit, validations et responsabilités",
+    "tag": "IA & gouvernance",
+    "lead": "Un agent fiable doit laisser des preuves de ses actions et rendre visibles les limites de son autorité.",
+    "source": "https://massoda.me/blog/autonomous-ai-audit-logs.html",
+    "image": "https://massoda.me/media/autonomous-ai-audit-logs-featured.png",
+    "imageAlt": "Illustration de l’article « Agents IA autonomes : journaux d’audit, validations et responsabilités »",
+    "date": null,
+    "links": [
+      {
+        "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+        "label": "NIST AI Risk Management Framework"
+      },
+      {
+        "url": "https://owasp.org/www-project-agentic-ai/",
+        "label": "OWASP Agentic AI Threats and Mitigations"
+      },
+      {
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "label": "European Commission: AI Act regulatory framework"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "aws-vs-azure-vs-google-cloud-2026",
+    "id": "aws-azure-ou-google-cloud-quelle-competence-apprendre-en-premier",
+    "title": "AWS, Azure ou Google Cloud : quelle compétence apprendre en premier ?",
+    "tag": "Cloud & compétences",
+    "lead": "Le bon premier choix dépend du type d’entreprise et des missions visées, autant que des parts de marché.",
+    "source": "https://massoda.me/blog/aws-vs-azure-vs-google-cloud-2026.html",
+    "image": "https://massoda.me/media/aws-vs-azure-vs-google-cloud-featured.png",
+    "imageAlt": "Illustration de l’article « AWS, Azure ou Google Cloud : quelle compétence apprendre en premier ? »",
+    "date": null,
+    "links": []
+  },
+  {
+    "sourceSlug": "ci-cd-pipelines-2026-ai-assisted-devops",
+    "id": "ci-cd-en-2026-les-apports-concrets-du-devops-assiste-par-ia",
+    "title": "CI/CD en 2026 : les apports concrets du DevOps assisté par IA",
+    "tag": "DevOps & livraison",
+    "lead": "Revue, tests et retour arrière peuvent gagner en efficacité sans remplacer les fondations d’un pipeline fiable.",
+    "source": "https://massoda.me/blog/ci-cd-pipelines-2026-ai-assisted-devops.html",
+    "image": "https://massoda.me/media/ai-assisted-ci-cd-featured.png",
+    "imageAlt": "Illustration de l’article « CI/CD en 2026 : les apports concrets du DevOps assisté par IA »",
+    "date": null,
+    "links": []
+  },
+  {
+    "sourceSlug": "fake-conversation-invoice-fraud",
+    "id": "la-fausse-conversation-derriere-une-facture-rendre-lapprobation-verifiable",
+    "title": "La fausse conversation derrière une facture : rendre l’approbation vérifiable",
+    "tag": "Sécurité & opérations",
+    "lead": "La facture semblait ordinaire. L’historique affiché en dessous donnait l’impression que le paiement était déjà approuvé.",
+    "source": "https://massoda.me/blog/fake-conversation-invoice-fraud.html",
+    "image": "assets/blog/fake-conversation-invoice-fraud.webp",
+    "imageAlt": "Illustration de l’article « La fausse conversation derrière une facture : rendre l’approbation vérifiable »",
+    "date": "2026-10-11",
+    "links": [
+      {
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/09/10/protecting-organizations-ai-assisted-executive-impersonation-invoice-fraud/",
+        "label": "Microsoft's September 2026 analysis"
+      },
+      {
+        "url": "https://massoda.me/portfolio/ai-agent-security-sandbox.html",
+        "label": "reviewable approval controls"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "finops-cloud-cost-management-devops-skill",
+    "id": "finops-pourquoi-maitriser-les-couts-cloud-devient-une-competence-devops",
+    "title": "FinOps : pourquoi maîtriser les coûts cloud devient une compétence DevOps",
+    "tag": "Cloud & FinOps",
+    "lead": "Une infrastructure doit fonctionner, mais aussi permettre à l’entreprise de comprendre ce qu’elle paie.",
+    "source": "https://massoda.me/blog/finops-cloud-cost-management-devops-skill.html",
+    "image": "https://massoda.me/media/finops-101-featured.png",
+    "imageAlt": "Illustration de l’article « FinOps : pourquoi maîtriser les coûts cloud devient une compétence DevOps »",
+    "date": null,
+    "links": []
+  },
+  {
+    "sourceSlug": "great-cloud-storage-consolidation",
+    "id": "la-concentration-du-cloud-comment-trois-entreprises-ont-domine-linfrastructure",
+    "title": "La concentration du cloud : comment trois entreprises ont dominé l’infrastructure",
+    "tag": "Cloud & stratégie",
+    "lead": "La commodité du cloud crée aussi des dépendances qu’il vaut mieux comprendre avant une migration.",
+    "source": "https://massoda.me/blog/great-cloud-storage-consolidation.html",
+    "image": "https://massoda.me/media/cloud-consolidation.png",
+    "imageAlt": "Illustration de l’article « La concentration du cloud : comment trois entreprises ont dominé l’infrastructure »",
+    "date": null,
+    "links": []
+  },
+  {
+    "sourceSlug": "payment-api-reliability",
+    "id": "api-de-paiement-idempotence-rapprochement-et-reprise-des-webhooks",
+    "title": "API de paiement : idempotence, rapprochement et reprise des webhooks",
+    "tag": "Paiements & API",
+    "lead": "Connecter l’API est la partie visible. La fiabilité se joue lorsque la réponse se perd ou que deux systèmes divergent.",
+    "source": "https://massoda.me/blog/payment-api-reliability.html",
+    "image": "https://massoda.me/media/payment-api-reliability-featured.png",
+    "imageAlt": "Illustration de l’article « API de paiement : idempotence, rapprochement et reprise des webhooks »",
+    "date": null,
+    "links": [
+      {
+        "url": "https://stripe.com/docs/payments/checkout/one-time#idempotent-requests",
+        "label": "Stripe: Idempotent requests"
+      },
+      {
+        "url": "https://stripe.com/docs/webhooks",
+        "label": "Stripe: Receive webhook events"
+      },
+      {
+        "url": "https://learn.microsoft.com/en-us/azure/architecture/best-practices/retry-service-specific",
+        "label": "Microsoft Azure Architecture Center: Retry pattern"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "serverless-vs-containers-2026",
+    "id": "serverless-ou-conteneurs-choisir-selon-la-charge-reelle",
+    "title": "Serverless ou conteneurs : choisir selon la charge réelle",
+    "tag": "Architecture cloud",
+    "lead": "Trafic, durée des traitements, coût et contraintes d’exploitation donnent un meilleur cadre qu’une liste de fonctionnalités.",
+    "source": "https://massoda.me/blog/serverless-vs-containers-2026.html",
+    "image": "https://massoda.me/media/serverless-vs-containers-featured.png",
+    "imageAlt": "Illustration de l’article « Serverless ou conteneurs : choisir selon la charge réelle »",
+    "date": null,
+    "links": []
+  },
+  {
+    "sourceSlug": "skills-your-company-cannot-see",
+    "id": "les-competences-que-votre-entreprise-ne-voit-pas",
+    "title": "Les compétences que votre entreprise ne voit pas",
+    "tag": "Équipes & organisation",
+    "lead": "La personne capable d’améliorer le prochain processus travaille peut-être déjà chez vous. Sauriez-vous à qui demander ?",
+    "source": "https://massoda.me/blog/skills-your-company-cannot-see.html",
+    "image": "assets/blog/skills-your-company-cannot-see.webp",
+    "imageAlt": "Illustration de l’article « Les compétences que votre entreprise ne voit pas »",
+    "date": "2026-10-11",
+    "links": [
+      {
+        "url": "https://news.sap.com/2026/10/sap-to-acquire-techwolf-evidence-based-work-age-of-ai/",
+        "label": "SAP announced an agreement to acquire TechWolf"
+      },
+      {
+        "url": "https://www.weforum.org/publications/the-future-of-jobs-report-2025/in-full/3-skills-outlook/",
+        "label": "Future of Jobs Report 2025"
+      },
+      {
+        "url": "https://newsroom.workday.com/2026-10-05-Workday-Global-Workforce-Report-AI-Is-Rewriting-Jobs-More-Than-Its-Cutting-Them",
+        "label": "October 2026 Workday report"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "surveillance-pricing-algorithms-personal-data",
+    "id": "prix-personnalises-comment-les-algorithmes-et-les-donnees-changent-une-offre",
+    "title": "Prix personnalisés : comment les algorithmes et les données changent une offre",
+    "tag": "Données & commerce",
+    "lead": "Lorsque le prix dépend du profil, la transparence et la confiance deviennent des exigences de conception.",
+    "source": "https://massoda.me/blog/surveillance-pricing-algorithms-personal-data.html",
+    "image": "https://massoda.me/media/surveillance-pricing-featured.png",
+    "imageAlt": "Illustration de l’article « Prix personnalisés : comment les algorithmes et les données changent une offre »",
+    "date": null,
+    "links": [
+      {
+        "url": "https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-surveillance-pricing-study-indicates-wide-range-personal-data-used-set-individualized-consumer",
+        "label": "US Federal Trade Commission, “Surveillance Pricing Study Indicates Wide Range of Personal Data Used to Set Individualized Consumer Prices”"
+      },
+      {
+        "url": "https://www.nysenate.gov/legislation/laws/GBS/349-A",
+        "label": "New York General Business Law § 349-A"
+      },
+      {
+        "url": "https://washingtonian.com/2026/03/12/the-washington-post-is-using-reader-data-to-set-subscription-prices-how-does-that-work/",
+        "label": "Washingtonian, “The Washington Post Is Using Reader Data to Set Subscription Prices. How Does That Work?”"
+      },
+      {
+        "url": "https://finance.yahoo.com/economy/policy/articles/washington-post-setting-prices-based-100000803.html",
+        "label": "Yahoo Finance/Moneywise, coverage of The Washington Post's algorithmic subscription pricing disclosure"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "the-ai-race-for-electricity",
+    "id": "la-course-a-lia-devient-une-course-a-lelectricite",
+    "title": "La course à l’IA devient une course à l’électricité",
+    "tag": "IA & infrastructures",
+    "lead": "Avant qu’un nouveau modèle réponde, une autre question doit trouver sa réponse : d’où viendra l’électricité ?",
+    "source": "https://massoda.me/blog/the-ai-race-for-electricity.html",
+    "image": "assets/blog/the-ai-race-for-electricity.webp",
+    "imageAlt": "Illustration de l’article « La course à l’IA devient une course à l’électricité »",
+    "date": "2026-11-08",
+    "links": [
+      {
+        "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/wyoming-data-center/",
+        "label": "Google’s Wyoming data center announcement"
+      },
+      {
+        "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+        "label": "International Energy Agency, Key Questions on Energy and AI"
+      },
+      {
+        "url": "https://unfccc.int/cop31",
+        "label": "UNFCCC, COP31 in Antalya"
+      },
+      {
+        "url": "https://massoda.me/blog/ai-infrastructure-boom-what-it-means-for-developers.html",
+        "label": "What the AI infrastructure boom means for developers"
+      },
+      {
+        "url": "https://massoda.me/blog/ai-productivity-after-the-first-draft.html",
+        "label": "Where AI productivity goes after the first draft"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "the-demo-worked-would-the-workday",
+    "id": "la-demonstration-fonctionne-et-la-journee-de-travail",
+    "title": "La démonstration fonctionne. Et la journée de travail ?",
+    "tag": "Prototypes & pilotes",
+    "lead": "Une démonstration suit le chemin le plus clair. Un pilote utile laisse les personnes qui travaillent l’interrompre.",
+    "source": "https://massoda.me/blog/the-demo-worked-would-the-workday.html",
+    "image": "assets/blog/the-demo-worked-would-the-workday.webp",
+    "imageAlt": "Illustration de l’article « La démonstration fonctionne. Et la journée de travail ? »",
+    "date": "2026-10-11",
+    "links": [
+      {
+        "url": "https://massoda.me/business-systems-lab/index.html",
+        "label": "Business Systems Lab"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "what-is-platform-engineering",
+    "id": "quest-ce-que-lingenierie-de-plateforme",
+    "title": "Qu’est-ce que l’ingénierie de plateforme ?",
+    "tag": "DevOps & plateformes",
+    "lead": "Une plateforme interne évite que chaque équipe reconstruise ses propres outils de livraison et d’exploitation.",
+    "source": "https://massoda.me/blog/what-is-platform-engineering.html",
+    "image": "https://massoda.me/media/platform-engineering-featured.png",
+    "imageAlt": "Illustration de l’article « Qu’est-ce que l’ingénierie de plateforme ? »",
+    "date": null,
+    "links": []
+  },
+  {
+    "sourceSlug": "when-ai-security-agents-leave-the-sandbox",
+    "id": "quand-les-agents-de-securite-ia-quittent-lenvironnement-isole",
+    "title": "Quand les agents de sécurité IA quittent l’environnement isolé",
+    "tag": "Cybersécurité & IA",
+    "lead": "La capacité à tester ne suffit pas : il faut pouvoir encadrer, observer et arrêter chaque action.",
+    "source": "https://massoda.me/blog/when-ai-security-agents-leave-the-sandbox.html",
+    "image": "https://massoda.me/media/when-ai-security-agents-leave-the-sandbox-featured.png",
+    "imageAlt": "Illustration de l’article « Quand les agents de sécurité IA quittent l’environnement isolé »",
+    "date": null,
+    "links": []
+  },
+  {
+    "sourceSlug": "when-paid-still-means-waiting",
+    "id": "quand-paye-signifie-encore-en-attente-pour-le-fournisseur",
+    "title": "Quand « payé » signifie encore « en attente » pour le fournisseur",
+    "tag": "Paiements fournisseurs",
+    "lead": "L’acheteur affirme avoir payé. Le fournisseur ne retrouve pas l’argent. De quelle étape parle chacun ?",
+    "source": "https://massoda.me/blog/when-paid-still-means-waiting.html",
+    "image": "assets/blog/when-paid-still-means-waiting.webp",
+    "imageAlt": "Illustration de l’article « Quand « payé » signifie encore « en attente » pour le fournisseur »",
+    "date": "2026-10-11",
+    "links": [
+      {
+        "url": "https://www.mastercard.com/global/en/news-and-trends/press/2026/september/mastercard-launches-ai-powered-b2b-analytics-for-supplier-payments.html",
+        "label": "Mastercard announced an analytics product"
+      },
+      {
+        "url": "https://massoda.me/portfolio/africa-payment-reconciliation-lab.html",
+        "label": "Africa Payment Reconciliation Lab"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "when-the-customer-sends-an-assistant",
+    "id": "quand-le-client-envoie-un-assistant-ce-que-lentreprise-doit-prevoir",
+    "title": "Quand le client envoie un assistant : ce que l’entreprise doit prévoir",
+    "tag": "Agents & relation client",
+    "lead": "Feriez-vous confiance à un assistant pour modifier une réservation sans savoir si le changement a réellement eu lieu ?",
+    "source": "https://massoda.me/blog/when-the-customer-sends-an-assistant.html",
+    "image": "assets/blog/when-the-customer-sends-an-assistant.webp",
+    "imageAlt": "Illustration de l’article « Quand le client envoie un assistant : ce que l’entreprise doit prévoir »",
+    "date": "2026-10-11",
+    "links": [
+      {
+        "url": "https://sierra.ai/uk/blog/introducing-personal-agent-protocol",
+        "label": "introduced the Personal Agent Protocol"
+      },
+      {
+        "url": "https://personalagentprotocol.org/docs/spec",
+        "label": "draft specification, updated on 9 October"
+      },
+      {
+        "url": "https://personalagentprotocol.org/docs/extensions/operations",
+        "label": "operations extension"
+      },
+      {
+        "url": "https://massoda.me/business-systems-lab/clientflow.html",
+        "label": "ClientFlow prototype"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "why-big-tech-nuclear-powered-data-centers",
+    "id": "pourquoi-les-geants-technologiques-cherchent-de-lelectricite-nucleaire",
+    "title": "Pourquoi les géants technologiques cherchent de l’électricité nucléaire",
+    "tag": "Cloud & énergie",
+    "lead": "Les accords énergétiques de longue durée montrent les contraintes physiques derrière la croissance de l’IA.",
+    "source": "https://massoda.me/blog/why-big-tech-nuclear-powered-data-centers.html",
+    "image": "https://massoda.me/media/nuclear-powered-data-centers-featured.png",
+    "imageAlt": "Illustration de l’article « Pourquoi les géants technologiques cherchent de l’électricité nucléaire »",
+    "date": null,
+    "links": []
+  },
+  {
+    "sourceSlug": "why-gaming-consoles-keep-getting-more-expensive",
+    "id": "pourquoi-les-consoles-deviennent-plus-cheres-memoire-ia-et-chaine-dapprovisionnement",
+    "title": "Pourquoi les consoles deviennent plus chères : mémoire, IA et chaîne d’approvisionnement",
+    "tag": "Matériel & industrie",
+    "lead": "Les investissements dans les centres de données peuvent aussi se répercuter sur l’électronique grand public.",
+    "source": "https://massoda.me/blog/why-gaming-consoles-keep-getting-more-expensive.html",
+    "image": "https://massoda.me/media/gaming-console-prices-featured.png",
+    "imageAlt": "Illustration de l’article « Pourquoi les consoles deviennent plus chères : mémoire, IA et chaîne d’approvisionnement »",
+    "date": null,
+    "links": []
+  },
+  {
+    "sourceSlug": "woocommerce-order-reliability",
+    "id": "apres-commande-payee-fiabiliser-les-integrations-woocommerce",
+    "title": "Après « commande payée » : fiabiliser les intégrations WooCommerce",
+    "tag": "WooCommerce & API",
+    "lead": "Un paiement réussi ne garantit ni le stock, ni la livraison, ni l’activation du service commandé.",
+    "source": "https://massoda.me/blog/woocommerce-order-reliability.html",
+    "image": "https://massoda.me/media/woocommerce-order-reliability-featured.png",
+    "imageAlt": "Illustration de l’article « Après « commande payée » : fiabiliser les intégrations WooCommerce »",
+    "date": null,
+    "links": [
+      {
+        "url": "https://developer.woocommerce.com/docs/",
+        "label": "WooCommerce REST API documentation"
+      },
+      {
+        "url": "https://woocommerce.com/document/webhooks/",
+        "label": "WooCommerce webhook documentation"
+      },
+      {
+        "url": "https://github.com/woocommerce/action-scheduler",
+        "label": "Action Scheduler"
+      },
+      {
+        "url": "https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/",
+        "label": "WordPress Security APIs"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "your-next-customer-may-never-start-on-your-website",
+    "id": "votre-prochain-client-ne-commencera-peut-etre-pas-sur-votre-site",
+    "title": "Votre prochain client ne commencera peut-être pas sur votre site",
+    "tag": "Visibilité & parcours client",
+    "lead": "Un prospect peut découvrir votre entreprise avant d’ouvrir sa page d’accueil. Qu’apprendra-t-il ?",
+    "source": "https://massoda.me/blog/your-next-customer-may-never-start-on-your-website.html",
+    "image": "assets/blog/your-next-customer-may-never-start-on-your-website.webp",
+    "imageAlt": "Illustration de l’article « Votre prochain client ne commencera peut-être pas sur votre site »",
+    "date": "2026-10-11",
+    "links": [
+      {
+        "url": "https://blog.cloudflare.com/agentic-web/",
+        "label": "Cloudflare's September 2026 analysis"
+      },
+      {
+        "url": "https://business.adobe.com/resources/holiday-shopping-report.html",
+        "label": "Adobe's 2026 holiday forecast"
+      },
+      {
+        "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+        "label": "Google's guidance for generative search features"
+      },
+      {
+        "url": "https://massoda.me/business-systems-lab/index.html",
+        "label": "Business Systems Lab"
+      }
+    ]
+  },
+  {
+    "sourceSlug": "blog-how-to-animate-a-logo-in-procreate-dreams",
+    "id": "animer-un-logo-dans-procreate-dreams-une-methode-accessible",
+    "title": "Animer un logo dans Procreate Dreams : une méthode accessible",
+    "tag": "Création & animation",
+    "lead": "Partir du dessin, préparer le mouvement et exporter pour le support réel : une animation de marque peut rester simple.",
+    "source": "https://massoda.me/creative-portfolio/blog-how-to-animate-a-logo-in-procreate-dreams.html",
+    "image": "assets/blog/blog-how-to-animate-a-logo-in-procreate-dreams.webp",
+    "imageAlt": "Illustration de l’article « Animer un logo dans Procreate Dreams : une méthode accessible »",
+    "date": null,
+    "links": []
+  },
+  {
+    "sourceSlug": "blog-inspiration-for-art-what-to-do-with-love",
+    "id": "les-artistes-qui-inspirent-mon-travail-le-regard-de-samdoesart",
+    "title": "Les artistes qui inspirent mon travail : le regard de SamDoesArt",
+    "tag": "Création & inspiration",
+    "lead": "Étudier une démarche artistique peut transformer sa propre pratique sans effacer sa voix.",
+    "source": "https://massoda.me/creative-portfolio/blog-inspiration-for-art-what-to-do-with-love.html",
+    "image": "assets/blog/blog-inspiration-for-art-what-to-do-with-love.webp",
+    "imageAlt": "Illustration de l’article « Les artistes qui inspirent mon travail : le regard de SamDoesArt »",
+    "date": null,
+    "links": []
+  },
+  {
+    "sourceSlug": "blog-procreate-vs-procreate-dreams",
+    "id": "procreate-et-procreate-dreams-a-quoi-sert-chaque-application",
+    "title": "Procreate et Procreate Dreams : à quoi sert chaque application ?",
+    "tag": "Outils de création",
+    "lead": "Le dessin et le mouvement correspondent à deux étapes complémentaires du même travail créatif.",
+    "source": "https://massoda.me/creative-portfolio/blog-procreate-vs-procreate-dreams.html",
+    "image": "assets/blog/blog-procreate-vs-procreate-dreams.webp",
+    "imageAlt": "Illustration de l’article « Procreate et Procreate Dreams : à quoi sert chaque application ? »",
+    "date": null,
+    "links": []
+  }
+]
