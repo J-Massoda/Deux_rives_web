@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="432pt" viewBox="0 0 864 432" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>Clics sur les résultats classiques dans l’étude Pew</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Clics sur les résultats classiques dans l’étude Pew</dc:title>
+    <dc:description>900 adultes américains ; 68 879 recherches Google uniques. Résultats reconstitués du 7 au 17 avril 2025. Comparaison observationnelle : elle ne prouve pas une perte causale de trafic ni un effet sur les revenus d’une entreprise.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 432 
+L 864 432 
+L 864 0 
+L 0 0 
+z
+" style="fill: #f4f5ef"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 311.04 332.64 
+L 786.24 332.64 
+L 786.24 90.72 
+L 311.04 90.72 
+z
+" style="fill: #f4f5ef"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 311.04 332.64 
+L 311.04 90.72 
+" clip-path="url(#pe95122e68b)" style="fill: none; stroke: #c7d0c3; stroke-opacity: 0.8; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #526554" x="311.04" y="353.277812" transform="rotate(-0 311.04 353.277812)">0.0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 370.44 332.64 
+L 370.44 90.72 
+" clip-path="url(#pe95122e68b)" style="fill: none; stroke: #c7d0c3; stroke-opacity: 0.8; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #526554" x="370.44" y="353.277812" transform="rotate(-0 370.44 353.277812)">2.5</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 429.84 332.64 
+L 429.84 90.72 
+" clip-path="url(#pe95122e68b)" style="fill: none; stroke: #c7d0c3; stroke-opacity: 0.8; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #526554" x="429.84" y="353.277812" transform="rotate(-0 429.84 353.277812)">5.0</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 489.24 332.64 
+L 489.24 90.72 
+" clip-path="url(#pe95122e68b)" style="fill: none; stroke: #c7d0c3; stroke-opacity: 0.8; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #526554" x="489.24" y="353.277812" transform="rotate(-0 489.24 353.277812)">7.5</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 548.64 332.64 
+L 548.64 90.72 
+" clip-path="url(#pe95122e68b)" style="fill: none; stroke: #c7d0c3; stroke-opacity: 0.8; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_5">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #526554" x="548.64" y="353.277812" transform="rotate(-0 548.64 353.277812)">10.0</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 608.04 332.64 
+L 608.04 90.72 
+" clip-path="url(#pe95122e68b)" style="fill: none; stroke: #c7d0c3; stroke-opacity: 0.8; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_6">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #526554" x="608.04" y="353.277812" transform="rotate(-0 608.04 353.277812)">12.5</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 667.44 332.64 
+L 667.44 90.72 
+" clip-path="url(#pe95122e68b)" style="fill: none; stroke: #c7d0c3; stroke-opacity: 0.8; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14"/>
+     <g id="text_7">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #526554" x="667.44" y="353.277812" transform="rotate(-0 667.44 353.277812)">15.0</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_15">
+      <path d="M 726.84 332.64 
+L 726.84 90.72 
+" clip-path="url(#pe95122e68b)" style="fill: none; stroke: #c7d0c3; stroke-opacity: 0.8; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16"/>
+     <g id="text_8">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #526554" x="726.84" y="353.277812" transform="rotate(-0 726.84 353.277812)">17.5</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_17">
+      <path d="M 786.24 332.64 
+L 786.24 90.72 
+" clip-path="url(#pe95122e68b)" style="fill: none; stroke: #c7d0c3; stroke-opacity: 0.8; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18"/>
+     <g id="text_9">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #526554" x="786.24" y="353.277812" transform="rotate(-0 786.24 353.277812)">20.0</text>
+     </g>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243d30" x="548.64" y="381.7875" transform="rotate(-0 548.64 381.7875)">Visites suivies d’un clic sur un résultat classique (%)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_19"/>
+     <g id="text_11">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #243d30" x="301.04" y="141.161503" transform="rotate(-0 301.04 141.161503)">Sans synthèse IA</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_20"/>
+     <g id="text_12">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #243d30" x="301.04" y="291.796622" transform="rotate(-0 301.04 291.796622)">Avec synthèse IA</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 311.04 101.716364 
+L 667.44 101.716364 
+L 667.44 171.008518 
+L 311.04 171.008518 
+z
+" clip-path="url(#pe95122e68b)" style="fill: #24553c"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 311.04 252.351482 
+L 501.12 252.351482 
+L 501.12 321.643636 
+L 311.04 321.643636 
+z
+" clip-path="url(#pe95122e68b)" style="fill: #5d8265"/>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243d30" x="675.9936" y="139.949628" transform="rotate(-0 675.9936 139.949628)">15 %</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243d30" x="509.6736" y="290.584747" transform="rotate(-0 509.6736 290.584747)">8 %</text>
+   </g>
+  </g>
+  <g id="text_15">
+   <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243d30" x="30.24" y="35.197344" transform="rotate(-0 30.24 35.197344)">Clics sur les résultats classiques dans l’étude Pew</text>
+  </g>
+  <g id="text_16">
+   <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #526554" x="30.24" y="403.92" transform="rotate(-0 30.24 403.92)">Navigation aux États-Unis en mars 2025 ; reconstitution en avril</text>
+  </g>
+  <g id="text_17">
+   <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #526554" x="30.24" y="421.2" transform="rotate(-0 30.24 421.2)">Source : Pew Research Center: Google AI summaries, 22 July 2025</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe95122e68b">
+   <rect x="311.04" y="90.72" width="475.2" height="241.92"/>
+  </clipPath>
+ </defs>
+</svg>

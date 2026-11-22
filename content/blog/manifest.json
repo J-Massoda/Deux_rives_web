@@ -21,9 +21,11 @@
     "title": "Fintech africaine : tolérer les coupures, rapprocher les transactions et relier des réseaux fragmentés",
     "seoTitle": "Fintech africaine : fiabilité, paiements et rapprochement",
     "description": "Concevoir une fintech adaptée aux réseaux africains : états de transaction, mobile money, idempotence et rapprochement des paiements.",
-    "image": "assets/architecture-api-tableau-blanc.webp",
-    "imageAlt": "Illustration de la conception d’une architecture API sur un tableau blanc.",
-    "modified": "2026-11-20"
+    "image": "assets/blog/african-fintech-offline-reliability.webp",
+    "imageAlt": "Illustration éditoriale reliant les paiements mobiles africains, les réseaux intermittents et le rapprochement des transactions.",
+    "modified": "2026-11-22",
+    "imageWidth": 1600,
+    "imageHeight": 900
   },
   {
     "id": "de-lassistant-ia-aux-agents-comment-evoluent-les-methodes-de-developpement",
@@ -34,9 +36,11 @@
     "title": "Agents IA : structurer un développement logiciel fiable",
     "seoTitle": "Agents IA : organiser le développement logiciel en entreprise",
     "description": "Organiser les agents IA dans un projet logiciel : cadrage, tests, revue de code et validations pour des changements maîtrisés en entreprise.",
-    "image": "assets/developpeurs-conception-application.webp",
-    "imageAlt": "Illustration de développeurs travaillant à la conception d’une application.",
-    "modified": "2026-11-20"
+    "image": "assets/blog/agentic-engineering-workflows.webp",
+    "imageAlt": "Illustration éditoriale du passage d’un assistant IA à des étapes coordonnées de recherche, développement, tests et revue.",
+    "modified": "2026-11-22",
+    "imageWidth": 1600,
+    "imageHeight": 900
   },
   {
     "id": "agents-de-programmation-ia-ce-qui-a-reellement-change-en-2026",
@@ -73,9 +77,11 @@
     "title": "Code généré par IA : qui contrôle la qualité logicielle ?",
     "seoTitle": "Code généré par IA : qualité, sécurité et responsabilité",
     "description": "Définir les responsabilités, les tests et la revue du code généré par IA pour protéger la qualité et la maintenance de vos applications.",
-    "image": "assets/revue-besoins-logiciel-metier.webp",
-    "imageAlt": "Illustration d’une équipe examinant les besoins d’un logiciel métier.",
-    "modified": "2026-11-20"
+    "image": "assets/blog/ai-engineering-judgment.webp",
+    "imageAlt": "Illustration éditoriale d’un code généré par IA soumis à des décisions d’architecture, de contrôle et de test.",
+    "modified": "2026-11-22",
+    "imageWidth": 1600,
+    "imageHeight": 900
   },
   {
     "id": "le-boom-des-infrastructures-ia-ce-quil-change-pour-les-developpeurs-en-2026",
@@ -125,9 +131,11 @@
     "title": "Agents IA en entreprise : audit, validations et responsabilités",
     "seoTitle": "Agents IA en entreprise : audit, droits et validations",
     "description": "Encadrer les actions des agents IA : journaux d’audit, autorisations limitées, validations et preuves pour des processus métier vérifiables.",
-    "image": "assets/revue-documents-entreprise.webp",
-    "imageAlt": "Illustration d’une équipe vérifiant des documents et des décisions d’entreprise.",
-    "modified": "2026-11-20"
+    "image": "assets/blog/autonomous-ai-audit-logs.webp",
+    "imageAlt": "Illustration éditoriale reliant un agent autonome à son historique d’audit et à une validation humaine.",
+    "modified": "2026-11-22",
+    "imageWidth": 1600,
+    "imageHeight": 900
   },
   {
     "id": "aws-azure-ou-google-cloud-quelle-competence-apprendre-en-premier",
@@ -242,9 +250,11 @@
     "title": "Tarification personnalisée : données clients, transparence et confiance",
     "seoTitle": "Tarification personnalisée : données et confiance client",
     "description": "Comprendre la tarification algorithmique et ses effets sur les données, la transparence et l’expérience client avant de personnaliser une offre.",
-    "image": "assets/commercante-gestion-boutique.webp",
-    "imageAlt": "Illustration d’une commerçante examinant la gestion et les offres de sa boutique.",
-    "modified": "2026-11-20"
+    "image": "assets/blog/surveillance-pricing-algorithms-personal-data.webp",
+    "imageAlt": "Illustration éditoriale des données personnelles et de leurs liens avec une tarification personnalisée.",
+    "modified": "2026-11-22",
+    "imageWidth": 1600,
+    "imageHeight": 900
   },
   {
     "id": "la-course-a-lia-devient-une-course-a-lelectricite",
@@ -255,9 +265,11 @@
     "title": "IA et électricité : ce que l’énergie change pour les produits numériques",
     "seoTitle": "IA et électricité : concevoir des produits numériques utiles",
     "description": "Relier les besoins électriques des centres de données aux choix d’un produit numérique : utilité, volumes de calcul, coûts et mesures.",
-    "image": "assets/controle-production-industrielle.webp",
-    "imageAlt": "Illustration du contrôle d’une infrastructure et de ses contraintes d’exploitation.",
-    "modified": "2026-11-20"
+    "image": "assets/blog/the-ai-race-for-electricity.webp",
+    "imageAlt": "Serveur bleu relié à un câble électrique jaune sur fond bleu vif, illustration des besoins énergétiques de l’IA.",
+    "modified": "2026-11-22",
+    "imageWidth": 1280,
+    "imageHeight": 720
   },
   {
     "id": "la-demonstration-fonctionne-et-la-journee-de-travail",
@@ -359,9 +371,11 @@
     "title": "Intégration WooCommerce : fiabiliser les commandes après paiement",
     "seoTitle": "Intégration WooCommerce : commandes et API fiables",
     "description": "Relier WooCommerce aux fournisseurs et services tiers avec traitements en arrière-plan, signatures, reprises et suivi des commandes payées.",
-    "image": "assets/commerce-equipe-catalogue.webp",
-    "imageAlt": "Illustration d’une équipe vérifiant un catalogue et ses opérations commerciales.",
-    "modified": "2026-11-20"
+    "image": "assets/blog/woocommerce-order-reliability.webp",
+    "imageAlt": "Illustration éditoriale du suivi d’une commande WooCommerce après le paiement, entre traitement, échanges et vérification.",
+    "modified": "2026-11-22",
+    "imageWidth": 1600,
+    "imageHeight": 900
   },
   {
     "id": "votre-prochain-client-ne-commencera-peut-etre-pas-sur-votre-site",
@@ -375,5 +389,110 @@
     "image": "assets/blog/your-next-customer-may-never-start-on-your-website.webp",
     "imageAlt": "Arcade menant vers une vitrine et une porte ouverte : illustration de la découverte d’une entreprise.",
     "modified": "2026-11-20"
+  },
+  {
+    "id": "agents-ia-entreprise-microsoft-ibm-processus-metier",
+    "file": "enterprise-ai-agents-business-software",
+    "title": "Agents IA en entreprise : la nouvelle compétition du logiciel métier",
+    "seoTitle": "Agents IA en entreprise : Microsoft, IBM et processus métier",
+    "tag": "IA & stratégie",
+    "lead": "Des annonces Microsoft et IBM au pilote utile : relier données, permissions, intégrations et décisions humaines dans un processus vérifiable.",
+    "description": "Comprendre les agents IA en entreprise : annonces Microsoft et IBM, données, droits, intégrations, tests, coûts et cadrage d’un premier pilote métier.",
+    "date": "2026-11-22",
+    "modified": "2026-11-22",
+    "image": "assets/blog/enterprise-ai-agents-business-software.webp",
+    "imageAlt": "Deux blocs bleu et anthracite reliés par une pièce claire, illustration de systèmes métier connectés.",
+    "imageWidth": 1672,
+    "imageHeight": 941
+  },
+  {
+    "id": "hebergement-cloud-entreprise-controle-sauvegarde",
+    "file": "business-cloud-hosting-control",
+    "title": "Où réside votre logiciel métier ? Cloud, contrôle et reprise",
+    "seoTitle": "Hébergement cloud : contrôle, sauvegardes et logiciel métier",
+    "tag": "Cloud & exploitation",
+    "lead": "Comptes, données, sauvegardes, coûts et sortie du fournisseur : les questions qui rendent l’hébergement compréhensible et maîtrisable.",
+    "description": "Maîtriser l’hébergement cloud de son logiciel : comptes, localisation des données, sauvegardes, disponibilité, coûts, migration et portabilité.",
+    "date": "2026-11-22",
+    "modified": "2026-11-22",
+    "image": "assets/blog/business-cloud-hosting-control.webp",
+    "imageAlt": "Nuage clair posé sur un socle bleu, illustration de l’hébergement cloud et de sa maîtrise opérationnelle.",
+    "imageWidth": 1672,
+    "imageHeight": 941
+  },
+  {
+    "id": "securite-site-web-dependances-chaine-logicielle",
+    "file": "website-software-supply-chain-security",
+    "title": "Sécurité web : dépendances, mises à jour et chaîne logicielle",
+    "seoTitle": "Sécurité web : dépendances et maintenance WordPress",
+    "tag": "Sécurité & maintenance",
+    "lead": "Savoir ce que le site exécute, qui le maintient et comment reprendre : une démarche concrète pour sécuriser ses dépendances.",
+    "description": "Organiser la sécurité des dépendances web : extensions WordPress, fournisseurs, déploiement, alertes, mises à jour, accès et reprise du service.",
+    "date": "2026-11-22",
+    "modified": "2026-11-22",
+    "image": "assets/blog/website-software-supply-chain-security.webp",
+    "imageAlt": "Fenêtre de navigateur reposant sur plusieurs couches, illustration des dépendances d’un site web.",
+    "imageWidth": 1672,
+    "imageHeight": 941
+  },
+  {
+    "id": "recherche-ia-seo-visibilite-entreprise",
+    "file": "ai-search-seo-customer-discovery",
+    "title": "Recherche IA et SEO : rendre votre entreprise visible et crédible",
+    "seoTitle": "Recherche IA et SEO : visibilité de votre entreprise",
+    "tag": "SEO & découverte client",
+    "lead": "Pages utiles, preuves, données structurées et mesure : préparer sa visibilité sans promettre une citation ou un classement garanti.",
+    "description": "Préparer la visibilité de son entreprise dans la recherche IA : SEO technique, contenu utile, preuves, liens internes, données structurées et mesure.",
+    "date": "2026-11-22",
+    "modified": "2026-11-22",
+    "image": "assets/blog/ai-search-seo-customer-discovery.webp",
+    "imageAlt": "Barre de recherche et trois cartes d’information avec un signe bleu, illustration de la découverte assistée par IA.",
+    "imageWidth": 1672,
+    "imageHeight": 941
+  },
+  {
+    "id": "accessibilite-web-wcag-parcours-clients",
+    "file": "website-accessibility-wcag-customer-journeys",
+    "title": "Accessibilité web : WCAG, formulaires et parcours clients",
+    "seoTitle": "Accessibilité web : WCAG et parcours clients utilisables",
+    "tag": "Accessibilité & UX",
+    "lead": "Du menu à la confirmation, identifier les obstacles et améliorer les interactions pour permettre à davantage de personnes de terminer leur démarche.",
+    "description": "Améliorer l’accessibilité web : navigation clavier, formulaires, contraste, images, médias, responsive et tests WCAG des parcours clients essentiels.",
+    "date": "2026-11-22",
+    "modified": "2026-11-22",
+    "image": "assets/blog/website-accessibility-wcag-customer-journeys.webp",
+    "imageAlt": "Ouverture dans une fenêtre de navigateur avec une rampe bleue, illustration d’un parcours numérique accessible.",
+    "imageWidth": 1672,
+    "imageHeight": 941
+  },
+  {
+    "id": "performance-site-web-core-web-vitals-pics-trafic",
+    "file": "website-performance-core-web-vitals-peak-traffic",
+    "title": "Performance web : Core Web Vitals et préparation aux pics de trafic",
+    "seoTitle": "Performance web : Core Web Vitals et pics de trafic",
+    "tag": "Performance & fiabilité",
+    "lead": "Relier vitesse, réactivité, capacité et exactitude des traitements pour que le parcours client reste utilisable lorsque la demande augmente.",
+    "description": "Évaluer la performance web : Core Web Vitals, mesures réelles, essais contrôlés, cache, capacité et fiabilité des parcours pendant les pics de trafic.",
+    "date": "2026-11-22",
+    "modified": "2026-11-22",
+    "image": "assets/blog/website-performance-core-web-vitals-peak-traffic.webp",
+    "imageAlt": "Passage dans une fenêtre de navigateur et file de sphères bleues, illustration de la charge d’un site.",
+    "imageWidth": 1672,
+    "imageHeight": 941
+  },
+  {
+    "id": "acheter-configurer-developper-logiciel-metier",
+    "file": "buy-configure-or-build-business-software",
+    "title": "Acheter, configurer ou développer son logiciel métier ?",
+    "seoTitle": "Acheter ou développer un logiciel métier : guide de choix",
+    "tag": "Stratégie logicielle",
+    "lead": "Comparer SaaS, no-code et sur-mesure avec les mêmes tâches, contraintes, coûts, preuves de pilote et responsabilités d’exploitation.",
+    "description": "Choisir un logiciel métier : comparer SaaS, no-code et sur-mesure selon les tâches, données, intégrations, coûts, migration, maîtrise et maintenance.",
+    "date": "2026-11-22",
+    "modified": "2026-11-22",
+    "image": "assets/blog/buy-configure-or-build-business-software.webp",
+    "imageAlt": "Clé bleue, modules verts et papier avec crayon, illustration des options d’achat, configuration et développement.",
+    "imageWidth": 1672,
+    "imageHeight": 941
   }
 ]

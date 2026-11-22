@@ -188,5 +188,40 @@
     "lead": "Un prototype montre un parcours. Un SaaS commercialisé doit aussi isoler les organisations, protéger les données et organiser l’exploitation du service.",
     "hook": "<p>La démo fonctionne pour une personne dans son navigateur. Que se passe-t-il lorsque deux entreprises l’utilisent, qu’un compte doit être révoqué ou qu’une sauvegarde doit être restaurée ? Ces questions marquent le passage d’une preuve d’idée à un produit dont des clients peuvent dépendre.</p>",
     "panel": "<h2>Décider ce qui doit être prouvé avant l’ouverture commerciale</h2><p>Le lancement doit disposer de critères observables : un utilisateur ne peut pas lire les données d’une autre organisation, une interruption n’efface pas une action confirmée et une restauration peut être effectuée selon une procédure connue. Les politiques seules ne suffisent pas ; les contrôles doivent être vérifiés dans l’application et son environnement.</p><p>La <a href=\"https://www.cnil.fr/fr/guide-de-la-securite-des-donnees-personnelles\">documentation de sécurité de la CNIL</a> donne un cadre pour examiner les mesures selon le contexte. Un produit destiné à des entreprises en France doit clarifier les informations traitées, les responsabilités contractuelles et le périmètre de l’hébergement, sans présenter une démo comme un service déjà conforme à tous les usages.</p><p>La <a href=\"../../regards/ci-cd-en-2026-les-apports-concrets-du-devops-assiste-par-ia/\">chaîne CI/CD</a> soutient la livraison et la correction. Le choix <a href=\"../../regards/serverless-ou-conteneurs-choisir-selon-la-charge-reelle/\">serverless ou conteneurs</a> doit être relié à la charge et à la capacité d’exploitation. Pour fixer la première étape, le <a href=\"../../regards/cadrer-mvp-logiciel-metier-questions/\">cadrage du MVP</a> limite les fonctions à celles qui permettent un parcours complet.</p><p>Deux Rives Web peut accompagner un <a href=\"../../expertises/logiciels-sur-mesure/\">projet de produit logiciel sur mesure</a> depuis le scénario testé jusqu’aux exigences de lancement. Le calendrier doit distinguer interface, services, intégrations, contrôles et maintenance. Cette séparation aide à discuter les investissements sur des éléments vérifiables, tout en conservant une présentation honnête de ce qui fonctionne déjà et de ce qui doit encore être démontré avant commercialisation.</p>"
+  },
+  "enterprise-ai-agents-business-software": {
+    "lead": "Des annonces Microsoft et IBM au pilote utile : relier données, permissions, intégrations et décisions humaines dans un processus vérifiable.",
+    "hook": "",
+    "panel": "<p>Pour prolonger cette réflexion, consultez nos guides « <a href=\"../../regards/hebergement-cloud-entreprise-controle-sauvegarde/\">Où réside votre logiciel métier ? Cloud, contrôle et reprise</a> » et « <a href=\"../../regards/acheter-configurer-developper-logiciel-metier/\">Acheter, configurer ou développer son logiciel métier ?</a> ». Ils approfondissent les décisions techniques et opérationnelles qui accompagnent ce sujet.</p>"
+  },
+  "business-cloud-hosting-control": {
+    "lead": "Comptes, données, sauvegardes, coûts et sortie du fournisseur : les questions qui rendent l’hébergement compréhensible et maîtrisable.",
+    "hook": "",
+    "panel": "<p>Pour prolonger cette réflexion, consultez nos guides « <a href=\"../../regards/securite-site-web-dependances-chaine-logicielle/\">Sécurité web : dépendances, mises à jour et chaîne logicielle</a> » et « <a href=\"../../regards/acheter-configurer-developper-logiciel-metier/\">Acheter, configurer ou développer son logiciel métier ?</a> ». Ils approfondissent les décisions techniques et opérationnelles qui accompagnent ce sujet.</p>"
+  },
+  "website-software-supply-chain-security": {
+    "lead": "Savoir ce que le site exécute, qui le maintient et comment reprendre : une démarche concrète pour sécuriser ses dépendances.",
+    "hook": "",
+    "panel": "<p>Pour prolonger cette réflexion, consultez nos guides « <a href=\"../../regards/hebergement-cloud-entreprise-controle-sauvegarde/\">Où réside votre logiciel métier ? Cloud, contrôle et reprise</a> » et « <a href=\"../../regards/performance-site-web-core-web-vitals-pics-trafic/\">Performance web : Core Web Vitals et préparation aux pics de trafic</a> ». Ils approfondissent les décisions techniques et opérationnelles qui accompagnent ce sujet.</p>"
+  },
+  "ai-search-seo-customer-discovery": {
+    "lead": "Pages utiles, preuves, données structurées et mesure : préparer sa visibilité sans promettre une citation ou un classement garanti.",
+    "hook": "",
+    "panel": "<p>Pour prolonger cette réflexion, consultez nos guides « <a href=\"../../regards/accessibilite-web-wcag-parcours-clients/\">Accessibilité web : WCAG, formulaires et parcours clients</a> » et « <a href=\"../../regards/performance-site-web-core-web-vitals-pics-trafic/\">Performance web : Core Web Vitals et préparation aux pics de trafic</a> ». Ils approfondissent les décisions techniques et opérationnelles qui accompagnent ce sujet.</p>"
+  },
+  "website-accessibility-wcag-customer-journeys": {
+    "lead": "Du menu à la confirmation, identifier les obstacles et améliorer les interactions pour permettre à davantage de personnes de terminer leur démarche.",
+    "hook": "",
+    "panel": "<p>Pour prolonger cette réflexion, consultez nos guides « <a href=\"../../regards/recherche-ia-seo-visibilite-entreprise/\">Recherche IA et SEO : rendre votre entreprise visible et crédible</a> » et « <a href=\"../../regards/performance-site-web-core-web-vitals-pics-trafic/\">Performance web : Core Web Vitals et préparation aux pics de trafic</a> ». Ils approfondissent les décisions techniques et opérationnelles qui accompagnent ce sujet.</p>"
+  },
+  "website-performance-core-web-vitals-peak-traffic": {
+    "lead": "Relier vitesse, réactivité, capacité et exactitude des traitements pour que le parcours client reste utilisable lorsque la demande augmente.",
+    "hook": "",
+    "panel": "<p>Pour prolonger cette réflexion, consultez nos guides « <a href=\"../../regards/hebergement-cloud-entreprise-controle-sauvegarde/\">Où réside votre logiciel métier ? Cloud, contrôle et reprise</a> » et « <a href=\"../../regards/accessibilite-web-wcag-parcours-clients/\">Accessibilité web : WCAG, formulaires et parcours clients</a> ». Ils approfondissent les décisions techniques et opérationnelles qui accompagnent ce sujet.</p>"
+  },
+  "buy-configure-or-build-business-software": {
+    "lead": "Comparer SaaS, no-code et sur-mesure avec les mêmes tâches, contraintes, coûts, preuves de pilote et responsabilités d’exploitation.",
+    "hook": "",
+    "panel": "<p>Pour prolonger cette réflexion, consultez nos guides « <a href=\"../../regards/agents-ia-entreprise-microsoft-ibm-processus-metier/\">Agents IA en entreprise : la nouvelle compétition du logiciel métier</a> » et « <a href=\"../../regards/hebergement-cloud-entreprise-controle-sauvegarde/\">Où réside votre logiciel métier ? Cloud, contrôle et reprise</a> ». Ils approfondissent les décisions techniques et opérationnelles qui accompagnent ce sujet.</p>"
   }
 }

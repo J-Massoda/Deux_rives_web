@@ -1,0 +1,98 @@
+{
+  "purpose": "Conserver les couvertures humaines pour les anciens articles à infographie sombre ; réutiliser les autres couvertures dédiées, sans image générique de portfolio.",
+  "retainedHumanCovers": {
+    "africa-electric-vehicle-shift-infrastructure": "assets/logistique-planification-tournees.webp",
+    "ai-coding-agents-what-actually-changed-2026": "assets/revue-code-integration.webp",
+    "ai-data-centers-small-modular-reactors": "assets/industrie-ingenieurs-production.webp",
+    "ai-infrastructure-boom-what-it-means-for-developers": "assets/atelier-strategie-produit.webp",
+    "ai-supply-chain-tariff-enforcement": "assets/logistique-preparation-expedition.webp",
+    "aws-vs-azure-vs-google-cloud-2026": "assets/reunion-integration-outils.webp",
+    "ci-cd-pipelines-2026-ai-assisted-devops": "assets/maintenance-application-equipe.webp",
+    "finops-cloud-cost-management-devops-skill": "assets/conseil-dirigeant-outils-metier.webp",
+    "great-cloud-storage-consolidation": "assets/reunion-cadrage-projet-metier.webp",
+    "payment-api-reliability": "assets/commerce-gestion-commandes.webp",
+    "serverless-vs-containers-2026": "assets/conception-parcours-tableau-blanc.webp",
+    "what-is-platform-engineering": "assets/equipe-coordination-projet.webp",
+    "when-ai-security-agents-leave-the-sandbox": "assets/collaboration-ingenierie-logicielle.webp",
+    "why-big-tech-nuclear-powered-data-centers": "assets/technicien-intervention-electrique.webp",
+    "why-gaming-consoles-keep-getting-more-expensive": "assets/industrie-controle-qualite.webp"
+  },
+  "originalCompanyImages": {
+    "quand-un-tableur-devient-un-systeme": "assets/atelier-processus-entreprise.webp",
+    "automatiser-sans-perdre-le-controle": "assets/automatisation-traitement-documentaire.webp",
+    "un-site-qui-continue-apres-le-formulaire": "assets/conseil-support-utilisateurs.webp",
+    "logiciel-metier-ou-saas-comment-choisir": "assets/conseil-strategie-client.webp",
+    "cadrer-mvp-logiciel-metier-questions": "assets/presentation-prototype-produit.webp",
+    "facturation-electronique-integration-logiciel-2026-2027": "assets/docupilot-ai-validation-documents.webp",
+    "architecture-logiciel-metier-roles-donnees-permissions": "assets/atelier-decouverte-besoins.webp",
+    "integrations-api-webhooks-reprise-erreurs": "assets/commerce-gestion-point-de-vente.webp",
+    "du-prototype-au-produit-saas-securite-exploitation": "assets/equipe-conception-logiciel-paris.webp"
+  },
+  "dedicatedPortfolioCovers": {
+    "african-fintech-offline-reliability": {
+      "image": "assets/blog/african-fintech-offline-reliability.webp",
+      "portfolioFile": "media/african-fintech-offline-reliability-featured.png"
+    },
+    "agentic-engineering-workflows": {
+      "image": "assets/blog/agentic-engineering-workflows.webp",
+      "portfolioFile": "media/agentic-engineering-workflows-featured.png"
+    },
+    "ai-engineering-judgment": {
+      "image": "assets/blog/ai-engineering-judgment.webp",
+      "portfolioFile": "media/ai-engineering-judgment-featured.png"
+    },
+    "ai-productivity-after-the-first-draft": {
+      "image": "assets/blog/ai-productivity-after-the-first-draft.webp",
+      "portfolioFile": "media/ai-rework-architecture.jpg"
+    },
+    "autonomous-ai-audit-logs": {
+      "image": "assets/blog/autonomous-ai-audit-logs.webp",
+      "portfolioFile": "media/autonomous-ai-audit-logs-featured.png"
+    },
+    "fake-conversation-invoice-fraud": {
+      "image": "assets/blog/fake-conversation-invoice-fraud.webp",
+      "portfolioFile": "media/invoice-fraud-architecture.jpg"
+    },
+    "skills-your-company-cannot-see": {
+      "image": "assets/blog/skills-your-company-cannot-see.webp",
+      "portfolioFile": "media/hidden-skills-architecture.jpg"
+    },
+    "surveillance-pricing-algorithms-personal-data": {
+      "image": "assets/blog/surveillance-pricing-algorithms-personal-data.webp",
+      "portfolioFile": "media/surveillance-pricing-featured.png"
+    },
+    "the-ai-race-for-electricity": {
+      "image": "assets/blog/the-ai-race-for-electricity.webp",
+      "portfolioFile": "media/ai-race-for-electricity.jpg"
+    },
+    "the-demo-worked-would-the-workday": {
+      "image": "assets/blog/the-demo-worked-would-the-workday.webp",
+      "portfolioFile": "media/pilot-testing-architecture.jpg"
+    },
+    "when-paid-still-means-waiting": {
+      "image": "assets/blog/when-paid-still-means-waiting.webp",
+      "portfolioFile": "media/supplier-payment-architecture.jpg"
+    },
+    "when-the-customer-sends-an-assistant": {
+      "image": "assets/blog/when-the-customer-sends-an-assistant.webp",
+      "portfolioFile": "media/customer-agent-architecture.jpg"
+    },
+    "woocommerce-order-reliability": {
+      "image": "assets/blog/woocommerce-order-reliability.webp",
+      "portfolioFile": "media/woocommerce-order-reliability-featured.png"
+    },
+    "your-next-customer-may-never-start-on-your-website": {
+      "image": "assets/blog/your-next-customer-may-never-start-on-your-website.webp",
+      "portfolioFile": "media/customer-discovery-architecture.jpg"
+    }
+  },
+  "newGuides": [
+    "enterprise-ai-agents-business-software",
+    "business-cloud-hosting-control",
+    "website-software-supply-chain-security",
+    "ai-search-seo-customer-discovery",
+    "website-accessibility-wcag-customer-journeys",
+    "website-performance-core-web-vitals-peak-traffic",
+    "buy-configure-or-build-business-software"
+  ]
+}

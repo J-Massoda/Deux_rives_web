@@ -35,12 +35,12 @@ test('all public page paths and local assets resolve',()=>{
     }
   }
 });
-test('company journal unifies all 38 articles, embeds citations and promotes the business',()=>{
-  assert.equal(journalPosts.length,29);
+test('company journal unifies all 45 articles, embeds citations and promotes the business',()=>{
+  assert.equal(journalPosts.length,36);
   const articlePaths=pages.filter(file=>file.includes(path.sep+'regards'+path.sep)&&!file.endsWith(path.join('regards','index.html')));
-  assert.equal(articlePaths.length,38);
+  assert.equal(articlePaths.length,45);
   const index=fs.readFileSync(path.join(dist,'regards/index.html'),'utf8');
-  assert.equal((index.match(/class="journal-card"/g)||[]).length,38);
+  assert.equal((index.match(/class="journal-card"/g)||[]).length,45);
   assert.doesNotMatch(index,/portfolio-blog|insight-grid|Procreate|SamDoesArt|Création &amp; inspiration/);
   const images=new Set(),incoming=new Map(articlePaths.map(file=>[path.basename(path.dirname(file)),0]));
   for(const file of articlePaths){
@@ -58,7 +58,7 @@ test('company journal unifies all 38 articles, embeds citations and promotes the
     assert.equal(article.author.url,config.origin+'/agence/');
     assert.equal(article.inLanguage,'fr-FR');
     assert.equal(article.isBasedOn,undefined);
-    assert.equal(article.dateModified,'2026-11-20');
+    assert.ok(['2026-11-20','2026-11-22'].includes(article.dateModified));
     assert.ok(article.image.startsWith(origin+'/assets/'));
     assert.ok(!/og-cover|flow\.svg|default|placeholder/.test(article.image));
     images.add(article.image);
@@ -75,11 +75,56 @@ test('company journal unifies all 38 articles, embeds citations and promotes the
     for(const href of related){const target=href.split('/')[3];if(incoming.has(target)&&target!==id)incoming.set(target,incoming.get(target)+1);}
     assert.ok(article.citation.length>=1);
   }
-  assert.equal(images.size,38,'Each article needs its own featured image');
+  assert.equal(images.size,45,'Each article needs its own featured image');
   for(const [id,count] of incoming)assert.ok(count>=1,'No contextual inbound link for '+id);
   for(const slug of ['animer-un-logo-dans-procreate-dreams-une-methode-accessible','les-artistes-qui-inspirent-mon-travail-le-regard-de-samdoesart','procreate-et-procreate-dreams-a-quoi-sert-chaque-application']){
     assert.ok(!fs.existsSync(path.join(dist,'regards',slug,'index.html')));
     assert.ok(!index.includes(slug));
+  }
+});
+test('seven complete French guides preserve sourced charts and company destinations',()=>{
+  const policy=JSON.parse(fs.readFileSync(path.join(root,'content/blog/image-policy.json'),'utf8'));
+  const charts=JSON.parse(fs.readFileSync(path.join(root,'assets/blog/charts/data-fr.json'),'utf8')).charts;
+  assert.equal(policy.newGuides.length,7);
+  assert.equal(charts.length,7);
+  for(const file of policy.newGuides){
+    const post=journalPosts.find(item=>item.file===file);
+    assert.ok(post,file);
+    const source=fs.readFileSync(path.join(root,'content/blog',file+'.html'),'utf8');
+    const plain=source.replace(/<[^>]+>/g,' ').replace(/&[^;]+;/g,' ').trim();
+    assert.ok(plain.split(/\s+/).length>=3000,'Translation shortened: '+file);
+    assert.ok((source.match(/<h2>/g)||[]).length>=16,'Missing sections: '+file);
+    assert.equal((source.match(/<figure /g)||[]).length,1);
+    assert.equal((source.match(/<table>/g)||[]).length,1);
+    assert.match(source,/<th scope="col">Valeur<\/th>/);
+    assert.doesNotMatch(source,/massoda\.me|Jean Emilien|href="(?:\.\.\/)*services\/|href="\/services\/|href="\/work-with-me/);
+    const chart=charts.find(item=>item.article.endsWith('/'+post.id+'/'));
+    assert.ok(chart,'Missing chart provenance: '+file);
+    assert.equal(chart.language,'fr');
+    assert.match(chart.source_url,/^https:\/\//);
+    assert.ok(source.includes(chart.source_url),'Chart source is not linked: '+file);
+    const output=fs.readFileSync(path.join(dist,'regards',post.id,'index.html'),'utf8');
+    assert.ok(output.includes('<h1>'+post.title+'</h1>'));
+    assert.ok(output.includes('Rédaction Deux Rives Web'));
+    assert.ok(output.includes('https://deuxrivesweb.fr/assets/blog/'+file+'.webp'));
+    const sitemap=fs.readFileSync(path.join(dist,'sitemap.xml'),'utf8');
+    assert.ok(sitemap.includes('/regards/'+post.id+'/'));
+  }
+});
+test('blog cover exceptions retain human images and original company articles',()=>{
+  const policy=JSON.parse(fs.readFileSync(path.join(root,'content/blog/image-policy.json'),'utf8'));
+  const editorial=JSON.parse(fs.readFileSync(path.join(root,'content/blog/existing-editorial.json'),'utf8'));
+  assert.equal(Object.keys(policy.retainedHumanCovers).length,15);
+  assert.equal(Object.keys(policy.originalCompanyImages).length,9);
+  assert.equal(Object.keys(policy.dedicatedPortfolioCovers).length,14);
+  for(const [file,image] of Object.entries(policy.retainedHumanCovers)){
+    assert.equal(journalPosts.find(post=>post.file===file).image,image,file);
+  }
+  for(const [id,image] of Object.entries(policy.originalCompanyImages))assert.equal(editorial[id].image,image,id);
+  for(const [file,record] of Object.entries(policy.dedicatedPortfolioCovers)){
+    assert.equal(journalPosts.find(post=>post.file===file).image,record.image,file);
+    assert.ok(fs.statSync(path.join(root,record.image)).size>0);
+    assert.doesNotMatch(record.image,/default|placeholder|og-cover/);
   }
 });
 test('five working demo surfaces carry fictional-data disclosures and distinct scenarios',()=>{
@@ -480,4 +525,5 @@ test('contact services use approved URLs and can be configured independently', (
   assert.throws(() => contactSettings({ GOOGLE_BOOKING_URL: 'https://other.example/' }));
   assert.throws(() => contactSettings({ FORMSPREE_FORM_ID: 'https://other.example' }));
 });
+
 

@@ -1,0 +1,149 @@
+{
+  "description": "Valeurs, périodes, unités, sources et limites des sept graphiques. Les illustrations calculées sont explicitement identifiées.",
+  "charts": [
+    {
+      "title": "IA agentique : expérimentation et déploiement",
+      "labels": [
+        "En expérimentation",
+        "Déploiement élargi dans\nau moins une fonction"
+      ],
+      "values": [
+        39,
+        23
+      ],
+      "unit": "Part des répondants à l’enquête (%)",
+      "max": 50,
+      "period": "Enquête du 25 juin au 29 juillet 2025",
+      "method": "Adoption déclarée par 1 993 répondants dans 105 pays, avec pondération selon le PIB. Le déploiement concerne au moins une fonction, pas nécessairement toute l’entreprise. Données historiques déclaratives, sans estimation du taux d’adoption de 2026.",
+      "source_name": "McKinsey, State of AI 2025: survey and methodology",
+      "source_url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025",
+      "reviewed": "2026-11-22",
+      "article": "https://deuxrivesweb.fr/regards/agents-ia-entreprise-microsoft-ibm-processus-metier/",
+      "language": "fr"
+    },
+    {
+      "title": "Disponibilité et budget temporel sur 30 jours",
+      "labels": [
+        "Disponibilité de 99,9 %",
+        "Disponibilité de 99,95 %",
+        "Disponibilité de 99,99 %"
+      ],
+      "values": [
+        43.2,
+        21.6,
+        4.32
+      ],
+      "unit": "Indisponibilité calculée dans le mois (minutes)",
+      "max": 50,
+      "period": "Illustration calculée : 30 jours, soit 43 200 minutes",
+      "method": "Calcul : 43 200 × (1 − fraction de disponibilité), selon l’arithmétique présentée par Google SRE. Ces valeurs ne sont ni des pannes observées, ni des prévisions, ni les clauses d’un SLA. Exclusions contractuelles et mesures réelles peuvent différer.",
+      "source_name": "Google SRE: Availability Table",
+      "source_url": "https://sre.google/sre-book/availability-table/",
+      "reviewed": "2026-11-22",
+      "article": "https://deuxrivesweb.fr/regards/hebergement-cloud-entreprise-controle-sauvegarde/",
+      "language": "fr"
+    },
+    {
+      "title": "Implication de tiers dans les violations rapportées",
+      "labels": [
+        "Comparaison avec\nl’édition précédente",
+        "Rapport DBIR 2025"
+      ],
+      "values": [
+        15,
+        30
+      ],
+      "unit": "Part rapportée des violations (%)",
+      "max": 40,
+      "period": "Verizon DBIR 2025 : comparaison avec le rapport précédent",
+      "method": "Verizon compare environ 15 % dans l’édition précédente à 30 % en 2025. Les tiers couvrent différentes relations fournisseurs, au-delà des extensions web. Les ensembles d’incidents diffèrent ; ces données ne mesurent pas le risque individuel d’un site.",
+      "source_name": "Verizon: 2025 DBIR infographic",
+      "source_url": "https://www.verizon.com/business/resources/infographics/2025-dbir-infographic.pdf",
+      "reviewed": "2026-11-22",
+      "article": "https://deuxrivesweb.fr/regards/securite-site-web-dependances-chaine-logicielle/",
+      "language": "fr"
+    },
+    {
+      "title": "Clics sur les résultats classiques dans l’étude Pew",
+      "labels": [
+        "Sans synthèse IA",
+        "Avec synthèse IA"
+      ],
+      "values": [
+        15,
+        8
+      ],
+      "unit": "Visites suivies d’un clic sur un résultat classique (%)",
+      "max": 20,
+      "period": "Navigation aux États-Unis en mars 2025 ; reconstitution en avril",
+      "method": "900 adultes américains ; 68 879 recherches Google uniques. Résultats reconstitués du 7 au 17 avril 2025. Comparaison observationnelle : elle ne prouve pas une perte causale de trafic ni un effet sur les revenus d’une entreprise.",
+      "source_name": "Pew Research Center: Google AI summaries, 22 July 2025",
+      "source_url": "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/",
+      "reviewed": "2026-11-22",
+      "article": "https://deuxrivesweb.fr/regards/recherche-ia-seo-visibilite-entreprise/",
+      "language": "fr"
+    },
+    {
+      "title": "Obstacles détectés sur les pages d’accueil",
+      "labels": [
+        "Contraste textuel insuffisant",
+        "Alternatives d’images absentes",
+        "Étiquettes de champs absentes"
+      ],
+      "values": [
+        79.1,
+        55.5,
+        48.2
+      ],
+      "unit": "Pages de l’échantillon présentant le problème (%)",
+      "max": 100,
+      "period": "WebAIM Million : évaluation de février 2025",
+      "method": "Évaluation automatique WAVE d’un million de pages issues du classement Tranco. Les catégories se recouvrent : elles ne totalisent pas 100 %. Ces contrôles ne couvrent qu’une partie de l’accessibilité ; l’absence d’erreur détectée ne prouve pas la conformité.",
+      "source_name": "WebAIM Million: February 2025 evaluation and methodology",
+      "source_url": "https://webaim.org/projects/million/2025",
+      "reviewed": "2026-11-22",
+      "article": "https://deuxrivesweb.fr/regards/accessibilite-web-wcag-parcours-clients/",
+      "language": "fr"
+    },
+    {
+      "title": "Améliorations de conversion rapportées par l’étude",
+      "labels": [
+        "Conversion dans le commerce",
+        "Conversion dans le voyage"
+      ],
+      "values": [
+        8.4,
+        10.1
+      ],
+      "unit": "Amélioration relative rapportée (%)",
+      "max": 12,
+      "period": "Deloitte, Milliseconds Make Millions, travaux de 2020",
+      "method": "Étude mobile historique de quatre semaines, sur des marques sélectionnées en Europe et aux États-Unis, commandée par Google. Association avec une amélioration naturelle de vitesse de 0,1 seconde ; ni points de pourcentage, ni garantie causale, ni prévision LCP ou INP.",
+      "source_name": "Deloitte: Milliseconds Make Millions (2020 research)",
+      "source_url": "https://www.deloitte.com/ie/en/services/consulting/research/milliseconds-make-millions.html",
+      "reviewed": "2026-11-22",
+      "article": "https://deuxrivesweb.fr/regards/performance-site-web-core-web-vitals-pics-trafic/",
+      "language": "fr"
+    },
+    {
+      "title": "Durées d’évaluation de deux groupes d’acheteurs",
+      "labels": [
+        "Acheteurs satisfaits :\n3 mois au plus",
+        "Acheteurs regrettant l’achat :\n5 mois ou davantage"
+      ],
+      "values": [
+        57,
+        54
+      ],
+      "unit": "Répondants au sein de chaque groupe distinct (%)",
+      "max": 70,
+      "period": "Enquête Tech Trends 2025 ; collecte en août 2024",
+      "method": "3 500 acheteurs de logiciels dans neuf pays. Groupes et durées diffèrent entre les barres ; les parts ne sont pas complémentaires. Cette association observationnelle ne prouve pas qu’une évaluation plus courte cause la satisfaction. Capterra exploite une place de marché commerciale.",
+      "source_name": "Capterra: 2025 Tech Trends report and survey methodology",
+      "source_url": "https://www.capterra.com/resources/tech-trends-successful-buyer-purchase-journey/",
+      "reviewed": "2026-11-22",
+      "article": "https://deuxrivesweb.fr/regards/acheter-configurer-developper-logiciel-metier/",
+      "language": "fr"
+    }
+  ]
+}
