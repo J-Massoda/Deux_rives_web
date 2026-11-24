@@ -63,7 +63,7 @@
   }
 
   // Hero headline: words rise in once.
-  const title = document.querySelector('.h-hero h1');
+  document.querySelectorAll('.h-hero h1, [data-split-title]').forEach(title => {
   if (title && !reduce.matches) {
     const wrap = node => {
       [...node.childNodes].forEach(child => {
@@ -85,6 +85,39 @@
     title.querySelectorAll('.w>span').forEach((s, i) => { s.style.transitionDelay = (i * 0.06) + 's'; s.setAttribute('aria-hidden', 'true'); });
     requestAnimationFrame(() => requestAnimationFrame(() => title.classList.add('is-in')));
   }
+  });
+
+
+  // Case studies: the cover grows to full size as it scrolls into view.
+  if (!reduce.matches) document.querySelectorAll('[data-scale-on-scroll]').forEach(frame => {
+    let ticking = false;
+    const update = () => {
+      const r = frame.getBoundingClientRect(), vh = window.innerHeight;
+      const p = Math.min(1, Math.max(0, (vh - r.top) / (vh * 0.85)));
+      frame.style.setProperty('--cs-scale', (0.94 + 0.06 * p).toFixed(4));
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, {passive: true});
+    update();
+  });
+
+  // Case-study figures count up once when they come into view.
+  document.querySelectorAll('.cs-stat-n').forEach(el => {
+    const target = Number(el.textContent.trim());
+    if (!Number.isFinite(target) || target < 2 || reduce.matches) return;
+    let done = false;
+    inView(el, visible => {
+      if (!visible || done) return;
+      done = true;
+      const start = performance.now(), duration = 1100;
+      const tick = now => {
+        const t = Math.min(1, (now - start) / duration), eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = String(Math.round(target * eased));
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, {threshold: 0.6});
+  });
 
   // Testimonials: previous / next buttons and position dots.
   const quotes = document.querySelector('section[aria-label="Témoignages"] .portfolio-quotes');

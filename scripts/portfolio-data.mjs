@@ -25,16 +25,16 @@ export const projects = [
     challenge: 'Donner une structure commune à des offres, catégories et partenaires différents pour que les acheteurs puissent s’orienter.',
     delivery: 'Une architecture WooCommerce et WCFM structure le catalogue partenaires. Le parcours de navigation et le méga-menu aident les acheteurs à retrouver les offres par catégorie.',
     outcome: 'Le rendu personnalisé a rétabli la navigation par catégories sans modification des fichiers du thème. Le catalogue donne aux marques partenaires des pages structurées que les acheteurs peuvent parcourir.',
-    evidence: { title: 'Un catalogue structuré pour les partenaires', image: 'freshbox-catalogue.webp', alt: 'Écran du projet FreshBox Tech Marketplace', caption: 'Capture de la plateforme présentée dans la fiche d’origine de FreshBox Tech Marketplace.' },
+    evidence: { title: 'Un catalogue structuré pour les partenaires', image: 'freshbox-catalogue.webp', alt: 'Écran du projet FreshBox Tech Marketplace', caption: 'Capture de la plateforme FreshBox Tech Marketplace.' },
     live: 'https://market.freshboxtech.com/'
   },
   {
     id: 'residences-loumia', name: 'Résidences Loumia', type: 'client', expertise: 'sites-et-commerce', sector: 'tourisme-hotellerie', cover: 'residences-loumia-cover.jpg',
     summary: 'Une expérience web pour présenter plusieurs résidences et faciliter leur découverte.',
     challenge: 'Présenter une offre d’hébergement répartie entre plusieurs résidences avec une navigation et une identité communes.',
-    delivery: 'La conception UI/UX et les interactions GSAP accompagnent la découverte des propriétés. La fiche d’origine présente les écrans conçus pour ce parcours.',
+    delivery: 'La conception UI/UX et les interactions GSAP accompagnent la découverte des propriétés.',
     outcome: 'La correction du défilement GSAP a rétabli la navigation entre les pages. Les formulaires de demande orientent les messages vers la boîte de la résidence sélectionnée.',
-    evidence: { title: 'Une expérience commune pour plusieurs résidences', image: 'loumia-parcours.webp', alt: 'Aperçu du parcours de découverte des Résidences Loumia', caption: 'Capture du parcours présenté dans la fiche d’origine de Résidences Loumia.' },
+    evidence: { title: 'Une expérience commune pour plusieurs résidences', image: 'loumia-parcours.webp', alt: 'Aperçu du parcours de découverte des Résidences Loumia', caption: 'Capture du parcours de découverte des Résidences Loumia.' },
     live: 'https://residencesloumia.com/'
   },
   {
@@ -150,7 +150,7 @@ export const projects = [
     id: 'phenotyping-flow', name: 'Phenotyping Flow', type: 'conception', expertise: 'logiciels-sur-mesure', sector: 'sante-administrative', cover: 'phenotyping-flow-controller.jpg',
     summary: 'Une étude d’interface pour organiser des sessions d’observation et des expériences en laboratoire.',
     challenge: 'Rendre compréhensibles les étapes et états d’un système de contrôle que plusieurs opérateurs doivent utiliser.',
-    delivery: 'Le travail de conception associe une cartographie du parcours à une interface de contrôle en mode sombre. La fiche d’origine présente les planches et les écrans.'
+    delivery: 'Le travail de conception associe une cartographie du parcours à une interface de contrôle en mode sombre.'
   },
   {
     id: 'agribusiness', name: 'Agribusiness', type: 'conception', expertise: 'sites-et-commerce', cover: 'agribusiness-cover.jpg',
@@ -220,10 +220,15 @@ export const projects = [
 ];
 
 export const testimonials = [
-  { project: 'freshbox-tech-marketplace', person: 'Louis M.', role: 'Fondateur, FreshBox', quote: 'Cette collaboration a donné vie à l’idée de FreshBox en la transformant en un système fonctionnel, pensé pour ses utilisateurs. Les solutions mises en place nous ont permis de tester le concept avec de vrais utilisateurs.' },
-  { project: 'residences-loumia', person: 'M. Perez', role: 'Responsable, Résidences Loumia', quote: 'Nos besoins opérationnels ont été bien compris. Les outils numériques mis en place ont simplifié la gestion quotidienne de la résidence.' },
-  { project: 'residences-loumia', person: 'M. Pedrel M.', role: 'Direction, Résidences Loumia', quote: 'Nous avons apprécié la fiabilité de l’accompagnement et la vision d’ensemble. Cette collaboration nous a aidés à améliorer nos processus et à mieux comprendre comment les outils numériques soutiennent notre activité.' },
-  { project: 'afremit', person: 'M. Mabuti', role: 'Fondateur, Afremit', quote: 'Le travail de cofondation nous a aidés à définir notre vision produit et à construire la première version de la plateforme. La réalisation technique et l’attention portée au produit ont joué un rôle essentiel dans la mise en ligne du concept.' }
+  { project: 'freshbox-tech-marketplace', person: 'M. Louis M.', role: 'Fondateur, FreshBox', quote: 'Deux Rives Web a transformé l’idée de FreshBox en un système fonctionnel, pensé pour ses utilisateurs. Les solutions livrées nous ont permis de tester le concept avec de vrais utilisateurs.' },
+  { project: 'mobikumbu', person: 'M. Tawanda', role: 'Équipe fondatrice, Mobi-Kumbu', quote: 'Deux Rives Web a traduit notre vision produit en une feuille de route concrète et livré les fonctionnalités qui ont rendu le concept tangible. L’équipe a travaillé main dans la main avec nos fondateurs et nos développeurs pour faire de nos idées un produit qui fonctionne.' },
+  { project: 'residences-loumia', person: 'M. Perez', role: 'Responsable, Résidences Loumia', quote: 'Deux Rives Web a compris nos besoins opérationnels et mis en place des outils numériques concrets, qui ont simplifié la gestion quotidienne de la résidence.' },
+  { project: 'mobikumbu', person: 'M. Rassridge', role: 'Équipe fondatrice, Mobi-Kumbu', quote: 'Tout au long du développement, Deux Rives Web a résolu des problèmes techniques complexes et collaboré efficacement avec nos ingénieurs. Cette capacité à débloquer les situations nous a permis d’itérer vite et de garder notre élan.' },
+  { project: 'afremit', person: 'M. Mabuti', role: 'Fondateur, Afremit', quote: 'En tant que cofondateur, Deux Rives Web a contribué à façonner notre réflexion produit et à construire la première version de la plateforme. Son exécution technique et son attention au produit ont été essentielles pour mettre le concept en ligne.' },
+  { project: 'mobikumbu', person: 'M. Muzie', role: 'Équipe fondatrice, Mobi-Kumbu', quote: 'Fiable et méthodique, Deux Rives Web a transformé nos exigences détaillées en systèmes faciles à maintenir, et a fait avancer le développement malgré des contraintes serrées.' },
+  { project: 'residences-loumia', person: 'M. Pedrel M.', role: 'Direction, Résidences Loumia', quote: 'Fiable et attentif à l’ensemble du système, Deux Rives Web nous a aidés à améliorer nos processus et à mieux comprendre comment les outils numériques soutiennent notre activité.' },
+  { project: null, person: 'Jake Mofa', role: 'Copropriétaire, Fashionista Africa', quote: 'Deux Rives Web a créé notre première boutique en ligne avec une compréhension claire de la marque, en traduisant les codes du design local en une expérience e-commerce simple à utiliser.' },
+  { project: 'bpetale-ltd', person: 'Mme Rosemary Hart', role: 'Fondatrice, BPÉTALE', quote: 'Deux Rives Web a joué un rôle déterminant dans la structuration de notre boutique en ligne, de nos flux CRM et de nos outils de gestion, en reliant nos processus opérationnels au sein d’une infrastructure numérique cohérente.' }
 ];
 
 export const clientDemos = [

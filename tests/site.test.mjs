@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import config from '../site.config.mjs';
 import { publicLaunchReady } from '../scripts/launch-readiness.mjs';
-import { projects } from '../scripts/portfolio-data.mjs';
+import { projects, testimonials } from '../scripts/portfolio-data.mjs';
 import { journalPosts } from '../scripts/company-blog.mjs';
 import { contactSettings } from '../scripts/contact-settings.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -391,7 +391,8 @@ test('project catalogue lists distinct case studies with sitemap entries and pre
       assert.match(project, /Extension Deux Rives Web · Intégration sur demande/);
       assert.doesNotMatch(project, /Voir la fiche d’origine/);
     } else {
-      assert.equal((project.match(/Jean-Émilien Massoda/g) || []).length, 1);
+      assert.doesNotMatch(project, /Massoda|massoda\.me/);
+      assert.match(project, /· Deux Rives Web<\/p>/);
     }
     if (launchReady) assert.doesNotMatch(project, /noindex,nofollow/);
     else assert.match(project, /noindex,nofollow/);
@@ -477,9 +478,9 @@ test('Mobi-Kumbu has a homepage card, live preview and Android store link', () =
   const homepage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
   const page = fs.readFileSync(path.join(dist, 'realisations/mobikumbu/index.html'), 'utf8');
   assert.match(homepage, /href="realisations\/mobikumbu\/"/);
-  assert.equal((homepage.match(/href="realisations\/mobikumbu\/"/g) || []).length, 1);
   const featured = homepage.match(/<section class="section studio-case"[\s\S]*?<\/section>/)?.[0];
   assert.ok(featured);
+  assert.equal((featured.match(/href="realisations\/mobikumbu\/"/g) || []).length, 1);
   assert.deepEqual([...featured.matchAll(/id="vedette-([^"]+)" aria-labelledby/g)].map(match => match[1]),
     ['freshbox-tech-marketplace', 'mobikumbu', 'bpetale-ltd']);
   assert.equal([...featured.matchAll(/class="studio-case-screen"/g)].length, 3);
@@ -508,7 +509,7 @@ test('homepage testimonials use French and credit individual projects', () => {
   assert.doesNotMatch(section, /BPÉTALE|Rosemary Hart/i);
   assert.match(section, /Deux Rives Web/);
   assert.doesNotMatch(section, /Jean-Émilien|Massoda/);
-  assert.equal((section.match(/<blockquote lang="fr">/g) || []).length, 3);
+  assert.equal((section.match(/<blockquote lang="fr">/g) || []).length, testimonials.filter(quote => quote.project !== 'bpetale-ltd').length);
   assert.match(section, /Fondateur, FreshBox/);
 });
 
