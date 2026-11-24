@@ -273,7 +273,8 @@ if (platformLogos) {
 }
 
 const featuredCases = document.querySelector('#projet-en-vedette');
-if (featuredCases) {
+// The homepage stacks its featured cases (data-case-stack); other pages keep the one-at-a-time carousel.
+if (featuredCases && !featuredCases.hasAttribute('data-case-stack')) {
   const slides = Array.from(featuredCases.querySelectorAll('[data-case-slide]'));
   const controls = featuredCases.querySelector('.studio-case-controls');
   const count = controls.querySelector('[data-case-count]');
