@@ -359,6 +359,9 @@ html body .dr-feature{scroll-snap-align:start;display:flex!important;flex-direct
 html body .dr-feature:hover{background:#fff!important;border-color:var(--line)!important;transform:translateY(-6px);box-shadow:var(--shadow)!important}
 html body .dr-feature-img{border-radius:18px!important;overflow:hidden;aspect-ratio:16/10;background:var(--soft-2)!important;margin:0 0 18px!important;border:0!important}
 html body .dr-feature-img img,html body .dr-feature-video{width:100%!important;height:100%!important;object-fit:cover;transition:transform .8s var(--ease)}
+/* static screenshots keep their 4:3 framing (never cropped), centred on the tinted card */
+html body .dr-feature-img:has(>img){display:flex!important;align-items:center;justify-content:center}
+html body .dr-feature-img>img{width:auto!important;height:100%!important;max-width:100%;aspect-ratio:4/3;object-fit:contain!important}
 html body .dr-feature:hover .dr-feature-img img,html body .dr-feature:hover .dr-feature-video{transform:scale(1.04)}
 html body .dr-feature-head{display:flex!important;justify-content:space-between;align-items:center;padding:0 10px}
 html body .dr-feature-head h3{margin:0!important;font-size:24px!important}
@@ -718,7 +721,7 @@ html body [data-split].is-in .w>span{transform:none}
   html body .header .nav-cta{min-height:46px;padding:0 6px 0 16px!important;font-size:13px!important;white-space:nowrap}
   html body .header .nav-cta svg{width:32px!important;height:32px!important}
 }
-@media (min-width:1241px) and (max-width:1360px){html body .header .header-inner{padding-left:28px!important;padding-right:28px!important}}
+@media (min-width:1241px) and (max-width:1360px){html body .header .header-inner{padding-left:28px!important;padding-right:28px!important;gap:22px}html body .header .nav-item>a{padding:10px 5px!important;font-size:12px!important;letter-spacing:.03em!important}html body .header .nav-cta{padding-left:14px!important}}
 
 /* full-bleed tinted studio bands without horizontal overflow */
 html body .studio-detail .studio-rich-section:nth-of-type(odd){margin-inline:0!important;padding-inline:0!important;box-shadow:0 0 0 100vmax var(--green-tint);clip-path:inset(0 -100vmax)}

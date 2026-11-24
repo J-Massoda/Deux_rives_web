@@ -50,21 +50,22 @@ try{
    if(state.width>state.client+14)report.warnings.push('horizontal overflow '+viewport.width+'px: '+route+' '+state.width+'/'+state.client);
   }
   await page.goto(base+'/', {waitUntil:'domcontentloaded'});
-  for (const [selector, asset] of [
-    ['.studio-hero', 'equipe-collaboration-bord-de-seine.webp'],
-    ['.studio-final', 'paysage-deux-rives-coucher-soleil.webp']
-  ]) {
-    const section = page.locator(selector);
-    assert.equal(await section.evaluate(async (element, filename) => {
-      const {backgroundImage, backgroundSize} = getComputedStyle(element);
-      const url = backgroundImage.match(/url\("([^"]+)"\)/)?.[1];
-      if (!url?.endsWith('/assets/' + filename) || !backgroundSize.includes('cover')) return false;
-      const image = new Image();
-      image.src = url;
-      await image.decode();
-      return image.naturalWidth > 0;
-    }, asset), true, `Homepage background ${asset} should load and cover the section at ${viewport.width}px`);
-  }
+  // White redesign: the hero stays a clean white surface, the showreel and the
+  // closing arc of project visuals carry the imagery.
+  assert.equal(await page.locator('.studio-hero').evaluate(element => getComputedStyle(element).backgroundImage.includes('url(')), false,
+    `Homepage hero should stay a white surface at ${viewport.width}px`);
+  assert.equal(await page.locator('.h-showreel video').evaluate(async video => {
+    const poster = new Image();
+    poster.src = video.poster;
+    await poster.decode();
+    return poster.naturalWidth > 0 && Boolean(video.querySelector('source')?.src.endsWith('.mp4'));
+  }), true, `Homepage showreel poster and video should load at ${viewport.width}px`);
+  assert.equal(await page.locator('.studio-final').evaluate(async element => {
+    const images = [...element.querySelectorAll('.h-arc img')];
+    if (images.length < 5) return false;
+    await Promise.all(images.map(img => { img.loading = 'eager'; return img.decode(); }));
+    return images.every(img => img.naturalWidth > 0);
+  }), true, `Homepage closing arc visuals should load at ${viewport.width}px`);
   const workflow = page.locator('[data-home-workflow]');
   const advance = workflow.locator('[data-workflow-advance]');
   const reset = workflow.locator('[data-workflow-reset]');
@@ -87,23 +88,21 @@ try{
   const logoTrack = logos.locator('.platform-logos-track');
   const toggle = logos.getByRole('button', {name: 'Mettre en pause le défilement des logos'});
   const cases = page.locator('#projet-en-vedette');
-  const currentCase = cases.locator('[data-case-slide]:visible');
-  const nextCase = cases.getByRole('button', {name: 'Réalisation suivante'});
-  const prevCase = cases.getByRole('button', {name: 'Réalisation précédente'});
+  // White redesign: featured cases are full-width slides stacked on scroll (no carousel buttons).
+  const slides = cases.locator('[data-case-slide]');
+  assert.equal(await cases.getAttribute('data-case-stack'), '');
+  assert.equal(await slides.count(), 3);
   const caseWidths = [];
-  for (const title of ['FreshBox Tech Marketplace', 'Mobi-Kumbu', 'BPÉTALE']) {
-    assert.equal(await currentCase.count(), 1);
-    assert.equal(await currentCase.getByRole('heading', {level: 2}).textContent(), title);
-    const screenshot = currentCase.locator('img');
-    await screenshot.scrollIntoViewIfNeeded();
-    await screenshot.evaluate(image => image.decode());
-    caseWidths.push((await currentCase.boundingBox()).width);
-    await nextCase.click();
+  for (const [index, title] of ['FreshBox Tech Marketplace', 'Mobi-Kumbu', 'BPÉTALE'].entries()) {
+    const slide = slides.nth(index);
+    await slide.scrollIntoViewIfNeeded();
+    assert.equal(await slide.isVisible(), true, `${title} slide should be visible at ${viewport.width}px`);
+    assert.equal(await slide.getByRole('heading', {level: 2}).textContent(), title);
+    assert.match(await slide.locator('.studio-case-index').textContent(), new RegExp('0' + (index + 1) + '\\s*/\\s*03'));
+    const screenshot = slide.locator('img').first();
+    await screenshot.evaluate(image => { image.loading = 'eager'; return image.decode(); });
+    caseWidths.push((await slide.boundingBox()).width);
   }
-  assert.equal(await currentCase.getByRole('heading', {level: 2}).textContent(), 'FreshBox Tech Marketplace');
-  await prevCase.click();
-  assert.equal(await currentCase.getByRole('heading', {level: 2}).textContent(), 'BPÉTALE');
-  await nextCase.click();
   assert.ok(caseWidths.every(width => width === caseWidths[0]), 'All featured cases use the same width');
 
   assert.equal(await logoTrack.evaluate(track => getComputedStyle(track).animationName), 'platform-logos-scroll');
