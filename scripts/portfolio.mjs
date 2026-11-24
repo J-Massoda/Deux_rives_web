@@ -1,6 +1,13 @@
 import {arrowUpRight as arrow} from './icons.mjs';
 import { clientDemos, projects, projectTypes, testimonials } from './portfolio-data.mjs';
 import { platformLogos } from './platform-logos.mjs';
+// Illustrative animations shown on the matching case studies (assets/video).
+const caseMotion = {
+  'freshbox-tech-marketplace': ['02-freshbox', 'Animation illustrative : recherche, catalogue par catégorie et demande de devis.'],
+  mobikumbu: ['03-mobikumbu', 'Animation illustrative : un transfert lancé en USSD, traité par l’API puis visible dans le portefeuille.'],
+  'bpetale-ltd': ['04-bpetale', 'Animation illustrative : soins naturels, voyages et confiserie dans un même panier.'],
+  'residences-loumia': ['05-loumia', 'Animation illustrative : une demande de réservation transmise à la boîte de la résidence choisie.']
+};
 
 const escape = value => String(value).replace(/[&<>"']/g, char => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -103,16 +110,19 @@ export function createPortfolio({ services, sectors }) {
 
   function featuredClients() {
     const featured = [
-      ['freshbox-tech-marketplace', 'Commerce B2B', 'freshbox-tech-marketplace.webp', 'Accueil du catalogue B2B FreshBox Tech Marketplace'],
-      ['mobikumbu', 'Fintech · USSD et AWS', 'mobikumbu.webp', 'Accueil du site Mobi-Kumbu'],
-      ['bpetale-ltd', 'Commerce en ligne', 'bpetale-ltd.webp', 'Accueil de la boutique BPÉTALE Natural Essence']
+      ['freshbox-tech-marketplace', 'Commerce B2B', 'freshbox-tech-marketplace.webp', 'Accueil du catalogue B2B FreshBox Tech Marketplace', '02-freshbox', ['Marketplace B2B', 'WooCommerce', 'Catalogue partenaires']],
+      ['mobikumbu', 'Fintech · USSD et AWS', 'mobikumbu.webp', 'Accueil du site Mobi-Kumbu', '03-mobikumbu', ['USSD', 'API REST', 'AWS']],
+      ['bpetale-ltd', 'Commerce en ligne', 'bpetale-ltd.webp', 'Accueil de la boutique BPÉTALE Natural Essence', '04-bpetale', ['Boutique en ligne', 'Voyages', 'Multi-activités']]
     ];
-    const slides = featured.map(([id, category, image, caption]) => {
+    const slides = featured.map(([id, category, image, caption, video, tags], index) => {
       const project = projects.find(entry => entry.id === id);
       return `<article class="studio-case-slide" id="vedette-${id}" aria-labelledby="vedette-titre-${id}" data-case-slide>
+        <div class="studio-case-media" aria-hidden="true"><video class="studio-case-video" muted loop playsinline preload="none" poster="assets/video/${video}.webp" data-autoplay><source src="assets/video/${video}.mp4" type="video/mp4"></video></div>
+        <div class="studio-case-inner">
         <div class="studio-section-intro">
           <p class="studio-label">Réalisation client · ${escape(category)}</p>
           <h2 id="vedette-titre-${id}">${escape(project.name)}</h2>
+          <ul class="studio-case-tags">${tags.map(tag => `<li>${escape(tag)}</li>`).join('')}</ul>
           <p>${escape(project.summary)}</p>
         </div>
         <div class="studio-case-layout">
@@ -130,9 +140,11 @@ export function createPortfolio({ services, sectors }) {
             <a class="portfolio-link studio-case-all" href="realisations/">Toutes nos réalisations ${arrow}</a>
           </div>
         </div>
+        <span class="studio-case-index" aria-hidden="true">0${index + 1}<small>/0${featured.length}</small></span>
+        </div>
       </article>`;
     }).join('');
-    return `<section class="section studio-case" id="projet-en-vedette" aria-label="Réalisations en vedette">
+    return `<section class="section studio-case" id="projet-en-vedette" aria-label="Réalisations en vedette" data-case-stack>
       <div class="studio-case-controls" hidden>
         <button type="button" data-case-step="-1" aria-label="Réalisation précédente">←</button>
         <span class="studio-case-count" aria-live="polite" aria-atomic="true" data-case-count></span>
@@ -219,6 +231,7 @@ export function createPortfolio({ services, sectors }) {
             </div>
           </header>
           <figure class="portfolio-case-cover"><img src="${escape(cover)}" alt="Visuel du projet ${escape(project.name)}" decoding="async"></figure>
+          ${caseMotion[project.id] ? `<figure class="portfolio-case-motion"><video muted loop playsinline preload="none" poster="${base}assets/video/${caseMotion[project.id][0]}.webp" data-autoplay aria-label="Animation illustrant ${escape(project.name)}"><source src="${base}assets/video/${caseMotion[project.id][0]}.mp4" type="video/mp4"></video><figcaption>${escape(caseMotion[project.id][1])}</figcaption></figure>` : ''}
           <div class="portfolio-case-body">
             <section><span class="eyebrow">01 · Contexte</span><h2>Le besoin</h2><p>${escape(project.challenge)}</p></section>
             <section><span class="eyebrow">02 · Contribution</span><h2>Le travail réalisé</h2><p>${escape(project.delivery)}</p></section>
