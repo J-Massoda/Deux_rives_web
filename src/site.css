@@ -724,7 +724,7 @@ html body [data-split].is-in .w>span{transform:none}
 @media (min-width:1241px) and (max-width:1360px){html body .header .header-inner{padding-left:28px!important;padding-right:28px!important;gap:22px}html body .header .nav-item>a{padding:10px 5px!important;font-size:12px!important;letter-spacing:.03em!important}html body .header .nav-cta{padding-left:14px!important}}
 
 /* full-bleed tinted studio bands without horizontal overflow */
-html body .studio-detail .studio-rich-section:nth-of-type(odd){margin-inline:0!important;padding-inline:0!important;box-shadow:0 0 0 100vmax var(--green-tint);clip-path:inset(0 -100vmax)}
+html body .studio-detail .studio-rich-section:nth-of-type(odd):not(.studio-workflow){margin-inline:0!important;padding-inline:0!important;box-shadow:0 0 0 100vmax var(--green-tint);clip-path:inset(0 -100vmax)}
 /* narrative sections: never wider than the viewport */
 @media (max-width:1100px){
   html body .dr-narrative{grid-template-columns:minmax(0,1fr)!important}
@@ -885,3 +885,14 @@ html body .cs-cta .button{flex:none}
   html body .cs-flow-steps li:not(:last-child)::after{display:none}
 }
 @media (prefers-reduced-motion:reduce){html body .cs-cover{transform:none!important}}
+
+/* Cards that were divider rows in the old design: give their content room inside the border */
+html body .step{padding:clamp(22px,2.2vw,30px)!important}
+html body .method-row{padding:clamp(28px,3vw,42px) clamp(24px,3vw,40px)!important}
+html body .contact-points>*{padding:18px 22px!important}
+html body .wave-columns>div{padding:clamp(24px,2.4vw,32px)!important}
+html body .studio-rich-section.studio-workflow{padding:clamp(24px,3.4vw,48px)!important}
+@media (max-width:640px){
+  /* App hero illustrations: use the full column on phones so the mock interface is not squeezed */
+  html body .w4-hero-art{margin:12px 0 0!important;padding:10px!important;width:auto!important}
+}
