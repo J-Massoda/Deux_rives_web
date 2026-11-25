@@ -89,14 +89,13 @@ const contact = contactSettings();
 function shell({title,description,body,route='',section='',image='assets/og-cover.svg',lang='fr',blogMeta=null,seoTitle=null}) {
   const base = '../'.repeat(route.split('/').filter(Boolean).length);
   const link = p => url(base,p);
-  const nav = lang==='en' ? [{label:'Overview',href:'en/'},{label:'Software engineering',href:'en/software-engineering/'},{label:'Explore 24 demos',href:'studio/'},{label:'Contact',href:'contact/'}] : [
+  const nav = lang==='en' ? [{label:'Overview',href:'en/'},{label:'Software engineering',href:'en/software-engineering/'},{label:'Explore 24 demos',href:'studio/'}] : [
     {label:'Expertises', href:'expertises/', items:services.map(x=>[x.title,`expertises/${x.id}/`,x.eyebrow])},
     {label:'Secteurs', href:'secteurs/', items:sectors.map(x=>[x.title,`secteurs/${x.id}/`,x.summary])},
     {label:'Démonstrations', href:'demonstrations/', items:[['Catalogue — 24 démonstrations interactives','studio/','Toutes les applications à essayer'],...flagshipIds.map(id=>[({ 'clientflow-pro':'ClientFlow Pro',chantierpilot:'ChantierPilot',commercepilot:'CommercePilot','docupilot-ai':'DocuPilot AI'})[id],`applications/${id}/`,({'clientflow-pro':'CRM et étapes de vente',chantierpilot:'Suivi de chantier et budget',commercepilot:'Achats, catalogue et stocks','docupilot-ai':'Lecture de documents vérifiée'})[id]]),...wave3Ids.map(id=>[({'intervention-360':'Intervention 360',factureconnect:'FactureConnect','devis-atelier':'Devis Atelier',missiondesk:'MissionDesk'})[id],`applications/${id}/`,({'intervention-360':'Dispatch et rapports terrain',factureconnect:'Flux de facturation et contrôles','devis-atelier':'Devis et validations',missiondesk:'Missions, temps et livrables'})[id]])]},
     {label:'Réalisations', href:'realisations/'},
     {label:'Notre approche', href:'methode/'},
-    {label:'Regards', href:'regards/'},
-    {label:'Contact', href:'contact/'}
+    {label:'Regards', href:'regards/'}
   ];
   const navHtml = nav.map(n => {
     const media=n.label==='Expertises'?'collaboration-ingenierie-logicielle.webp':n.label==='Secteurs'?'equipe-suivi-chantier-tablette.webp':'docupilot-ai-validation-documents.webp';
@@ -131,9 +130,9 @@ const sectionHead=(index,kicker,title,copy='')=>`<div class="section-head"><span
 const serviceCard=(x,base='')=>`<a class="service-card reveal" href="${base}expertises/${x.id}/"><span class="eyebrow">${x.eyebrow}</span><h3>${x.title}</h3><p>${x.summary}</p><span class="card-link">Explorer cette expertise ${arrow}</span></a>`;
 const demoCard=(x,base='')=>`<a class="demo-card reveal" href="${base}demonstrations/${x.id}/"><div class="demo-card-art"><img src="${base}assets/${x.visual}" alt="Illustration du parcours ${x.industry.toLowerCase()}" loading="lazy"><span class="demo-card-pill">Données fictives · interactif</span></div><div class="demo-card-info"><span class="eyebrow">${x.industry}</span><h3>${x.title}</h3><p>${x.short}</p><span class="card-link">Essayer le scénario ${arrow}</span></div></a>`;
 const hero=(eyebrow,title,description,base,photo)=>{
-  const art = photo
-    ? `<div class="subhero-art dr-subhero-art"><img src="${base}assets/${photo}" alt="Visuel illustratif du domaine ${eyebrow}" loading="lazy"></div>`
-    : `<div class="subhero-gesture" aria-hidden="true"><img src="${base}assets/hero-gesture.svg" width="224" height="170" alt=""></div>`;
+  // A photo hero shows the picture full width behind the text, under a colour overlay.
+  if (photo) return `<section class="subhero dr-subhero subhero--photo"><div class="subhero-bg" aria-hidden="true"><img src="${base}assets/${photo}" alt="" fetchpriority="high" decoding="async"></div><div class="subhero-copy"><span class="eyebrow">${eyebrow}</span><h1>${title}</h1><p>${description}</p></div></section>`;
+  const art = `<div class="subhero-gesture" aria-hidden="true"><img src="${base}assets/hero-gesture.svg" width="224" height="170" alt=""></div>`;
   return `<section class="subhero dr-subhero"><div class="subhero-copy"><span class="eyebrow">${eyebrow}</span><h1>${title}</h1><p>${description}</p></div>${art}</section>`;
 };
 

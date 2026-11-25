@@ -896,3 +896,26 @@ html body .studio-rich-section.studio-workflow{padding:clamp(24px,3.4vw,48px)!im
   /* App hero illustrations: use the full column on phones so the mock interface is not squeezed */
   html body .w4-hero-art{margin:12px 0 0!important;padding:10px!important;width:auto!important}
 }
+
+/* Photo heroes (Méthode, Contact): picture as a full-width background under a colour overlay */
+html body .subhero.subhero--photo{position:relative;isolation:isolate;display:flex!important;align-items:flex-end;min-height:clamp(480px,62vh,660px)!important;padding:clamp(120px,12vw,180px) var(--gutter) clamp(56px,7vw,96px)!important;overflow:hidden;background:var(--ink)!important;color:#fff!important}
+html body .subhero--photo::before,html body .subhero--photo::after{display:none!important}
+html body .subhero--photo .subhero-bg{position:absolute;inset:0;z-index:-1;margin:0}
+html body .subhero--photo .subhero-bg img{width:100%!important;height:100%!important;object-fit:cover;object-position:center 40%;border-radius:0!important;box-shadow:none!important;transform:scale(1.04);animation:subhero-zoom 14s var(--ease) forwards}
+html body .subhero--photo .subhero-bg::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(11,20,16,.94) 0%,rgba(11,20,16,.82) 38%,rgba(11,20,16,.42) 72%,rgba(11,20,16,.28) 100%),
+  linear-gradient(0deg,rgba(6,90,56,.55),rgba(6,90,56,0) 55%),
+  radial-gradient(60% 80% at 100% 0%,rgba(255,90,31,.28),transparent 60%)}
+html body .subhero--photo .subhero-copy{position:relative;width:100%;max-width:var(--max);margin:0 auto;padding:0!important}
+html body .subhero--photo .subhero-copy>*{max-width:760px}
+html body .subhero--photo .eyebrow{color:#FF8A5B!important}
+html body .subhero--photo .eyebrow::before{background:#FF8A5B!important}
+html body .subhero--photo h1{color:#fff!important;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+html body .subhero--photo h1 i,html body .subhero--photo h1 em{color:#7EE2B0!important}
+html body .subhero--photo p{color:rgba(255,255,255,.86)!important;font-size:clamp(17px,1.4vw,20px)!important;max-width:620px!important}
+@keyframes subhero-zoom{to{transform:scale(1)}}
+@media (max-width:640px){
+  html body .subhero.subhero--photo{min-height:520px!important;padding-top:110px!important}
+  html body .subhero--photo .subhero-bg::after{background:linear-gradient(0deg,rgba(11,20,16,.95) 0%,rgba(11,20,16,.82) 55%,rgba(11,20,16,.5) 100%),radial-gradient(70% 50% at 100% 0%,rgba(255,90,31,.25),transparent 60%)}
+}
+@media (prefers-reduced-motion:reduce){html body .subhero--photo .subhero-bg img{animation:none;transform:none}}
